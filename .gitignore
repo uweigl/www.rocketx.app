@@ -1,1 +1,3 @@
 .DS_Store
+
+# deck sources are committed; regenerate PDFs with scripts/gen_deck.py
