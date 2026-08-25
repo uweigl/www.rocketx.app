@@ -68,7 +68,7 @@ C["en"] = dict(
     # --- the cart: the differentiator, and where orders are actually lost
     p8h="Where the order is actually lost",
     p8a="Most evaluations compare catalogues and checkout. The money leaks somewhere less visible: in the cart, between the moment a buyer starts an order and the moment somebody submits it.",
-    cart=[("A half-built order is invisible", "On most platforms nobody on your side can see a cart until it becomes an order. A stalled cart looks exactly like no cart at all, so the first time you learn it existed is when it never arrives."),
+    cart=[("A half-built order is invisible", "Roughly 70% of online carts are abandoned across ecommerce, and on most platforms nobody on your side can see one until it becomes an order. A stalled cart looks exactly like no cart at all, so the first time you learn it existed is when it never arrives."),
           ("Carts die with the session", "Browser carts are tied to a device and a session. A buyer interrupted on the warehouse floor comes back to an empty basket and rebuilds it by phone, or does not bother."),
           ("One person builds what six to ten people decide", "Gartner puts a complex B2B purchase in the hands of six to ten people. When only one of them can touch the cart, the order is assembled by email and retyped, and it arrives incomplete."),
           ("The duplicate nobody caught becomes a return", "When colleagues at the same account cannot see each other's orders, the same SKU gets ordered twice. That is the most expensive kind of transaction you can create."),
@@ -206,7 +206,7 @@ C["de"] = dict(
            ("5. Go-live und Review", "Vollständiger Rollout, mit gemeinsamem ROI-Review anhand der im Piloten vereinbarten Kennzahlen.")],
     p8h="Wo die Bestellung wirklich verloren geht",
     p8a="Die meisten Evaluationen vergleichen Kataloge und Checkout. Der Verlust entsteht an einer weniger sichtbaren Stelle: im Warenkorb, zwischen dem Moment, in dem ein Einkäufer beginnt, und dem Moment, in dem jemand absendet.",
-    cart=[("Eine halbfertige Bestellung ist unsichtbar", "Auf den meisten Plattformen kann niemand auf Ihrer Seite einen Warenkorb sehen, bevor daraus eine Bestellung wird. Ein stehengebliebener Warenkorb sieht aus wie gar kein Warenkorb — Sie erfahren von ihm erst, wenn er nie ankommt."),
+    cart=[("Eine halbfertige Bestellung ist unsichtbar", "Rund 70 % der Online-Warenkörbe werden abgebrochen, und auf den meisten Plattformen kann niemand auf Ihrer Seite einen Warenkorb sehen, bevor daraus eine Bestellung wird. Ein stehengebliebener Warenkorb sieht aus wie gar kein Warenkorb — Sie erfahren von ihm erst, wenn er nie ankommt."),
           ("Warenkörbe sterben mit der Sitzung", "Browser-Warenkörbe hängen an Gerät und Sitzung. Ein im Lager unterbrochener Einkäufer findet einen leeren Korb vor und baut ihn telefonisch neu auf — oder lässt es."),
           ("Einer baut, was sechs bis zehn entscheiden", "Laut Gartner liegt eine komplexe B2B-Beschaffung in den Händen von sechs bis zehn Personen. Wenn nur eine davon den Warenkorb anfassen kann, wird die Bestellung per E-Mail zusammengetragen, abgetippt — und kommt unvollständig an."),
           ("Die übersehene Dopplung wird zur Retoure", "Wenn Kollegen beim selben Kunden die Bestellungen der anderen nicht sehen, wird dieselbe SKU zweimal bestellt. Das ist die teuerste Transaktion, die Sie erzeugen können."),
@@ -296,7 +296,7 @@ C["es"] = dict(
     date="Edición 2026",
     p1h="Por qué está en la agenda ahora",
     p1a="Las compras B2B se han movido a lo digital mientras el comercio B2B total se mantiene plano. El crecimiento no viene de más clientes, sino de que los mismos clientes piden una porción mayor de forma digital — y eligen proveedor según lo fácil que resulte.",
-    stats=[("$2.93B", "ecommerce B2B en EE. UU. en 2025, un 13% más mientras las ventas B2B totales se mantuvieron planas"),
+    stats=[("$2,93 B", "ecommerce B2B en EE. UU. en 2025, un 13% más mientras las ventas B2B totales se mantuvieron planas"),
            ("39%", "de los compradores B2B harán pedidos de más de $500K por autoservicio digital — frente al 28% dos años antes"),
            ("94%", "del tiempo en el móvil se pasa dentro de apps, no en el navegador"),
            (">40%", "de los ingresos de las principales empresas B2B es impulsado o influido por el móvil")],
@@ -340,7 +340,7 @@ C["es"] = dict(
            ("5. Go-live y revisión", "Despliegue completo, con revisión conjunta de ROI frente a las métricas acordadas en el piloto.")],
     p8h="Dónde se pierde realmente el pedido",
     p8a="Casi todas las evaluaciones comparan catálogos y checkout. El dinero se escapa en un sitio menos visible: en el carrito, entre el momento en que un comprador empieza y el momento en que alguien envía.",
-    cart=[("Un pedido a medio construir es invisible", "En la mayoría de plataformas nadie de tu lado puede ver un carrito hasta que se convierte en pedido. Un carrito atascado se ve igual que ningún carrito: te enteras de que existía cuando nunca llega."),
+    cart=[("Un pedido a medio construir es invisible", "Alrededor del 70 % de los carritos online se abandonan, y en la mayoría de plataformas nadie de tu lado puede ver uno hasta que se convierte en pedido. Un carrito atascado se ve igual que ningún carrito: te enteras de que existía cuando nunca llega."),
           ("Los carritos mueren con la sesión", "Los carritos de navegador dependen del dispositivo y de la sesión. Un comprador interrumpido en el almacén vuelve a una cesta vacía y la reconstruye por teléfono, o lo deja."),
           ("Uno construye lo que deciden seis a diez", "Gartner sitúa una compra B2B compleja en manos de seis a diez personas. Si solo una puede tocar el carrito, el pedido se arma por correo, se reteclea y llega incompleto."),
           ("El duplicado que nadie vio acaba en devolución", "Cuando los compañeros del mismo cliente no ven los pedidos de los demás, el mismo SKU se pide dos veces. Es la transacción más cara que puedes generar."),
@@ -611,6 +611,12 @@ def build(d):
              % (esc(d["p7h"]), qs, esc(d["ctah"]), esc(d["ctap"]),
                 d["contact"], d["contact"], esc(d["srch"]), esc(d["src"])))
 
+    # running foot: the CSS and the per-language strings existed but were never emitted,
+    # so a 14-page document had no page numbers to refer to in a meeting
+    total = len(P)
+    P = [p[: p.rfind("</div>")] + '<div class="foot"><span>%s</span><span>%s %d / %d</span></div>'
+         % (esc(d["foot"]), esc(d["pg"]), i + 1, total) + p[p.rfind("</div>"):]
+         for i, p in enumerate(P)]
     pages = "\n".join(P)
     return ("""<!DOCTYPE html>
 <html lang="%s"><head><meta charset="UTF-8"><title>%s</title>
