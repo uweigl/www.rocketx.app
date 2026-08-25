@@ -89,15 +89,23 @@ C["en"] = dict(
         ("What it costs to try", "Setup waived on annual plans. Billing starts at go-live, not at signature. A 30 to 45 day pilot with agreed measures before any longer commitment."),
         ("The one number to check", "Take your monthly abandoned carts, multiply by average order value, and take the share your reps could rescue if they could see them. If that alone does not clear the platform fee, stop reading.")],
     # --- data, entities and compliance
-    cmh="Where your data lives, and who is accountable for it",
-    cma="Your procurement team has a checklist for this, and it is usually the slowest part of the evaluation. The short version: European customers contract with a European company.",
-    cmp=[("Two entities, two regimes", "RocketX LLC is the United States entity. A separate Irish entity serves customers in the European Union. Which one you contract with is decided by where you are, not by which is convenient for us."),
-         ("EU customers contract inside the EU", "For a German or Spanish buyer the counterparty is an EU company, under EU law, directly subject to the GDPR. There is no reliance on a US parent and no transfer mechanism to argue about in a procurement review."),
-         ("One data processing agreement", "A single DPA covers the engagement, with subprocessors disclosed and notified before they change. Roles are written down: you are the controller of your customer and order data, we process it on your instructions."),
-         ("Your data is yours, including on the way out", "Catalogue, customers, pricing rules, carts and order history are exportable in open formats at any time, not only at renewal. If you leave, you leave with your data and a defined handover window."),
-         ("Availability and support are contractual", "Uptime and response commitments sit in the agreement and scale by tier, rather than living on a marketing page.")],
-    cmn="Certifications, hosting regions and audit reports are provided on request and attach to the contract. Ask for them early; they are the part of the evaluation most likely to sit in somebody's inbox.",
-    # --- honest limits
+    cmh='Two entities, two jurisdictions, one answer for each',
+    cma='Security and data review is usually the slowest part of an evaluation, and the usual reason is that a US vendor is trying to explain why European data is fine in America. We avoided that by not doing it.',
+    eu_f='For customers in the European Union',
+    eu_h='You contract with an EU company',
+    us_f='For customers in the United States',
+    us_h='You contract with RocketX LLC',
+    ath='Attaches to the agreement, in both jurisdictions',
+    cmn='Send this page to whoever runs your security review. If it comes back with a questionnaire, we would rather answer it in week one than in week nine, which is when it usually arrives.',
+    eu=[('Counterparty', 'A separate Irish entity, incorporated and operating in the European Union, under EU law.'),
+        ('GDPR', 'Applies to the engagement directly. You are the controller of your customer and order data; we are the processor, acting on your documented instructions.'),
+        ('Transfer analysis', 'Your counterparty is an EU company, so the review does not start with a Chapter V transfer question. That is usually where evaluations of US vendors lose a month.'),
+        ('Subprocessors', 'Disclosed in full, with notice before any change and a contractual right to object.')],
+    us=[('Counterparty', 'RocketX LLC, the United States entity. Same platform, same commitments, governed where you are.'),
+        ('State privacy law', 'CCPA and CPRA, and the successor state statutes, are handled through the same written processing terms rather than a separate regime per state.'),
+        ('Security review', 'Certifications, audit reports and hosting detail are provided on request and attach to the agreement.'),
+        ('Portability', 'The same export and exit rights as EU customers. Nothing is withheld or downgraded by region.')],
+    at=['Data processing agreement, with roles written down', 'Current subprocessor list, with change notice', 'Certifications, audit reports and hosting region', 'Uptime and support commitments, by tier', 'Retention, deletion and backup policy', 'Export in open formats, at any time and on exit'],
     nfh="Where we are not the right fit",
     nfa="Every vendor says they are right for you. Here is the short list of times we are not, so that it surfaces now rather than in month two of an implementation.",
     nf=[("You sell mainly to consumers", "RocketX is built for wholesale ordering: negotiated pricing, contract terms, buying teams, reorder. If most of your revenue is direct to consumer, a general commerce platform will serve you better and cost less."),
@@ -217,14 +225,23 @@ C["de"] = dict(
         ("Warum das haltbar ist", "Unbegrenzt viele SKUs und Plätze, nie nach Menge berechnet, nie ein Prozentsatz Ihres Umsatzes. Native iOS- und Android-Apps, keine Website in einer Hülle. Standard-Konnektoren für ERP und CRM inklusive."),
         ("Was ein Versuch kostet", "Setup bei Jahresplänen erlassen. Abrechnung ab Go-live, nicht ab Unterschrift. Ein 30- bis 45-tägiger Pilot mit vereinbarten Kennzahlen vor jeder längeren Bindung."),
         ("Die eine Zahl zum Prüfen", "Nehmen Sie Ihre monatlich abgebrochenen Warenkörbe, multiplizieren Sie mit dem durchschnittlichen Bestellwert und dem Anteil, den Ihr Außendienst retten könnte, wenn er sie sähe. Deckt das allein die Plattformgebühr nicht, hören Sie hier auf.")],
-    cmh="Wo Ihre Daten liegen und wer dafür geradesteht",
-    cma="Ihre Beschaffung hat dafür eine Checkliste, und das ist meist der langsamste Teil der Prüfung. Die Kurzfassung: Europäische Kunden schließen mit einem europäischen Unternehmen ab.",
-    cmp=[("Zwei Gesellschaften, zwei Rechtsräume", "Die RocketX LLC ist die US-Gesellschaft. Eine eigene irische Gesellschaft betreut Kunden in der Europäischen Union. Womit Sie abschließen, entscheidet Ihr Sitz — nicht unsere Bequemlichkeit."),
-         ("EU-Kunden schließen innerhalb der EU ab", "Für einen deutschen Einkäufer ist die Gegenpartei ein EU-Unternehmen, nach EU-Recht, unmittelbar der DSGVO unterworfen. Kein Rückgriff auf eine US-Muttergesellschaft, kein Übermittlungsmechanismus, über den in der Beschaffungsprüfung gestritten werden muss."),
-         ("Ein Auftragsverarbeitungsvertrag", "Ein AVV deckt die Zusammenarbeit ab, Unterauftragsverarbeiter werden offengelegt und Änderungen vorab mitgeteilt. Die Rollen stehen schriftlich fest: Sie sind Verantwortlicher für Ihre Kunden- und Bestelldaten, wir verarbeiten sie auf Ihre Weisung."),
-         ("Ihre Daten gehören Ihnen — auch beim Abschied", "Katalog, Kunden, Preisregeln, Warenkörbe und Bestellhistorie sind jederzeit in offenen Formaten exportierbar, nicht nur zur Verlängerung. Wenn Sie gehen, gehen Sie mit Ihren Daten und einem definierten Übergabefenster."),
-         ("Verfügbarkeit und Support stehen im Vertrag", "Zusagen zu Verfügbarkeit und Reaktionszeiten stehen im Vertrag und skalieren nach Stufe, statt auf einer Marketingseite zu wohnen.")],
-    cmn="Zertifizierungen, Hosting-Regionen und Prüfberichte stellen wir auf Anfrage bereit; sie werden Vertragsbestandteil. Fragen Sie früh danach — das ist der Teil der Prüfung, der am ehesten in einem Posteingang liegen bleibt.",
+    cmh='Zwei Gesellschaften, zwei Rechtsräume, je eine klare Antwort',
+    cma='Die Datenschutz- und Sicherheitsprüfung ist meist der langsamste Teil einer Evaluation, und der übliche Grund ist, dass ein US-Anbieter erklären soll, warum europäische Daten in Amerika gut aufgehoben sind. Wir haben das vermieden, indem wir es nicht tun.',
+    eu_f='Für Kunden in der Europäischen Union',
+    eu_h='Sie schließen mit einem EU-Unternehmen ab',
+    us_f='Für Kunden in den Vereinigten Staaten',
+    us_h='Sie schließen mit der RocketX LLC ab',
+    ath='Wird in beiden Rechtsräumen Vertragsbestandteil',
+    cmn='Geben Sie diese Seite an die Stelle, die Ihre Sicherheitsprüfung verantwortet. Kommt sie mit einem Fragebogen zurück, beantworten wir ihn lieber in Woche eins als in Woche neun — dann trifft er nämlich üblicherweise ein.',
+    eu=[('Vertragspartner', 'Eine eigene irische Gesellschaft, gegründet und tätig in der Europäischen Union, nach EU-Recht.'),
+        ('DSGVO', 'Gilt unmittelbar für die Zusammenarbeit. Sie sind Verantwortlicher für Ihre Kunden- und Bestelldaten; wir sind Auftragsverarbeiter und handeln auf Ihre dokumentierte Weisung.'),
+        ('Übermittlungsprüfung', 'Ihr Vertragspartner ist ein EU-Unternehmen, die Prüfung beginnt also nicht mit einer Frage nach Kapitel V. Genau dort verlieren Evaluationen von US-Anbietern üblicherweise einen Monat.'),
+        ('Unterauftragsverarbeiter', 'Vollständig offengelegt, mit Vorabmitteilung bei Änderungen und vertraglichem Widerspruchsrecht.')],
+    us=[('Vertragspartner', 'Die RocketX LLC, die US-Gesellschaft. Dieselbe Plattform, dieselben Zusagen, geltendes Recht an Ihrem Sitz.'),
+        ('Datenschutz der Bundesstaaten', 'CCPA und CPRA sowie die nachfolgenden Landesgesetze werden über dieselben schriftlichen Verarbeitungsbedingungen abgedeckt, nicht über ein eigenes Regime je Bundesstaat.'),
+        ('Sicherheitsprüfung', 'Zertifizierungen, Prüfberichte und Angaben zum Hosting stellen wir auf Anfrage bereit; sie werden Vertragsbestandteil.'),
+        ('Portabilität', 'Dieselben Export- und Ausstiegsrechte wie für EU-Kunden. Nach Region wird nichts zurückgehalten oder abgestuft.')],
+    at=['Auftragsverarbeitungsvertrag mit schriftlich fixierten Rollen', 'Aktuelle Liste der Unterauftragsverarbeiter, mit Änderungsmitteilung', 'Zertifizierungen, Prüfberichte und Hosting-Region', 'Zusagen zu Verfügbarkeit und Support, nach Stufe', 'Aufbewahrungs-, Lösch- und Backup-Richtlinie', 'Export in offenen Formaten, jederzeit und beim Ausstieg'],
     nfh="Wofür wir nicht der Richtige sind",
     nfa="Jeder Anbieter sagt, er passe zu Ihnen. Hier die kurze Liste der Fälle, in denen wir es nicht tun — damit das jetzt herauskommt und nicht im zweiten Monat der Einführung.",
     nf=[("Sie verkaufen überwiegend an Endkunden", "RocketX ist für Großhandelsbestellungen gebaut: verhandelte Preise, Vertragskonditionen, Einkaufsteams, Nachbestellung. Kommt Ihr Umsatz überwiegend aus dem Endkundengeschäft, dient Ihnen eine allgemeine Commerce-Plattform besser und günstiger."),
@@ -342,14 +359,23 @@ C["es"] = dict(
         ("Por qué se sostiene", "SKUs y usuarios ilimitados, nunca medidos, nunca un porcentaje de tus ingresos. Apps nativas de iOS y Android, no un sitio web dentro de una carcasa. Conectores estándar de ERP y CRM incluidos."),
         ("Qué cuesta probarlo", "Setup incluido en planes anuales. La facturación empieza en el go-live, no en la firma. Un piloto de 30 a 45 días con métricas acordadas antes de cualquier compromiso más largo."),
         ("La única cifra que hay que comprobar", "Toma tus carritos abandonados al mes, multiplica por el valor medio del pedido y por la parte que tus vendedores podrían rescatar si pudieran verlos. Si eso solo no cubre la tarifa de plataforma, deja de leer.")],
-    cmh="Dónde viven tus datos y quién responde por ellos",
-    cma="Tu equipo de compras tiene una lista para esto, y suele ser la parte más lenta de la evaluación. La versión corta: los clientes europeos contratan con una empresa europea.",
-    cmp=[("Dos entidades, dos regímenes", "RocketX LLC es la entidad estadounidense. Una entidad irlandesa independiente atiende a los clientes de la Unión Europea. Con cuál contratas lo decide dónde estás, no lo que nos resulte cómodo."),
-         ("Los clientes de la UE contratan dentro de la UE", "Para un comprador alemán o español la contraparte es una empresa de la UE, bajo derecho de la UE, sujeta directamente al RGPD. Sin depender de una matriz estadounidense y sin mecanismos de transferencia que discutir en una revisión de compras."),
-         ("Un único acuerdo de tratamiento de datos", "Un solo DPA cubre la relación, con los subencargados divulgados y notificados antes de cambiar. Los roles constan por escrito: tú eres el responsable de los datos de tus clientes y pedidos, nosotros los tratamos siguiendo tus instrucciones."),
-         ("Tus datos son tuyos, también al salir", "Catálogo, clientes, reglas de precios, carritos e histórico de pedidos son exportables en formatos abiertos en cualquier momento, no solo en la renovación. Si te vas, te vas con tus datos y una ventana de traspaso definida."),
-         ("Disponibilidad y soporte son contractuales", "Los compromisos de disponibilidad y respuesta están en el contrato y escalan por nivel, en vez de vivir en una página de marketing.")],
-    cmn="Certificaciones, regiones de alojamiento e informes de auditoría se facilitan a petición y se adjuntan al contrato. Pídelos pronto: es la parte de la evaluación con más probabilidades de quedarse en la bandeja de entrada de alguien.",
+    cmh='Dos entidades, dos jurisdicciones, una respuesta clara para cada una',
+    cma='La revisión de seguridad y datos suele ser la parte más lenta de una evaluación, y el motivo habitual es que un proveedor estadounidense intenta explicar por qué los datos europeos están bien en América. Lo evitamos no haciéndolo.',
+    eu_f='Para clientes de la Unión Europea',
+    eu_h='Contratas con una empresa de la UE',
+    us_f='Para clientes de Estados Unidos',
+    us_h='Contratas con RocketX LLC',
+    ath='Se adjunta al acuerdo, en ambas jurisdicciones',
+    cmn='Pasa esta página a quien lleve tu revisión de seguridad. Si vuelve con un cuestionario, preferimos responderlo en la semana uno que en la novena, que es cuando suele llegar.',
+    eu=[('Contraparte', 'Una entidad irlandesa independiente, constituida y operativa en la Unión Europea, bajo derecho de la UE.'),
+        ('RGPD', 'Se aplica directamente a la relación. Tú eres el responsable de los datos de tus clientes y pedidos; nosotros somos el encargado y actuamos según tus instrucciones documentadas.'),
+        ('Análisis de transferencias', 'Tu contraparte es una empresa de la UE, así que la revisión no empieza por una pregunta del Capítulo V. Ahí es donde las evaluaciones de proveedores estadounidenses suelen perder un mes.'),
+        ('Subencargados', 'Divulgados por completo, con aviso previo a cualquier cambio y derecho contractual de objeción.')],
+    us=[('Contraparte', 'RocketX LLC, la entidad estadounidense. La misma plataforma, los mismos compromisos, con la ley de donde estás.'),
+        ('Privacidad estatal', 'CCPA y CPRA, y las leyes estatales posteriores, se cubren con los mismos términos escritos de tratamiento, no con un régimen distinto por estado.'),
+        ('Revisión de seguridad', 'Certificaciones, informes de auditoría y detalles de alojamiento se facilitan a petición y se adjuntan al acuerdo.'),
+        ('Portabilidad', 'Los mismos derechos de exportación y salida que los clientes de la UE. No se retiene ni se rebaja nada por región.')],
+    at=['Acuerdo de tratamiento de datos, con los roles por escrito', 'Lista vigente de subencargados, con aviso de cambios', 'Certificaciones, informes de auditoría y región de alojamiento', 'Compromisos de disponibilidad y soporte, por nivel', 'Política de retención, borrado y copias de seguridad', 'Exportación en formatos abiertos, en cualquier momento y al salir'],
     nfh="Dónde no somos la opción correcta",
     nfa="Todos los proveedores dicen que encajan contigo. Esta es la lista corta de casos en que no lo hacemos, para que salga ahora y no en el segundo mes de una implementación.",
     nf=[("Vendes sobre todo a consumidores", "RocketX está hecho para pedidos mayoristas: precios negociados, condiciones de contrato, equipos de compra, recompra. Si la mayor parte de tus ingresos es directa al consumidor, una plataforma de comercio general te servirá mejor y costará menos."),
@@ -452,6 +478,21 @@ h3{font-size:10.4pt;color:var(--ink);font-weight:600;margin-bottom:5px;line-heig
 .lever h3{font-size:10.6pt;color:var(--blue)}
 .lever p{font-size:9.4pt;line-height:1.55}
 .closing{margin-top:22px;background:var(--tint);border-radius:9px;padding:16px 18px;font-size:9.6pt;page-break-inside:avoid}
+/* jurisdiction tracks */
+.juris{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.jcol{border:1px solid var(--line);border-radius:9px;padding:15px 16px;page-break-inside:avoid}
+.jcol.eu{background:var(--tint);border-color:#C9D9F0}
+.jflag{font-family:"IBM Plex Mono",monospace;font-size:7.2pt;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:4px}
+.jcol h3{font-size:11pt;margin-bottom:9px}
+.jrow{padding:7px 0;border-top:1px solid var(--line)}
+.jrow:first-of-type{border-top:0;padding-top:2px}
+.jrow b{display:block;font-size:8.6pt;color:var(--ink);font-weight:600}
+.jrow span{display:block;font-size:8.6pt;color:var(--body);line-height:1.5;margin-top:2px}
+.attach{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.attach h3{font-family:"IBM Plex Mono",monospace;font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);font-weight:400;margin-bottom:7px}
+.attach ul{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;list-style:none}
+.attach li{font-size:8.8pt;color:var(--body);padding-left:13px;position:relative;line-height:1.45}
+.attach li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:700}
 /* exec summary */
 .xs{display:grid;grid-template-columns:40mm 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);page-break-inside:avoid}
 .xs h3{font-size:10.4pt;color:var(--blue)}
@@ -503,11 +544,18 @@ def build(d):
     caps = "".join('<div class="cap"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["caps"])
     P.append('<div class="page"><h2>%s</h2><div class="caps">%s</div></div>' % (esc(d["p3h"]), caps))
 
-    # data, entities, compliance
-    cmp_ = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["cmp"])
-    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>'
+    # data, entities, compliance - split by jurisdiction
+    def jcol(flag, head, rows, cls):
+        r = "".join('<div class="jrow"><b>%s</b><span>%s</span></div>' % (esc(a), esc(b)) for a, b in rows)
+        return ('<div class="jcol %s"><div class="jflag">%s</div><h3>%s</h3>%s</div>'
+                % (cls, esc(flag), esc(head), r))
+    juris = ('<div class="juris">' + jcol(d["eu_f"], d["eu_h"], d["eu"], "eu")
+             + jcol(d["us_f"], d["us_h"], d["us"], "us") + '</div>')
+    att = "".join('<li>%s</li>' % esc(x) for x in d["at"])
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p>%s'
+             '<div class="attach"><h3>%s</h3><ul>%s</ul></div>'
              '<div class="closing">%s</div></div>'
-             % (esc(d["cmh"]), esc(d["cma"]), cmp_, esc(d["cmn"])))
+             % (esc(d["cmh"]), esc(d["cma"]), juris, esc(d["ath"]), att, esc(d["cmn"])))
 
     # p4 native
     nat = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["native"])
