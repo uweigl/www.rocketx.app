@@ -115,6 +115,14 @@ C["en"] = dict(
         ("Shopify Plus (with agency and apps)", "8&ndash;16 weeks", 67),
         ("RocketX — live pilot", "4&ndash;6 weeks", 25)],
     tln="Competitor figures are typical mid-market benchmarks to go-live from 2026 platform and agency guides; scope moves them either way and ERP work is where they most often overrun. The RocketX figure is to a live pilot with a defined buyer group, not full rollout. On the alternatives billing usually starts well before anyone places an order. On ours it starts at go-live.",
+    sbh="Nothing gets switched off",
+    sba="The usual objection to a platform decision is that it means replacing one. This one does not. RocketX is deployed alongside what you run today, and both keep working.",
+    sb=[("Your current web shop keeps running", "RocketX goes live beside it, not on top of it. Nothing is decommissioned to make room, and no catalogue has to be migrated before anyone can place an order."),
+        ("Your buyers choose, not you", "Some move to the app in the first week. Some stay on the shop they already know. Both produce orders that land in the same ERP, in the same format, on the same terms, so nothing downstream has to change."),
+        ("No cutover weekend", "There is no migration window and no order freeze. The failure mode that makes these projects frightening - a bad Sunday with the phones ringing on Monday - is not on the table, because there is nothing to cut over from."),
+        ("Adoption becomes evidence", "Because both run at once, you can watch which one your buyers actually use. That is a better argument for or against us than anything in this document."),
+        ("Retire the old system later, or never", "Nothing in the agreement sets a date for turning it off. If it still earns its keep in three years, keep it running.")],
+    sbn="This is also the cheapest way to be wrong about us. If the pilot does not work, you switch nothing off, you have lost no orders, and the fallback is the system you were already using.",
     p7h="Questions worth asking any vendor",
     quest=["Does the platform fee change as our order volume grows?",
            "Can our reps see a customer's cart before it becomes an order?",
@@ -232,6 +240,14 @@ C["de"] = dict(
         ("Shopify Plus (mit Agentur und Apps)", "8&ndash;16 Wochen", 67),
         ("RocketX — Live-Pilot", "4&ndash;6 Wochen", 25)],
     tln="Die Wettbewerberwerte sind übliche Mittelstands-Benchmarks bis zum Go-live aus Plattform- und Agentur-Leitfäden 2026; der Umfang verschiebt sie in beide Richtungen, und die ERP-Arbeit ist die Stelle, an der sie am häufigsten überziehen. Der RocketX-Wert bezieht sich auf einen Live-Piloten mit definierter Einkäufergruppe, nicht auf den vollständigen Rollout. Bei den Alternativen beginnt die Abrechnung meist lange, bevor jemand bestellt. Bei uns beginnt sie mit dem Go-live.",
+    sbh="Es wird nichts abgeschaltet",
+    sba="Der übliche Einwand gegen eine Plattformentscheidung lautet, dass sie den Austausch einer Plattform bedeutet. Diese hier nicht. RocketX wird neben dem eingeführt, was Sie heute betreiben — beides läuft weiter.",
+    sb=[("Ihr jetziger Webshop läuft weiter", "RocketX geht daneben live, nicht darüber. Nichts wird stillgelegt, um Platz zu machen, und kein Katalog muss migriert werden, bevor jemand bestellen kann."),
+        ("Ihre Einkäufer entscheiden, nicht Sie", "Manche wechseln in der ersten Woche zur App. Manche bleiben bei dem Shop, den sie kennen. Beide erzeugen Bestellungen, die im selben ERP landen, im selben Format, zu denselben Konditionen — nachgelagert ändert sich also nichts."),
+        ("Kein Umstellungswochenende", "Es gibt kein Migrationsfenster und keinen Bestellstopp. Der Fehlerfall, der solche Projekte fürchten lässt — ein schlechter Sonntag und am Montag klingeln die Telefone — steht gar nicht zur Debatte, weil es nichts umzustellen gibt."),
+        ("Nutzung wird zum Beweis", "Weil beides gleichzeitig läuft, können Sie beobachten, was Ihre Einkäufer tatsächlich verwenden. Das ist ein besseres Argument für oder gegen uns als alles in diesem Dokument."),
+        ("Das Altsystem später abschalten — oder nie", "Nichts im Vertrag legt dafür ein Datum fest. Wenn es sich in drei Jahren noch rechnet, lassen Sie es laufen.")],
+    sbn="Das ist zugleich die günstigste Art, sich in uns zu irren. Funktioniert der Pilot nicht, schalten Sie nichts ab, haben keine Bestellung verloren, und der Rückfallweg ist das System, das Sie ohnehin genutzt haben.",
     p7h="Fragen, die man jedem Anbieter stellen sollte",
     quest=["Ändert sich die Plattformgebühr, wenn unser Bestellvolumen wächst?",
            "Kann unser Außendienst den Warenkorb eines Kunden sehen, bevor daraus eine Bestellung wird?",
@@ -349,6 +365,14 @@ C["es"] = dict(
         ("Shopify Plus (con agencia y apps)", "8&ndash;16 semanas", 67),
         ("RocketX — piloto en vivo", "4&ndash;6 semanas", 25)],
     tln="Las cifras de competidores son benchmarks habituales de mercado medio hasta el go-live según guías de plataformas y agencias de 2026; el alcance las mueve en ambos sentidos y el trabajo de ERP es donde más se desbordan. La cifra de RocketX corresponde a un piloto en vivo con un grupo de compradores definido, no al despliegue completo. En las alternativas la facturación suele empezar mucho antes de que alguien pida. En la nuestra empieza en el go-live.",
+    sbh="No se apaga nada",
+    sba="La objeción habitual a una decisión de plataforma es que implica reemplazar una. Esta no. RocketX se despliega junto a lo que ya operas, y ambos siguen funcionando.",
+    sb=[("Tu tienda web actual sigue funcionando", "RocketX se pone en marcha al lado, no encima. No se da de baja nada para hacer sitio, y ningún catálogo tiene que migrarse antes de que alguien pueda pedir."),
+        ("Eligen tus compradores, no tú", "Algunos pasan a la app la primera semana. Otros se quedan en la tienda que ya conocen. Ambos producen pedidos que llegan al mismo ERP, en el mismo formato y con las mismas condiciones, así que aguas abajo no cambia nada."),
+        ("Sin fin de semana de migración", "No hay ventana de migración ni congelación de pedidos. El modo de fallo que hace temer estos proyectos — un domingo malo y los teléfonos sonando el lunes — no está sobre la mesa, porque no hay nada que migrar."),
+        ("La adopción se convierte en evidencia", "Como ambos funcionan a la vez, puedes ver cuál usan realmente tus compradores. Ese es mejor argumento a favor o en contra nuestra que cualquier cosa en este documento."),
+        ("Retira el sistema antiguo más tarde, o nunca", "Nada en el acuerdo fija una fecha para apagarlo. Si dentro de tres años sigue mereciendo la pena, déjalo funcionando.")],
+    sbn="Esta es además la forma más barata de equivocarse con nosotros. Si el piloto no funciona, no apagas nada, no has perdido pedidos, y la alternativa es el sistema que ya estabas usando.",
     p7h="Preguntas que conviene hacer a cualquier proveedor",
     quest=["¿Cambia la tarifa de la plataforma cuando crece nuestro volumen de pedidos?",
            "¿Pueden nuestros vendedores ver el carrito de un cliente antes de que sea pedido?",
@@ -501,6 +525,12 @@ def build(d):
              '<div class="closing"><h3 style="margin-bottom:5px">%s</h3>%s</div>'
              '<div class="closing" style="margin-top:12px">%s</div></div>'
              % (esc(d["p9h"]), esc(d["p9a"]), lv, esc(d["cdh"]), esc(d["cd"]), esc(d["p9n"])))
+
+    # runs alongside - the objection this whole category triggers
+    sb = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["sb"])
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>'
+             '<div class="closing">%s</div></div>'
+             % (esc(d["sbh"]), esc(d["sba"]), sb, esc(d["sbn"])))
 
     # p5 terms
     tr = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["terms"])
