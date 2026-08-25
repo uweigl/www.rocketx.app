@@ -80,6 +80,41 @@ C["en"] = dict(
             ("Rep hours redeployed", "Reps &times; hours each week spent taking and re-keying orders &times; loaded hourly cost &times; 52. Every hour moved out of order entry is an hour available for selling."),
             ("Order size", "Average order value &times; the uplift you expect from the full catalogue being searchable in seconds, unlimited seats, and reorder from any device.")],
     p9n="Against those four, set the platform fee and the implementation effort from your proposal. If the first two alone do not clear the cost, the case does not need the other two.",
+    # --- executive summary (page one after the cover)
+    xsh="In one page",
+    xsa="If you read nothing else: wholesale orders leak in the cart, on the phone, and in the returns bay. This is a proposal to stop that, with the platform proving itself before it costs anything.",
+    xs=[("The problem", "Your buyers assemble orders somewhere nobody on your side can see. Carts die with the browser session, one person builds what six to ten people decide, and the duplicate nobody caught comes back as a return."),
+        ("What changes", "Carts persist and sync live across the web shop and native apps. Reps see live customer carts and can act before one goes cold. The whole buying team edits one order. The cart flags a SKU the account already bought."),
+        ("Why it is defensible", "Unlimited SKUs and unlimited seats, never metered, never a percentage of your revenue. Native iOS and Android apps, not a website in a shell. Standard ERP and CRM connectors included."),
+        ("What it costs to try", "Setup waived on annual plans. Billing starts at go-live, not at signature. A 30 to 45 day pilot with agreed measures before any longer commitment."),
+        ("The one number to check", "Take your monthly abandoned carts, multiply by average order value, and take the share your reps could rescue if they could see them. If that alone does not clear the platform fee, stop reading.")],
+    # --- data, entities and compliance
+    cmh="Where your data lives, and who is accountable for it",
+    cma="Your procurement team has a checklist for this, and it is usually the slowest part of the evaluation. The short version: European customers contract with a European company.",
+    cmp=[("Two entities, two regimes", "RocketX LLC is the United States entity. A separate Irish entity serves customers in the European Union. Which one you contract with is decided by where you are, not by which is convenient for us."),
+         ("EU customers contract inside the EU", "For a German or Spanish buyer the counterparty is an EU company, under EU law, directly subject to the GDPR. There is no reliance on a US parent and no transfer mechanism to argue about in a procurement review."),
+         ("One data processing agreement", "A single DPA covers the engagement, with subprocessors disclosed and notified before they change. Roles are written down: you are the controller of your customer and order data, we process it on your instructions."),
+         ("Your data is yours, including on the way out", "Catalogue, customers, pricing rules, carts and order history are exportable in open formats at any time, not only at renewal. If you leave, you leave with your data and a defined handover window."),
+         ("Availability and support are contractual", "Uptime and response commitments sit in the agreement and scale by tier, rather than living on a marketing page.")],
+    cmn="Certifications, hosting regions and audit reports are provided on request and attach to the contract. Ask for them early; they are the part of the evaluation most likely to sit in somebody's inbox.",
+    # --- honest limits
+    nfh="Where we are not the right fit",
+    nfa="Every vendor says they are right for you. Here is the short list of times we are not, so that it surfaces now rather than in month two of an implementation.",
+    nf=[("You sell mainly to consumers", "RocketX is built for wholesale ordering: negotiated pricing, contract terms, buying teams, reorder. If most of your revenue is direct to consumer, a general commerce platform will serve you better and cost less."),
+        ("Your catalogue is small and your orders are simple", "A few dozen SKUs and single-line orders do not need this. You will pay for capability you never touch."),
+        ("You want a full ERP or WMS replacement", "We sit in front of your systems of record, not instead of them. If the actual project is replacing the ERP, this is the wrong conversation, and we will say so."),
+        ("You have no ERP and no plans for one", "Much of the value here is two-way sync with a system of record. Without one, you are buying an ordering front end with a manual back end."),
+        ("You need it live in two weeks with no audit", "We start with a stack audit for a reason. Skipping it produces the six-month implementations this document criticises.")],
+    # --- cost of delay, on the worksheet page
+    cdh="What the wait costs",
+    cd="Whatever the four levers add up to, they are annual. A quarter of deliberation costs a quarter of that number, and the leak does not pause while you evaluate. That is the honest argument for starting a pilot now rather than a procurement cycle in six months.",
+    # --- time to live, on the implementation page
+    tlh="How long before anyone actually uses it",
+    tl=[("Adobe Commerce", "12&ndash;24 weeks", 100),
+        ("BigCommerce Enterprise + B2B Edition", "10&ndash;20 weeks", 83),
+        ("Shopify Plus (with agency and apps)", "8&ndash;16 weeks", 67),
+        ("RocketX — live pilot", "4&ndash;6 weeks", 25)],
+    tln="Competitor figures are typical mid-market benchmarks to go-live from 2026 platform and agency guides; scope moves them either way and ERP work is where they most often overrun. The RocketX figure is to a live pilot with a defined buyer group, not full rollout. On the alternatives billing usually starts well before anyone places an order. On ours it starts at go-live.",
     p7h="Questions worth asking any vendor",
     quest=["Does the platform fee change as our order volume grows?",
            "Can our reps see a customer's cart before it becomes an order?",
@@ -167,6 +202,36 @@ C["de"] = dict(
             ("Freigesetzte Außendienststunden", "Mitarbeiter &times; Wochenstunden für Auftragsannahme und -erfassung &times; vollbelastete Stundenkosten &times; 52. Jede Stunde weniger Erfassung ist eine Stunde mehr Vertrieb."),
             ("Bestellgröße", "Durchschnittlicher Bestellwert &times; erwarteter Zuwachs dadurch, dass der vollständige Katalog in Sekunden durchsuchbar ist, Plätze unbegrenzt sind und von jedem Gerät nachbestellt werden kann.")],
     p9n="Diesen vier Posten stellen Sie Plattformgebühr und Implementierungsaufwand aus Ihrem Angebot gegenüber. Wenn schon die ersten beiden die Kosten nicht decken, brauchen Sie die anderen beiden nicht.",
+    xsh="Auf einer Seite",
+    xsa="Falls Sie nur eine Seite lesen: Großhandelsbestellungen versickern im Warenkorb, am Telefon und in der Retourenannahme. Dies ist ein Vorschlag, das zu beenden — wobei sich die Plattform beweist, bevor sie etwas kostet.",
+    xs=[("Das Problem", "Ihre Einkäufer stellen Bestellungen dort zusammen, wo sie auf Ihrer Seite niemand sieht. Warenkörbe sterben mit der Browser-Sitzung, einer baut, was sechs bis zehn entscheiden, und die übersehene Dopplung kommt als Retoure zurück."),
+        ("Was sich ändert", "Warenkörbe bleiben bestehen und synchronisieren live zwischen Webshop und nativen Apps. Der Außendienst sieht laufende Kundenwarenkörbe und kann handeln, bevor einer kalt wird. Das gesamte Einkaufsteam arbeitet an einer Bestellung. Der Warenkorb weist auf bereits gekaufte SKUs hin."),
+        ("Warum das haltbar ist", "Unbegrenzt viele SKUs und Plätze, nie nach Menge berechnet, nie ein Prozentsatz Ihres Umsatzes. Native iOS- und Android-Apps, keine Website in einer Hülle. Standard-Konnektoren für ERP und CRM inklusive."),
+        ("Was ein Versuch kostet", "Setup bei Jahresplänen erlassen. Abrechnung ab Go-live, nicht ab Unterschrift. Ein 30- bis 45-tägiger Pilot mit vereinbarten Kennzahlen vor jeder längeren Bindung."),
+        ("Die eine Zahl zum Prüfen", "Nehmen Sie Ihre monatlich abgebrochenen Warenkörbe, multiplizieren Sie mit dem durchschnittlichen Bestellwert und dem Anteil, den Ihr Außendienst retten könnte, wenn er sie sähe. Deckt das allein die Plattformgebühr nicht, hören Sie hier auf.")],
+    cmh="Wo Ihre Daten liegen und wer dafür geradesteht",
+    cma="Ihre Beschaffung hat dafür eine Checkliste, und das ist meist der langsamste Teil der Prüfung. Die Kurzfassung: Europäische Kunden schließen mit einem europäischen Unternehmen ab.",
+    cmp=[("Zwei Gesellschaften, zwei Rechtsräume", "Die RocketX LLC ist die US-Gesellschaft. Eine eigene irische Gesellschaft betreut Kunden in der Europäischen Union. Womit Sie abschließen, entscheidet Ihr Sitz — nicht unsere Bequemlichkeit."),
+         ("EU-Kunden schließen innerhalb der EU ab", "Für einen deutschen Einkäufer ist die Gegenpartei ein EU-Unternehmen, nach EU-Recht, unmittelbar der DSGVO unterworfen. Kein Rückgriff auf eine US-Muttergesellschaft, kein Übermittlungsmechanismus, über den in der Beschaffungsprüfung gestritten werden muss."),
+         ("Ein Auftragsverarbeitungsvertrag", "Ein AVV deckt die Zusammenarbeit ab, Unterauftragsverarbeiter werden offengelegt und Änderungen vorab mitgeteilt. Die Rollen stehen schriftlich fest: Sie sind Verantwortlicher für Ihre Kunden- und Bestelldaten, wir verarbeiten sie auf Ihre Weisung."),
+         ("Ihre Daten gehören Ihnen — auch beim Abschied", "Katalog, Kunden, Preisregeln, Warenkörbe und Bestellhistorie sind jederzeit in offenen Formaten exportierbar, nicht nur zur Verlängerung. Wenn Sie gehen, gehen Sie mit Ihren Daten und einem definierten Übergabefenster."),
+         ("Verfügbarkeit und Support stehen im Vertrag", "Zusagen zu Verfügbarkeit und Reaktionszeiten stehen im Vertrag und skalieren nach Stufe, statt auf einer Marketingseite zu wohnen.")],
+    cmn="Zertifizierungen, Hosting-Regionen und Prüfberichte stellen wir auf Anfrage bereit; sie werden Vertragsbestandteil. Fragen Sie früh danach — das ist der Teil der Prüfung, der am ehesten in einem Posteingang liegen bleibt.",
+    nfh="Wofür wir nicht der Richtige sind",
+    nfa="Jeder Anbieter sagt, er passe zu Ihnen. Hier die kurze Liste der Fälle, in denen wir es nicht tun — damit das jetzt herauskommt und nicht im zweiten Monat der Einführung.",
+    nf=[("Sie verkaufen überwiegend an Endkunden", "RocketX ist für Großhandelsbestellungen gebaut: verhandelte Preise, Vertragskonditionen, Einkaufsteams, Nachbestellung. Kommt Ihr Umsatz überwiegend aus dem Endkundengeschäft, dient Ihnen eine allgemeine Commerce-Plattform besser und günstiger."),
+        ("Ihr Katalog ist klein und Ihre Bestellungen sind einfach", "Ein paar Dutzend SKUs und einzeilige Bestellungen brauchen das hier nicht. Sie zahlen für Fähigkeiten, die Sie nie anfassen."),
+        ("Sie wollen ERP oder WMS ersetzen", "Wir setzen uns vor Ihre führenden Systeme, nicht an deren Stelle. Geht es in Wahrheit um den ERP-Ersatz, ist dies das falsche Gespräch — und wir sagen das auch."),
+        ("Sie haben kein ERP und planen keines", "Ein großer Teil des Werts liegt in der bidirektionalen Synchronisation mit einem führenden System. Ohne ein solches kaufen Sie eine Bestelloberfläche mit manuellem Hinterbau."),
+        ("Sie brauchen es in zwei Wochen ohne Audit", "Wir beginnen aus gutem Grund mit einem Stack-Audit. Es zu überspringen erzeugt genau die Sechs-Monats-Projekte, die dieses Dokument kritisiert.")],
+    cdh="Was das Warten kostet",
+    cd="Was die vier Hebel auch ergeben — es sind Jahreswerte. Ein Quartal Bedenkzeit kostet ein Viertel davon, und das Leck pausiert nicht, während Sie prüfen. Das ist das ehrliche Argument dafür, jetzt einen Piloten zu starten statt in sechs Monaten einen Beschaffungsprozess.",
+    tlh="Wie lange, bis es tatsächlich jemand benutzt",
+    tl=[("Adobe Commerce", "12&ndash;24 Wochen", 100),
+        ("BigCommerce Enterprise + B2B Edition", "10&ndash;20 Wochen", 83),
+        ("Shopify Plus (mit Agentur und Apps)", "8&ndash;16 Wochen", 67),
+        ("RocketX — Live-Pilot", "4&ndash;6 Wochen", 25)],
+    tln="Die Wettbewerberwerte sind übliche Mittelstands-Benchmarks bis zum Go-live aus Plattform- und Agentur-Leitfäden 2026; der Umfang verschiebt sie in beide Richtungen, und die ERP-Arbeit ist die Stelle, an der sie am häufigsten überziehen. Der RocketX-Wert bezieht sich auf einen Live-Piloten mit definierter Einkäufergruppe, nicht auf den vollständigen Rollout. Bei den Alternativen beginnt die Abrechnung meist lange, bevor jemand bestellt. Bei uns beginnt sie mit dem Go-live.",
     p7h="Fragen, die man jedem Anbieter stellen sollte",
     quest=["Ändert sich die Plattformgebühr, wenn unser Bestellvolumen wächst?",
            "Kann unser Außendienst den Warenkorb eines Kunden sehen, bevor daraus eine Bestellung wird?",
@@ -254,6 +319,36 @@ C["es"] = dict(
             ("Horas de vendedor liberadas", "Vendedores &times; horas semanales dedicadas a tomar y reteclear pedidos &times; costo horario cargado &times; 52. Cada hora que sale de la captura de pedidos es una hora disponible para vender."),
             ("Tamaño del pedido", "Valor medio del pedido &times; el aumento que esperas de tener el catálogo completo buscable en segundos, usuarios ilimitados y recompra desde cualquier dispositivo.")],
     p9n="Frente a esos cuatro, pon la tarifa de plataforma y el esfuerzo de implementación de tu propuesta. Si los dos primeros por sí solos no cubren el costo, no hace falta recurrir a los otros dos.",
+    xsh="En una página",
+    xsa="Si no lees nada más: los pedidos mayoristas se escapan en el carrito, por teléfono y en la zona de devoluciones. Esto es una propuesta para detenerlo, con la plataforma demostrándose antes de costar nada.",
+    xs=[("El problema", "Tus compradores arman pedidos donde nadie de tu lado los ve. Los carritos mueren con la sesión del navegador, una persona construye lo que deciden entre seis y diez, y el duplicado que nadie vio vuelve como devolución."),
+        ("Qué cambia", "Los carritos persisten y se sincronizan en vivo entre la tienda web y las apps nativas. Los vendedores ven los carritos de cliente en vivo y pueden actuar antes de que se enfríen. Todo el equipo de compras edita un pedido. El carrito avisa de un SKU que la cuenta ya compró."),
+        ("Por qué se sostiene", "SKUs y usuarios ilimitados, nunca medidos, nunca un porcentaje de tus ingresos. Apps nativas de iOS y Android, no un sitio web dentro de una carcasa. Conectores estándar de ERP y CRM incluidos."),
+        ("Qué cuesta probarlo", "Setup incluido en planes anuales. La facturación empieza en el go-live, no en la firma. Un piloto de 30 a 45 días con métricas acordadas antes de cualquier compromiso más largo."),
+        ("La única cifra que hay que comprobar", "Toma tus carritos abandonados al mes, multiplica por el valor medio del pedido y por la parte que tus vendedores podrían rescatar si pudieran verlos. Si eso solo no cubre la tarifa de plataforma, deja de leer.")],
+    cmh="Dónde viven tus datos y quién responde por ellos",
+    cma="Tu equipo de compras tiene una lista para esto, y suele ser la parte más lenta de la evaluación. La versión corta: los clientes europeos contratan con una empresa europea.",
+    cmp=[("Dos entidades, dos regímenes", "RocketX LLC es la entidad estadounidense. Una entidad irlandesa independiente atiende a los clientes de la Unión Europea. Con cuál contratas lo decide dónde estás, no lo que nos resulte cómodo."),
+         ("Los clientes de la UE contratan dentro de la UE", "Para un comprador alemán o español la contraparte es una empresa de la UE, bajo derecho de la UE, sujeta directamente al RGPD. Sin depender de una matriz estadounidense y sin mecanismos de transferencia que discutir en una revisión de compras."),
+         ("Un único acuerdo de tratamiento de datos", "Un solo DPA cubre la relación, con los subencargados divulgados y notificados antes de cambiar. Los roles constan por escrito: tú eres el responsable de los datos de tus clientes y pedidos, nosotros los tratamos siguiendo tus instrucciones."),
+         ("Tus datos son tuyos, también al salir", "Catálogo, clientes, reglas de precios, carritos e histórico de pedidos son exportables en formatos abiertos en cualquier momento, no solo en la renovación. Si te vas, te vas con tus datos y una ventana de traspaso definida."),
+         ("Disponibilidad y soporte son contractuales", "Los compromisos de disponibilidad y respuesta están en el contrato y escalan por nivel, en vez de vivir en una página de marketing.")],
+    cmn="Certificaciones, regiones de alojamiento e informes de auditoría se facilitan a petición y se adjuntan al contrato. Pídelos pronto: es la parte de la evaluación con más probabilidades de quedarse en la bandeja de entrada de alguien.",
+    nfh="Dónde no somos la opción correcta",
+    nfa="Todos los proveedores dicen que encajan contigo. Esta es la lista corta de casos en que no lo hacemos, para que salga ahora y no en el segundo mes de una implementación.",
+    nf=[("Vendes sobre todo a consumidores", "RocketX está hecho para pedidos mayoristas: precios negociados, condiciones de contrato, equipos de compra, recompra. Si la mayor parte de tus ingresos es directa al consumidor, una plataforma de comercio general te servirá mejor y costará menos."),
+        ("Tu catálogo es pequeño y tus pedidos simples", "Unas docenas de SKUs y pedidos de una línea no necesitan esto. Pagarás por capacidades que nunca tocarás."),
+        ("Quieres sustituir el ERP o el WMS", "Nos situamos delante de tus sistemas de registro, no en su lugar. Si el proyecto real es reemplazar el ERP, esta es la conversación equivocada, y lo diremos."),
+        ("No tienes ERP ni planeas tenerlo", "Buena parte del valor está en la sincronización bidireccional con un sistema de registro. Sin uno, compras una interfaz de pedidos con una trastienda manual."),
+        ("Lo necesitas en dos semanas sin auditoría", "Empezamos con una auditoría del stack por una razón. Saltársela produce justo las implementaciones de seis meses que este documento critica.")],
+    cdh="Lo que cuesta esperar",
+    cd="Sumen lo que sumen las cuatro palancas, son cifras anuales. Un trimestre de deliberación cuesta un trimestre de ese número, y la fuga no se detiene mientras evalúas. Ese es el argumento honesto para empezar un piloto ahora en vez de un ciclo de compras dentro de seis meses.",
+    tlh="Cuánto tarda hasta que alguien lo usa de verdad",
+    tl=[("Adobe Commerce", "12&ndash;24 semanas", 100),
+        ("BigCommerce Enterprise + B2B Edition", "10&ndash;20 semanas", 83),
+        ("Shopify Plus (con agencia y apps)", "8&ndash;16 semanas", 67),
+        ("RocketX — piloto en vivo", "4&ndash;6 semanas", 25)],
+    tln="Las cifras de competidores son benchmarks habituales de mercado medio hasta el go-live según guías de plataformas y agencias de 2026; el alcance las mueve en ambos sentidos y el trabajo de ERP es donde más se desbordan. La cifra de RocketX corresponde a un piloto en vivo con un grupo de compradores definido, no al despliegue completo. En las alternativas la facturación suele empezar mucho antes de que alguien pida. En la nuestra empieza en el go-live.",
     p7h="Preguntas que conviene hacer a cualquier proveedor",
     quest=["¿Cambia la tarifa de la plataforma cuando crece nuestro volumen de pedidos?",
            "¿Pueden nuestros vendedores ver el carrito de un cliente antes de que sea pedido?",
@@ -333,6 +428,20 @@ h3{font-size:10.4pt;color:var(--ink);font-weight:600;margin-bottom:5px;line-heig
 .lever h3{font-size:10.6pt;color:var(--blue)}
 .lever p{font-size:9.4pt;line-height:1.55}
 .closing{margin-top:22px;background:var(--tint);border-radius:9px;padding:16px 18px;font-size:9.6pt;page-break-inside:avoid}
+/* exec summary */
+.xs{display:grid;grid-template-columns:40mm 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);page-break-inside:avoid}
+.xs h3{font-size:10.4pt;color:var(--blue)}
+.xs p{font-size:9.4pt;line-height:1.55}
+/* time-to-live bars */
+.tl{margin-top:14px}
+.tlrow{margin-bottom:11px;page-break-inside:avoid}
+.tllbl{display:flex;justify-content:space-between;font-size:9pt;margin-bottom:4px}
+.tllbl b{font-weight:600;color:var(--ink)}
+.tllbl span{font-family:"IBM Plex Mono",monospace;color:var(--soft);font-size:8.4pt}
+.tlrail{height:7px;background:#E8EEF8;border-radius:99px;overflow:hidden}
+.tlfill{height:100%;border-radius:99px;background:#C3D3EA}
+.tlrow.rx .tlfill{background:var(--blue)}
+.tlrow.rx .tllbl b{color:var(--blue)}
 /* running foot */
 .foot{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;font-size:7.4pt;color:#9AA8BF;border-top:1px solid var(--line);padding-top:7px}
 """
@@ -350,6 +459,11 @@ def build(d):
       '<div class="meta"><span><b>%s</b></span><span>%s</span></div>'
       '</div>' % (esc(d["kicker"]), esc(d["title"]), esc(d["sub"]), esc(d["forwho"]), esc(d["date"])))
 
+    # executive summary - the page a forwarded deck actually gets read
+    xs = "".join('<div class="xs"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["xs"])
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div></div>'
+             % (esc(d["xsh"]), esc(d["xsa"]), xs))
+
     # p1 market
     stats = "".join('<div class="stat"><b>%s</b><span>%s</span></div>' % (esc(a), esc(b)) for a, b in d["stats"])
     P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="stats">%s</div>'
@@ -365,6 +479,12 @@ def build(d):
     caps = "".join('<div class="cap"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["caps"])
     P.append('<div class="page"><h2>%s</h2><div class="caps">%s</div></div>' % (esc(d["p3h"]), caps))
 
+    # data, entities, compliance
+    cmp_ = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["cmp"])
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>'
+             '<div class="closing">%s</div></div>'
+             % (esc(d["cmh"]), esc(d["cma"]), cmp_, esc(d["cmn"])))
+
     # p4 native
     nat = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["native"])
     P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div></div>'
@@ -378,8 +498,9 @@ def build(d):
     # p9 sizing worksheet
     lv = "".join('<div class="lever"><h3>%s</h3><p>%s</p></div>' % (esc(a), b) for a, b in d["levers"])
     P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div style="margin-top:8px">%s</div>'
-             '<div class="closing">%s</div></div>'
-             % (esc(d["p9h"]), esc(d["p9a"]), lv, esc(d["p9n"])))
+             '<div class="closing"><h3 style="margin-bottom:5px">%s</h3>%s</div>'
+             '<div class="closing" style="margin-top:12px">%s</div></div>'
+             % (esc(d["p9h"]), esc(d["p9a"]), lv, esc(d["cdh"]), esc(d["cd"]), esc(d["p9n"])))
 
     # p5 terms
     tr = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["terms"])
@@ -389,7 +510,19 @@ def build(d):
     # p6 implementation
     st = "".join('<div class="step"><span class="num">%02d</span><div><h3>%s</h3><p>%s</p></div></div>'
                  % (i + 1, esc(a), esc(b)) for i, (a, b) in enumerate(d["steps"]))
-    P.append('<div class="page"><h2>%s</h2><div style="margin-top:20px">%s</div></div>' % (esc(d["p6h"]), st))
+    tl = "".join('<div class="tlrow%s"><div class="tllbl"><b>%s</b><span>%s</span></div>'
+                 '<div class="tlrail"><div class="tlfill" style="width:%d%%"></div></div></div>'
+                 % (" rx" if i == len(d["tl"]) - 1 else "", esc(a), b, w)
+                 for i, (a, b, w) in enumerate(d["tl"]))
+    P.append('<div class="page"><h2>%s</h2><div style="margin-top:20px">%s</div>'
+             '<h3 style="margin-top:26px;font-size:12pt">%s</h3><div class="tl">%s</div>'
+             '<p style="font-size:7.6pt;color:var(--soft);line-height:1.55;margin-top:12px">%s</p></div>'
+             % (esc(d["p6h"]), st, esc(d["tlh"]), tl, esc(d["tln"])))
+
+    # where we are not the right fit
+    nf = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["nf"])
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div></div>'
+             % (esc(d["nfh"]), esc(d["nfa"]), nf))
 
     # p7 questions + CTA + sources
     qs = "".join('<div class="q">%s</div>' % esc(q) for q in d["quest"])
