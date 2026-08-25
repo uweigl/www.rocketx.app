@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RocketX — Frictionless Ordering</title>
+<link href="assets/logo.png" rel="icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --void:#05080F; --navy:#0B1526; --panel:#0E1B33; --panel2:#101F3D;
+  --blue:#2563EB; --sky:#60A5FA; --ice:#EDF2FB; --mist:#8FA1C4; --line:rgba(96,165,250,.14);
+  --display:'Space Grotesk',sans-serif; --body:'Inter',sans-serif; --mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--ice);font-family:var(--body);overflow-x:hidden;line-height:1.6;cursor:default}
+::selection{background:var(--blue);color:#fff}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ---------- Preloader ---------- */
+#loader{position:fixed;inset:0;background:var(--void);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .6s ease,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+#loader .t{font-family:var(--mono);font-size:13px;letter-spacing:.35em;color:var(--mist)}
+#loader .count{font-family:var(--display);font-weight:700;font-size:clamp(60px,12vw,120px);color:var(--ice);line-height:1}
+#loader .bar{width:min(320px,60vw);height:2px;background:rgba(96,165,250,.15);overflow:hidden;border-radius:2px}
+#loader .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--sky));transition:width .12s linear}
+
+/* ---------- Cursor ---------- */
+#cursor{position:fixed;width:14px;height:14px;border-radius:50%;background:var(--sky);pointer-events:none;z-index:150;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:width .25s,height .25s,opacity .3s;opacity:0}
+#cursor.big{width:56px;height:56px;background:rgba(96,165,250,.35)}
+@media (hover:none){#cursor{display:none}}
+
+/* ---------- Canvas & aurora ---------- */
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora b{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:drift 26s ease-in-out infinite alternate}
+.aurora b:nth-child(1){width:52vw;height:52vw;background:radial-gradient(circle,rgba(37,99,235,.5),transparent 65%);top:-18vw;left:-12vw}
+.aurora b:nth-child(2){width:44vw;height:44vw;background:radial-gradient(circle,rgba(96,165,250,.28),transparent 65%);top:30vh;right:-16vw;animation-delay:-8s}
+.aurora b:nth-child(3){width:38vw;height:38vw;background:radial-gradient(circle,rgba(29,78,216,.4),transparent 65%);bottom:-14vw;left:22vw;animation-delay:-16s}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(6vw,-5vh) scale(1.18)}}
+
+main{position:relative;z-index:1}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+
+/* ---------- Nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(5,8,15,.75);backdrop-filter:blur(18px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:19px}
+.logo img{width:34px;height:34px;border-radius:8px}
+.navlinks{display:flex;gap:28px;font-size:14px;color:var(--mist)}
+.navlinks a{position:relative;transition:color .3s}
+.navlinks a:hover{color:var(--ice)}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--sky);transition:width .3s}
+.navlinks a:hover::after{width:100%}
+.cta{background:var(--blue);color:#fff;padding:10px 22px;border-radius:99px;font-weight:600;font-size:14px;transition:transform .25s,box-shadow .25s;display:inline-block}
+.cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,99,235,.45)}
+@media(max-width:820px){.navlinks{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;position:relative}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:var(--sky);display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.eyebrow::before{content:"";width:36px;height:1px;background:var(--sky)}
+h1.mega{font-family:var(--display);font-weight:700;font-size:clamp(52px,9.5vw,132px);line-height:.98;letter-spacing:-.02em}
+h1.mega .word{display:inline-block;overflow:hidden;vertical-align:top}
+h1.mega .word span{display:inline-block;transform:translateY(110%);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rise{to{transform:translateY(0)}}
+h1.mega em{font-style:normal;background:linear-gradient(100deg,var(--sky),var(--blue) 60%,#93C5FD);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lede{max-width:640px;color:var(--mist);font-size:clamp(15px,1.6vw,19px);margin:30px 0 38px;opacity:0;animation:fadeUp 1s .7s forwards}
+.hero .btns{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fadeUp 1s .9s forwards}
+.ghost{border:1px solid rgba(96,165,250,.4);color:var(--ice);padding:12px 26px;border-radius:99px;font-weight:600;font-size:15px;transition:border-color .3s,background .3s}
+.ghost:hover{border-color:var(--sky);background:rgba(37,99,235,.12)}
+.cta.lg{padding:13px 30px;font-size:15px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.orbit{position:absolute;right:clamp(-40px,2vw,60px);top:16%;width:min(42vw,520px);pointer-events:none}
+.orbit img{position:absolute;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.55);border:1px solid var(--line)}
+.orbit .o1{width:62%;top:0;right:0;animation:float 7s ease-in-out infinite}
+.orbit .o2{width:44%;top:44%;right:52%;animation:float 8.5s ease-in-out -2s infinite}
+.orbit .o3{width:38%;top:74%;right:4%;animation:float 6.5s ease-in-out -4s infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-18px) rotate(1.5deg)}}
+@media(max-width:1020px){.orbit{display:none}}
+.herostats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:70px 0 60px;opacity:0;animation:fadeUp 1s 1.1s forwards}
+.herostats div{background:rgba(11,21,38,.72);backdrop-filter:blur(8px);padding:22px 20px}
+.herostats b{font-family:var(--display);font-size:clamp(22px,2.6vw,32px);font-weight:700;display:block}
+.herostats span{font-size:12px;color:var(--mist);letter-spacing:.06em;text-transform:uppercase}
+@media(max-width:720px){.herostats{grid-template-columns:1fr 1fr}}
+
+/* ---------- Marquee ---------- */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;background:rgba(11,21,38,.5)}
+.marquee .track{display:flex;gap:56px;width:max-content;animation:scrollx 26s linear infinite;font-family:var(--mono);font-size:14px;letter-spacing:.25em;color:var(--mist);white-space:nowrap}
+.marquee .track i{color:var(--sky);font-style:normal}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+
+/* ---------- Sections ---------- */
+section{padding:clamp(80px,11vw,150px) 0;position:relative}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:var(--sky);margin-bottom:18px;display:block}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,5vw,58px);line-height:1.06;letter-spacing:-.015em;max-width:800px}
+.sub{color:var(--mist);max-width:620px;margin-top:20px;font-size:17px}
+.reveal{opacity:0;transform:translateY(46px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Video ---------- */
+.videoblock{margin-top:64px;perspective:1400px}
+.screen{border-radius:22px;overflow:hidden;border:1px solid rgba(96,165,250,.28);box-shadow:0 40px 120px rgba(37,99,235,.28),0 12px 40px rgba(0,0,0,.6);transform:rotateX(8deg);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.screen.flat{transform:rotateX(0)}
+.screen video{width:100%;display:block}
+.screen .chrome{background:linear-gradient(180deg,#13233F,#0B1526);padding:12px 18px;display:flex;gap:8px;align-items:center;border-bottom:1px solid var(--line)}
+.screen .chrome i{width:10px;height:10px;border-radius:50%;background:#22345A}
+.screen .chrome i:first-child{background:var(--blue)}
+.screen .chrome span{font-family:var(--mono);font-size:11px;color:var(--mist);margin-left:10px;letter-spacing:.1em}
+
+/* ---------- Features ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:60px}
+.card{background:linear-gradient(160deg,rgba(16,31,61,.9),rgba(11,21,38,.9));border:1px solid var(--line);border-radius:18px;padding:30px 28px;position:relative;overflow:hidden;transition:transform .35s,border-color .35s;transform-style:preserve-3d}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%),rgba(96,165,250,.16),transparent 45%);opacity:0;transition:opacity .35s}
+.card:hover::before{opacity:1}
+.card:hover{border-color:rgba(96,165,250,.45)}
+.card .num{font-family:var(--mono);color:var(--sky);font-size:12px;letter-spacing:.2em}
+.card h3{font-family:var(--display);font-size:20px;font-weight:600;margin:14px 0 10px;line-height:1.25}
+.card p{color:var(--mist);font-size:14.5px}
+
+/* ---------- Market ---------- */
+.market{background:linear-gradient(180deg,transparent,rgba(11,21,38,.65) 18%,rgba(11,21,38,.65) 82%,transparent)}
+.bigstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin:60px 0}
+.bigstats .bs{border-top:2px solid var(--blue);padding-top:20px}
+.bigstats b{font-family:var(--display);font-size:clamp(40px,5vw,64px);font-weight:700;display:block;line-height:1}
+.bigstats small{color:var(--mist);font-size:13.5px;display:block;margin-top:10px;line-height:1.5}
+.bars{margin-top:70px}
+.bars h3{font-family:var(--display);font-size:24px;margin-bottom:8px}
+.bars .note{color:var(--mist);font-size:14px;margin-bottom:34px}
+.bar{margin-bottom:26px}
+.bar .lbl{display:flex;justify-content:space-between;font-size:14px;margin-bottom:9px}
+.bar .lbl b{font-weight:600}
+.bar .lbl span{font-family:var(--mono);color:var(--mist);font-size:12.5px}
+.bar .rail{height:14px;background:rgba(96,165,250,.1);border-radius:99px;overflow:hidden}
+.bar .fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#1E3A6E,#3B6FD9);transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.bar.rx .fill{background:linear-gradient(90deg,var(--blue),var(--sky));box-shadow:0 0 18px rgba(96,165,250,.6)}
+.bar.rx .lbl b{color:var(--sky)}
+.srcnote{font-size:12px;color:#5E6C8A;margin-top:26px;max-width:760px}
+
+/* ---------- Results / parallax imgs ---------- */
+.results{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;margin-top:70px}
+.results .imgs{position:relative;height:520px}
+.results .imgs img{position:absolute;border-radius:20px;object-fit:cover;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.55);will-change:transform}
+.results .imgs .p1{width:78%;height:70%;top:0;left:0}
+.results .imgs .p2{width:58%;height:52%;bottom:0;right:0;z-index:2}
+.rlist .r{border-bottom:1px solid var(--line);padding:26px 0}
+.rlist b{font-family:var(--display);font-size:clamp(30px,3.4vw,44px);font-weight:700;color:var(--sky)}
+.rlist h4{font-family:var(--display);font-size:19px;margin:6px 0 8px}
+.rlist p{color:var(--mist);font-size:14.5px}
+@media(max-width:900px){.results{grid-template-columns:1fr}.results .imgs{height:380px}}
+.quote{margin-top:90px;border-left:3px solid var(--blue);padding:8px 0 8px 34px;max-width:840px}
+.quote p{font-family:var(--display);font-size:clamp(21px,2.6vw,30px);line-height:1.4;font-weight:500}
+.quote footer{color:var(--mist);margin-top:16px;font-size:14px;font-family:var(--mono)}
+
+/* ---------- Compare ---------- */
+table{width:100%;border-collapse:collapse;margin-top:56px;font-size:14.5px}
+th{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);text-align:left;padding:14px 18px;border-bottom:1px solid var(--line)}
+td{padding:20px 18px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--mist)}
+td:first-child{color:var(--ice);font-weight:600;white-space:nowrap}
+tr.rx td{background:linear-gradient(90deg,rgba(37,99,235,.16),rgba(37,99,235,.04));color:var(--ice)}
+tr.rx td:first-child{color:var(--sky)}
+tr.reveal{transition-delay:calc(var(--i)*.1s)}
+@media(max-width:760px){table,thead,tbody,tr,td,th{display:block}thead{display:none}td{border:none;padding:6px 0}td:first-child{padding-top:22px;font-size:16px}tr{border-bottom:1px solid var(--line);padding-bottom:16px}}
+
+/* ---------- Pricing ---------- */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;margin-top:64px}
+.plan{background:linear-gradient(165deg,rgba(16,31,61,.95),rgba(11,21,38,.95));border:1px solid var(--line);border-radius:22px;padding:38px 32px;position:relative;transition:transform .35s}
+.plan:hover{transform:translateY(-8px)}
+.plan.hot{border:none;background:linear-gradient(var(--panel2),var(--panel2)) padding-box,linear-gradient(130deg,var(--blue),var(--sky),#1D4ED8,var(--blue)) border-box;border:2px solid transparent;background-size:100% 100%,300% 300%;animation:borderflow 6s linear infinite}
+@keyframes borderflow{to{background-position:0 0,300% 0}}
+.plan .tag{position:absolute;top:-13px;left:32px;background:var(--blue);font-size:11px;font-weight:600;letter-spacing:.12em;padding:5px 14px;border-radius:99px;text-transform:uppercase}
+.plan h3{font-family:var(--display);font-size:22px}
+.plan .for{color:var(--mist);font-size:13px;margin:6px 0 22px}
+.plan .price{font-family:var(--display);font-size:46px;font-weight:700}
+.plan .price small{font-size:15px;color:var(--mist);font-weight:400}
+.plan .annual{font-family:var(--mono);font-size:12.5px;color:var(--sky);margin:6px 0 26px}
+.plan ul{list-style:none;display:grid;gap:12px;font-size:14px;color:var(--mist)}
+.plan ul li{padding-left:26px;position:relative}
+.plan ul li::before{content:"→";position:absolute;left:0;color:var(--sky)}
+.promise{margin-top:60px;border:1px solid var(--line);border-radius:22px;padding:44px clamp(24px,4vw,52px);background:radial-gradient(700px circle at 12% 0%,rgba(37,99,235,.22),transparent 55%),rgba(11,21,38,.85);display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.promise h3{font-family:var(--display);font-size:clamp(24px,3vw,34px);line-height:1.15}
+.promise h3 em{font-style:normal;color:var(--sky)}
+.promise p{color:var(--mist);margin-top:14px;font-size:15px}
+.promise ul{list-style:none;display:grid;gap:12px;font-size:14.5px}
+.promise ul li{padding-left:28px;position:relative;color:var(--ice)}
+.promise ul li::before{content:"✓";position:absolute;left:0;color:var(--sky);font-weight:700}
+@media(max-width:860px){.promise{grid-template-columns:1fr}}
+.blocks{margin-top:26px;border:1px solid var(--line);border-radius:22px;padding:38px clamp(24px,4vw,48px);display:flex;gap:44px;align-items:center;flex-wrap:wrap;background:rgba(11,21,38,.7)}
+.blocks .bp{font-family:var(--display);font-size:44px;font-weight:700;color:var(--sky)}
+.blocks .bp small{display:block;font-family:var(--mono);font-size:12px;color:var(--mist);font-weight:400;letter-spacing:.15em;margin-top:4px}
+.blocks p{color:var(--mist);font-size:14.5px;max-width:560px}
+
+/* ---------- Final CTA ---------- */
+.launch{text-align:center;padding-bottom:140px}
+.launch h2{margin:0 auto}
+.launch .sub{margin-left:auto;margin-right:auto}
+.launch .btns{display:flex;gap:16px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+.rocketpath{height:150px;position:relative;margin-bottom:20px}
+.rocketpath svg{position:absolute;left:50%;transform:translateX(-50%);height:100%}
+.rocketpath .trail{stroke:url(#g);stroke-width:2.5;fill:none;stroke-dasharray:600;stroke-dashoffset:600;transition:stroke-dashoffset 1.8s ease}
+.rocketpath.in .trail{stroke-dashoffset:0}
+
+footer.site{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--mist);font-size:14px}
+footer.site .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+footer.site .logo{font-size:16px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+  #loader{display:none}
+}
+
+.lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:99px;padding:3px;background:rgba(11,21,38,.6)}
+.lang button{background:none;border:none;color:var(--mist);font:600 12px/1 var(--body);padding:6px 11px;border-radius:99px;cursor:pointer;transition:color .25s,background .25s}
+.lang button:hover{color:var(--ice)}
+.lang button.on{background:var(--blue);color:#fff}
+@media(max-width:480px){nav .cta{display:none}}
+</style>
+</head>
+<body>
+<div aria-hidden="true" id="loader">
+<div class="t">LAUNCH SEQUENCE</div>
+<div class="count" id="count">T-3</div>
+<div class="bar"><i id="lbar"></i></div>
+</div>
+<div id="cursor"></div>
+<canvas id="stars"></canvas>
+<div aria-hidden="true" class="aurora"><b></b><b></b><b></b></div>
+<nav id="nav">
+<div class="wrap">
+<a class="logo" href="#top">
+<img alt="RocketX logo" src="assets/logo.png"/>
+      RocketX
+    </a>
+<div class="navlinks">
+<a data-i18n="nav.how" href="#features">How It Works</a>
+<a data-i18n="nav.why" href="#market">Why Now</a>
+<a data-i18n="nav.results" href="#results">Results</a>
+<a data-i18n="nav.pricing" href="#pricing">Pricing</a>
+</div>
+<div aria-label="Language" class="lang" role="group"><button data-l="en">EN</button><button data-l="de">DE</button><button data-l="es">ES</button></div><a class="cta" data-i18n="nav.cta" href="mailto:app@rocketx.app">Get My Custom Quote</a>
+</div>
+</nav>
+<main id="top">
+<!-- HERO -->
+<header class="hero">
+<div class="wrap">
+<div class="eyebrow" data-i18n="hero.eyebrow">BUILT FOR QUALITY AT SCALE</div>
+<h1 class="mega" id="headline">
+<span class="word"><span data-i18n="hero.w1" style="animation-delay:.1s">Frictionless</span></span><br/>
+<span class="word"><span data-i18n="hero.w2" style="animation-delay:.28s"><em>Ordering.</em></span></span>
+</h1>
+<p class="lede" data-i18n="hero.lede">For $15–300M businesses running high-volume wholesale ordering — millions of SKUs that load instantly, lightning-fast filtering, unlimited team seats, and native iOS &amp; Android apps that put the full catalog in every buyer's pocket.</p>
+<div class="btns">
+<a class="cta lg" data-i18n="hero.see" href="#pricing">See Pricing</a>
+<a class="ghost" data-i18n="hero.watch" href="#demo">Watch It Fly ↓</a>
+</div>
+<div class="herostats">
+<div><b data-count="0" data-i18n="hs.v1" data-text="Millions">Millions</b><span data-i18n="hs.l1">of SKUs, instantly</span></div>
+<div><b data-i18n="hs.v2" data-text="Sub-second">Sub-second</b><span data-i18n="hs.l2">search &amp; filtering</span></div>
+<div><b data-i18n="hs.v3" data-text="Unlimited">Unlimited</b><span data-i18n="hs.l3">team seats</span></div>
+<div><b class="counter" data-suffix="+" data-to="4200">0</b><span data-i18n="hs.l4">businesses trust us</span></div>
+</div>
+</div>
+<div aria-hidden="true" class="orbit">
+<img alt="" class="o1" src="assets/product-1.webp"/>
+<img alt="" class="o2" src="assets/product-2.webp"/>
+<img alt="" class="o3" src="assets/product-3.webp"/>
+</div>
+</header>
+<div aria-hidden="true" class="marquee">
+<div class="track" id="mtrack">
+<span data-i18n="mq.1">CART <i>/</i> CRM <i>/</i> ERP <i>/</i> APP <i>/</i> WEB</span>
+<span data-i18n="mq.2">LESS FRICTION <i>·</i> MORE ORDERS</span>
+<span data-i18n="mq.3">MILLIONS OF SKUs <i>·</i> MILLISECOND SEARCH</span>
+<span data-i18n="mq.4">NATIVE iOS <i>+</i> ANDROID</span>
+<span data-i18n="mq.5">YOU ONLY PAY WHEN IT WORKS</span>
+</div>
+</div>
+<!-- VIDEO -->
+<section id="demo">
+<div class="wrap">
+<span class="kicker reveal" data-i18n="demo.k">/ SEE IT IN MOTION</span>
+<h2 class="reveal" data-i18n="demo.h">Complex ordering finally feels simple again.</h2>
+<p class="sub reveal" data-i18n="demo.s">Watch the platform move — sub-second catalog performance, effortless browsing, and ordering that keeps up with your buyers.</p>
+<div class="videoblock reveal">
+<div class="screen" id="screen">
+<div class="chrome"><i></i><i></i><i></i><span>app.rocketx.app — live catalog</span></div>
+<video autoplay="" loop="" muted="" playsinline="" poster="assets/poster.webp">
+<source src="assets/demo.mp4" type="video/mp4"/>
+</video>
+</div>
+</div>
+</div>
+</section>
+<!-- FEATURES -->
+<section id="features">
+<div class="wrap">
+<span class="kicker reveal" data-i18n="ft.k">/ FEATURES</span>
+<h2 class="reveal" data-i18n="ft.h">How RocketX Works</h2>
+<p class="sub reveal" data-i18n="ft.s">Every plan is built on the same uncompromising foundation — rock-solid performance and reliability so everything just works, every single time.</p>
+<div class="grid" id="cards">
+<div class="card reveal"><span class="num">/ 001</span><h3 data-i18n="f1t">Millions of SKUs, Sub-Second Performance</h3><p data-i18n="f1d">Filter, search, and order from millions of items in milliseconds — performance other platforms simply can't match at this scale.</p></div>
+<div class="card reveal"><span class="num">/ 002</span><h3 data-i18n="f2t">Ultra-Fast Native iOS &amp; Android Apps</h3><p data-i18n="f2d">Lightning-fast native mobile apps built specifically for B2B ordering. No browser lag — smooth on phones and tablets.</p></div>
+<div class="card reveal"><span class="num">/ 003</span><h3 data-i18n="f3t">Your Field Rep in the Buyer's Pocket</h3><p data-i18n="f3d">Barcode scanning, one-tap reordering, real-time pricing, and instant availability checks in every buyer's phone.</p></div>
+<div class="card reveal"><span class="num">/ 004</span><h3 data-i18n="f4t">Real-Time Team Collaboration on Carts</h3><p data-i18n="f4d">Multiple team members work the same cart simultaneously — every action logged with who did what, and when.</p></div>
+<div class="card reveal"><span class="num">/ 005</span><h3 data-i18n="f5t">Order Directly from PDFs</h3><p data-i18n="f5d">Share videos, brochures, and existing catalogs. Our AI scans your PDFs so buyers can order straight from them.</p></div>
+<div class="card reveal"><span class="num">/ 006</span><h3 data-i18n="f6t">Unlimited Seats &amp; Users</h3><p data-i18n="f6d">Every employee, sales rep, and authorized customer gets full access — no per-user fees or restrictions.</p></div>
+<div class="card reveal"><span class="num">/ 007</span><h3 data-i18n="f7t">Customer-Specific Pricing &amp; Contracts</h3><p data-i18n="f7d">Each buyer automatically sees their exact negotiated prices, volume tiers, and contract terms.</p></div>
+<div class="card reveal"><span class="num">/ 008</span><h3 data-i18n="f8t">Real-Time Inventory</h3><p data-i18n="f8d">Live stock levels and availability across multiple warehouses — no surprises, no backorders.</p></div>
+<div class="card reveal"><span class="num">/ 009</span><h3 data-i18n="f9t">Bulk Ordering &amp; Quick Reorder</h3><p data-i18n="f9d">CSV uploads, saved templates, favorites lists, and one-click reordering from past invoices.</p></div>
+<div class="card reveal"><span class="num">/ 010</span><h3 data-i18n="f10t">Seamless ERP &amp; CRM Integrations</h3><p data-i18n="f10d">Deep bidirectional sync with NetSuite, SAP, Microsoft Dynamics, Epicor, and other major systems.</p></div>
+</div>
+</div>
+</section>
+<!-- MARKET -->
+<section class="market" id="market">
+<div class="wrap">
+<span class="kicker reveal" data-i18n="mk.k">/ WHY NOW</span>
+<h2 class="reveal" data-i18n="mk.h">B2B buying has moved online. Your ordering experience decides who wins.</h2>
+<div class="bigstats">
+<div class="bs reveal"><b><span class="counter" data-dec="2" data-i18n-num="n1" data-prefix="$" data-suffix="T" data-to="2.93">0</span></b><small data-i18n="mk.s1">U.S. B2B ecommerce in 2025 — up 13% while total B2B sales stayed flat</small></div>
+<div class="bs reveal"><b><span class="counter" data-i18n-num="n2" data-prefix="$" data-suffix="T" data-to="36">0</span></b><small data-i18n="mk.s2">Global B2B ecommerce market in 2026, growing ~14.5% per year</small></div>
+<div class="bs reveal"><b><span class="counter" data-suffix="%" data-to="83">0</span></b><small data-i18n="mk.s3">of B2B buyers prefer self-service digital ordering</small></div>
+<div class="bs reveal"><b><span class="counter" data-prefix="+" data-suffix="%" data-to="250">0</span></b><small data-i18n="mk.s4">growth in mobile B2B orders over three years</small></div>
+</div>
+<div class="bars reveal" id="bars">
+<h3 data-i18n="mk.bh">What the alternatives really cost — typical first year</h3>
+<p class="note" data-i18n="mk.bn">Platform fees plus implementation for a mid-market B2B build (2026 market estimates).</p>
+<div class="bar"><div class="lbl"><b data-i18n="bar.b1">Adobe Commerce</b><span data-i18n="bar.s1">$220k–$700k+</span></div><div class="rail"><div class="fill" data-w="100%"></div></div></div>
+<div class="bar"><div class="lbl"><b data-i18n="bar.b2">BigCommerce Enterprise + B2B Edition</b><span data-i18n="bar.s2">$160k–$430k</span></div><div class="rail"><div class="fill" data-w="66%"></div></div></div>
+<div class="bar"><div class="lbl"><b data-i18n="bar.b3">Shopify Plus (with agency + apps)</b><span data-i18n="bar.s3">$60k–$300k</span></div><div class="rail"><div class="fill" data-w="46%"></div></div></div>
+<div class="bar rx"><div class="lbl"><b data-i18n="bar.b4">RocketX — annual plan</b><span data-i18n="bar.rxs">$64.8k–$129.6k · setup waived · no GMV %</span></div><div class="rail"><div class="fill" data-w="20%"></div></div></div>
+<p class="srcnote" data-i18n="mk.src">Sources: Digital Commerce 360 / U.S. Dept. of Commerce, McKinsey B2B Pulse, Gartner, vendor pricing pages and 2026 implementation-partner benchmarks. Competitor figures are estimates, negotiated case by case.</p>
+</div>
+</div>
+</section>
+<!-- RESULTS -->
+<section id="results">
+<div class="wrap">
+<span class="kicker reveal" data-i18n="rs.k">/ WHY TEAMS CHOOSE ROCKETX</span>
+<h2 class="reveal" data-i18n="rs.h">Real teams in wholesale, distribution, and manufacturing are seeing dramatic improvements.</h2>
+<div class="results">
+<div class="imgs" id="pimgs">
+<img alt="Warehouse operations" class="p1" data-speed="-0.06" src="assets/photo-1.webp"/>
+<img alt="Team using RocketX" class="p2" data-speed="0.08" src="assets/photo-2.webp"/>
+</div>
+<div class="rlist">
+<div class="r reveal"><b data-i18n="rs.b1">100%</b><h4 data-i18n="rs.h1">Faster Ordering</h4><p data-i18n="rs.p1">Buyers and field reps complete orders in a fraction of the time. Even with millions of SKUs, search feels "like magic" compared to their old system.</p></div>
+<div class="r reveal"><b data-i18n="rs.b2">Full</b><h4 data-i18n="rs.h2">Team Adoption</h4><p data-i18n="rs.p2">Unlimited seats plus real-time cart collaboration mean the entire team actually uses the platform instead of working around it.</p></div>
+<div class="r reveal"><b data-i18n="rs.b3">Zero</b><h4 data-i18n="rs.h3">Manual Catalog Work</h4><p data-i18n="rs.p3">Our AI scans your existing PDFs and brochures so buyers can order directly — no re-uploading or manual data entry.</p></div>
+</div>
+</div>
+<blockquote class="quote reveal">
+<p data-i18n="rs.q">"RocketX didn't just improve our ordering — it removed the friction that was slowing our entire business down."</p>
+<footer data-i18n="rs.qf">— CEO, $57M DISTRIBUTION COMPANY</footer>
+</blockquote>
+</div>
+</section>
+<!-- COMPARE -->
+<section id="compare">
+<div class="wrap">
+<span class="kicker reveal" data-i18n="cp.k">/ THE HONEST COMPARISON</span>
+<h2 class="reveal" data-i18n="cp.h">Traditional platforms weren't built for this.</h2>
+<table>
+<thead><tr><th data-i18n="cp.th1">Platform</th><th data-i18n="cp.th2">Platform fees</th><th data-i18n="cp.th3">Implementation &amp; hidden costs</th></tr></thead>
+<tbody>
+<tr class="reveal" style="--i:0"><td>Shopify Plus</td><td data-i18n="cp.r1c2">$2,300–$2,500/mo; switches to a ~0.25% revenue fee above ~$1M monthly GMV, capped at $40k/mo</td><td data-i18n="cp.r1c3">Real running cost typically $4k–$25k/mo with apps and agency work; deep B2B needs heavy custom development</td></tr>
+<tr class="reveal" style="--i:1"><td>Adobe Commerce</td><td data-i18n="cp.r2c2">License ~$22k–$190k+/yr, scaled to your GMV</td><td data-i18n="cp.r2c3">Mid-market B2B builds ~$100k–$250k to implement; $122k–$450k/yr to run; 4–8+ months to launch</td></tr>
+<tr class="reveal" style="--i:2"><td>BigCommerce + B2B Edition</td><td data-i18n="cp.r3c2">Custom, typically $1k–$3k+/mo plus the B2B add-on</td><td data-i18n="cp.r3c3">B2B Edition implementations commonly quoted at $150k–$400k</td></tr>
+<tr class="reveal" style="--i:3"><td>OroCommerce Enterprise</td><td data-i18n="cp.r4c2">License $45k–$250k/yr by GMV band</td><td data-i18n="cp.r4c3">Plus implementation and integration services</td></tr>
+<tr class="rx reveal" style="--i:4"><td>RocketX</td><td data-i18n="cp.r5c2">$6k–$12k/mo flat — no GMV percentage, ever</td><td data-i18n="cp.r5c3">$40k setup waived on annual plans; billing starts only at go-live; native apps and unlimited seats included</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- PRICING -->
+<section id="pricing">
+<div class="wrap">
+<span class="kicker reveal" data-i18n="pr.k">/ 2026 LAUNCH PRICING</span>
+<h2 class="reveal" data-i18n="pr.h">Fair, transparent pricing that scales with your success.</h2>
+<p class="sub reveal" data-i18n="pr.s">All tiers include millions of SKUs at full speed, unlimited seats, native apps, standard integrations, and ongoing updates — and never a percentage of your GMV.</p>
+<div class="plans">
+<div class="plan reveal">
+<h3>Core</h3><div class="for" data-i18n="pr.for1">Most $15–50M companies</div>
+<div class="price"><span data-i18n="pr.p1">$6,000</span><small data-i18n="pr.mo">/mo</small></div>
+<div class="annual" data-i18n="pr.a1">$64,800/yr annual · 10% off</div>
+<ul><li data-i18n="li.c1">Core native apps &amp; full-speed performance</li><li data-i18n="li.c2">Unlimited seats &amp; users</li><li data-i18n="li.c3">Standard ERP/CRM integrations</li><li data-i18n="li.c4">$40k setup waived on annual</li></ul>
+</div>
+<div class="plan hot reveal">
+<span class="tag" data-i18n="pr.tag">Most popular</span>
+<h3>Pro</h3><div class="for" data-i18n="pr.for2">$50–120M companies with higher complexity</div>
+<div class="price"><span data-i18n="pr.p2">$8,500</span><small data-i18n="pr.mo2">/mo</small></div>
+<div class="annual" data-i18n="pr.a2">$91,800/yr annual · 10% off</div>
+<ul><li data-i18n="li.p1">Everything in Core</li><li data-i18n="li.p2">Higher concurrency &amp; SLAs</li><li data-i18n="li.p3">Priority support</li><li data-i18n="li.p4">$40k setup waived on annual</li></ul>
+</div>
+<div class="plan reveal">
+<h3>Enterprise</h3><div class="for" data-i18n="pr.for3">$120–300M or extreme scale</div>
+<div class="price"><span data-i18n="pr.p3">$12,000</span><small data-i18n="pr.mo3">/mo</small></div>
+<div class="annual" data-i18n="pr.a3">$129,600/yr annual · 10% off</div>
+<ul><li data-i18n="li.e1">Everything in Pro</li><li data-i18n="li.e2">Dedicated success manager</li><li data-i18n="li.e3">Highest SLAs</li><li data-i18n="li.e4">$40k setup waived on annual</li></ul>
+</div>
+</div>
+<div class="promise reveal">
+<div>
+<h3 data-i18n="pm.h">Quality is our foundation. <em>You only pay when it works.</em></h3>
+<p data-i18n="pm.p">On annual plans, billing starts only at go-live — not at contract signature. You pay nothing until the platform is live and delivering value. That's how confident we are in the quality.</p>
+</div>
+<ul>
+<li data-i18n="pm.l1">10% discount on annual commitment</li>
+<li data-i18n="pm.l2">Full $40,000 integration &amp; setup fee waived</li>
+<li data-i18n="pm.l3">Billing starts at go-live, not signature</li>
+<li data-i18n="pm.l4">30–45 day pilot for early adopters with joint ROI review</li>
+</ul>
+</div>
+<div class="blocks reveal">
+<div class="bp"><span data-i18n="bl.price">$15,000</span><small data-i18n="bl.per">PER BLOCK</small></div>
+<p data-i18n="bl.p"><strong style="color:var(--ice)">Custom development blocks</strong> for needs beyond standard setup — advanced pricing engines, deep ERP sync, custom app workflows, punchout catalogs. Each block covers one fully scoped feature: requirements, build, test, deploy — plus 30 days of post-launch support.</p>
+</div>
+</div>
+</section>
+<!-- FINAL CTA -->
+<section class="launch">
+<div class="wrap">
+<div aria-hidden="true" class="rocketpath reveal" id="rpath">
+<svg viewbox="0 0 200 150">
+<defs><lineargradient id="g" x1="0" x2="1" y1="1" y2="0"><stop offset="0" stop-color="#1D4ED8"></stop><stop offset="1" stop-color="#60A5FA"></stop></lineargradient></defs>
+<path class="trail" d="M20 140 Q 70 130 100 90 T 180 10"></path>
+<circle cx="180" cy="10" fill="#60A5FA" r="5"></circle>
+</svg>
+</div>
+<span class="kicker reveal" data-i18n="ln.k" style="display:block">/ READY FOR LIFTOFF</span>
+<h2 class="reveal" data-i18n="ln.h">Stop making your buyers wrestle with slow, clunky carts.</h2>
+<p class="sub reveal" data-i18n="ln.s">Start with a personalized demo, a quick stack audit, and a low-risk pilot — measurable results within weeks.</p>
+<div class="btns reveal">
+<a class="cta lg" data-i18n="nav.cta2" href="mailto:app@rocketx.app">Get My Custom Quote</a>
+<a class="ghost" data-i18n="ln.demo" href="mailto:app@rocketx.app">Book a Demo</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="site">
+<div class="wrap">
+<a class="logo" href="#top"><img alt="" src="assets/logo.png"/>RocketX</a>
+<div>RocketX LLC · 30725 N Bright Angel Dr., Meadview, AZ 86444 · <a href="mailto:app@rocketx.app" style="color:var(--sky)">app@rocketx.app</a></div>
+<div>© 2001–2026 RocketX LLC</div>
+</div>
+</footer>
+<script>
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Preloader countdown */
+(function(){
+  const loader=document.getElementById('loader');
+  if(reduced){loader.remove();return}
+  const count=document.getElementById('count'), bar=document.getElementById('lbar');
+  const seq=['T-3','T-2','T-1','LIFTOFF'];let i=0;
+  const iv=setInterval(()=>{
+    i++; bar.style.width=(i/seq.length*100)+'%';
+    if(i<seq.length){count.textContent=seq[i];}
+    else{clearInterval(iv);loader.classList.add('done');setTimeout(()=>loader.remove(),700);}
+  },320);
+})();
+
+/* Custom cursor */
+(function(){
+  const c=document.getElementById('cursor');if(!c)return;
+  addEventListener('mousemove',e=>{c.style.opacity=1;c.style.left=e.clientX+'px';c.style.top=e.clientY+'px'});
+  document.querySelectorAll('a,button,.card,.plan').forEach(el=>{
+    el.addEventListener('mouseenter',()=>c.classList.add('big'));
+    el.addEventListener('mouseleave',()=>c.classList.remove('big'));
+  });
+})();
+
+/* Starfield canvas */
+(function(){
+  const cv=document.getElementById('stars'),ctx=cv.getContext('2d');
+  let w,h,stars=[],mx=0,my=0;
+  function size(){w=cv.width=innerWidth;h=cv.height=innerHeight;
+    stars=Array.from({length:Math.min(180,w/8)},()=>({x:Math.random()*w,y:Math.random()*h,z:Math.random()*1+0.3,r:Math.random()*1.4+0.3,tw:Math.random()*Math.PI*2}));}
+  size();addEventListener('resize',size);
+  addEventListener('mousemove',e=>{mx=(e.clientX/w-0.5)*2;my=(e.clientY/h-0.5)*2});
+  if(reduced){ctx.fillStyle='rgba(96,165,250,.5)';stars&&stars.forEach(s=>{ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,7);ctx.fill()});return}
+  (function loop(t){
+    ctx.clearRect(0,0,w,h);
+    for(const s of stars){
+      const tw=(Math.sin(t/900+s.tw)+1)/2;
+      ctx.beginPath();
+      ctx.arc(s.x+mx*14*s.z, s.y+my*14*s.z, s.r, 0, 7);
+      ctx.fillStyle=`rgba(140,180,250,${0.15+tw*0.5*s.z})`;
+      ctx.fill();
+      s.y-=0.045*s.z; if(s.y<-4){s.y=h+4;s.x=Math.random()*w;}
+    }
+    requestAnimationFrame(loop);
+  })(0);
+})();
+
+/* Nav bg on scroll */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+/* Reveal on scroll + triggers */
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.classList.add('in');
+    if(e.target.id==='bars')e.target.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w);
+    if(e.target.id==='rpath')e.target.classList.add('in');
+    if(e.target.id==='screen'||e.target.querySelector&&e.target.querySelector('#screen'))document.getElementById('screen')?.classList.add('flat');
+    e.target.querySelectorAll('.counter').forEach(runCounter);
+    if(e.target.classList.contains('counter'))runCounter(e.target);
+    io.unobserve(e.target);
+  });
+},{threshold:0.18});
+document.querySelectorAll('.reveal,#bars,#rpath,.bigstats .bs,.herostats').forEach(el=>io.observe(el));
+
+/* Counters */
+const done=new WeakSet();
+function fmtNum(el,v,dec,pre,suf){
+  let s=v.toFixed(dec);
+  s=el.dataset.comma?s.replace('.',','):s.replace(/\B(?=(\d{3})+(?!\d))/g,',');
+  return pre+s+suf;
+}
+function runCounter(el){
+  if(done.has(el))return;done.add(el);
+  const to=parseFloat(el.dataset.to),dec=+(el.dataset.dec||0),
+        pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
+  if(isNaN(to))return;
+  if(reduced){el.textContent=fmtNum(el,to,dec,pre,suf);return}
+  const t0=performance.now(),dur=1600;
+  (function step(t){
+    const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);
+    el.textContent=fmtNum(el,to*e,dec,pre,suf);
+    if(p<1)requestAnimationFrame(step);
+  })(t0);
+}
+
+/* Card glow + tilt */
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    card.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    card.style.setProperty('--my',(e.clientY-r.top)+'px');
+    if(reduced)return;
+    const rx=((e.clientY-r.top)/r.height-.5)*-7, ry=((e.clientX-r.left)/r.width-.5)*7;
+    card.style.transform=`perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave',()=>card.style.transform='');
+});
+
+/* Parallax images */
+(function(){
+  if(reduced)return;
+  const imgs=document.querySelectorAll('#pimgs img, .orbit img');
+  addEventListener('scroll',()=>{
+    const y=scrollY;
+    document.querySelectorAll('#pimgs img').forEach(img=>{
+      const sp=parseFloat(img.dataset.speed||0);
+      const r=img.closest('.imgs').getBoundingClientRect();
+      img.style.transform=`translateY(${(r.top-innerHeight/2)*sp}px)`;
+    });
+  },{passive:true});
+})();
+
+/* Duplicate marquee for seamless loop */
+const mt=document.getElementById('mtrack');mt.innerHTML+=mt.innerHTML;
+</script>
+<script>
+/* ---------- i18n (EN captured from DOM; DE/ES dictionaries) ---------- */
+const I18N={"de": {"nav.how": "So funktioniert's", "nav.why": "Warum jetzt", "nav.results": "Ergebnisse", "nav.pricing": "Preise", "nav.cta": "Individuelles Angebot", "nav.cta2": "Individuelles Angebot", "hero.eyebrow": "QUALITÄT IN GROSSEM MASSSTAB", "hero.w1": "Bestellen", "hero.w2": "<em>ohne Reibung.</em>", "hero.lede": "Für Unternehmen mit 15–250 Mio. € Umsatz und hohem Bestellvolumen im Großhandel — Millionen von SKUs, die sofort laden, blitzschnelle Filter, unbegrenzte Team-Plätze und native iOS- & Android-Apps, die den gesamten Katalog in die Tasche jedes Einkäufers bringen.", "hero.see": "Preise ansehen", "hero.watch": "In Aktion erleben ↓", "hs.v1": "Millionen", "hs.v2": "< 1 Sekunde", "hs.v3": "Unbegrenzt", "hs.l1": "SKUs, sofort verfügbar", "hs.l2": "Suche & Filter", "hs.l3": "Team-Plätze", "hs.l4": "Unternehmen vertrauen uns", "mq.1": "CART <i>/</i> CRM <i>/</i> ERP <i>/</i> APP <i>/</i> WEB", "mq.2": "WENIGER REIBUNG <i>·</i> MEHR BESTELLUNGEN", "mq.3": "MILLIONEN SKUs <i>·</i> SUCHE IN MILLISEKUNDEN", "mq.4": "NATIV FÜR iOS <i>+</i> ANDROID", "mq.5": "SIE ZAHLEN NUR, WENN ES FUNKTIONIERT", "demo.k": "/ LIVE ERLEBEN", "demo.h": "Komplexe Bestellungen fühlen sich endlich wieder einfach an.", "demo.s": "Sehen Sie die Plattform in Aktion — Katalog-Performance unter einer Sekunde, müheloses Stöbern und Bestellen, das mit Ihren Einkäufern Schritt hält.", "ft.k": "/ FUNKTIONEN", "ft.h": "So funktioniert RocketX", "ft.s": "Jeder Plan basiert auf demselben kompromisslosen Fundament — felsenfeste Performance und Zuverlässigkeit, damit alles einfach funktioniert. Jedes einzelne Mal.", "f1t": "Millionen SKUs, Performance unter einer Sekunde", "f1d": "Filtern, suchen und bestellen Sie aus Millionen von Artikeln in Millisekunden — eine Performance, die andere Plattformen in dieser Größenordnung schlicht nicht erreichen.", "f2t": "Ultraschnelle native iOS- & Android-Apps", "f2d": "Blitzschnelle native Mobile-Apps, speziell für B2B-Bestellungen entwickelt. Kein Browser-Lag — flüssig auf Smartphones und Tablets.", "f3t": "Ihr Außendienst in der Tasche des Einkäufers", "f3d": "Barcode-Scan, Nachbestellung mit einem Tipp, Echtzeitpreise und sofortige Verfügbarkeitsprüfung auf jedem Smartphone.", "f4t": "Team-Zusammenarbeit am Warenkorb in Echtzeit", "f4d": "Mehrere Teammitglieder arbeiten gleichzeitig am selben Warenkorb — jede Aktion protokolliert: wer, was und wann.", "f5t": "Direkt aus PDFs bestellen", "f5d": "Teilen Sie Videos, Broschüren und bestehende Kataloge. Unsere KI scannt Ihre PDFs, damit Einkäufer direkt daraus bestellen können.", "f6t": "Unbegrenzte Plätze & Nutzer", "f6d": "Jeder Mitarbeiter, Vertriebsmitarbeiter und autorisierte Kunde erhält vollen Zugriff — ohne Gebühren pro Nutzer, ohne Einschränkungen.", "f7t": "Kundenspezifische Preise & Verträge", "f7d": "Jeder Einkäufer sieht automatisch seine exakt verhandelten Preise, Mengenstaffeln und Vertragskonditionen.", "f8t": "Bestände in Echtzeit", "f8d": "Live-Bestände und Verfügbarkeit über mehrere Lager hinweg — keine Überraschungen, keine Rückstände.", "f9t": "Großbestellungen & schnelle Nachbestellung", "f9d": "CSV-Uploads, gespeicherte Vorlagen, Favoritenlisten und Nachbestellungen aus früheren Rechnungen mit einem Klick.", "f10t": "Nahtlose ERP- & CRM-Integrationen", "f10d": "Tiefe bidirektionale Synchronisation mit NetSuite, SAP, Microsoft Dynamics, Epicor und anderen führenden Systemen.", "mk.k": "/ WARUM JETZT", "mk.h": "Der B2B-Einkauf ist online. Ihr Bestellerlebnis entscheidet, wer gewinnt.", "mk.s1": "B2B-Internethandel in Deutschland 2024 (Onlineshops & Marktplätze) — plus 7 % trotz Konjunkturflaute", "mk.s2": "gesamter deutscher B2B-E-Commerce inkl. EDI — knapp ein Viertel aller B2B-Umsätze läuft bereits online", "mk.s3": "der B2B-Einkäufer bevorzugen digitale Self-Service-Bestellungen", "mk.s4": "Wachstum mobiler B2B-Bestellungen in drei Jahren", "mk.bh": "Was die Alternativen wirklich kosten — typisches erstes Jahr", "mk.bn": "Plattformkosten plus Implementierung für ein B2B-Projekt im Mittelstand (Marktschätzungen 2026, in Euro).", "bar.b1": "Adobe Commerce", "bar.b2": "BigCommerce Enterprise + B2B Edition", "bar.b3": "Shopify Plus (mit Agentur + Apps)", "bar.b4": "RocketX — Jahresplan", "bar.rxs": "54k–108k € · Setup erlassen · kein GMV-%", "mk.src": "Quellen: ECC KÖLN B2B-Marktmonitor 2025 (mit FIS und Shopware), McKinsey B2B Pulse, Gartner, Anbieter-Preisseiten und Implementierungs-Benchmarks 2026. Wettbewerberzahlen sind Schätzungen und werden individuell verhandelt; USD-Beträge zum Kurs von ca. 1,17 $/€ umgerechnet und gerundet.", "rs.k": "/ WARUM TEAMS ROCKETX WÄHLEN", "rs.h": "Teams in Großhandel, Distribution und Fertigung erzielen messbar bessere Ergebnisse.", "rs.b1": "100 %", "rs.h1": "Schnellere Bestellungen", "rs.p1": "Einkäufer und Außendienst schließen Bestellungen in einem Bruchteil der Zeit ab. Selbst mit Millionen SKUs fühlt sich die Suche im Vergleich zum alten System „wie Magie“ an.", "rs.b2": "Volle", "rs.h2": "Team-Akzeptanz", "rs.p2": "Unbegrenzte Plätze plus Echtzeit-Zusammenarbeit am Warenkorb sorgen dafür, dass das gesamte Team die Plattform wirklich nutzt, statt sie zu umgehen.", "rs.b3": "Null", "rs.h3": "Manuelle Katalogarbeit", "rs.p3": "Unsere KI scannt Ihre bestehenden PDFs und Broschüren, damit Einkäufer direkt bestellen können — ohne erneutes Hochladen oder manuelle Dateneingabe.", "rs.q": "„RocketX hat nicht nur unsere Bestellungen verbessert — es hat die Reibung beseitigt, die unser gesamtes Geschäft ausgebremst hat.“", "rs.qf": "— CEO, DISTRIBUTIONSUNTERNEHMEN MIT RD. 49 MIO. € UMSATZ", "cp.k": "/ DER EHRLICHE VERGLEICH", "cp.h": "Traditionelle Plattformen wurden dafür nicht gebaut.", "cp.th1": "Plattform", "cp.th2": "Plattformkosten", "cp.th3": "Implementierung & versteckte Kosten", "cp.r1c2": "ab ca. 2.100 €/Monat; ab ~860.000 € monatlichem GMV Umstellung auf variable Umsatzgebühr von ~0,25 %, gedeckelt bei ~34.000 €/Monat", "cp.r1c3": "Reale Betriebskosten typischerweise 3.500–21.500 €/Monat mit Apps und Agentur; tiefe B2B-Funktionen erfordern umfangreiche Individualentwicklung", "cp.r2c2": "Lizenz ~19.000–165.000+ €/Jahr, skaliert nach GMV", "cp.r2c3": "B2B-Projekte im Mittelstand: ~85.000–215.000 € Implementierung; 105.000–385.000 €/Jahr Betrieb; 4–8+ Monate bis zum Start", "cp.r3c2": "Individuell, typischerweise 900–2.600+ €/Monat plus B2B-Add-on", "cp.r3c3": "Implementierungen der B2B Edition üblicherweise bei 130.000–345.000 €", "cp.r4c2": "Lizenz 39.000–215.000 €/Jahr je nach GMV-Stufe", "cp.r4c3": "Zuzüglich Implementierungs- und Integrationsleistungen", "cp.r5c2": "5k–10k €/Monat pauschal — nie ein GMV-Prozentsatz", "cp.r5c3": "34.000 € Setup bei Jahresplänen erlassen; Abrechnung erst ab Go-live; native Apps und unbegrenzte Plätze inklusive", "pr.k": "/ PREISE 2026", "pr.h": "Faire, transparente Preise, die mit Ihrem Erfolg skalieren.", "pr.s": "Alle Stufen enthalten Millionen SKUs bei voller Geschwindigkeit, unbegrenzte Plätze, native Apps, Standard-Integrationen und laufende Updates — und niemals einen Prozentsatz Ihres GMV.", "pr.tag": "Am beliebtesten", "pr.for1": "Für die meisten Unternehmen mit 15–45 Mio. €", "pr.for2": "Unternehmen mit 45–105 Mio. € und höherer Komplexität", "pr.for3": "105–250 Mio. € oder extreme Skalierung", "pr.mo": "/Monat", "pr.mo2": "/Monat", "pr.mo3": "/Monat", "pr.a1": "54.000 €/Jahr im Jahresplan · 10 % Rabatt", "pr.a2": "75.600 €/Jahr im Jahresplan · 10 % Rabatt", "pr.a3": "108.000 €/Jahr im Jahresplan · 10 % Rabatt", "li.c1": "Native Core-Apps & volle Performance", "li.c2": "Unbegrenzte Plätze & Nutzer", "li.c3": "Standard-ERP/CRM-Integrationen", "li.c4": "34.000 € Setup im Jahresplan erlassen", "li.p1": "Alles aus Core", "li.p2": "Höhere Parallelität & SLAs", "li.p3": "Priorisierter Support", "li.p4": "34.000 € Setup im Jahresplan erlassen", "li.e1": "Alles aus Pro", "li.e2": "Dedizierter Success Manager", "li.e3": "Höchste SLAs", "li.e4": "34.000 € Setup im Jahresplan erlassen", "pm.h": "Qualität ist unser Fundament. <em>Sie zahlen nur, wenn es funktioniert.</em>", "pm.p": "Bei Jahresplänen beginnt die Abrechnung erst mit dem Go-live — nicht bei Vertragsunterschrift. Sie zahlen nichts, bis die Plattform live ist und Wert liefert. So überzeugt sind wir von der Qualität.", "pm.l1": "10 % Rabatt bei Jahresvertrag", "pm.l2": "Volle 34.000 € Integrations- & Setup-Gebühr erlassen", "pm.l3": "Abrechnung ab Go-live, nicht ab Unterschrift", "pm.l4": "30–45-Tage-Pilot für Early Adopters mit gemeinsamem ROI-Review", "bl.per": "PRO BLOCK", "bl.p": "<strong style=\"color:var(--ice)\">Individuelle Entwicklungsblöcke</strong> für Anforderungen jenseits des Standard-Setups — fortgeschrittene Preis-Engines, tiefe ERP-Synchronisation, individuelle App-Workflows, Punchout-Kataloge. Jeder Block umfasst ein vollständig spezifiziertes Feature: Anforderungen, Entwicklung, Test, Deployment — plus 30 Tage Support nach dem Launch.", "ln.k": "/ BEREIT ZUM ABHEBEN", "ln.h": "Schluss mit langsamen, umständlichen Warenkörben für Ihre Einkäufer.", "ln.s": "Starten Sie mit einer persönlichen Demo, einem kurzen Stack-Audit und einem risikoarmen Pilot — messbare Ergebnisse innerhalb weniger Wochen.", "ln.demo": "Demo buchen", "pr.p1": "5.000 €", "pr.p2": "7.000 €", "pr.p3": "10.000 €", "bl.price": "12.500 €", "bar.s1": "190k–600k €", "bar.s2": "140k–370k €", "bar.s3": "50k–260k €"}, "es": {"nav.how": "Cómo funciona", "nav.why": "Por qué ahora", "nav.results": "Resultados", "nav.pricing": "Precios", "nav.cta": "Solicitar cotización", "nav.cta2": "Solicitar cotización", "hero.eyebrow": "CALIDAD A GRAN ESCALA", "hero.w1": "Pedidos", "hero.w2": "<em>sin fricción.</em>", "hero.lede": "Para empresas de $15–300M con pedidos mayoristas de alto volumen — millones de SKUs que cargan al instante, filtrado ultrarrápido, usuarios ilimitados y apps nativas de iOS y Android que ponen el catálogo completo en el bolsillo de cada comprador.", "hero.see": "Ver precios", "hero.watch": "Verlo en acción ↓", "hs.v1": "Millones", "hs.v2": "Subsegundo", "hs.v3": "Ilimitados", "hs.l1": "de SKUs, al instante", "hs.l2": "búsqueda y filtros", "hs.l3": "usuarios de equipo", "hs.l4": "empresas confían en nosotros", "mq.1": "CART <i>/</i> CRM <i>/</i> ERP <i>/</i> APP <i>/</i> WEB", "mq.2": "MENOS FRICCIÓN <i>·</i> MÁS PEDIDOS", "mq.3": "MILLONES DE SKUs <i>·</i> BÚSQUEDA EN MILISEGUNDOS", "mq.4": "NATIVO PARA iOS <i>+</i> ANDROID", "mq.5": "SOLO PAGAS CUANDO FUNCIONA", "demo.k": "/ EN MOVIMIENTO", "demo.h": "Los pedidos complejos por fin vuelven a sentirse simples.", "demo.s": "Mira la plataforma en acción — rendimiento de catálogo en menos de un segundo, navegación sin esfuerzo y pedidos que siguen el ritmo de tus compradores.", "ft.k": "/ FUNCIONES", "ft.h": "Cómo funciona RocketX", "ft.s": "Cada plan se construye sobre la misma base sin concesiones — rendimiento y fiabilidad sólidos para que todo simplemente funcione, todas las veces.", "f1t": "Millones de SKUs, rendimiento en subsegundos", "f1d": "Filtra, busca y pide entre millones de artículos en milisegundos — un rendimiento que otras plataformas simplemente no igualan a esta escala.", "f2t": "Apps nativas ultrarrápidas para iOS y Android", "f2d": "Apps móviles nativas ultrarrápidas, creadas específicamente para pedidos B2B. Sin lag de navegador — fluidas en teléfonos y tablets.", "f3t": "Tu vendedor de campo en el bolsillo del comprador", "f3d": "Escaneo de códigos de barras, repetición de pedidos con un toque, precios en tiempo real y disponibilidad instantánea en el teléfono de cada comprador.", "f4t": "Colaboración en carritos en tiempo real", "f4d": "Varios miembros del equipo trabajan en el mismo carrito a la vez — cada acción queda registrada: quién hizo qué y cuándo.", "f5t": "Pedidos directos desde PDFs", "f5d": "Comparte videos, folletos y catálogos existentes. Nuestra IA escanea tus PDFs para que los compradores pidan directamente desde ellos.", "f6t": "Usuarios y accesos ilimitados", "f6d": "Cada empleado, representante de ventas y cliente autorizado tiene acceso completo — sin tarifas por usuario ni restricciones.", "f7t": "Precios y contratos por cliente", "f7d": "Cada comprador ve automáticamente sus precios negociados, escalas por volumen y condiciones de contrato exactas.", "f8t": "Inventario en tiempo real", "f8d": "Niveles de stock y disponibilidad en vivo en múltiples almacenes — sin sorpresas ni pedidos pendientes.", "f9t": "Pedidos masivos y recompra rápida", "f9d": "Cargas CSV, plantillas guardadas, listas de favoritos y recompra con un clic desde facturas anteriores.", "f10t": "Integraciones ERP y CRM sin fisuras", "f10d": "Sincronización bidireccional profunda con NetSuite, SAP, Microsoft Dynamics, Epicor y otros sistemas principales.", "mk.k": "/ POR QUÉ AHORA", "mk.h": "Las compras B2B ya son digitales. Tu experiencia de pedido decide quién gana.", "mk.s1": "Ecommerce B2B de EE. UU. en 2025 — creció 13% mientras las ventas B2B totales se mantuvieron planas", "mk.s2": "Mercado global de ecommerce B2B en 2026, creciendo ~14.5% anual", "mk.s3": "de los compradores B2B prefieren pedidos digitales de autoservicio", "mk.s4": "crecimiento de pedidos B2B móviles en tres años", "mk.bh": "Lo que realmente cuestan las alternativas — primer año típico", "mk.bn": "Tarifas de plataforma más implementación para un proyecto B2B de mercado medio (estimaciones 2026).", "bar.b1": "Adobe Commerce", "bar.b2": "BigCommerce Enterprise + B2B Edition", "bar.b3": "Shopify Plus (con agencia + apps)", "bar.b4": "RocketX — plan anual", "bar.rxs": "$64.8k–$129.6k · setup incluido · sin % de GMV", "mk.src": "Fuentes: Digital Commerce 360 / Depto. de Comercio de EE. UU., McKinsey B2B Pulse, Gartner, páginas de precios de proveedores y benchmarks de socios de implementación 2026. Las cifras de competidores son estimaciones negociadas caso por caso.", "rs.k": "/ POR QUÉ LOS EQUIPOS ELIGEN ROCKETX", "rs.h": "Equipos de mayoreo, distribución y manufactura están viendo mejoras dramáticas.", "rs.b1": "100%", "rs.h1": "Pedidos más rápidos", "rs.p1": "Compradores y vendedores completan pedidos en una fracción del tiempo. Incluso con millones de SKUs, la búsqueda se siente “como magia” comparada con su sistema anterior.", "rs.b2": "Total", "rs.h2": "Adopción del equipo", "rs.p2": "Usuarios ilimitados más colaboración en tiempo real hacen que todo el equipo realmente use la plataforma en vez de evitarla.", "rs.b3": "Cero", "rs.h3": "Trabajo manual de catálogo", "rs.p3": "Nuestra IA escanea tus PDFs y folletos existentes para que los compradores pidan directamente — sin recargar datos ni entradas manuales.", "rs.q": "“RocketX no solo mejoró nuestros pedidos — eliminó la fricción que estaba frenando todo nuestro negocio.”", "rs.qf": "— CEO, DISTRIBUIDORA DE $57M", "cp.k": "/ LA COMPARACIÓN HONESTA", "cp.h": "Las plataformas tradicionales no fueron creadas para esto.", "cp.th1": "Plataforma", "cp.th2": "Tarifas de plataforma", "cp.th3": "Implementación y costos ocultos", "cp.r1c2": "$2,300–$2,500/mes; cambia a una tarifa de ~0.25% de ingresos sobre ~$1M de GMV mensual, con tope de $40k/mes", "cp.r1c3": "Costo real típico de $4k–$25k/mes con apps y agencia; el B2B profundo requiere mucho desarrollo a medida", "cp.r2c2": "Licencia ~$22k–$190k+/año, según tu GMV", "cp.r2c3": "Proyectos B2B de mercado medio: ~$100k–$250k de implementación; $122k–$450k/año de operación; 4–8+ meses para lanzar", "cp.r3c2": "Personalizado, típicamente $1k–$3k+/mes más el complemento B2B", "cp.r3c3": "Implementaciones de B2B Edition comúnmente cotizadas en $150k–$400k", "cp.r4c2": "Licencia $45k–$250k/año según banda de GMV", "cp.r4c3": "Más servicios de implementación e integración", "cp.r5c2": "$6k–$12k/mes fijo — nunca un porcentaje del GMV", "cp.r5c3": "$40k de setup incluidos en planes anuales; la facturación inicia solo en el go-live; apps nativas y usuarios ilimitados incluidos", "pr.k": "/ PRECIOS DE LANZAMIENTO 2026", "pr.h": "Precios justos y transparentes que escalan con tu éxito.", "pr.s": "Todos los niveles incluyen millones de SKUs a máxima velocidad, usuarios ilimitados, apps nativas, integraciones estándar y actualizaciones continuas — y nunca un porcentaje de tu GMV.", "pr.tag": "Más popular", "pr.for1": "La mayoría de empresas de $15–50M", "pr.for2": "Empresas de $50–120M con mayor complejidad", "pr.for3": "$120–300M o escala extrema", "pr.mo": "/mes", "pr.mo2": "/mes", "pr.mo3": "/mes", "pr.a1": "$64,800/año en plan anual · 10% de descuento", "pr.a2": "$91,800/año en plan anual · 10% de descuento", "pr.a3": "$129,600/año en plan anual · 10% de descuento", "li.c1": "Apps nativas core y máximo rendimiento", "li.c2": "Usuarios ilimitados", "li.c3": "Integraciones ERP/CRM estándar", "li.c4": "$40k de setup incluidos en plan anual", "li.p1": "Todo lo de Core", "li.p2": "Mayor concurrencia y SLAs", "li.p3": "Soporte prioritario", "li.p4": "$40k de setup incluidos en plan anual", "li.e1": "Todo lo de Pro", "li.e2": "Gerente de éxito dedicado", "li.e3": "SLAs máximos", "li.e4": "$40k de setup incluidos en plan anual", "pm.h": "La calidad es nuestra base. <em>Solo pagas cuando funciona.</em>", "pm.p": "En los planes anuales, la facturación comienza solo en el go-live — no al firmar el contrato. No pagas nada hasta que la plataforma esté en producción generando valor. Así de seguros estamos de la calidad.", "pm.l1": "10% de descuento con compromiso anual", "pm.l2": "Tarifa completa de integración y setup de $40,000 incluida", "pm.l3": "Facturación desde el go-live, no desde la firma", "pm.l4": "Piloto de 30–45 días para primeros clientes con revisión conjunta de ROI", "bl.per": "POR BLOQUE", "bl.p": "<strong style=\"color:var(--ice)\">Bloques de desarrollo a medida</strong> para necesidades más allá del setup estándar — motores de precios avanzados, sincronización ERP profunda, flujos de app personalizados, catálogos punchout. Cada bloque cubre una funcionalidad completa: requisitos, desarrollo, pruebas y despliegue — más 30 días de soporte post-lanzamiento.", "ln.k": "/ LISTOS PARA EL DESPEGUE", "ln.h": "Deja de hacer que tus compradores peleen con carritos lentos y torpes.", "ln.s": "Comienza con una demo personalizada, una auditoría rápida de tu stack y un piloto de bajo riesgo — resultados medibles en semanas.", "ln.demo": "Reservar demo", "pr.p1": "$6,000", "pr.p2": "$8,500", "pr.p3": "$12,000", "bl.price": "$15,000", "bar.s1": "$220k–$700k+", "bar.s2": "$160k–$430k", "bar.s3": "$60k–$300k"}};
+const EN={};
+document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(!(k in EN))EN[k]=el.innerHTML});
+
+const NUMCFG={en:{n1:{to:'2.93',prefix:'$',suffix:'T',dec:'2'},n2:{to:'36',prefix:'$',suffix:'T',dec:'0'}},es:{n1:{to:'2.93',prefix:'$',suffix:'T',dec:'2'},n2:{to:'36',prefix:'$',suffix:'T',dec:'0'}},de:{n1:{to:'509',prefix:'',suffix:' Mrd. €',dec:'0'},n2:{to:'1.5',prefix:'',suffix:' Bio. €',dec:'1',comma:'1'}}};
+function applyNum(l){document.querySelectorAll('[data-i18n-num]').forEach(el=>{const c=NUMCFG[l]&&NUMCFG[l][el.dataset.i18nNum];if(!c)return;const ran=el.textContent!=='0';el.dataset.to=c.to;el.dataset.prefix=c.prefix;el.dataset.suffix=c.suffix;el.dataset.dec=c.dec;if(c.comma)el.dataset.comma='1';else delete el.dataset.comma;if(ran){let s=parseFloat(c.to).toFixed(+c.dec);s=c.comma?s.replace('.',','):s.replace(/\B(?=(\d{3})+(?!\d))/g,',');el.textContent=c.prefix+s+c.suffix;}});}
+function setLang(l){
+  const d=l==='en'?EN:I18N[l];if(!d)return;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const t=d[el.dataset.i18n];if(t!=null)el.innerHTML=t});
+  applyNum(l);
+  document.documentElement.lang=l;
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  try{localStorage.setItem('rx-lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+(function(){
+  let saved=null;try{saved=localStorage.getItem('rx-lang')}catch(e){}
+  const guess=(navigator.language||'en').slice(0,2).toLowerCase();
+  setLang(saved||(I18N[guess]?guess:'en'));
+})();
+</script></body>
+</html>
