@@ -76,7 +76,7 @@ def fig_fee(d):
 
     top = max(rx(rmin), RATE) * 1.18
     ymax = round(top + 0.049, 1)
-    X0, X1, Y0, Y1 = 104, 678, 34, 170
+    X0, X1, Y0, Y1 = 104, 678, 32, 156
 
     def px(r):
         return X0 + (r - rmin) / float(rmax - rmin) * (X1 - X0)
