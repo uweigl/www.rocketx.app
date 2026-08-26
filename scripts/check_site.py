@@ -24,7 +24,7 @@ def check(name, ok, detail=""):
 
 S = io.open("index.html", encoding="utf-8").read()
 BODY = S[S.index("</style>"):]
-LANGS = ("de", "es")
+LANGS = ("de", "es", "nl")
 
 # ---------------------------------------------------------------- i18n
 print("\ni18n")
@@ -47,8 +47,8 @@ for l in LANGS:
     orph = sorted(k for k in D[l] if k not in USED)
     check("%s: every DOM key translated" % l, not miss, str(miss))
     check("%s: no orphaned keys" % l, not orph, str(orph))
-check("de/es keysets identical", set(D["de"]) == set(D["es"]),
-      str(sorted(set(D["de"]) ^ set(D["es"]))))
+check("all keysets identical", set(D["de"]) == set(D["es"]) == set(D["nl"]),
+      str(sorted(set(D["de"]) ^ set(D["es"]) ^ set(D["nl"]))))
 
 # ---------------------------------------------------------------- structure
 print("\nstructure")
@@ -91,7 +91,7 @@ print("\ndecks")
 def pdf_pages(path):
     return len(re.findall(rb'/Type\s*/Page[^s]', io.open(path, "rb").read()))
 counts = {}
-for l in ("en", "de", "es"):
+for l in ("en", "de", "es", "nl"):
     pdf = "assets/rocketx-business-case-%s.pdf" % l
     if not os.path.exists(pdf):
         check("pdf %s present" % l, False); continue
@@ -109,7 +109,7 @@ actual = set(counts.values())
 check("site's stated page count matches the PDFs",
       bool(claimed) and claimed == actual, "site says %s, PDFs are %s" % (sorted(claimed), sorted(actual)))
 
-for l in ("en", "de", "es"):
+for l in ("en", "de", "es", "nl"):
     f = "deck/rocketx-business-case-%s.html" % l
     if not os.path.exists(f): continue
     h = io.open(f, encoding="utf-8").read()
@@ -123,9 +123,9 @@ for l in ("en", "de", "es"):
 # ---------------------------------------------------------------- seo
 print("\nseo")
 import xml.etree.ElementTree as ET
-PAGES = {"en": "index.html", "de": "de/index.html", "es": "es/index.html"}
+PAGES = {"en": "index.html", "de": "de/index.html", "es": "es/index.html", "nl": "nl/index.html"}
 CANON = {"en": "https://www.rocketx.app/", "de": "https://www.rocketx.app/de/",
-         "es": "https://www.rocketx.app/es/"}
+         "es": "https://www.rocketx.app/es/", "nl": "https://www.rocketx.app/nl/"}
 for lang, path in PAGES.items():
     if not os.path.exists(path):
         check("%s page exists" % lang, False, path); continue
@@ -136,7 +136,7 @@ for lang, path in PAGES.items():
     check("%s: canonical correct" % lang, bool(c) and c.group(1) == CANON[lang],
           c.group(1) if c else "missing")
     hl = set(re.findall(r'hreflang="([^"]+)"', h))
-    check("%s: hreflang covers all languages" % lang, hl >= {"en", "de", "es", "x-default"}, str(sorted(hl)))
+    check("%s: hreflang covers all languages" % lang, hl >= {"en", "de", "es", "nl", "x-default"}, str(sorted(hl)))
     check("%s: html lang attribute" % lang, ('<html lang="%s"' % lang) in h)
     check("%s: og:image + twitter card" % lang,
           'property="og:image"' in h and 'name="twitter:card"' in h)
@@ -175,7 +175,7 @@ def i18n_of(path):
     m = re.search(r'const I18N=(\{.*?\});\n', t, re.S)
     return m.group(1) if m else None
 base = i18n_of("index.html")
-for lang in ("de", "es"):
+for lang in ("de", "es", "nl"):
     p = "%s/index.html" % lang
     if os.path.exists(p):
         check("%s page in sync with index.html" % lang, i18n_of(p) == base,
@@ -185,7 +185,7 @@ for lang in ("de", "es"):
 # canonical, og:url or JSON-LD id silently splits ranking signals.
 CANON_HOST = "https://www.rocketx.app"
 bad_host = []
-for f in ["index.html", "de/index.html", "es/index.html", "robots.txt", "sitemap.xml"]:
+for f in ["index.html", "de/index.html", "es/index.html", "nl/index.html", "robots.txt", "sitemap.xml"]:
     if not os.path.exists(f): continue
     t = io.open(f, encoding="utf-8").read()
     for u in re.findall(r'https?://[A-Za-z0-9.-]*rocketx\.app', t):

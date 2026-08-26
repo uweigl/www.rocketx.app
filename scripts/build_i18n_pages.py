@@ -20,14 +20,16 @@ SITE = "https://www.rocketx.app"
 TMP = os.path.join(ROOT, ".build_tmp.html")
 
 TITLE = {
+ "nl": "RocketX — B2B-bestelplatform voor de groothandel | Onbeperkt SKU's, native apps",
  "de": "RocketX — B2B-Bestellplattform für den Großhandel | Unbegrenzt SKUs, native Apps",
  "es": "RocketX — Plataforma de pedidos B2B para mayoristas | SKUs ilimitados, apps nativas",
 }
 DESC = {
+ "nl": "B2B-groothandelsbestellingen voor bedrijven met 15–250 miljoen euro omzet. Onbeperkt SKU's met zoeken binnen een seconde, native iOS- en Android-apps en een gedeelde live winkelwagen die je buitendienst echt kan zien. Vaste prijs, nooit een percentage van je omzet.",
  "de": "B2B-Großhandelsbestellungen für Unternehmen mit 15–250 Mio. € Umsatz. Unbegrenzt viele SKUs mit Suche unter einer Sekunde, native iOS- und Android-Apps und ein gemeinsamer Live-Warenkorb, den Ihr Außendienst wirklich sieht. Pauschalgebühr, nie ein GMV-Prozentsatz.",
  "es": "Pedidos mayoristas B2B para distribuidores de $15–300M. SKUs ilimitados con búsqueda en menos de un segundo, apps nativas de iOS y Android y un carrito compartido en vivo que tus vendedores sí pueden ver. Tarifa fija, nunca un porcentaje del GMV.",
 }
-LOC = {"de": "de_DE", "es": "es_ES"}
+LOC = {"de": "de_DE", "es": "es_ES", "nl": "nl_NL"}
 
 def render(lang):
     """Load index.html, switch language in the browser, dump the resulting DOM."""
@@ -85,7 +87,7 @@ def fix(html, lang):
     return html
 
 built = []
-for lang in ("de", "es"):
+for lang in ("de", "es", "nl"):
     os.makedirs(lang, exist_ok=True)
     html = fix(render(lang), lang)
     path = os.path.join(lang, "index.html")
@@ -94,7 +96,7 @@ for lang in ("de", "es"):
     print("  wrote %-16s %d bytes" % (path, len(html)))
 
 # sanity: the translated copy must actually be in the file
-checks = {"de": "Bestellen", "es": "sin fricción"}
+checks = {"de": "Bestellen", "es": "sin fricción", "nl": "zonder wrijving"}
 for lang, needle in checks.items():
     txt = io.open(os.path.join(lang, "index.html"), encoding="utf-8").read()
     ok = needle in txt and 'lang="%s"' % lang in txt
