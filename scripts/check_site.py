@@ -11,7 +11,7 @@ The page-count check exists because the site advertised "8 pages" for
 months after the deck grew to 14 - a claim about an artifact drifts
 silently unless something compares the two.
 """
-import io, os, re, json, sys, html
+import io, json, os, re, json, sys, html
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 
@@ -116,9 +116,42 @@ for l in ("en", "de", "es", "nl"):
     t = html.unescape(re.sub(r'<[^>]+>', ' ', h))
     check("%s: no double-escaped entities" % l, not re.search(r'&amp;[a-z#0-9]+;', h))
     check("%s: no unverified certifications" % l, not re.search(r'ISO 27001|SOC 2|PCI DSS', t))
-    check("%s: no pricing" % l, not re.search(r'\$6,000|\$8,500|\$12,000|\$40,000|34\.000 €|54\.000 €', t))
+    # RocketX's own amounts must stay out. A competitor's published cap, cited
+    # with attribution in the fee-share chart, is not RocketX pricing.
+    check("%s: no rocketx pricing" % l, not re.search(
+        r'\$6,000|\$8,500|\$12,000|\$64,800|\$91,800|\$129,600'
+        r'|5\.000\s*€|7\.000\s*€|10\.000\s*€|54\.000\s*€|75\.600\s*€|108\.000\s*€'
+        r'|€\s*5\.000|€\s*7\.000|€\s*10\.000|€\s*54\.000|€\s*75\.600|€\s*108\.000', t))
     check("%s: page numbers present" % l, 'class="foot"' in h)
     check("%s: baymard citation resolves" % l, ("Baymard" not in t) or bool(re.search(r'70\s*%', t)))
+
+# ------------------------------------------------- fee curve vs live pricing
+print("\nfee curve")
+try:
+    site = io.open("index.html", encoding="utf-8").read()
+    I18N = json.loads(re.search(r"const I18N=(\{.*?\});\n", site, re.S).group(1))
+    gd = io.open("scripts/gen_deck.py", encoding="utf-8").read()
+    def nums(txt, lo, hi):
+        out = []
+        for m in re.findall(r"\d[\d.,]*", txt):
+            v = m.rstrip(".,").replace(".", "").replace(",", "")
+            if v.isdigit() and lo <= int(v) <= hi:
+                out.append(int(v))
+        return out
+    for lang in ("en", "de", "es", "nl"):
+        d = I18N[lang]
+        fees = [nums(d["pr.a%d" % i], 1000, 10 ** 7)[0] for i in (1, 2, 3)]
+        b1 = nums(d["pr.for1"], 1, 999)
+        b3 = nums(d["pr.for3"], 1, 999)
+        bands = [b1[0], b1[1], b3[0], b3[1]]
+        blk = gd[gd.index('"%s": dict(' % lang):]
+        blk = blk[:blk.index("fg2_ha")]
+        gf = [int(x) for x in re.findall(r"fg1_fees=\[([^\]]*)\]", blk)[0].replace(" ", "").split(",")]
+        gb = [int(x) for x in re.findall(r"fg1_bands=\[([^\]]*)\]", blk)[0].replace(" ", "").split(",")]
+        check("%s: fee curve fees match site pricing" % lang, gf == fees, "%s vs %s" % (gf, fees))
+        check("%s: fee curve bands match site pricing" % lang, gb == bands, "%s vs %s" % (gb, bands))
+except Exception as e:
+    check("fee curve cross-check ran", False, repr(e))
 
 # ---------------------------------------------------------------- seo
 print("\nseo")

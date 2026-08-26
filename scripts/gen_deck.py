@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 """Generate the RocketX business-case deck (print-optimised HTML) in EN/DE/ES.
 
-No prices anywhere: commercial terms are described structurally
-(flat fee vs GMV %, setup waived, billing at go-live) without figures,
-so the PDF cannot go stale when pricing moves.
+No cash figures anywhere: commercial terms are described structurally
+(flat fee vs GMV %, setup waived, billing at go-live). The one exception
+is the fee-share curve on the terms page, which plots the fee as a
+percentage of sales - no amount is printed, but one can be derived from
+it, so that chart has to be revisited whenever pricing moves.
 """
 import io, os
 
@@ -54,7 +56,7 @@ C["en"] = dict(
             ("The work happens away from a desk", "Buyers order from warehouse aisles, loading docks, and trade-show floors. Native camera access means barcode scanning and reorder from a shelf label."),
             ("It survives losing signal", "Steel-walled warehouses and rural routes kill reception. The catalog, pricing, cart, and your brochures and product video stay local and sync when the connection returns.")],
     p5h="How the commercial terms reduce risk",
-    p5a="The structure of the agreement is designed so the platform proves itself before it costs anything. No figures are quoted here — current pricing is on the website and in your proposal.",
+    p5a="The structure of the agreement is designed so the platform proves itself before it costs anything. No amounts are quoted here — current pricing is on the website and in your proposal. The chart below shows only what the fee is worth as a share of your sales.",
     terms=[("Flat fee, never a percentage of GMV", "Platform cost does not rise because your order volume did. Growth is not taxed."),
            ("Unlimited SKUs and seats included", "Nothing is metered. No per-user or per-SKU pricing to negotiate, or to ration as the catalogue and the team grow."),
            ("Setup and integration fee waived on annual plans", "The implementation cost that usually front-loads these projects is removed."),
@@ -195,7 +197,7 @@ C["de"] = dict(
             ("Gearbeitet wird nicht am Schreibtisch", "Einkäufer bestellen aus Lagergängen, von der Laderampe und vom Messestand. Nativer Kamerazugriff ermöglicht Barcode-Scan und Nachbestellung direkt vom Regaletikett."),
             ("Sie funktioniert auch ohne Empfang", "Hallen mit Stahlwänden und ländliche Touren kosten Empfang. Katalog, Preise, Warenkorb sowie Ihre Broschüren und Produktvideos bleiben lokal verfügbar und synchronisieren, sobald die Verbindung zurück ist.")],
     p5h="Wie die Vertragskonditionen das Risiko senken",
-    p5a="Die Vertragsstruktur ist so angelegt, dass sich die Plattform beweist, bevor sie etwas kostet. Hier werden bewusst keine Beträge genannt — die aktuellen Preise finden Sie auf der Website und in Ihrem Angebot.",
+    p5a="Die Vertragsstruktur ist so angelegt, dass sich die Plattform beweist, bevor sie etwas kostet. Hier werden bewusst keine Beträge genannt — die aktuellen Preise finden Sie auf der Website und in Ihrem Angebot. Die Grafik unten zeigt lediglich, was die Gebühr als Anteil an Ihrem Umsatz ausmacht.",
     terms=[("Pauschalgebühr, niemals ein Umsatzprozentsatz", "Die Plattformkosten steigen nicht, weil Ihr Bestellvolumen gestiegen ist. Wachstum wird nicht besteuert."),
            ("Unbegrenzte SKUs und Plätze inklusive", "Nichts wird nach Menge berechnet. Keine Preise pro Nutzer oder pro SKU, die verhandelt oder rationiert werden müssten, wenn Katalog und Team wachsen."),
            ("Setup- und Integrationsgebühr bei Jahresplänen erlassen", "Die Implementierungskosten, die solche Projekte sonst vorbelasten, entfallen."),
@@ -331,7 +333,7 @@ C["es"] = dict(
             ("El trabajo ocurre lejos del escritorio", "Los compradores piden desde pasillos de almacén, muelles de carga y ferias. El acceso nativo a la cámara permite escanear códigos y recomprar desde la etiqueta del estante."),
             ("Sobrevive a la pérdida de señal", "Los almacenes con paredes de acero y las rutas rurales acaban con la cobertura. El catálogo, los precios, el carrito y tus folletos y vídeos de producto quedan en local y sincronizan al volver la conexión.")],
     p5h="Cómo las condiciones comerciales reducen el riesgo",
-    p5a="La estructura del acuerdo está diseñada para que la plataforma se demuestre antes de costar nada. Aquí no se citan importes — los precios vigentes están en el sitio web y en su propuesta.",
+    p5a="La estructura del acuerdo está diseñada para que la plataforma se demuestre antes de costar nada. Aquí no se citan importes — los precios vigentes están en el sitio web y en su propuesta. El gráfico de abajo solo muestra cuánto representa la cuota como parte de tus ventas.",
     terms=[("Tarifa fija, nunca un porcentaje del GMV", "El costo de la plataforma no sube porque su volumen de pedidos lo haya hecho. El crecimiento no se grava."),
            ("SKUs y usuarios ilimitados incluidos", "Nada se mide. Sin precios por usuario ni por SKU que negociar o racionar cuando crecen el catálogo y el equipo."),
            ("Tarifa de setup e integración incluida en planes anuales", "Se elimina el costo de implementación que normalmente carga estos proyectos por adelantado."),
@@ -521,7 +523,7 @@ C["nl"] = dict(
         ("Het oude systeem later uitzetten, of nooit", "Nergens in de overeenkomst staat daarvoor een datum. Verdient het over drie jaar nog zijn plek, dan laat je het draaien.")],
     sbn="Dit is meteen de goedkoopste manier om je in ons te vergissen. Werkt de pilot niet, dan zet je niets uit, ben je geen order kwijt, en is de terugval het systeem dat je toch al gebruikte.",
     p5h="Hoe de commerciële voorwaarden het risico verkleinen",
-    p5a="De opzet van de overeenkomst is zo gemaakt dat het platform zich bewijst voordat het iets kost. Hier staan bewust geen bedragen — de actuele prijzen vind je op de website en in je offerte.",
+    p5a="De opzet van de overeenkomst is zo gemaakt dat het platform zich bewijst voordat het iets kost. Hier staan bewust geen bedragen — de actuele prijzen vind je op de website en in je offerte. De grafiek hieronder laat alleen zien wat de kosten als aandeel van je omzet betekenen.",
     terms=[("Vast tarief, nooit een percentage van je omzet", "De platformkosten stijgen niet omdat je ordervolume is gestegen. Groei wordt niet belast."),
            ("Onbeperkt SKU\'s en plaatsen inbegrepen", "Er wordt niets per stuk afgerekend. Geen prijzen per gebruiker of per SKU om over te onderhandelen of te rantsoeneren als catalogus en team groeien."),
            ("Setup- en integratiekosten kwijtgescholden bij jaarplannen", "De implementatiekosten die zulke projecten normaal vooraf belasten, vervallen."),
@@ -568,6 +570,109 @@ C["nl"] = dict(
 )
 
 # ---------------------------------------------------------------- template
+
+# ---------------------------------------------------------------- figures
+import sys, re, json
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import deck_figs
+
+def _site_dg():
+    """Diagram labels live in index.html, so the deck cannot drift from the site."""
+    src = io.open(os.path.join(os.path.dirname(OUT), "index.html"), encoding="utf-8").read()
+    all_ = json.loads(re.search(r"const I18N=(\{.*?\});\n", src, re.S).group(1))
+    return dict((L, dict((k, v) for k, v in all_[L].items() if k.startswith("dg."))) for L in all_)
+
+DG = _site_dg()
+
+FIGTXT = {
+"en": dict(
+  fg1_bands=[15, 50, 120, 300], fg1_fees=[64800, 91800, 129600], fg1_cap=480000,
+  fg1_dec=".", fg1_sp="",
+  fg1_rx="RocketX, annual plan",
+  fg1_sh="A percentage-of-sales plan, 0.25%",
+  fg1_x="annual sales running through the platform ($M)",
+  fg1_y="platform fee as a share of those sales",
+  fg1_n="Percentage line: Shopify Plus variable platform fee, 0.25% of online sales above roughly $1M a month, capped at $40,000 a month - hence the flat section and then the bend. RocketX steps down at each band, so the fee falls as you grow rather than tracking you upward.",
+  fg2_ha="A replacement project", fg2_la="one track",
+  fg2_old="your current system, still the only one that works",
+  fg2_new="the new one, live", fg2_cut="cutover weekend, week 12-24",
+  fg2_hb="RocketX, deployed alongside", fg2_l1="track 1", fg2_l2="track 2",
+  fg2_t1="your existing web shop - nothing is switched off",
+  fg2_t2="RocketX web shop and native apps - live in weeks",
+  fg2_n="No switchover point exists, so there is nothing to fail on a Monday.",
+  fg3_n="Standard connectors are included in every plan. Work beyond standard scope is quoted as a defined block before it starts.",
+  fg4_a="order started", fg4_b="order submitted", fg4_gap="~70% never arrives",
+  fg4_inv="and on most platforms nobody on your side can see any of it",
+  fg4_c1="the cart dies with the session",
+  fg4_c2="one person builds what six to ten people decide",
+  fg4_c3="the duplicate nobody caught becomes a return"),
+"de": dict(
+  fg1_bands=[15, 45, 105, 250], fg1_fees=[54000, 75600, 108000], fg1_cap=480000,
+  fg1_dec=",", fg1_sp=" ",
+  fg1_rx="RocketX, Jahresplan",
+  fg1_sh="Umsatzbeteiligung, 0,25 %",
+  fg1_x="Jahresumsatz \u00fcber die Plattform (Mio. \u20ac)",
+  fg1_y="Plattformgeb\u00fchr als Anteil an diesem Umsatz",
+  fg1_n="Prozentlinie: Shopify Plus, variable Plattformgeb\u00fchr von 0,25 % des Online-Umsatzes oberhalb von rund 1 Mio. pro Monat, gedeckelt bei 40.000 pro Monat - daher der flache Teil und dann der Knick. RocketX sinkt mit jeder Stufe, die Geb\u00fchr f\u00e4llt also mit Ihrem Wachstum, statt mitzuwachsen.",
+  fg2_ha="Ein Abl\u00f6seprojekt", fg2_la="ein Strang",
+  fg2_old="Ihr jetziges System, weiterhin das einzige, das l\u00e4uft",
+  fg2_new="das neue, live", fg2_cut="Umstellungswochenende, Woche 12-24",
+  fg2_hb="RocketX, parallel ausgerollt", fg2_l1="Strang 1", fg2_l2="Strang 2",
+  fg2_t1="Ihr bestehender Webshop - nichts wird abgeschaltet",
+  fg2_t2="RocketX Webshop und native Apps - in Wochen live",
+  fg2_n="Es gibt keinen Umstellungspunkt, also nichts, was am Montag scheitern kann.",
+  fg3_n="Standard-Konnektoren sind in jedem Plan enthalten. Arbeiten \u00fcber den Standardumfang hinaus werden vorab als definiertes Paket angeboten.",
+  fg4_a="Bestellung begonnen", fg4_b="Bestellung abgeschickt", fg4_gap="~70 % kommen nie an",
+  fg4_inv="und auf den meisten Plattformen sieht davon auf Ihrer Seite niemand etwas",
+  fg4_c1="der Warenkorb stirbt mit der Sitzung",
+  fg4_c2="einer baut, was sechs bis zehn entscheiden",
+  fg4_c3="die \u00fcbersehene Dublette wird zur Retoure"),
+"es": dict(
+  fg1_bands=[15, 50, 120, 300], fg1_fees=[64800, 91800, 129600], fg1_cap=480000,
+  fg1_dec=",", fg1_sp=" ",
+  fg1_rx="RocketX, plan anual",
+  fg1_sh="Plan por porcentaje de ventas, 0,25 %",
+  fg1_x="ventas anuales a trav\u00e9s de la plataforma ($M)",
+  fg1_y="cuota de plataforma como parte de esas ventas",
+  fg1_n="L\u00ednea de porcentaje: Shopify Plus, tarifa variable de plataforma del 0,25 % de las ventas online por encima de aproximadamente 1M al mes, con tope de 40.000 al mes - de ah\u00ed el tramo plano y luego el quiebre. RocketX baja en cada tramo, as\u00ed que la cuota cae seg\u00fan creces en vez de seguirte hacia arriba.",
+  fg2_ha="Un proyecto de sustituci\u00f3n", fg2_la="una v\u00eda",
+  fg2_old="tu sistema actual, todav\u00eda el \u00fanico que funciona",
+  fg2_new="el nuevo, en marcha", fg2_cut="fin de semana de migraci\u00f3n, semana 12-24",
+  fg2_hb="RocketX, desplegado en paralelo", fg2_l1="v\u00eda 1", fg2_l2="v\u00eda 2",
+  fg2_t1="tu tienda web actual - no se apaga nada",
+  fg2_t2="tienda web y apps nativas de RocketX - en marcha en semanas",
+  fg2_n="No existe un punto de migraci\u00f3n, as\u00ed que no hay nada que pueda fallar un lunes.",
+  fg3_n="Los conectores est\u00e1ndar est\u00e1n incluidos en todos los planes. El trabajo fuera del alcance est\u00e1ndar se cotiza como un bloque definido antes de empezar.",
+  fg4_a="pedido iniciado", fg4_b="pedido enviado", fg4_gap="~70 % nunca llega",
+  fg4_inv="y en la mayor\u00eda de plataformas nadie de tu lado ve nada de esto",
+  fg4_c1="el carrito muere con la sesi\u00f3n",
+  fg4_c2="una persona arma lo que deciden seis a diez",
+  fg4_c3="el duplicado que nadie vio acaba en devoluci\u00f3n"),
+"nl": dict(
+  fg1_bands=[15, 45, 105, 250], fg1_fees=[54000, 75600, 108000], fg1_cap=480000,
+  fg1_dec=",", fg1_sp="",
+  fg1_rx="RocketX, jaarplan",
+  fg1_sh="Percentage van de omzet, 0,25%",
+  fg1_x="jaaromzet via het platform (mln \u20ac)",
+  fg1_y="platformkosten als aandeel van die omzet",
+  fg1_n="Percentagelijn: Shopify Plus, variabele platformkosten van 0,25% van de online omzet boven ongeveer 1 mln per maand, met een plafond van 40.000 per maand - vandaar het vlakke deel en dan de knik. RocketX zakt bij elke schijf, dus de kosten dalen naarmate je groeit in plaats van mee te stijgen.",
+  fg2_ha="Een vervangingsproject", fg2_la="\u00e9\u00e9n spoor",
+  fg2_old="je huidige systeem, nog steeds het enige dat werkt",
+  fg2_new="het nieuwe, live", fg2_cut="omschakelweekend, week 12-24",
+  fg2_hb="RocketX, ernaast uitgerold", fg2_l1="spoor 1", fg2_l2="spoor 2",
+  fg2_t1="je bestaande webshop - er wordt niets uitgezet",
+  fg2_t2="RocketX-webshop en native apps - binnen weken live",
+  fg2_n="Er is geen omschakelmoment, dus er is niets dat op maandag kan misgaan.",
+  fg3_n="Standaardkoppelingen zitten in elk plan. Werk buiten de standaardscope wordt vooraf als een afgebakend blok geoffreerd.",
+  fg4_a="bestelling gestart", fg4_b="bestelling verstuurd", fg4_gap="~70% komt nooit aan",
+  fg4_inv="en op de meeste platforms ziet niemand aan jouw kant er iets van",
+  fg4_c1="de winkelwagen sterft met de sessie",
+  fg4_c2="\u00e9\u00e9n iemand bouwt wat zes tot tien beslissen",
+  fg4_c3="het gemiste duplicaat wordt een retour"),
+}
+for _l, _kv in FIGTXT.items():
+    C[_l].update(_kv)
+
 CSS = """
 @page{size:A4;margin:17mm 16mm 15mm}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -576,6 +681,7 @@ html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 body{font-family:"Inter",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--body);font-size:9.6pt;line-height:1.6}
 h1,h2,h3,.num,.stat b{font-family:"Space Grotesk","Inter",-apple-system,Helvetica,Arial,sans-serif}
 .page{page-break-after:always;position:relative;min-height:245mm}
+.fig{display:block;width:100%;height:auto;margin-top:12px;page-break-inside:avoid}
 .page:last-child{page-break-after:auto}
 /* cover */
 .cover{display:flex;flex-direction:column;justify-content:center;min-height:243mm}
@@ -689,7 +795,8 @@ def build(d):
 
     # p3 capabilities
     caps = "".join('<div class="cap"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["caps"])
-    P.append('<div class="page"><h2>%s</h2><div class="caps">%s</div></div>' % (esc(d["p3h"]), caps))
+    P.append('<div class="page"><h2>%s</h2><div class="caps">%s</div>%s</div>'
+             % (esc(d["p3h"]), caps, deck_figs.fig_integration(DG[d["lang"]], d)))
 
     # data, entities, compliance - split by jurisdiction
     def jcol(flag, head, rows, cls):
@@ -711,8 +818,8 @@ def build(d):
 
     # p8 the cart (placed before the commercial terms - it is the differentiator)
     cart = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["cart"])
-    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div></div>'
-             % (esc(d["p8h"]), esc(d["p8a"]), cart))
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>%s</div>'
+             % (esc(d["p8h"]), esc(d["p8a"]), cart, deck_figs.fig_funnel(d)))
 
     # p9 sizing worksheet
     lv = "".join('<div class="lever"><h3>%s</h3><p>%s</p></div>' % (esc(a), b) for a, b in d["levers"])
@@ -723,14 +830,14 @@ def build(d):
 
     # runs alongside - the objection this whole category triggers
     sb = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["sb"])
-    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>'
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>%s'
              '<div class="closing">%s</div></div>'
-             % (esc(d["sbh"]), esc(d["sba"]), sb, esc(d["sbn"])))
+             % (esc(d["sbh"]), esc(d["sba"]), sb, deck_figs.fig_parallel(d), esc(d["sbn"])))
 
     # p5 terms
     tr = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["terms"])
-    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div></div>'
-             % (esc(d["p5h"]), esc(d["p5a"]), tr))
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>%s</div>'
+             % (esc(d["p5h"]), esc(d["p5a"]), tr, deck_figs.fig_fee(d)))
 
     # p6 implementation
     st = "".join('<div class="step"><span class="num">%02d</span><div><h3>%s</h3><p>%s</p></div></div>'
