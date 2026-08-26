@@ -153,6 +153,33 @@ try:
 except Exception as e:
     check("fee curve cross-check ran", False, repr(e))
 
+# ---------------------------------------------------------------- llms.txt
+print("\nllms.txt")
+LLMS = {"en": "llms.txt", "de": "de/llms.txt", "es": "es/llms.txt", "nl": "nl/llms.txt"}
+PRICE_RX = re.compile(r"\$6,000|\$8,500|\$12,000|\$64,800|\$91,800|\$129,600"
+                      r"|5\.000\s*\u20ac|7\.000\s*\u20ac|10\.000\s*\u20ac"
+                      r"|54\.000\s*\u20ac|75\.600\s*\u20ac|108\.000\s*\u20ac")
+for lang, path in LLMS.items():
+    if not os.path.exists(path):
+        check("%s: llms.txt exists" % lang, False, path); continue
+    t = io.open(path, encoding="utf-8").read()
+    check("%s: llms.txt exists" % lang, True)
+    check("%s: llms.txt has H1 and summary" % lang,
+          t.startswith("# RocketX") and "\n> " in t)
+    # every local URL it advertises must actually be on disk
+    bad = []
+    for u in re.findall(r"\]\((https://www\.rocketx\.app[^)]*)\)", t):
+        rel = u.replace("https://www.rocketx.app", "").split("#")[0].lstrip("/")
+        cand = rel if rel else "index.html"
+        if cand.endswith("/"):
+            cand += "index.html"
+        if not os.path.exists(cand):
+            bad.append(u)
+    check("%s: llms.txt links resolve" % lang, not bad, str(bad))
+    check("%s: llms.txt carries no prices" % lang, not PRICE_RX.search(t))
+    check("%s: llms.txt in its own language" % lang,
+          ("What RocketX does" in t) if lang == "en" else ("What RocketX does" not in t))
+
 # ---------------------------------------------------------------- seo
 print("\nseo")
 import xml.etree.ElementTree as ET

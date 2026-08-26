@@ -1,0 +1,68 @@
+# RocketX
+
+> B2B-Bestellplattform für Großhandel, Distribution und Fertigung. Unbegrenzt viele SKUs mit Suche unter einer Sekunde, native iOS- und Android-Apps und ein gemeinsamer Live-Warenkorb, den Ihr Außendienst wirklich sieht.
+
+RocketX setzt sich vor Ihr ERP und CRM, statt sie zu ersetzen, und läuft neben einem bestehenden Webshop, statt ihn abzuschalten. Standard-Konnektoren für ERP und CRM sind in jedem Plan enthalten. Gebaut für Großhandel und Distribution mit 15–250 Mio. € Umsatz.
+
+## Seiten
+
+- [Englisch](https://www.rocketx.app/): Englisch. US-Marktdaten, Preise in USD.
+- [Deutsch](https://www.rocketx.app/de/): Deutsch. Deutsche Marktdaten, Preise in Euro.
+- [Spanisch](https://www.rocketx.app/es/): Spanisch. Preise in USD.
+- [Niederländisch](https://www.rocketx.app/nl/): Niederländisch. Niederländische Marktdaten, Preise in Euro.
+
+## Was RocketX leistet
+
+- Unbegrenzt viele SKUs, Suche unter einer Sekunde
+- Native iOS- und Android-Apps zum Bestellen
+- Live-Warenkörbe, die der Außendienst sieht
+- Mehrere Nutzer arbeiten gleichzeitig an einem Warenkorb
+- Dublettenerkennung über das gesamte Kundenkonto
+- Kundenspezifische Preise und Vertragskonditionen
+- Live-Bestände über alle Lager
+- Zwei-Wege-Integration mit ERP und CRM (NetSuite, SAP, Microsoft Dynamics, Epicor)
+- Unbegrenzte Plätze und Nutzer
+- Direkt aus vorhandenen PDFs und Katalogen bestellen
+
+## Wo RocketX nicht passt
+
+- Sie verkaufen ausschließlich an Endkunden. Der größte Teil des Produkts ist Großhandelsmechanik, die ein Endkundenkatalog nie berührt. Beides nebeneinander ist verbreitet und keine Einschränkung: Der Endkundenkanal läuft aus demselben Katalog und derselben ERP-Anbindung.
+- Ihr Katalog ist klein und Ihre Bestellungen sind einfach. Ein paar Dutzend SKUs und einzeilige Aufträge brauchen das nicht.
+- Sie haben kein ERP und planen keins. Ein großer Teil des Nutzens liegt in der Zwei-Wege-Synchronisation mit einem führenden System.
+
+## Kommerzielles Modell
+
+- Monatliche Pauschalgebühr. Nie ein Prozentsatz Ihres Bestellvolumens.
+- Keine Gebühren pro SKU, keine pro Nutzer. Plätze und Nutzer sind unbegrenzt.
+- Setup und Integration werden bei Jahresplänen erlassen.
+- Die Abrechnung beginnt mit dem Go-live, nicht mit der Unterschrift.
+- Ein Pilot über 30 bis 45 Tage mit vereinbarten Messgrößen, bevor Sie sich länger binden.
+- Die aktuellen Preise stehen im Preisbereich jeder Sprachseite und werden hier bewusst nicht wiederholt, damit diese Datei nicht veraltet: https://www.rocketx.app/de/#pricing
+
+## Vertragspartner und Compliance
+
+- Kunden in der Europäischen Union schließen mit einer eigenen irischen Gesellschaft ab, gegründet und tätig in der EU nach EU-Recht.
+- Kunden in den Vereinigten Staaten schließen mit RocketX LLC ab, der US-Gesellschaft. Dieselbe Plattform, dieselben Zusagen.
+- Zertifikate, Prüfberichte und Details zum Hosting stellen wir auf Anfrage bereit.
+
+## Einführung
+
+- Üblicher Ablauf: Systemanalyse, Integration, Katalogübernahme, Pilot, Go-live und Auswertung.
+- Ein RocketX-Livepilot läuft 4 bis 6 Wochen. Vergleichbare B2B-Projekte im Mittelstand werden üblicherweise mit 8 bis 24 Wochen bis zum Go-live angesetzt.
+
+## Business Case (PDF, ohne Formular, 14 Seiten)
+
+Business-Case-Präsentation, ohne Formular und ohne E-Mail-Adresse.
+
+- [English](https://www.rocketx.app/assets/rocketx-business-case-en.pdf)
+- [Deutsch](https://www.rocketx.app/assets/rocketx-business-case-de.pdf)
+- [Español](https://www.rocketx.app/assets/rocketx-business-case-es.pdf)
+- [Nederlands](https://www.rocketx.app/assets/rocketx-business-case-nl.pdf)
+
+## Anderswo
+
+- [LinkedIn](https://www.linkedin.com/company/rocketxapp)
+
+## Kontakt
+
+- app@rocketx.app

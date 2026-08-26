@@ -1,0 +1,68 @@
+# RocketX
+
+> B2B-bestelplatform voor groothandel, distributie en productie. Onbeperkt SKU’s met zoeken binnen een seconde, native iOS- en Android-apps en een gedeelde live winkelwagen die je buitendienst echt ziet.
+
+RocketX gaat vóór je ERP en CRM staan in plaats van ze te vervangen, en draait naast de webshop die je al hebt in plaats van die uit te zetten. Standaardkoppelingen voor ERP en CRM zitten in elk plan. Gebouwd voor groothandel en distributie met 15–250 miljoen euro omzet.
+
+## Pagina’s
+
+- [Engels](https://www.rocketx.app/): Engels. Amerikaanse marktcijfers, prijzen in USD.
+- [Duits](https://www.rocketx.app/de/): Duits. Duitse marktcijfers, prijzen in euro.
+- [Spaans](https://www.rocketx.app/es/): Spaans. Prijzen in USD.
+- [Nederlands](https://www.rocketx.app/nl/): Nederlands. Nederlandse marktcijfers, prijzen in euro.
+
+## Wat RocketX doet
+
+- Onbeperkt SKU’s, zoeken binnen een seconde
+- Native iOS- en Android-apps om te bestellen
+- Live winkelwagens die je buitendienst echt ziet
+- Meerdere mensen tegelijk in dezelfde winkelwagen
+- Dubbele orders herkennen over het hele account
+- Klantspecifieke prijzen en contractvoorwaarden
+- Live voorraad over alle magazijnen
+- Tweerichtingskoppeling met ERP en CRM (NetSuite, SAP, Microsoft Dynamics, Epicor)
+- Onbeperkt plaatsen en gebruikers
+- Rechtstreeks bestellen vanuit bestaande pdf’s en catalogi
+
+## Waar RocketX niet past
+
+- Je verkoopt alleen aan consumenten. Het grootste deel van het product is groothandelsmechaniek waar een consumentencatalogus nooit aan komt. Allebei tegelijk is heel gewoon en geen beperking: het consumentenkanaal draait op dezelfde catalogus en dezelfde ERP-koppeling.
+- Je catalogus is klein en je orders zijn eenvoudig. Een paar dozijn SKU’s en orders van één regel hebben dit niet nodig.
+- Je hebt geen ERP en bent er ook niet mee bezig. Een groot deel van de waarde zit in tweerichtingssynchronisatie met een bronsysteem.
+
+## Commercieel model
+
+- Vast maandtarief voor het platform. Nooit een percentage van je omzet.
+- Geen kosten per SKU en geen kosten per gebruiker. Plaatsen en gebruikers zijn onbeperkt.
+- Inrichting en integratie kwijtgescholden bij jaarplannen.
+- De facturatie start bij livegang, niet bij ondertekening.
+- Een pilot van 30 tot 45 dagen met afgesproken maatstaven, voordat je je langer vastlegt.
+- De actuele prijzen staan in het prijsgedeelte van elke taalpagina en worden hier bewust niet herhaald, zodat dit bestand niet veroudert: https://www.rocketx.app/nl/#pricing
+
+## Contractpartij en compliance
+
+- Klanten in de Europese Unie contracteren met een aparte Ierse vennootschap, opgericht en actief in de EU onder EU-recht.
+- Klanten in de Verenigde Staten contracteren met RocketX LLC, de Amerikaanse entiteit. Hetzelfde platform, dezelfde toezeggingen.
+- Certificeringen, auditrapporten en details over hosting leveren we op aanvraag.
+
+## Invoering
+
+- Gebruikelijke volgorde: doorlichting van de systemen, integratie, inladen van de catalogus, pilot, livegang en evaluatie.
+- Een live pilot van RocketX duurt 4 tot 6 weken. Vergelijkbare B2B-trajecten in het middensegment worden meestal op 8 tot 24 weken tot livegang gezet.
+
+## Business case (pdf, zonder formulier, 14 pagina’s)
+
+Business case, zonder formulier en zonder mailadres.
+
+- [English](https://www.rocketx.app/assets/rocketx-business-case-en.pdf)
+- [Deutsch](https://www.rocketx.app/assets/rocketx-business-case-de.pdf)
+- [Español](https://www.rocketx.app/assets/rocketx-business-case-es.pdf)
+- [Nederlands](https://www.rocketx.app/assets/rocketx-business-case-nl.pdf)
+
+## Elders
+
+- [LinkedIn](https://www.linkedin.com/company/rocketxapp)
+
+## Contact
+
+- app@rocketx.app

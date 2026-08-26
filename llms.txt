@@ -1,0 +1,68 @@
+# RocketX
+
+> B2B wholesale ordering platform for wholesalers, distributors and manufacturers. Unlimited SKUs with sub-second search, native iOS and Android apps, and a shared live cart your sales reps can actually see and act on.
+
+RocketX sits in front of your ERP and CRM rather than replacing them, and is deployed alongside an existing web shop rather than switching it off. Standard ERP and CRM connectors are included in every plan. Built for wholesale and distribution companies with roughly $15–300M in revenue.
+
+## Pages
+
+- [English](https://www.rocketx.app/): English. US market data, prices in USD.
+- [Deutsch](https://www.rocketx.app/de/): German. German market data, prices in EUR.
+- [Español](https://www.rocketx.app/es/): Spanish. Prices in USD.
+- [Nederlands](https://www.rocketx.app/nl/): Dutch. Dutch market data, prices in EUR.
+
+## What RocketX does
+
+- Unlimited SKUs with sub-second search
+- Native iOS and Android ordering apps
+- Live shared carts visible to sales reps
+- Real-time multi-user cart collaboration
+- Duplicate-order detection across the account
+- Customer-specific pricing and contract terms
+- Real-time inventory across warehouses
+- Two-way ERP and CRM integration (NetSuite, SAP, Microsoft Dynamics, Epicor)
+- Unlimited seats and users
+- Order directly from existing PDFs and catalogues
+
+## Where RocketX is not the right fit
+
+- You sell only to consumers. Most of the product is wholesale machinery a consumer catalogue never touches. Selling both wholesale and direct is common and is not a limit — the consumer channel runs from the same catalogue and the same ERP feed.
+- Your catalogue is small and your orders are simple. A few dozen SKUs and single-line orders do not need this.
+- You have no ERP and no plans for one. Much of the value here is two-way sync with a system of record.
+
+## Commercial model
+
+- Flat monthly platform fee. Never a percentage of order volume.
+- No per-SKU fees and no per-user fees. Seats and users are unlimited.
+- Setup and integration waived on annual plans.
+- Billing starts at go-live, not at signature.
+- A 30 to 45 day pilot with agreed measures before any longer commitment.
+- Current prices are published in the pricing section of each language page and are deliberately not repeated here, so this file cannot go stale: https://www.rocketx.app/#pricing
+
+## Contracting and compliance
+
+- Customers in the European Union contract with a separate Irish entity, incorporated and operating in the EU under EU law.
+- Customers in the United States contract with RocketX LLC, the United States entity. Same platform, same commitments.
+- Certifications, audit reports and hosting detail are provided on request.
+
+## Implementation
+
+- Typical sequence: stack audit, integration, catalogue ingestion, pilot, go-live and review.
+- A RocketX live pilot runs 4 to 6 weeks. Comparable mid-market B2B platform builds are commonly quoted at 8 to 24 weeks to go-live.
+
+## Business case (PDF, ungated, 14 pages)
+
+Business case deck, no form and no email required.
+
+- [English](https://www.rocketx.app/assets/rocketx-business-case-en.pdf)
+- [Deutsch](https://www.rocketx.app/assets/rocketx-business-case-de.pdf)
+- [Español](https://www.rocketx.app/assets/rocketx-business-case-es.pdf)
+- [Nederlands](https://www.rocketx.app/assets/rocketx-business-case-nl.pdf)
+
+## Elsewhere
+
+- [LinkedIn](https://www.linkedin.com/company/rocketxapp)
+
+## Contact
+
+- app@rocketx.app

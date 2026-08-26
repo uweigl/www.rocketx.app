@@ -56,4 +56,7 @@ Allow: /
 Disallow: /scripts/
 Disallow: /deck/
 
+# AI-readable summary, one per language
+# https://www.rocketx.app/llms.txt
+
 Sitemap: https://www.rocketx.app/sitemap.xml

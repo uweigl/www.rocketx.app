@@ -1,0 +1,68 @@
+# RocketX
+
+> Plataforma de pedidos B2B para mayoristas, distribuidores y fabricantes. SKUs ilimitados con búsqueda en menos de un segundo, apps nativas de iOS y Android y un carrito compartido en vivo que tus vendedores sí pueden ver.
+
+RocketX se sitúa delante de tu ERP y tu CRM en lugar de reemplazarlos, y convive con la tienda web que ya tienes en lugar de apagarla. Los conectores estándar de ERP y CRM están incluidos en todos los planes. Pensado para mayoristas y distribuidores de $15–300M de facturación.
+
+## Páginas
+
+- [Inglés](https://www.rocketx.app/): Inglés. Datos del mercado estadounidense, precios en USD.
+- [Alemán](https://www.rocketx.app/de/): Alemán. Datos del mercado alemán, precios en euros.
+- [Español](https://www.rocketx.app/es/): Español. Precios en USD.
+- [Neerlandés](https://www.rocketx.app/nl/): Neerlandés. Datos del mercado neerlandés, precios en euros.
+
+## Qué hace RocketX
+
+- SKUs ilimitados con búsqueda en menos de un segundo
+- Apps nativas de iOS y Android para pedir
+- Carritos en vivo que los vendedores sí ven
+- Varias personas trabajando el mismo carrito a la vez
+- Detección de pedidos duplicados en toda la cuenta
+- Precios y condiciones específicos por cliente
+- Stock en tiempo real en todos los almacenes
+- Integración bidireccional con ERP y CRM (NetSuite, SAP, Microsoft Dynamics, Epicor)
+- Usuarios y plazas ilimitados
+- Pedir directamente desde PDFs y catálogos existentes
+
+## Dónde RocketX no encaja
+
+- Vendes solo al consumidor final. Buena parte del producto es maquinaria mayorista que un catálogo de consumo nunca toca. Vender al por mayor y directo a la vez es habitual y no supone una limitación: el canal de consumo se alimenta del mismo catálogo y de la misma conexión con el ERP.
+- Tu catálogo es pequeño y tus pedidos son simples. Unas pocas decenas de SKUs y pedidos de una línea no necesitan esto.
+- No tienes ERP ni planes de tenerlo. Buena parte del valor está en la sincronización bidireccional con un sistema de registro.
+
+## Modelo comercial
+
+- Tarifa mensual fija de plataforma. Nunca un porcentaje de tu volumen de pedidos.
+- Sin tarifas por SKU ni por usuario. Las plazas y los usuarios son ilimitados.
+- Implantación e integración incluidas en los planes anuales.
+- La facturación empieza en la puesta en marcha, no en la firma.
+- Un piloto de 30 a 45 días con métricas acordadas antes de cualquier compromiso más largo.
+- Los precios vigentes están en la sección de precios de cada página y no se repiten aquí a propósito, para que este archivo no quede desfasado: https://www.rocketx.app/es/#pricing
+
+## Contratación y cumplimiento
+
+- Los clientes de la Unión Europea contratan con una sociedad irlandesa independiente, constituida y operativa en la UE bajo derecho europeo.
+- Los clientes de Estados Unidos contratan con RocketX LLC, la entidad estadounidense. La misma plataforma y los mismos compromisos.
+- Las certificaciones, los informes de auditoría y el detalle de alojamiento se facilitan a petición.
+
+## Implantación
+
+- Secuencia habitual: auditoría de los sistemas, integración, carga del catálogo, piloto, puesta en marcha y revisión.
+- Un piloto en vivo de RocketX dura de 4 a 6 semanas. Los proyectos B2B comparables de mercado medio suelen plantearse en 8 a 24 semanas hasta la puesta en marcha.
+
+## Caso de negocio (PDF, sin formulario, 14 páginas)
+
+Presentación del caso de negocio, sin formulario y sin dejar el correo.
+
+- [English](https://www.rocketx.app/assets/rocketx-business-case-en.pdf)
+- [Deutsch](https://www.rocketx.app/assets/rocketx-business-case-de.pdf)
+- [Español](https://www.rocketx.app/assets/rocketx-business-case-es.pdf)
+- [Nederlands](https://www.rocketx.app/assets/rocketx-business-case-nl.pdf)
+
+## En otros sitios
+
+- [LinkedIn](https://www.linkedin.com/company/rocketxapp)
+
+## Contacto
+
+- app@rocketx.app
