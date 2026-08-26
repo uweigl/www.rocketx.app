@@ -11,7 +11,7 @@ The page-count check exists because the site advertised "8 pages" for
 months after the deck grew to 14 - a claim about an artifact drifts
 silently unless something compares the two.
 """
-import io, json, os, re, json, sys, html
+import io, json, sys, os, re, json, sys, html
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 
@@ -152,6 +152,37 @@ try:
         check("%s: fee curve bands match site pricing" % lang, gb == bands, "%s vs %s" % (gb, bands))
 except Exception as e:
     check("fee curve cross-check ran", False, repr(e))
+
+# ---------------------------------------------------------------- FAQPage
+print("\nfaq")
+sys.path.insert(0, os.path.join(os.getcwd(), "scripts"))
+try:
+    import faq as _faq
+    _P = {"en": "index.html", "de": "de/index.html", "es": "es/index.html", "nl": "nl/index.html"}
+    for lang, path in _P.items():
+        if not os.path.exists(path):
+            continue
+        h = io.open(path, encoding="utf-8").read()
+        g = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', h, re.S).group(1))
+        node = [e for e in g["@graph"] if e.get("@type") == "FAQPage"]
+        check("%s: FAQPage present" % lang, bool(node))
+        if not node:
+            continue
+        qs = node[0]["mainEntity"]
+        # the questions are the deck's, so a change there must reach the markup
+        deck_q = _faq.questions(lang)
+        check("%s: FAQ matches the deck questions" % lang,
+              [q["name"] for q in qs] == deck_q,
+              "%d vs %d" % (len(qs), len(deck_q)))
+        thin = [q["name"][:30] for q in qs
+                if len((q.get("acceptedAnswer") or {}).get("text", "")) < 40]
+        check("%s: every FAQ answer is substantive" % lang, not thin, str(thin))
+        check("%s: FAQ inLanguage correct" % lang, node[0].get("inLanguage") == lang)
+        if lang != "en":
+            check("%s: FAQ is not English" % lang,
+                  "Does the platform fee" not in json.dumps(node[0], ensure_ascii=False))
+except Exception as e:
+    check("faq cross-check ran", False, repr(e))
 
 # ---------------------------------------------------------------- llms.txt
 print("\nllms.txt")

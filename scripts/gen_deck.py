@@ -885,8 +885,9 @@ def build(d):
 %s
 </body></html>""" % (d["lang"], esc(d["doctitle"]), CSS, pages))
 
-os.makedirs(OUT, exist_ok=True)
-for lg, d in C.items():
-    p = os.path.join(OUT, d["file"] + ".html")
-    io.open(p, "w", encoding="utf-8").write(build(d))
-    print("wrote", p)
+if __name__ == "__main__":
+    os.makedirs(OUT, exist_ok=True)
+    for lg, d in C.items():
+        p = os.path.join(OUT, d["file"] + ".html")
+        io.open(p, "w", encoding="utf-8").write(build(d))
+        print("wrote", p)

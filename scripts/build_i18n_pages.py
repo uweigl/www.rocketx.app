@@ -12,6 +12,8 @@ Run from the repo root after editing index.html:
     python3 scripts/build_i18n_pages.py
 """
 import io, os, re, subprocess, sys, json
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import faq
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
@@ -135,6 +137,8 @@ def fix(html, lang):
                 e["@id"] = "%s/%s/#webpage" % (SITE, lang)
                 e["url"] = "%s/%s/" % (SITE, lang)
                 e["name"] = TITLE[lang]
+        g["@graph"] = [e for e in g["@graph"] if e.get("@type") != "FAQPage"]
+        g["@graph"].append(faq.faqpage(lang))
         html = html[:m.start()] + '<script type="application/ld+json">' + \
                json.dumps(g, ensure_ascii=False, separators=(",", ":")) + "</script>" + html[m.end():]
     # 4. default to this page's language instead of the visitor's locale
