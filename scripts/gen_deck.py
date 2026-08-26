@@ -43,6 +43,7 @@ C["en"] = dict(
           ("Customer-specific pricing", "Each buyer sees their negotiated prices, volume breaks, and contract terms automatically."),
           ("Live inventory across warehouses", "Real-time stock and availability, so buyers stop ordering what cannot ship."),
           ("Order directly from PDFs", "AI reads existing brochures and catalogs so buyers order straight from them — no re-keying."),
+          ("Wholesale first, and your consumer channel with it", "The product is built around wholesale ordering. If you also sell direct to consumers, that channel runs from the same catalogue and the same ERP feed rather than a second platform and a second set of product data."),
           ("Deep ERP and CRM integration", "RocketX sits in front of your ERP rather than replacing it. Products, customer-specific pricing and live stock flow out of NetSuite, SAP, Microsoft Dynamics or Epicor; carts, orders and approvals flow back. Standard connectors are included in every plan.")],
     p4h="Why the native app matters commercially",
     p4a="A responsive website and a native app are not the same product. For repeat wholesale ordering the difference shows up directly in order frequency.",
@@ -109,9 +110,10 @@ C["en"] = dict(
     at=['Data processing agreement, with roles written down', 'Current subprocessor list, with change notice', 'Certifications, audit reports and hosting region', 'Uptime and support commitments, by tier', 'Retention, deletion and backup policy', 'Export in open formats, at any time and on exit'],
     nfh="Where we are not the right fit",
     nfa="Every vendor says they are right for you. Here is the short list of times we are not, so that it surfaces now rather than in month two of an implementation.",
-    nf=[('You sell mainly to consumers', 'It assumes negotiated prices, contract terms, and buyers who come back.'),
+    nf=[('You sell only to consumers', 'Most of the product is wholesale machinery a consumer catalogue never touches.'),
         ('Your catalogue is small and your orders are simple', 'A few dozen SKUs and single-line orders do not need this.'),
         ('You have no ERP and no plans for one', 'Much of the value here is two-way sync with a system of record.')],
+    nfn='Selling both wholesale and direct is common, and it is not a limit here — the consumer channel runs from the same catalogue and the same ERP feed as the wholesale one.',
     # --- cost of delay, on the worksheet page
     cdh="What the wait costs",
     cd="Whatever the four levers add up to, they are annual. A quarter of deliberation costs a quarter of that number, and the leak does not pause while you evaluate. That is the honest argument for starting a pilot now rather than a procurement cycle in six months.",
@@ -181,6 +183,7 @@ C["de"] = dict(
           ("Kundenspezifische Preise", "Jeder Einkäufer sieht automatisch seine verhandelten Preise, Mengenstaffeln und Vertragskonditionen."),
           ("Live-Bestände über alle Lager", "Bestände und Verfügbarkeit in Echtzeit — Schluss mit Bestellungen auf nicht lieferbare Ware."),
           ("Direkt aus PDFs bestellen", "Unsere KI liest bestehende Broschüren und Kataloge, sodass Einkäufer direkt daraus bestellen — ohne erneute Dateneingabe."),
+          ("Großhandel zuerst — und Ihr Endkundenkanal gleich mit", "Das Produkt ist um Großhandelsbestellungen herum gebaut. Verkaufen Sie zusätzlich direkt an Endkunden, läuft dieser Kanal aus demselben Katalog und derselben ERP-Anbindung — statt aus einer zweiten Plattform mit einem zweiten Satz Produktdaten."),
           ("Tiefe ERP- und CRM-Integration", "RocketX setzt sich vor Ihr ERP, statt es zu ersetzen. Produkte, kundenspezifische Preise und Live-Bestände fließen aus NetSuite, SAP, Microsoft Dynamics oder Epicor heraus; Warenkörbe, Bestellungen und Freigaben fließen zurück. Standard-Konnektoren sind in jedem Plan enthalten.")],
     p4h="Warum die native App wirtschaftlich zählt",
     p4a="Eine responsive Website und eine native App sind nicht dasselbe Produkt. Bei wiederkehrenden Großhandelsbestellungen zeigt sich der Unterschied direkt in der Bestellfrequenz.",
@@ -244,9 +247,10 @@ C["de"] = dict(
     at=['Auftragsverarbeitungsvertrag mit schriftlich fixierten Rollen', 'Aktuelle Liste der Unterauftragsverarbeiter, mit Änderungsmitteilung', 'Zertifizierungen, Prüfberichte und Hosting-Region', 'Zusagen zu Verfügbarkeit und Support, nach Stufe', 'Aufbewahrungs-, Lösch- und Backup-Richtlinie', 'Export in offenen Formaten, jederzeit und beim Ausstieg'],
     nfh="Wofür wir nicht der Richtige sind",
     nfa="Jeder Anbieter sagt, er passe zu Ihnen. Hier die kurze Liste der Fälle, in denen wir es nicht tun — damit das jetzt herauskommt und nicht im zweiten Monat der Einführung.",
-    nf=[('Sie verkaufen überwiegend an Endkunden', 'Es setzt verhandelte Preise, Vertragskonditionen und wiederkehrende Einkäufer voraus.'),
+    nf=[('Sie verkaufen ausschließlich an Endkunden', 'Der größte Teil des Produkts ist Großhandels-Maschinerie, die ein Endkunden-Katalog nie berührt.'),
         ('Ihr Katalog ist klein und Ihre Bestellungen sind einfach', 'Ein paar Dutzend SKUs und einzeilige Bestellungen brauchen das hier nicht.'),
         ('Sie haben kein ERP und planen keines', 'Ein großer Teil des Werts liegt in der bidirektionalen Synchronisation mit einem führenden System.')],
+    nfn='Sowohl im Großhandel als auch direkt an Endkunden zu verkaufen ist verbreitet und hier keine Einschränkung — der Endkundenkanal läuft aus demselben Katalog und derselben ERP-Anbindung wie das Großhandelsgeschäft.',
     cdh="Was das Warten kostet",
     cd="Was die vier Hebel auch ergeben — es sind Jahreswerte. Ein Quartal Bedenkzeit kostet ein Viertel davon, und das Leck pausiert nicht, während Sie prüfen. Das ist das ehrliche Argument dafür, jetzt einen Piloten zu starten statt in sechs Monaten einen Beschaffungsprozess.",
     tlh="Wie lange, bis es tatsächlich jemand benutzt",
@@ -314,6 +318,7 @@ C["es"] = dict(
           ("Precios por cliente", "Cada comprador ve automáticamente sus precios negociados, escalas por volumen y condiciones de contrato."),
           ("Inventario en vivo entre almacenes", "Stock y disponibilidad en tiempo real, para dejar de pedir lo que no puede enviarse."),
           ("Pedidos directos desde PDFs", "Nuestra IA lee folletos y catálogos existentes para que los compradores pidan directamente desde ellos, sin volver a teclear."),
+          ("Primero el mayoreo, y tu canal de consumo con él", "El producto está construido en torno a los pedidos mayoristas. Si además vendes directo al consumidor, ese canal funciona desde el mismo catálogo y la misma conexión con el ERP, en vez de una segunda plataforma y un segundo juego de datos de producto."),
           ("Integración profunda con ERP y CRM", "RocketX se sitúa delante de tu ERP en lugar de reemplazarlo. Productos, precios por cliente y stock en vivo salen de NetSuite, SAP, Microsoft Dynamics o Epicor; carritos, pedidos y aprobaciones vuelven. Los conectores estándar están incluidos en todos los planes.")],
     p4h="Por qué la app nativa importa comercialmente",
     p4a="Un sitio web responsivo y una app nativa no son el mismo producto. En pedidos mayoristas recurrentes la diferencia se ve directamente en la frecuencia de pedido.",
@@ -377,9 +382,10 @@ C["es"] = dict(
     at=['Acuerdo de tratamiento de datos, con los roles por escrito', 'Lista vigente de subencargados, con aviso de cambios', 'Certificaciones, informes de auditoría y región de alojamiento', 'Compromisos de disponibilidad y soporte, por nivel', 'Política de retención, borrado y copias de seguridad', 'Exportación en formatos abiertos, en cualquier momento y al salir'],
     nfh="Dónde no somos la opción correcta",
     nfa="Todos los proveedores dicen que encajan contigo. Esta es la lista corta de casos en que no lo hacemos, para que salga ahora y no en el segundo mes de una implementación.",
-    nf=[('Vendes sobre todo a consumidores', 'Da por hecho precios negociados, condiciones de contrato y compradores que vuelven.'),
+    nf=[('Vendes únicamente a consumidores', 'La mayor parte del producto es maquinaria mayorista que un catálogo de consumo nunca toca.'),
         ('Tu catálogo es pequeño y tus pedidos simples', 'Unas docenas de SKUs y pedidos de una línea no necesitan esto.'),
         ('No tienes ERP ni planeas tenerlo', 'Buena parte del valor está en la sincronización bidireccional con un sistema de registro.')],
+    nfn='Vender al por mayor y directo al consumidor a la vez es habitual y aquí no es una limitación: el canal de consumo funciona desde el mismo catálogo y la misma conexión con el ERP que el mayorista.',
     cdh="Lo que cuesta esperar",
     cd="Sumen lo que sumen las cuatro palancas, son cifras anuales. Un trimestre de deliberación cuesta un trimestre de ese número, y la fuga no se detiene mientras evalúas. Ese es el argumento honesto para empezar un piloto ahora en vez de un ciclo de compras dentro de seis meses.",
     tlh="Cuánto tarda hasta que alguien lo usa de verdad",
@@ -596,8 +602,9 @@ def build(d):
 
     # where we are not the right fit
     nf = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["nf"])
-    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div></div>'
-             % (esc(d["nfh"]), esc(d["nfa"]), nf))
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>'
+             '<div class="closing">%s</div></div>'
+             % (esc(d["nfh"]), esc(d["nfa"]), nf, esc(d["nfn"])))
 
     # p7 questions + CTA + sources
     qs = "".join('<div class="q">%s</div>' % esc(q) for q in d["quest"])
