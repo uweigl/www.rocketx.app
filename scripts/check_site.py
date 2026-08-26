@@ -120,6 +120,67 @@ for l in ("en", "de", "es"):
     check("%s: page numbers present" % l, 'class="foot"' in h)
     check("%s: baymard citation resolves" % l, ("Baymard" not in t) or bool(re.search(r'70\s*%', t)))
 
+# ---------------------------------------------------------------- seo
+print("\nseo")
+import xml.etree.ElementTree as ET
+PAGES = {"en": "index.html", "de": "de/index.html", "es": "es/index.html"}
+CANON = {"en": "https://www.rocketx.app/", "de": "https://www.rocketx.app/de/",
+         "es": "https://www.rocketx.app/es/"}
+for lang, path in PAGES.items():
+    if not os.path.exists(path):
+        check("%s page exists" % lang, False, path); continue
+    h = io.open(path, encoding="utf-8").read()
+    d = re.search(r'<meta name="description" content="([^"]*)"', h)
+    check("%s: meta description" % lang, bool(d) and len(d.group(1)) > 80)
+    c = re.search(r'<link rel="canonical" href="([^"]*)"', h)
+    check("%s: canonical correct" % lang, bool(c) and c.group(1) == CANON[lang],
+          c.group(1) if c else "missing")
+    hl = set(re.findall(r'hreflang="([^"]+)"', h))
+    check("%s: hreflang covers all languages" % lang, hl >= {"en", "de", "es", "x-default"}, str(sorted(hl)))
+    check("%s: html lang attribute" % lang, ('<html lang="%s"' % lang) in h)
+    check("%s: og:image + twitter card" % lang,
+          'property="og:image"' in h and 'name="twitter:card"' in h)
+    m = re.search(r'<script type="application/ld\+json">(.*?)</script>', h, re.S)
+    ok = False
+    if m:
+        try:
+            g = json.loads(m.group(1)); ok = "@graph" in g and len(g["@graph"]) >= 3
+        except Exception: ok = False
+    check("%s: JSON-LD parses" % lang, ok)
+
+check("og:image file exists", os.path.exists("assets/og-image.png"))
+check("robots.txt exists", os.path.exists("robots.txt"))
+if os.path.exists("robots.txt"):
+    rb = io.open("robots.txt", encoding="utf-8").read()
+    check("robots.txt references the sitemap", "Sitemap:" in rb)
+    check("robots.txt names AI crawlers",
+          all(a in rb for a in ("GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended")))
+check("sitemap.xml exists", os.path.exists("sitemap.xml"))
+if os.path.exists("sitemap.xml"):
+    try:
+        root = ET.parse("sitemap.xml").getroot(); sm_ok = True
+    except Exception: sm_ok = False
+    check("sitemap.xml parses", sm_ok)
+    if sm_ok:
+        ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+        locs = [u.find(ns + "loc").text for u in root.findall(ns + "url")]
+        local = [l.replace("https://www.rocketx.app/", "") or "index.html" for l in locs]
+        local = [x if x.endswith((".pdf", ".html")) else x + "index.html" for x in local]
+        gone = [x for x in local if not os.path.exists(x)]
+        check("every sitemap url resolves to a file", not gone, str(gone))
+
+# the pre-rendered pages are generated from index.html and go stale silently
+def i18n_of(path):
+    t = io.open(path, encoding="utf-8").read()
+    m = re.search(r'const I18N=(\{.*?\});\n', t, re.S)
+    return m.group(1) if m else None
+base = i18n_of("index.html")
+for lang in ("de", "es"):
+    p = "%s/index.html" % lang
+    if os.path.exists(p):
+        check("%s page in sync with index.html" % lang, i18n_of(p) == base,
+              "run scripts/build_i18n_pages.py")
+
 print()
 if FAIL:
     print("%d CHECK(S) FAILED: %s" % (len(FAIL), ", ".join(FAIL)))

@@ -1,0 +1,59 @@
+# RocketX — https://www.rocketx.app
+# Search engines and AI assistants are both welcome to read and cite this site.
+
+User-agent: *
+Allow: /
+
+# Explicitly permitted AI / LLM crawlers. Named individually because several
+# of these ignore a bare wildcard, and we would rather be quoted accurately
+# than summarised from someone else's description of us.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Working files that are not content
+Disallow: /scripts/
+Disallow: /deck/
+
+Sitemap: https://www.rocketx.app/sitemap.xml
