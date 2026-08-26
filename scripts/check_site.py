@@ -39,7 +39,7 @@ def hook(pairs):
 D = json.loads(lit, object_pairs_hook=hook)
 json.loads(re.search(r'const MAILTO=(\{.*?\});\n', S, re.S).group(1))
 USED = set()
-for attr in ("data-i18n", "data-i18n-aria", "data-i18n-title", "data-i18n-text"):
+for attr in ("data-i18n", "data-i18n-aria", "data-i18n-title", "data-i18n-text", "data-i18n-alt"):
     USED |= set(re.findall(r'%s="([^"]+)"' % attr, S))
 check("no duplicate keys", not dups, str(sorted(set(dups))))
 for l in LANGS:

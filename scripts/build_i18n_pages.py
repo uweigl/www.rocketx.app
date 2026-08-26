@@ -31,6 +31,56 @@ DESC = {
 }
 LOC = {"de": "de_DE", "es": "es_ES", "nl": "nl_NL"}
 
+# Structured data a crawler or an assistant actually quotes back. featureList
+# and the offer were English on every localised page, and the offer claimed USD
+# on the German and Dutch pages, which price in euro.
+CURRENCY = {"de": "EUR", "es": "USD", "nl": "EUR"}
+
+OFFER_DESC = {
+ "de": "Monatliche Pauschalgebühr für die Plattform. Nie ein Prozentsatz Ihres Bestellvolumens, keine Gebühren pro SKU oder pro Nutzer. Setup bei Jahresplänen erlassen; die Abrechnung beginnt mit dem Go-live.",
+ "es": "Tarifa mensual fija de plataforma. Nunca un porcentaje de tus ventas, sin tarifas por SKU ni por usuario. Implantación incluida en planes anuales; la facturación empieza en la puesta en marcha.",
+ "nl": "Vast maandtarief voor het platform. Nooit een percentage van je omzet, geen kosten per SKU of per gebruiker. Inrichtingskosten kwijtgescholden bij jaarplannen; de facturatie start bij livegang.",
+}
+
+FEATURES = {
+ "de": ["Unbegrenzt viele SKUs, Suche unter einer Sekunde",
+        "Native iOS- und Android-Apps zum Bestellen",
+        "Live-Warenkörbe, die der Außendienst sieht",
+        "Mehrere Nutzer arbeiten gleichzeitig an einem Warenkorb",
+        "Dublettenerkennung über das gesamte Kundenkonto",
+        "Kundenspezifische Preise und Vertragskonditionen",
+        "Live-Bestände über alle Lager",
+        "Zwei-Wege-Integration mit ERP und CRM (NetSuite, SAP, Microsoft Dynamics, Epicor)",
+        "Unbegrenzte Plätze und Nutzer",
+        "Direkt aus vorhandenen PDFs und Katalogen bestellen"],
+ "es": ["SKUs ilimitados con búsqueda en menos de un segundo",
+        "Apps nativas de iOS y Android para pedir",
+        "Carritos en vivo que los vendedores sí ven",
+        "Varias personas trabajando el mismo carrito a la vez",
+        "Detección de pedidos duplicados en toda la cuenta",
+        "Precios y condiciones específicos por cliente",
+        "Stock en tiempo real en todos los almacenes",
+        "Integración bidireccional con ERP y CRM (NetSuite, SAP, Microsoft Dynamics, Epicor)",
+        "Usuarios y plazas ilimitados",
+        "Pedir directamente desde PDFs y catálogos existentes"],
+ "nl": ["Onbeperkt SKU\u2019s, zoeken binnen een seconde",
+        "Native iOS- en Android-apps om te bestellen",
+        "Live winkelwagens die je buitendienst echt ziet",
+        "Meerdere mensen tegelijk in dezelfde winkelwagen",
+        "Dubbele orders herkennen over het hele account",
+        "Klantspecifieke prijzen en contractvoorwaarden",
+        "Live voorraad over alle magazijnen",
+        "Tweerichtingskoppeling met ERP en CRM (NetSuite, SAP, Microsoft Dynamics, Epicor)",
+        "Onbeperkt plaatsen en gebruikers",
+        "Rechtstreeks bestellen vanuit bestaande pdf\u2019s en catalogi"],
+}
+
+IMG_ALT = {
+ "de": "RocketX \u2014 Bestellen ohne Reibung. B2B-Gro\u00dfhandelsbestellungen mit unbegrenzt vielen SKUs, nativen Apps und gemeinsamen Live-Warenk\u00f6rben.",
+ "es": "RocketX \u2014 pedidos sin fricci\u00f3n. Pedidos mayoristas B2B con SKUs ilimitados, apps nativas y carritos compartidos en vivo.",
+ "nl": "RocketX \u2014 bestellen zonder wrijving. B2B-groothandelsbestellingen met onbeperkt SKU\u2019s, native apps en gedeelde live winkelwagens.",
+}
+
 def render(lang):
     """Load index.html, switch language in the browser, dump the resulting DOM."""
     src = io.open("index.html", encoding="utf-8").read()
@@ -63,6 +113,8 @@ def fix(html, lang):
                       ("og:title", TITLE[lang]), ("og:description", DESC[lang])):
         html = re.sub(r'<meta property="%s" content="[^"]*"' % re.escape(prop),
                       '<meta property="%s" content="%s"' % (prop, val), html, count=1)
+    html = re.sub(r'<meta property="og:image:alt" content="[^"]*"',
+                  '<meta property="og:image:alt" content="%s"' % IMG_ALT[lang], html, count=1)
     for name, val in (("twitter:title", TITLE[lang]), ("twitter:description", DESC[lang])):
         html = re.sub(r'<meta name="%s" content="[^"]*"' % re.escape(name),
                       '<meta name="%s" content="%s"' % (name, val), html, count=1)
@@ -73,6 +125,12 @@ def fix(html, lang):
         for e in g["@graph"]:
             if "description" in e: e["description"] = DESC[lang]
             if e.get("@type") in ("WebSite", "WebPage"): e["inLanguage"] = lang
+            if e.get("@type") == "SoftwareApplication":
+                e["featureList"] = FEATURES[lang]
+                if isinstance(e.get("offers"), dict):
+                    e["offers"]["priceCurrency"] = CURRENCY[lang]
+                    e["offers"]["description"] = OFFER_DESC[lang]
+                    e["offers"]["url"] = "%s/%s/#pricing" % (SITE, lang)
             if e.get("@type") == "WebPage":
                 e["@id"] = "%s/%s/#webpage" % (SITE, lang)
                 e["url"] = "%s/%s/" % (SITE, lang)
