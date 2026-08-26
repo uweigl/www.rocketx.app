@@ -181,6 +181,17 @@ for lang in ("de", "es"):
         check("%s page in sync with index.html" % lang, i18n_of(p) == base,
               "run scripts/build_i18n_pages.py")
 
+# Canonical host. Confirmed as www.rocketx.app; a stray apex or http URL in a
+# canonical, og:url or JSON-LD id silently splits ranking signals.
+CANON_HOST = "https://www.rocketx.app"
+bad_host = []
+for f in ["index.html", "de/index.html", "es/index.html", "robots.txt", "sitemap.xml"]:
+    if not os.path.exists(f): continue
+    t = io.open(f, encoding="utf-8").read()
+    for u in re.findall(r'https?://[A-Za-z0-9.-]*rocketx\.app', t):
+        if u != CANON_HOST: bad_host.append("%s: %s" % (f, u))
+check("all absolute urls use the canonical host", not bad_host, str(sorted(set(bad_host))[:4]))
+
 print()
 if FAIL:
     print("%d CHECK(S) FAILED: %s" % (len(FAIL), ", ".join(FAIL)))
