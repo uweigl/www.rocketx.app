@@ -44,13 +44,13 @@ A = {
  "Ja. Ihr Außendienst sieht Warenkörbe live beim Entstehen: was darin liegt, was stockt, was seit Tagen unberührt ist. Er ergänzt die fehlende Position, korrigiert die Menge oder greift zum Telefon, bevor die Sache kalt wird.",
  "Ja. Warenkörbe liegen auf dem Server und synchronisieren in Echtzeit zwischen Webshop und nativen Apps. Nichts hängt davon ab, dass eine Browser-Sitzung am Leben bleibt.",
  "Ja. Mehrere Personen arbeiten gleichzeitig am selben Warenkorb. Jede Änderung trägt Name und Zeitstempel.",
- "Ja. Der Warenkorb prüft, was das Kundenkonto bereits gekauft hat, und meldet eine kürzliche Dopplung vor dem Absenden: wer bestellt hat, wie viel, wann geliefert wurde.",
+ "Ja. Der Warenkorb weiß, was das Konto bereits gekauft hat. Vor dem Absenden meldet er jede kürzliche Dopplung: wer bestellt hat, wie viel, wann geliefert wurde.",
  "Nein. Plätze und Nutzer sind in jedem Plan unbegrenzt. Für Mitarbeiter, Außendienst und autorisierte Mitarbeiter Ihrer Kunden fallen keine Nutzergebühren an.",
- "Die Suche bleibt unter einer Sekunde, ob der Katalog einige hundert SKUs umfasst oder Millionen. Gemessen wird an Ihrem echten Katalog im Piloten, nicht an einem Demo-Datensatz.",
+ "Die Suche bleibt unter einer Sekunde, ob der Katalog einige hundert SKUs umfasst oder Millionen. Der Pilot misst an Ihrem echten Katalog, nicht an einem Demo-Datensatz.",
  "Nativ für iOS und Android, gebaut für B2B-Bestellungen statt einer Website in einer App-Hülle. Barcode-Scan und Offline-Zugriff sind enthalten.",
  "Ja. Katalog, Preise, Warenkorb sowie Ihre Broschüren und Produktvideos liegen lokal und synchronisieren, sobald die Verbindung zurück ist.",
- "Mit dem Go-live. Setup und Integration werden bei Jahresplänen erlassen, und vor einer längeren Bindung steht ein Pilot über 30 bis 45 Tage mit vereinbarten Messgrößen.",
- "Ihre Daten lassen sich jederzeit und beim Wechsel in offenen Formaten exportieren. Kunden in den USA und in der EU haben dieselben Export- und Ausstiegsrechte; nichts wird nach Region zurückgehalten oder abgeschwächt.",
+ "Mit dem Go-live. Bei Jahresplänen zahlen Sie für Setup und Integration nichts. Und vor einer längeren Bindung läuft ein Pilot: 30 bis 45 Tage, mit vereinbarten Messgrößen.",
+ "Ihre Daten exportieren Sie jederzeit in offenen Formaten, auch beim Wechsel. Kunden in den USA und in der EU haben dieselben Export- und Ausstiegsrechte; keine Region bekommt weniger.",
 ],
 "es": [
  "No. La tarifa de plataforma es mensual y fija, y nunca un porcentaje de tu volumen de pedidos. No hay tarifas por SKU ni por usuario. Los tramos van por facturación de la empresa, no por lo movido que haya sido un mes.",
@@ -128,6 +128,62 @@ def inject_en(path=None):
     return changed, bool(before)
 
 
+
+def inject_visible(path=None):
+    """Write the visible section's dialogue into I18N, every language.
+
+    The markup in index.html carries data-i18n="fq.qN"/"fq.aN" hooks; the words
+    come from here - questions from the deck, answers from A - so the on-page
+    section, the JSON-LD and the deck cannot say different things.
+    """
+    import re, io as _io, os as _os
+    path = path or _os.path.join(
+        _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "index.html")
+    s = _io.open(path, encoding="utf-8").read()
+
+    def lang_span(t, lang):
+        st = re.search(r"const I18N=\{", t).end()
+        tag = '"%s": {' % lang
+        a = t.index(tag, st)
+        d, j = 0, a + len(tag) - 1
+        while True:
+            if t[j] == "{":
+                d += 1
+            elif t[j] == "}":
+                d -= 1
+                if d == 0:
+                    return a, j
+            j += 1
+
+    def esc(v):
+        return v.replace("\\", "\\\\").replace('"', '\\"')
+
+    changed = 0
+    for lang in sorted(A):
+        qs, ans = questions(lang), A[lang]
+        kv = {}
+        for i in range(len(ans)):
+            kv["fq.q%d" % i] = qs[i]
+            kv["fq.a%d" % i] = ans[i]
+        a, b = lang_span(s, lang)
+        seg = s[a:b]
+        for k, v in kv.items():
+            m = re.search(r'("%s": ")((?:[^"\\]|\\.)*)(")' % re.escape(k), seg)
+            if m:
+                if m.group(2) != esc(v):
+                    seg = seg[:m.start()] + m.group(1) + esc(v) + m.group(3) + seg[m.end():]
+                    changed += 1
+            else:
+                tag = '"%s": {' % lang
+                i2 = seg.index(tag) + len(tag)
+                seg = seg[:i2] + '"%s": "%s", ' % (k, esc(v)) + seg[i2:]
+                changed += 1
+        s = s[:a] + seg + s[b:]
+    if changed:
+        _io.open(path, "w", encoding="utf-8").write(s)
+    return changed
+
+
 if __name__ == "__main__":
     for l in LANGS if "LANGS" in dir() else ("en", "de", "es", "nl", "fr"):
         f = faqpage(l)
@@ -135,3 +191,5 @@ if __name__ == "__main__":
               % (l, len(f["mainEntity"]), f["mainEntity"][0]["name"][:62]))
     changed, had = inject_en()
     print("  index.html FAQPage: %s" % ("rewritten" if changed else "already current"))
+    n = inject_visible()
+    print("  visible questions: %d i18n string(s) written" % n)

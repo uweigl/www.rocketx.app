@@ -42,6 +42,8 @@ json.loads(re.search(r'const MAILTO=(\{.*?\});\n', S, re.S).group(1))
 USED = set()
 for attr in ("data-i18n", "data-i18n-aria", "data-i18n-title", "data-i18n-text", "data-i18n-alt"):
     USED |= set(re.findall(r'%s="([^"]+)"' % attr, S))
+# keys the scripts read straight out of I18N, with no DOM attribute
+USED |= set(re.findall(r"I18N\[[^\]]+\]\['([\w.]+)'\]", S))
 check("no duplicate keys", not dups, str(sorted(set(dups))))
 for l in LANGS:
     miss = sorted(k for k in USED if k not in D[l])
@@ -178,6 +180,21 @@ print("\nfaq")
 sys.path.insert(0, os.path.join(os.getcwd(), "scripts"))
 try:
     import faq as _faq
+# the calculator carries the same bands and fees as the deck's fee figure
+    _ch = io.open("index.html", encoding="utf-8").read()
+    _m = re.search(r"const CALC=\{(.*?)\};", _ch, re.S)
+    check("calculator config present", bool(_m))
+    if _m:
+        for _l in ("en", "de", "es", "nl", "fr"):
+            _mm = re.search(r"%s:\{b:\[([\d,]+)\],f:\[([\d,]+)\]\}" % _l, _m.group(1))
+            _ok = bool(_mm)
+            if _mm:
+                import gen_deck as _gdc
+                _b = [int(x) for x in _mm.group(1).split(",")]
+                _f = [int(x) for x in _mm.group(2).split(",")]
+                _ok = (_b == list(_gdc.FIGTXT[_l]["fg1_bands"])
+                       and _f == list(_gdc.FIGTXT[_l]["fg1_fees"]))
+            check("%s: calculator matches the fee figure" % _l, _ok)
     _P = {"en": "index.html", "de": "de/index.html", "es": "es/index.html", "nl": "nl/index.html", "fr": "fr/index.html"}
     for lang, path in _P.items():
         if not os.path.exists(path):
@@ -194,6 +211,17 @@ try:
         check("%s: FAQ matches the deck questions" % lang,
               [q["name"] for q in qs] == deck_q,
               "%d vs %d" % (len(qs), len(deck_q)))
+        # the visible questions section must say what the JSON-LD says
+        _blk = _I[lang] if lang in _I else None
+        if _blk is not None:
+            _vis_q = [_blk.get("fq.q%d" % i) for i in range(len(deck_q))]
+            _vis_a = [re.sub(r"<[^>]+>", "", _blk.get("fq.a%d" % i, ""))
+                      for i in range(len(deck_q))]
+            check("%s: visible questions match the deck" % lang,
+                  _vis_q == deck_q, "first drift: %s" %
+                  next((q for q, d in zip(_vis_q, deck_q) if q != d), "?"))
+            check("%s: visible answers match the FAQ source" % lang,
+                  _vis_a == [re.sub(r"<[^>]+>", "", a) for a in _faq.A[lang]])
         thin = [q["name"][:30] for q in qs
                 if len((q.get("acceptedAnswer") or {}).get("text", "")) < 40]
         check("%s: every FAQ answer is substantive" % lang, not thin, str(thin))
