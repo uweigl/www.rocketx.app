@@ -23,4 +23,5 @@ for L in $LANGS; do
     --print-to-pdf="assets/rocketx-calendar-$L.pdf" \
     "file://$PWD/deck/rocketx-calendar-$L.html" 2>/dev/null
 done
+python3 scripts/gen_sitemap.py >/dev/null
 python3 scripts/check_site.py

@@ -433,6 +433,17 @@ if os.path.exists("sitemap.xml"):
         root = ET.parse("sitemap.xml").getroot(); sm_ok = True
     except Exception: sm_ok = False
     check("sitemap.xml parses", sm_ok)
+    # the sitemap is generated from these lists, so a new language or a new PDF
+    # family lands in it automatically - this catches it having been edited away
+    import gen_sitemap as _gs
+    _locs = set(re.findall(r"<loc>([^<]+)</loc>",
+                           io.open("sitemap.xml", encoding="utf-8").read()))
+    _want = set([_gs.page_url(_l) for _l in _gs.LANGS] +
+                [_gs.pdf_url(_st, _l) for _st, _c, _p in _gs.PDFS for _l in _gs.LANGS])
+    check("sitemap lists every page and pdf in every language", not (_want - _locs),
+          str(sorted(_want - _locs)[:4]))
+    check("sitemap lists nothing that is not built", not (_locs - _want),
+          str(sorted(_locs - _want)[:4]))
     if sm_ok:
         ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
         locs = [u.find(ns + "loc").text for u in root.findall(ns + "url")]
