@@ -46,7 +46,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--void);color:var(--ice);font-family:var(--body);overflow-x:hidden;line-height:1.6;cursor:default}
 ::selection{background:var(--blue);color:#fff}
-img{max-width:100%;display:block}
+img{max-width:100%;display:block;height:auto}
 a{color:inherit;text-decoration:none}
 
 /* ---------- Preloader ---------- */
@@ -428,7 +428,7 @@ footer.site .logo{font-size:16px}
 <nav id="nav">
 <div class="wrap">
 <a class="logo" href="#top">
-<img alt="RocketX-logo" data-i18n-alt="alt.logo" src="../assets/logo.png">
+<img alt="RocketX-logo" data-i18n-alt="alt.logo" src="../assets/logo.png" width="500" height="500">
       RocketX
     </a>
 <button aria-controls="navmenu" aria-expanded="false" aria-label="Menu" class="navtoggle" data-i18n-aria="nav.menu" id="navtoggle" type="button"><span></span><span></span><span></span></button>
@@ -469,9 +469,9 @@ footer.site .logo{font-size:16px}
 </div>
 </div>
 <div aria-hidden="true" class="orbit">
-<img alt="" class="o1" src="../assets/product-1.webp">
-<img alt="" class="o2" src="../assets/product-2.webp">
-<img alt="" class="o3" src="../assets/product-3.webp">
+<img alt="" class="o1" src="../assets/product-1.webp" width="900" height="900">
+<img alt="" class="o2" src="../assets/product-2.webp" width="650" height="650">
+<img alt="" class="o3" src="../assets/product-3.webp" width="580" height="580">
 </div>
 </header>
 <div aria-hidden="true" class="marquee">
@@ -498,7 +498,7 @@ footer.site .logo{font-size:16px}
 <div class="videoblock reveal">
 <div class="screen" id="screen">
 <div class="chrome"><i></i><i></i><i></i><span data-i18n="demo.chrome">gedeelde winkelwagen · gesynchroniseerd</span></div>
-<video autoplay="" loop="" muted="" playsinline="" poster="assets/poster.webp">
+<video autoplay="" loop="" muted="" playsinline="" preload="none" poster="assets/poster.webp">
 <source src="../assets/demo.mp4" type="video/mp4">
 </video>
 </div>
@@ -788,8 +788,8 @@ footer.site .logo{font-size:16px}
 <h2 class="reveal" data-i18n="rs.h">Groothandels, distributeurs en fabrikanten vertellen ons steeds dezelfde drie dingen.</h2>
 <div class="results">
 <div class="imgs" id="pimgs">
-<img alt="Werk in het magazijn" data-i18n-alt="alt.p1" class="p1" data-speed="-0.06" src="../assets/photo-1.webp">
-<img alt="Team dat met RocketX werkt" data-i18n-alt="alt.p2" class="p2" data-speed="0.08" src="../assets/photo-2.webp">
+<img alt="Werk in het magazijn" data-i18n-alt="alt.p1" class="p1" data-speed="-0.06" src="../assets/photo-1.webp" width="1300" height="866" loading="lazy" decoding="async">
+<img alt="Team dat met RocketX werkt" data-i18n-alt="alt.p2" class="p2" data-speed="0.08" src="../assets/photo-2.webp" width="1000" height="666" loading="lazy" decoding="async">
 </div>
 <div class="rlist">
 <div class="r reveal"><b data-i18n="rs.b1">100%</b><h4 data-i18n="rs.h1">Sneller bestellen</h4><p data-i18n="rs.p1">Inkopers en buitendienst ronden orders in een fractie van de tijd af. Zelfs bij de grootste catalogi voelt zoeken „als magie” vergeleken met hun oude systeem.</p></div>
@@ -915,7 +915,7 @@ footer.site .logo{font-size:16px}
 </main>
 <footer class="site">
 <div class="wrap">
-<a class="logo" href="#top"><img alt="" src="../assets/logo.png">RocketX</a>
+<a class="logo" href="#top"><img alt="" src="../assets/logo.png" width="500" height="500" loading="lazy" decoding="async">RocketX</a>
 <div>RocketX LLC · 30725 N Bright Angel Dr., Meadview, AZ 86444 · <a href="mailto:app@rocketx.app" style="color:var(--sky)">app@rocketx.app</a></div>
 <div><a class="social" href="https://www.linkedin.com/company/rocketxapp" rel="noopener" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg>LinkedIn</a></div>
 <div>© 2001–2026 RocketX LLC</div>

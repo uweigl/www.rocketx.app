@@ -54,6 +54,7 @@ Allow: /
 
 # Working files that are not content
 Disallow: /scripts/
+Disallow: /assets/_originals/
 Disallow: /deck/
 
 # AI-readable summary, one per language
