@@ -62,7 +62,7 @@ def build(d):
 <div class="cta"><div><h3>%s</h3><p>%s</p></div><a href="mailto:%s">%s</a></div>
 <div class="foot"><span>%s</span><span>%s</span></div>
 </div></body></html>""" % (
-      d["lang"], esc(d["doctitle"]), CSS, ROCKET, esc(d["xsh"]).upper(),
+      d["lang"], esc(d["doctitle"] + u" \u2014 " + d["xsh"]), CSS, ROCKET, esc(d["xsh"]).upper(),
       esc(d["title"]), esc(d["forwho"]), esc(d["xsa"]), rows,
       esc(d["ctah"]), esc(d["ctap"]), d["contact"], d["contact"],
       esc(d["foot"]), esc(MORE[d["lang"]]))

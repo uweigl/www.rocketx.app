@@ -25,4 +25,5 @@ for L in $LANGS; do
     "file://$PWD/deck/rocketx-calendar-$L.html" 2>/dev/null
 done
 python3 scripts/gen_sitemap.py >/dev/null
+python3 scripts/audit_pdfs.py
 python3 scripts/check_site.py
