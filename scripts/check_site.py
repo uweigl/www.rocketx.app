@@ -125,6 +125,22 @@ for l in ("en", "de", "es", "nl"):
     check("%s: page numbers present" % l, 'class="foot"' in h)
     check("%s: baymard citation resolves" % l, ("Baymard" not in t) or bool(re.search(r'70\s*%', t)))
 
+# ------------------------------------------------- nav labels vs section kickers
+print("\nlabels")
+try:
+    _src = io.open("index.html", encoding="utf-8").read()
+    _I = json.loads(re.search(r"const I18N=(\{.*?\});\n", _src, re.S).group(1))
+    for _l in ("en", "de", "es", "nl"):
+        odd = [k for k, v in _I[_l].items() if k.endswith(".k") and not v.startswith("/ ")]
+        check("%s: section kickers use the '/ ' prefix" % _l, not odd, str(odd))
+        # a nav label and the section it points at should name the same thing
+        nav = _I[_l]["nav.insights"].strip().lower()
+        kick = _I[_l]["in.k"].replace("/", "").strip().lower()
+        check("%s: nav label matches the articles kicker" % _l, nav == kick,
+              "%r vs %r" % (nav, kick))
+except Exception as e:
+    check("label cross-check ran", False, repr(e))
+
 # ------------------------------------------------- fee curve vs live pricing
 print("\nfee curve")
 try:
