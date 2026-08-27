@@ -846,12 +846,6 @@ def build(d):
              '<p style="font-size:7.6pt;color:var(--soft);line-height:1.55;margin-top:12px">%s</p></div>'
              % (esc(d["p6h"]), st, esc(d["tlh"]), tl, esc(d["tln"])))
 
-    # where we are not the right fit
-    nf = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["nf"])
-    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>'
-             '<div class="closing">%s</div></div>'
-             % (esc(d["nfh"]), esc(d["nfa"]), nf, esc(d["nfn"])))
-
     # data, entities, compliance - split by jurisdiction
     def jcol(flag, head, rows, cls):
         r = "".join('<div class="jrow"><b>%s</b><span>%s</span></div>' % (esc(a), esc(b)) for a, b in rows)
@@ -867,6 +861,12 @@ def build(d):
              '<div class="attach"><h3>%s</h3><ul>%s</ul></div>'
              '<div class="closing">%s</div></div>'
              % (esc(d["cmh"]), esc(d["cma"]), juris, esc(d["ath"]), att, esc(d["cmn"])))
+
+    # where we are not the right fit
+    nf = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["nf"])
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>'
+             '<div class="closing">%s</div></div>'
+             % (esc(d["nfh"]), esc(d["nfa"]), nf, esc(d["nfn"])))
 
     # p7 questions + CTA + sources
     qs = "".join('<div class="q">%s</div>' % esc(q) for q in d["quest"])
