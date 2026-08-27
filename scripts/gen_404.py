@@ -17,6 +17,7 @@ import io, json, os
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "404.html")
 LANGS = ["en", "de", "es", "nl", "fr"]
+CAL_YEAR = 2027                   # gen_calendar reads this, so the label matches the file
 NB = u" "
 
 # ---------------------------------------------------------------- the jokes
@@ -155,6 +156,30 @@ STRIPS = [
          u"Draait nog. Niemand wilde het uitzetten."],
   "fr": [u"La migration est terminée.", u"Et l’ancien système" + NB + u"?",
          u"Il tourne encore. Personne n’a voulu le débrancher."]}),
+
+ dict(screens=["?", "?", "?"], text={
+  "en": [u"A customer called to ask what he ordered last time.",
+         u"Can he not look it up?", u"Neither can we."],
+  "de": [u"Ein Kunde hat angerufen und gefragt, was er zuletzt bestellt hat.",
+         u"Kann er das nicht nachsehen?", u"Wir auch nicht."],
+  "es": [u"Un cliente llam\u00f3 para preguntar qu\u00e9 pidi\u00f3 la \u00faltima vez.",
+         u"\u00bfNo puede consultarlo?", u"Nosotros tampoco."],
+  "nl": [u"Een klant belde om te vragen wat hij vorige keer besteld had.",
+         u"Kan hij dat niet opzoeken?", u"Wij ook niet."],
+  "fr": [u"Un client a appel\u00e9 pour demander ce qu\u2019il avait command\u00e9.",
+         u"Il ne peut pas le consulter\u00a0?", u"Nous non plus."]}),
+
+ dict(screens=["@", "@", "0"], text={
+  "en": [u"We emailed every buyer about the restock.", u"How many opened it?",
+         u"The spam filter did."],
+  "de": [u"Wir haben allen Eink\u00e4ufern eine E-Mail zum Nachschub geschickt.",
+         u"Wie viele haben sie ge\u00f6ffnet?", u"Der Spamfilter."],
+  "es": [u"Mandamos un correo a todos los compradores sobre la reposici\u00f3n.",
+         u"\u00bfCu\u00e1ntos lo abrieron?", u"El filtro de spam."],
+  "nl": [u"We mailden alle inkopers over de nieuwe voorraad.",
+         u"Hoeveel hebben hem geopend?", u"Het spamfilter."],
+  "fr": [u"Nous avons \u00e9crit \u00e0 tous les acheteurs au sujet du r\u00e9assort.",
+         u"Combien l\u2019ont ouvert\u00a0?", u"Le filtre antispam."]}),
 ]
 
 UI = {
@@ -162,28 +187,28 @@ UI = {
             p="The link is broken or the page has moved. Nothing has been switched off "
               "&mdash; you are simply at an address that does not exist.",
             home="Back to the home page", deck="Business case (PDF)", one="One page (PDF)",
-            altp="A three-panel office cartoon."),
+            cal="2027 calendar (PDF)", altp="A three-panel office cartoon."),
  "de": dict(h="Diese Seite wurde nie bestellt.",
             p="Der Link ist defekt oder die Seite ist umgezogen. Abgeschaltet wurde nichts "
               "&mdash; Sie sind schlicht auf einer Adresse, die es nicht gibt.",
             home="Zur Startseite", deck="Business Case (PDF)", one="Eine Seite (PDF)",
-            altp="Ein Cartoon in drei Bildern."),
+            cal="Kalender 2027 (PDF)", altp="Ein Cartoon in drei Bildern."),
  "es": dict(h="Esta p&aacute;gina nunca se pidi&oacute;.",
             p="El enlace est&aacute; roto o la p&aacute;gina se ha movido. No se ha apagado "
               "nada: simplemente est&aacute;s en una direcci&oacute;n que no existe.",
             home="Volver al inicio", deck="Caso de negocio (PDF)", one="Una p&aacute;gina (PDF)",
-            altp="Una viñeta de oficina en tres partes."),
+            cal="Calendario 2027 (PDF)", altp="Una viñeta de oficina en tres partes."),
  "nl": dict(h="Deze pagina is nooit besteld.",
             p="De link is stuk of de pagina is verhuisd. Er is niets uitgezet &mdash; je bent "
               "gewoon op een adres dat niet bestaat.",
             home="Terug naar de homepage", deck="Business case (pdf)",
-            one="E&eacute;n pagina (pdf)", altp="Een kantoorcartoon in drie panelen."),
+            one="E&eacute;n pagina (pdf)", cal="Kalender 2027 (pdf)", altp="Een kantoorcartoon in drie panelen."),
  "fr": dict(h="Cette page n&rsquo;a jamais &eacute;t&eacute; command&eacute;e.",
             p="Le lien est cass&eacute; ou la page a &eacute;t&eacute; d&eacute;plac&eacute;e. "
               "Rien n&rsquo;a &eacute;t&eacute; d&eacute;branch&eacute;&nbsp;: vous &ecirc;tes "
               "simplement &agrave; une adresse qui n&rsquo;existe pas.",
             home="Retour &agrave; l&rsquo;accueil", deck="Argumentaire (PDF)",
-            one="Une page (PDF)", altp="Un dessin de bureau en trois cases."),
+            one="Une page (PDF)", cal="Calendrier 2027 (PDF)", altp="Un dessin de bureau en trois cases."),
 }
 
 # ---------------------------------------------------------------- text fitting
@@ -413,9 +438,11 @@ def build():
             u'<a class="dl" href="/assets/rocketx-business-case-%s.pdf" download>%s<span>%s</span></a>'
             u'<span class="sep" aria-hidden="true">&middot;</span>'
             u'<a class="dl" href="/assets/rocketx-one-page-%s.pdf" download>%s<span>%s</span></a>'
+            u'<span class="sep" aria-hidden="true">&middot;</span>'
+            u'<a class="dl" href="/assets/rocketx-calendar-%s.pdf" download>%s<span>%s</span></a>'
             u'</div></div>'
             % (l, hide, "" if l == "en" else l + "/", u["home"],
-               l, DLICON, u["deck"], l, DLICON, u["one"]))
+               l, DLICON, u["deck"], l, DLICON, u["one"], l, DLICON, u["cal"]))
 
     html = u"""<!doctype html>
 <html lang="en">

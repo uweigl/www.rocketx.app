@@ -368,6 +368,36 @@ for _n, _st in enumerate(_g4.STRIPS):
             if len(_lines) > 3:
                 _wide.append("strip%d/%s/p%d" % (_n, _l, _p))
 check("404: no speech bubble collides with a figure", not _clash, str(_clash[:4]))
+import gen_calendar as _gc
+check("calendar: twelve strips available for twelve months", len(_g4.STRIPS) >= 12,
+      "%d strips" % len(_g4.STRIPS))
+for _l in _g4.LANGS:
+    _cp = "assets/rocketx-calendar-%s.pdf" % _l
+    check("%s: calendar exists" % _l, os.path.exists(_cp))
+    if os.path.exists(_cp):
+        _n = len(re.findall(rb"/Type\s*/Page[^s]", io.open(_cp, "rb").read()))
+        # a cover plus one sheet per month; a short file means a month was dropped
+        check("%s: calendar is 13 pages" % _l, _n == 13, "%d pages" % _n)
+    _ch = "deck/rocketx-calendar-%s.html" % _l
+    if os.path.exists(_ch):
+        _src = io.open(_ch, encoding="utf-8").read()
+        check("%s: calendar has twelve month sheets" % _l,
+              _src.count('<section class="page">') == 12,
+              "%d sheets" % _src.count('<section class="page">'))
+        # every month must carry a different strip: take the opening line of each
+        # month sheet, not every bubble on it
+        _sheets = _src.split('<section class="page">')[1:]
+        _opens = []
+        for _sh in _sheets:
+            _m = re.search(r"<text[^>]*>([^<]*)</text>", _sh)
+            if _m:
+                _opens.append(_m.group(1))
+        check("%s: twelve months, twelve different strips" % _l,
+              len(_opens) == 12 and len(set(_opens)) == 12,
+              "%d sheets, %d distinct" % (len(_opens), len(set(_opens))))
+    if os.path.exists("404.html"):
+        check("%s: calendar linked from the 404" % _l,
+              "rocketx-calendar-%s.pdf" % _l in io.open("404.html", encoding="utf-8").read())
 check("404: no bubble runs past three lines", not _wide, str(_wide[:4]))
 check("404: every strip has all five languages",
       all(sorted(_st["text"]) == sorted(_g4.LANGS) for _st in _g4.STRIPS))

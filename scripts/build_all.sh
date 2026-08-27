@@ -11,6 +11,7 @@ python3 scripts/gen_onepager.py >/dev/null
 python3 scripts/gen_llms.py >/dev/null
 python3 scripts/build_i18n_pages.py >/dev/null
 python3 scripts/gen_404.py >/dev/null
+python3 scripts/gen_calendar.py >/dev/null
 for L in $LANGS; do
   "$CHROME" --headless --disable-gpu --no-pdf-header-footer --virtual-time-budget=22000 \
     --print-to-pdf="assets/rocketx-business-case-$L.pdf" \
@@ -18,5 +19,8 @@ for L in $LANGS; do
   "$CHROME" --headless --disable-gpu --no-pdf-header-footer --virtual-time-budget=18000 \
     --print-to-pdf="assets/rocketx-one-page-$L.pdf" \
     "file://$PWD/deck/rocketx-one-page-$L.html" 2>/dev/null
+  "$CHROME" --headless --disable-gpu --no-pdf-header-footer --virtual-time-budget=24000 \
+    --print-to-pdf="assets/rocketx-calendar-$L.pdf" \
+    "file://$PWD/deck/rocketx-calendar-$L.html" 2>/dev/null
 done
 python3 scripts/check_site.py
