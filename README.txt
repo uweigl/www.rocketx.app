@@ -14,11 +14,6 @@ Layout
   robots.txt, sitemap.xml     crawler directives, incl. named AI crawlers
   site.webmanifest            PWA / home-screen metadata
 
-First run
----------
-  python3 get_assets.py       downloads the 8 media files into assets/
-                              (only needed on a fresh clone; assets are in git)
-
 After editing index.html
 ------------------------
   python3 scripts/build_i18n_pages.py    regenerate de/ and es/
