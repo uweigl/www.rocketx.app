@@ -264,7 +264,11 @@ def fig_funnel(d):
         o.append('<path d="M' + str(round(x, 2)) + ' ' + str(cy) + 'v34" stroke="' + SOFT + '" stroke-width="2"/>')
         for j, ln in enumerate(wrap(d[k], 34)):
             o.append(T(x + 10, cy + 12 + j * 12, 8.8, ln, BODY))
-    return svg(700, int(cy + 50), "".join(o))
+    h = cy + 58
+    for i, ln in enumerate(wrap(d["fg4_n"], 140)):
+        o.append(T(X0, h + i * 11, 8.4, ln, SOFT))
+        h2 = h + i * 11
+    return svg(700, int(h2 + 10), "".join(o))
 
 # ------------------------------------------------- 5. digital share of ordering
 def fig_share(d):

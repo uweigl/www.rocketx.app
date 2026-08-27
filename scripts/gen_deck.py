@@ -617,6 +617,7 @@ FIGTXT = {
   fg2_t2="RocketX web shop and native apps - live in weeks",
   fg2_n="No switchover point exists, so there is nothing to fail on a Monday.",
   fg3_n="Standard connectors are included in every plan. Work beyond standard scope is quoted as a defined block before it starts.",
+  fg4_n="Baymard Institute, averaged across 50 cart-abandonment studies (2006-2025). That rate covers all ecommerce and is not segmented for B2B.",
   fg4_a="order started", fg4_b="order submitted", fg4_gap="~70% never arrives",
   fg4_inv="and on most platforms nobody on your side can see any of it",
   fg4_c1="the cart dies with the session",
@@ -638,6 +639,7 @@ FIGTXT = {
   fg2_t2="RocketX Webshop und native Apps - in Wochen live",
   fg2_n="Es gibt keinen Umstellungspunkt, also nichts, was am Montag scheitern kann.",
   fg3_n="Standard-Konnektoren sind in jedem Plan enthalten. Arbeiten \u00fcber den Standardumfang hinaus werden vorab als definiertes Paket angeboten.",
+  fg4_n="Baymard Institute, Mittel aus 50 Studien zu Kaufabbr\u00fcchen (2006-2025). Die Quote gilt f\u00fcr den gesamten E-Commerce und ist nicht nach B2B getrennt.",
   fg4_a="Bestellung begonnen", fg4_b="Bestellung abgeschickt", fg4_gap="~70 % kommen nie an",
   fg4_inv="und auf den meisten Plattformen sieht davon auf Ihrer Seite niemand etwas",
   fg4_c1="der Warenkorb stirbt mit der Sitzung",
@@ -659,6 +661,7 @@ FIGTXT = {
   fg2_t2="tienda web y apps nativas de RocketX - en marcha en semanas",
   fg2_n="No existe un punto de migraci\u00f3n, as\u00ed que no hay nada que pueda fallar un lunes.",
   fg3_n="Los conectores est\u00e1ndar est\u00e1n incluidos en todos los planes. El trabajo fuera del alcance est\u00e1ndar se cotiza como un bloque definido antes de empezar.",
+  fg4_n="Baymard Institute, promedio de 50 estudios sobre abandono de carrito (2006-2025). Esa tasa cubre todo el comercio electr\u00f3nico y no est\u00e1 segmentada para B2B.",
   fg4_a="pedido iniciado", fg4_b="pedido enviado", fg4_gap="~70 % nunca llega",
   fg4_inv="y en la mayor\u00eda de plataformas nadie de tu lado ve nada de esto",
   fg4_c1="el carrito muere con la sesi\u00f3n",
@@ -680,6 +683,7 @@ FIGTXT = {
   fg2_t2="RocketX-webshop en native apps - binnen weken live",
   fg2_n="Er is geen omschakelmoment, dus er is niets dat op maandag kan misgaan.",
   fg3_n="Standaardkoppelingen zitten in elk plan. Werk buiten de standaardscope wordt vooraf als een afgebakend blok geoffreerd.",
+  fg4_n="Baymard Institute, gemiddelde over 50 studies naar verlaten winkelwagens (2006-2025). Dat cijfer gaat over alle e-commerce en is niet apart voor B2B.",
   fg4_a="bestelling gestart", fg4_b="bestelling verstuurd", fg4_gap="~70% komt nooit aan",
   fg4_inv="en op de meeste platforms ziet niemand aan jouw kant er iets van",
   fg4_c1="de winkelwagen sterft met de sessie",
@@ -866,6 +870,11 @@ def build(d):
     P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div></div>'
              % (esc(d["p2h"]), esc(d["p2a"]), rows))
 
+    # p8 the cart - the third problem page, before any of the answers
+    cart = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["cart"])
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>%s</div>'
+             % (esc(d["p8h"]), esc(d["p8a"]), cart, deck_figs.fig_funnel(d)))
+
     # p3 capabilities
     caps = "".join('<div class="cap"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["caps"])
     P.append('<div class="page"><h2>%s</h2><div class="caps">%s</div>%s</div>'
@@ -876,11 +885,6 @@ def build(d):
     P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>%s</div>'
              % (esc(d["p4h"]), esc(d["p4a"]), nat, deck_figs.fig_path(d)))
 
-    # p8 the cart (placed before the commercial terms - it is the differentiator)
-    cart = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["cart"])
-    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>%s</div>'
-             % (esc(d["p8h"]), esc(d["p8a"]), cart, deck_figs.fig_funnel(d)))
-
     # p9 sizing worksheet
     lv = "".join('<div class="lever"><h3>%s</h3><p>%s</p></div>' % (esc(a), b) for a, b in d["levers"])
     P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div style="margin-top:8px">%s</div>'
@@ -888,16 +892,16 @@ def build(d):
              '<div class="closing" style="margin-top:12px">%s</div></div>'
              % (esc(d["p9h"]), esc(d["p9a"]), lv, esc(d["cdh"]), esc(d["cd"]), esc(d["p9n"])))
 
+    # p5 terms
+    tr = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["terms"])
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>%s</div>'
+             % (esc(d["p5h"]), esc(d["p5a"]), tr, deck_figs.fig_fee(d)))
+
     # runs alongside - the objection this whole category triggers
     sb = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["sb"])
     P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>%s'
              '<div class="closing">%s</div></div>'
              % (esc(d["sbh"]), esc(d["sba"]), sb, deck_figs.fig_parallel(d), esc(d["sbn"])))
-
-    # p5 terms
-    tr = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["terms"])
-    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>%s</div>'
-             % (esc(d["p5h"]), esc(d["p5a"]), tr, deck_figs.fig_fee(d)))
 
     # p6 implementation
     st = "".join('<div class="step"><span class="num">%02d</span><div><h3>%s</h3><p>%s</p></div></div>'
