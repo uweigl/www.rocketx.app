@@ -11,6 +11,7 @@ The page-count check exists because the site advertised "8 pages" for
 months after the deck grew to 14 - a claim about an artifact drifts
 silently unless something compares the two.
 """
+import html as _html
 import io, json, sys, os, re, json, sys, html
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
@@ -240,6 +241,32 @@ try:
             wrap = [k for k, v in _S.items() if GRP.search(v)]
             check("fr: thousands separators are non-breaking", not wrap,
                   str(sorted(set(wrap))[:4]))
+        # typography: one apostrophe form, and each language's own quotation marks
+        _ap = [k for k, v in _S.items()
+               if re.search(u"[A-Za-z\u00c0-\u00ff]'[A-Za-z\u00c0-\u00ff]",
+                            _html.unescape(v))]
+        check("%s: apostrophes are typographic" % _l, not _ap, str(sorted(_ap)[:4]))
+        _QUOTES = {"de": (u"\u201e", u"\u201c"), "es": (u"\u00ab", u"\u00bb"),
+                   "nl": (u"\u201e", u"\u201d"), "fr": (u"\u00ab", u"\u00bb")}
+        _op, _cl = _QUOTES[_l]
+        _bad = []
+        for k, v in _S.items():
+            for ch in re.findall(u"[\u201c\u201d\u201e\u00ab\u00bb\"]",
+                                 _html.unescape(v)):
+                if ch not in (_op, _cl):
+                    _bad.append(k)
+        check("%s: quotation marks follow the local convention" % _l, not _bad,
+              str(sorted(set(_bad))[:4]))
+        # each localisation argues from its own market
+        _FOREIGN = {"de": u"Digital Commerce 360|Dept\\. of Commerce|INSEE|FEVAD|CBS",
+                    "es": u"Digital Commerce 360|Depto\\. de Comercio|Departamento de Comercio|INSEE|FEVAD|CBS|ECC",
+                    "nl": u"Digital Commerce 360|Dept\\. of Commerce|INSEE|FEVAD|ECC",
+                    "fr": u"Digital Commerce 360|Dept\\. of Commerce|CBS|ECC"}
+        _src = " ".join(v for k, v in _S.items() if k.endswith(("src", "/src")))
+        _for = re.findall(_FOREIGN[_l], _src)
+        check("%s: market sources are local to this audience" % _l, not _for,
+              str(sorted(set(_for))[:4]))
+
     # register: German is Sie throughout, Dutch is je throughout
     de_all = dict(_I["de"]); de_all.update(_flat(_gd.C["de"]))
     check("de: no informal address", not [k for k, v in de_all.items()

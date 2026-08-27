@@ -29,7 +29,7 @@ NB = u" "
 STRIPS = [
  dict(screens=["404", "404", "0"], text={
   "en": [u"The order page is gone.", u"Since when?",
-         u"Since the redesign. We're down exactly 404 orders."],
+         "Since the redesign. We’re down exactly 404 orders."],
   "de": [u"Die Bestellseite ist weg.", u"Seit wann?",
          u"Seit dem Relaunch. Uns fehlen genau 404 Bestellungen."],
   "es": [u"La página de pedidos no está.", u"¿Desde cuándo?",

@@ -29,8 +29,8 @@ TITLE = {
 }
 DESC = {
  "fr": "Commande B2B pour le commerce de gros, 15–250\u00a0M€. Références illimitées, applications natives, panier partagé en direct. Un forfait, jamais un pourcentage.",
- "nl": "B2B-groothandelsbestellingen voor 15–250 miljoen euro omzet. Onbeperkt SKU's, native apps, gedeelde live winkelwagen. Vaste prijs, nooit een percentage.",
- "de": "B2B-Großhandelsbestellungen für 15–250 Mio.\u00a0€ Umsatz. Unbegrenzt SKUs, native Apps, gemeinsamer Live-Warenkorb. Pauschale, nie ein Prozentsatz.",
+ "nl": "B2B-groothandelsbestellingen voor 15–250 miljoen euro omzet. Onbeperkt SKU’s, native apps, gedeelde live winkelwagen. Vast tarief, nooit een percentage.",
+ "de": "B2B-Großhandelsbestellungen für 15–250 Mio.\u00a0€ Umsatz. Unbegrenzt SKUs, native Apps, gemeinsamer Live-Warenkorb. Pauschalgebühr, nie ein Prozentsatz.",
  "es": "Pedidos mayoristas B2B para distribuidores de $15–300M. SKUs ilimitados, apps nativas, carrito compartido en vivo. Tarifa fija, nunca un porcentaje.",
 }
 LOC = {"de": "de_DE", "es": "es_ES", "nl": "nl_NL", "fr": "fr_FR"}
@@ -164,20 +164,23 @@ def fix(html, lang):
     html = html.replace(' data-prerendered="%s"' % lang, "")
     return html
 
-built = []
-for lang in ("de", "es", "nl", "fr"):
-    os.makedirs(lang, exist_ok=True)
-    html = fix(render(lang), lang)
-    path = os.path.join(lang, "index.html")
-    io.open(path, "w", encoding="utf-8").write(html)
-    built.append((path, len(html)))
-    print("  wrote %-16s %d bytes" % (path, len(html)))
 
-# sanity: the translated copy must actually be in the file
-checks = {"de": "Bestellen", "es": "sin fricción", "nl": "zonder wrijving", "fr": "sans friction"}
-for lang, needle in checks.items():
-    txt = io.open(os.path.join(lang, "index.html"), encoding="utf-8").read()
-    ok = needle in txt and 'lang="%s"' % lang in txt
-    print("  %s: translated copy present and lang attribute set ... %s" % (lang, "yes" if ok else "NO"))
-    if not ok: sys.exit(1)
-print("done")
+if __name__ == "__main__":
+
+    built = []
+    for lang in ("de", "es", "nl", "fr"):
+        os.makedirs(lang, exist_ok=True)
+        html = fix(render(lang), lang)
+        path = os.path.join(lang, "index.html")
+        io.open(path, "w", encoding="utf-8").write(html)
+        built.append((path, len(html)))
+        print("  wrote %-16s %d bytes" % (path, len(html)))
+
+    # sanity: the translated copy must actually be in the file
+    checks = {"de": "Bestellen", "es": "sin fricción", "nl": "zonder wrijving", "fr": "sans friction"}
+    for lang, needle in checks.items():
+        txt = io.open(os.path.join(lang, "index.html"), encoding="utf-8").read()
+        ok = needle in txt and 'lang="%s"' % lang in txt
+        print("  %s: translated copy present and lang attribute set ... %s" % (lang, "yes" if ok else "NO"))
+        if not ok: sys.exit(1)
+    print("done")

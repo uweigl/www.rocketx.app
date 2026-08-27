@@ -100,7 +100,38 @@ def faqpage(lang):
         ],
     }
 
+def inject_en(path=None):
+    """Refresh the English FAQPage inside index.html.
+
+    The localised pages rebuild this node from faqpage(lang) every time, but the
+    English one sat static in index.html, so a reworded deck question drifted
+    out of the markup and only the check noticed. Serialised exactly as
+    build_i18n_pages does, so the two cannot disagree on formatting either.
+    """
+    import json, re, io as _io, os as _os
+    path = path or _os.path.join(
+        _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "index.html")
+    html = _io.open(path, encoding="utf-8").read()
+    m = re.search(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
+    if not m:
+        raise SystemExit("faq: no JSON-LD block in %s" % path)
+    g = json.loads(m.group(1))
+    before = [e for e in g["@graph"] if e.get("@type") == "FAQPage"]
+    g["@graph"] = [e for e in g["@graph"] if e.get("@type") != "FAQPage"]
+    g["@graph"].append(faqpage("en"))
+    out = ('<script type="application/ld+json">'
+           + json.dumps(g, ensure_ascii=False, separators=(",", ":")) + "</script>")
+    new_html = html[:m.start()] + out + html[m.end():]
+    changed = new_html != html
+    if changed:
+        _io.open(path, "w", encoding="utf-8").write(new_html)
+    return changed, bool(before)
+
+
 if __name__ == "__main__":
-    for l in ("en", "de", "es", "nl"):
+    for l in LANGS if "LANGS" in dir() else ("en", "de", "es", "nl", "fr"):
         f = faqpage(l)
-        print("  %s: %d Q&A, first = %s" % (l, len(f["mainEntity"]), f["mainEntity"][0]["name"][:62]))
+        print("  %s: %d Q&A, first = %s"
+              % (l, len(f["mainEntity"]), f["mainEntity"][0]["name"][:62]))
+    changed, had = inject_en()
+    print("  index.html FAQPage: %s" % ("rewritten" if changed else "already current"))

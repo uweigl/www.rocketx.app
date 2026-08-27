@@ -209,7 +209,10 @@ def build(lang):
           "", "## " + t["h_contact"], "", "- " + t["contact"], ""]
     return "\n".join(L)
 
-for lang in ("en", "de", "es", "nl", "fr"):
-    path = "llms.txt" if lang == "en" else os.path.join(lang, "llms.txt")
-    io.open(path, "w", encoding="utf-8").write(build(lang))
-    print("  wrote %-14s %5d bytes" % (path, len(build(lang))))
+
+if __name__ == "__main__":
+
+    for lang in ("en", "de", "es", "nl", "fr"):
+        path = "llms.txt" if lang == "en" else os.path.join(lang, "llms.txt")
+        io.open(path, "w", encoding="utf-8").write(build(lang))
+        print("  wrote %-14s %5d bytes" % (path, len(build(lang))))

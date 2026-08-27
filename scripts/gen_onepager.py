@@ -67,7 +67,10 @@ def build(d):
       esc(d["ctah"]), esc(d["ctap"]), d["contact"], d["contact"],
       esc(d["foot"]), esc(MORE[d["lang"]]))
 
-for lg, d in gen_deck.C.items():
-    p = os.path.join(OUT, "rocketx-one-page-%s.html" % lg)
-    io.open(p, "w", encoding="utf-8").write(build(d))
-    print("  wrote", os.path.basename(p))
+
+if __name__ == "__main__":
+
+    for lg, d in gen_deck.C.items():
+        p = os.path.join(OUT, "rocketx-one-page-%s.html" % lg)
+        io.open(p, "w", encoding="utf-8").write(build(d))
+        print("  wrote", os.path.basename(p))
