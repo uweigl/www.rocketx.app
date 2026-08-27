@@ -349,6 +349,32 @@ for lang, path in PAGES.items():
     check("%s: JSON-LD parses" % lang, ok)
 
 check("og:image file exists", os.path.exists("assets/og-image.png"))
+# the comic strips: dialogue is wrapped at build time, so a longer line silently
+# grows a bubble downwards until its tail lands in somebody's head
+import gen_404 as _g4
+# topmost ink, not the head circle: the manager's hairs and the developer's
+# fringe both stand well above it, and a tail landing there is what shows
+_FIG_TOP = {0: _g4.FLOOR - 86 - 15 - 16,   # manager hair, panels 0 and 2
+            1: _g4.DESK_Y - 52 - 14 - 6,   # developer fringe, panel 1
+            2: _g4.FLOOR - 86 - 15 - 16}
+_clash, _wide = [], []
+for _n, _st in enumerate(_g4.STRIPS):
+    for _l in _g4.LANGS:
+        for _p in range(3):
+            _lines = _g4.wrap(_st["text"][_l][_p], _g4.BW - 28)
+            _bottom = _g4.BY + 16 + _g4.LH * len(_lines) + _g4.TAIL_H
+            if _bottom >= _FIG_TOP[_p]:
+                _clash.append("strip%d/%s/p%d" % (_n, _l, _p))
+            if len(_lines) > 3:
+                _wide.append("strip%d/%s/p%d" % (_n, _l, _p))
+check("404: no speech bubble collides with a figure", not _clash, str(_clash[:4]))
+check("404: no bubble runs past three lines", not _wide, str(_wide[:4]))
+check("404: every strip has all five languages",
+      all(sorted(_st["text"]) == sorted(_g4.LANGS) for _st in _g4.STRIPS))
+check("404: every strip has three lines and three screens",
+      all(len(_st["screens"]) == 3 and all(len(_st["text"][_l]) == 3 for _l in _g4.LANGS)
+          for _st in _g4.STRIPS))
+
 # a 404 must be a real page, in every language, with working root-absolute links
 _404 = "404.html"
 check("404 page exists", os.path.exists(_404))
