@@ -396,6 +396,14 @@ for _n, _st in enumerate(_g4.STRIPS):
                 _wide.append("strip%d/%s/p%d" % (_n, _l, _p))
 check("404: no speech bubble collides with a figure", not _clash, str(_clash[:4]))
 import gen_calendar as _gc
+# every document family signs off with the footer the deck established
+for _l in _g4.LANGS:
+    _ch = "deck/rocketx-calendar-%s.html" % _l
+    if os.path.exists(_ch):
+        _tag = _gc.tagline(_l)
+        _src = io.open(_ch, encoding="utf-8").read()
+        check("%s: calendar footer matches the document footer" % _l,
+              _src.count(_tag) >= 13, "%d of 13 sheets" % _src.count(_tag))
 check("calendar: twelve strips available for twelve months", len(_g4.STRIPS) >= 12,
       "%d strips" % len(_g4.STRIPS))
 for _l in _g4.LANGS:

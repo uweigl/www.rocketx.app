@@ -15,6 +15,16 @@ import io, os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_404 as g4
+import gen_deck
+
+
+def tagline(lang):
+    """The middle of the PDF footer chosen for every document:
+    'RocketX - Frictionless Ordering - rocketx.app'. Deriving it here means
+    the calendar cannot drift from the deck and one-pager again."""
+    parts = [p.strip() for p in gen_deck.C[lang]["foot"].split(u"\u00b7")]
+    assert len(parts) == 3 and parts[0] == "RocketX", parts
+    return parts[1]
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTDIR = os.path.join(ROOT, "deck")
@@ -47,27 +57,22 @@ COVER = {
  "en": dict(t="Twelve months of<br/>B2B ordering",
             s="One page a month, and a small piece of the truth about how wholesale "
               "orders actually get placed. Every scene in here is a real complaint, "
-              "lightly rearranged.",
-            f="Ordering, minus the friction."),
+              "lightly rearranged."),
  "de": dict(t="Zwölf Monate<br/>B2B-Bestellen",
             s="Ein Blatt pro Monat und jeweils ein kleines Stück Wahrheit darüber, wie "
               "Großhandelsbestellungen wirklich zustande kommen. Jede Szene hier ist eine "
-              "echte Beschwerde, nur leicht umgestellt.",
-            f="Bestellen, ohne Reibung."),
+              "echte Beschwerde, nur leicht umgestellt."),
  "es": dict(t="Doce meses de<br/>pedidos B2B",
             s="Una hoja al mes y un pequeño trozo de verdad sobre cómo se hacen realmente "
-              "los pedidos mayoristas. Cada escena es una queja real, apenas reordenada.",
-            f="Pedidos, sin fricción."),
+              "los pedidos mayoristas. Cada escena es una queja real, apenas reordenada."),
  "nl": dict(t="Twaalf maanden<br/>B2B-bestellen",
             s="Eén blad per maand en steeds een klein stuk waarheid over hoe "
               "groothandelsorders echt tot stand komen. Elke scène is een echte klacht, "
-              "licht herschikt.",
-            f="Bestellen, zonder wrijving."),
+              "licht herschikt."),
  "fr": dict(t="Douze mois de<br/>commande B2B",
             s="Une page par mois, et à chaque fois un petit morceau de vérité sur la façon "
               "dont les commandes de gros se passent réellement. Chaque scène est une "
-              "plainte authentique, à peine réarrangée.",
-            f="Commander, sans friction."),
+              "plainte authentique, à peine réarrangée."),
 }
 
 CSS = u"""
@@ -196,7 +201,7 @@ def build(lang):
       u'<div><div class="yr">%d</div>'
       u'<p>%s</p></div>'
       u'<div class="foot"><span>%s</span><span>rocketx.app</span></div>'
-      u'</section>' % (c["t"], YEAR, c["s"], c["f"])
+      u'</section>' % (c["t"], YEAR, c["s"], tagline(lang))
     ]
     for m in range(1, 13):
         pages.append(
@@ -207,7 +212,7 @@ def build(lang):
           u'<span>rocketx.app</span></div>'
           u'</section>'
           % (MONTHS[lang][m - 1], YEAR, strip_svg(m - 1, lang),
-             month_grid(lang, m), c["f"]))
+             month_grid(lang, m), tagline(lang)))
 
     html = u"""<!doctype html>
 <html lang="%s">
