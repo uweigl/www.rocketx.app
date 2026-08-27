@@ -156,7 +156,7 @@ C["en"] = dict(
     contact="app@rocketx.app",
     srch="Sources",
     src="Digital Commerce 360 / U.S. Department of Commerce for B2B ecommerce totals and growth. Baymard Institute for the cart-abandonment rate, averaged across 50 studies (2006-2025); that figure covers all ecommerce and is not segmented for B2B. Gartner for the size of the buying group on a complex B2B purchase. Return-handling effort per the B2B E-commerce Association\u2019s distribution benchmarks. McKinsey B2B Pulse, ninth annual survey of 3,942 B2B decision makers across 13 countries, for digital order values. Sensor Tower, State of Mobile 2026, for share of smartphone time outside the browser; this figure covers all smartphone use, not B2B ordering specifically. Boston Consulting Group with Google, “Mobile Marketing and the New B2B Buyer” (2017), for mobile's share of B2B revenue. Airship retention benchmarks for push opt-in. Implementation timelines reflect 2026 market benchmarks for mid-market B2B builds and vary by scope.",
-    foot="RocketX LLC · app@rocketx.app · rocketx.app",
+    foot="RocketX · Frictionless Ordering · rocketx.app",
     pg="Page",
 )
 
@@ -296,7 +296,7 @@ C["de"] = dict(
     contact="app@rocketx.app",
     srch="Quellen",
     src="ECC KÖLN B2B-Marktmonitor 2025 (mit FIS und Shopware) für die deutschen B2B-E-Commerce-Zahlen. Baymard Institute für die Warenkorb-Abbruchquote, gemittelt über 50 Studien (2006–2025); dieser Wert umfasst den gesamten E-Commerce und ist nicht nach B2B segmentiert. Gartner zur Größe des Buying-Centers bei komplexen B2B-Beschaffungen. Aufwand für Retouren nach Benchmarks der B2B E-commerce Association für die Distribution. McKinsey B2B Pulse, neunte Jahresbefragung von 3.942 B2B-Entscheidern in 13 Ländern. Sensor Tower, State of Mobile 2026, für den Anteil der Smartphone-Zeit außerhalb des Browsers; diese Angabe umfasst die gesamte Smartphone-Nutzung, nicht speziell B2B-Bestellungen. Boston Consulting Group mit Google, „Mobile Marketing and the New B2B Buyer“ (2017), für den Mobile-Anteil am B2B-Umsatz. Airship-Benchmarks zur Push-Aktivierung. Implementierungszeiträume entsprechen Marktbenchmarks 2026 für mittelständische B2B-Projekte und variieren je nach Umfang.",
-    foot="RocketX LLC · app@rocketx.app · rocketx.app",
+    foot="RocketX · Bestellen ohne Reibung · rocketx.app",
     pg="Seite",
 )
 
@@ -436,7 +436,7 @@ C["es"] = dict(
     contact="app@rocketx.app",
     srch="Fuentes",
     src="Digital Commerce 360 / Departamento de Comercio de EE. UU. para los totales y el crecimiento del comercio electrónico B2B. Baymard Institute para la tasa de abandono de carrito, promediada en 50 estudios (2006-2025); esa cifra cubre todo el comercio electrónico y no está segmentada para B2B. Gartner para el tamaño del grupo de compra en una adquisición B2B compleja. Esfuerzo de gestión de devoluciones según las referencias de distribución de la B2B E-commerce Association. McKinsey B2B Pulse, novena encuesta anual a 3.942 responsables de decisión B2B en 13 países, para los valores de pedido digital. Sensor Tower, State of Mobile 2026, para la porción del tiempo móvil fuera del navegador; esta cifra cubre todo el uso del smartphone, no específicamente pedidos B2B. Boston Consulting Group con Google, «Mobile Marketing and the New B2B Buyer» (2017), para la porción de ingresos B2B del móvil. Referencias de retención de Airship para notificaciones. Los plazos de implementación reflejan referencias de mercado 2026 para proyectos B2B de mercado medio y varían según el alcance.",
-    foot="RocketX LLC · app@rocketx.app · rocketx.app",
+    foot="RocketX · Pedidos sin fricción · rocketx.app",
     pg="Página",
 )
 
@@ -581,7 +581,7 @@ C["nl"] = dict(
     contact="app@rocketx.app",
     srch="Bronnen",
     src="CBS voor het aantal groothandels in Nederland, de omzetontwikkeling van de sector en het aandeel bedrijven met elektronische verkoop. Baymard Institute voor het verlatingspercentage van winkelwagens, gemiddeld over 50 studies (2006–2025); dat cijfer gaat over de hele e-commerce en is niet naar B2B uitgesplitst. Gartner voor de omvang van het inkoopteam bij een complexe B2B-aankoop. McKinsey B2B Pulse, negende jaarlijkse enquête onder 3.942 B2B-beslissers in 13 landen. Sensor Tower, State of Mobile 2026, voor het aandeel telefoontijd buiten de browser; dat cijfer gaat over al het telefoongebruik, niet specifiek over B2B-bestellingen. Boston Consulting Group met Google, „Mobile Marketing and the New B2B Buyer” (2017), voor het mobiele aandeel in de B2B-omzet. Afhandelingslast van retouren volgens de distributiebenchmarks van de B2B E-commerce Association. Doorlooptijden weerspiegelen marktbenchmarks 2026 voor B2B-trajecten in het middensegment en variëren met de scope.",
-    foot="RocketX LLC · app@rocketx.app · rocketx.app",
+    foot="RocketX · Bestellen zonder wrijving · rocketx.app",
     pg="Pagina",
 )
 
