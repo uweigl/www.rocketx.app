@@ -295,6 +295,22 @@ try:
         check("%s: market sources are local to this audience" % _l, not _for,
               str(sorted(set(_for))[:4]))
 
+    # the guarantee is a claim of record: once named, every surface that talks
+    # money must carry it, or one document quietly promises less than another
+    _GUAR = {"en": r"ow(?:e|ing) nothing", "de": r"zahlen (?:Sie )?nichts",
+             "es": r"no debes nada|sin deber nada", "nl": r"betaal je niets",
+             "fr": r"sans rien devoir|ne devez rien"}
+    import faq as _fq2
+    for _l, _rx in _GUAR.items():
+        _surf = {
+            "site": re.sub(r"<[^>]+>", "", _I[_l]["pm.p"]) + " " + _I[_l]["pm.l4"],
+            "faq": _fq2.A[_l][9],
+            "deck-terms": " ".join(x for r in _gd.C[_l]["terms"] for x in r),
+            "one-pager": _gd.C[_l]["xs"][5][1],
+        }
+        _missing = [k for k, v in _surf.items() if not re.search(_rx, v)]
+        check("%s: the guarantee is named on every money surface" % _l,
+              not _missing, str(_missing))
     # register: German is Sie throughout, Dutch is je throughout
     de_all = dict(_I["de"]); de_all.update(_flat(_gd.C["de"]))
     check("de: no informal address", not [k for k, v in de_all.items()
