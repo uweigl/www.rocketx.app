@@ -361,7 +361,7 @@ if os.path.exists(_404):
     # served from any depth, so a relative link would resolve against the wrong folder
     _rel = re.findall(r'(?:href|src)="(?!https?:|/|#|mailto:|data:)([^"]+)"', _h4)
     check("404: every link is root-absolute", not _rel, str(sorted(set(_rel))[:4]))
-    _tgt = re.findall(r'href="(/[^"#]*)"', _h4)
+    _tgt = re.findall(r'(?:href|src)="(/[^"#]*)"', _h4)
     _gone = [t for t in _tgt if not os.path.exists(t.lstrip("/") or "index.html")]
     check("404: every link resolves to a file", not _gone, str(sorted(set(_gone))[:4]))
 

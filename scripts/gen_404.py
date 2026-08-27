@@ -264,7 +264,7 @@ a{color:inherit;text-decoration:none}
 .wrap{width:100%;max-width:1000px;margin:0 auto;padding:0 24px}
 header{padding:26px 0}
 .brand{display:inline-flex;align-items:center;gap:10px}
-.brand svg{width:26px;height:26px;fill:var(--ice)}
+.brand img{width:30px;height:30px;border-radius:8px;display:block}
 .brand b{font-family:"Space Grotesk",Inter,sans-serif;font-size:17px;letter-spacing:-.4px}
 main{flex:1;display:flex;align-items:center;padding:16px 0 56px}
 .code{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:2.4px;
@@ -289,11 +289,6 @@ footer{border-top:1px solid var(--line);padding:18px 0;color:var(--mist);font-si
   main{padding-bottom:40px}
 }
 """
-
-ROCKET = ("M12 2c2 3 3.2 6.4 3.2 9.1 0 1.7-1.3 2.9-3.2 2.9s-3.2-1.2-3.2-2.9C8.8 8.4 10 5 12 2Z"
-          "M8.8 9.4C7 11.1 6.1 13.3 6.1 15.3l2.4-1.4c0-1.7.1-3.2.3-4.5Z"
-          "M15.2 9.4c1.8 1.7 2.7 3.9 2.7 5.9l-2.4-1.4c0-1.7-.1-3.2-.3-4.5Z"
-          "M12 22c-1.4-1.9-1.9-3.2-1.9-4.1 0-1.1.8-1.8 1.9-1.8s1.9.7 1.9 1.8c0 .9-.5 2.2-1.9 4.1Z")
 
 DLICON = ('<svg aria-hidden="true" viewBox="0 0 24 24">'
           '<path d="M12 16l-5-5 1.4-1.4L11 12.2V4h2v8.2l2.6-2.6L17 11z"/>'
@@ -335,7 +330,7 @@ def build():
 </head>
 <body>
 <header><div class="wrap"><a class="brand" href="/">
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="%s"/></svg><b>RocketX</b></a></div></header>
+<img src="/assets/logo.png" alt="" width="500" height="500"/><b>RocketX</b></a></div></header>
 <main><div class="wrap">
 %s
 </div></main>
@@ -360,7 +355,7 @@ def build():
 </script>
 </body>
 </html>
-""" % (CSS.strip(), ROCKET, "\n".join(blocks),
+""" % (CSS.strip(), "\n".join(blocks),
        "[" + ",".join('"%s"' % l for l in LANGS) + "]")
     io.open(OUT, "w", encoding="utf-8").write(html)
     return html
