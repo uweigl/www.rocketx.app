@@ -200,6 +200,47 @@ try:
 except Exception as e:
     check("faq cross-check ran", False, repr(e))
 
+# ------------------------------------------------- localisation typography
+print("\ntypography")
+try:
+    import sys as _sys
+    _sys.path.insert(0, os.path.join(os.getcwd(), "scripts"))
+    import gen_deck as _gd
+    _src = io.open("index.html", encoding="utf-8").read()
+    _I = json.loads(re.search(r"const I18N=(\{.*?\});\n", _src, re.S).group(1))
+    def _flat(d):
+        out = {}
+        for k, v in d.items():
+            if isinstance(v, str):
+                out[k] = v
+            elif isinstance(v, (list, tuple)):
+                for i, e in enumerate(v):
+                    if isinstance(e, (list, tuple)):
+                        for j, x in enumerate(e):
+                            if isinstance(x, str):
+                                out["%s[%d][%d]" % (k, i, j)] = x
+                    elif isinstance(e, str):
+                        out["%s[%d]" % (k, i)] = e
+        return out
+    NB = u"\u00a0"
+    RX = re.compile(u"(\\d)([ \u00a0])(\u20ac|%)|(\u20ac)([ \u00a0])(\\d)")
+    for _l in ("de", "es", "nl"):
+        _S = dict(("site/" + k, re.sub(r"<[^>]+>", "", v)) for k, v in _I[_l].items())
+        _S.update(("deck/" + k, v) for k, v in _flat(_gd.C[_l]).items())
+        # a number must never separate from its currency or percent sign
+        bad = [k for k, v in _S.items() for m in RX.finditer(v)
+               if (m.group(2) or m.group(5)) != NB]
+        check("%s: currency and percent use protected spaces" % _l, not bad, str(sorted(set(bad))[:4]))
+    # register: German is Sie throughout, Dutch is je throughout
+    de_all = dict(_I["de"]); de_all.update(_flat(_gd.C["de"]))
+    check("de: no informal address", not [k for k, v in de_all.items()
+          if re.search(r"\b(du|dein\w*|dich)\b", str(v))])
+    nl_all = dict(_I["nl"]); nl_all.update(_flat(_gd.C["nl"]))
+    check("nl: no formal address", not [k for k, v in nl_all.items()
+          if re.search(r"\b(uw)\b", str(v))])
+except Exception as e:
+    check("typography cross-check ran", False, repr(e))
+
 # ---------------------------------------------------------------- one-pager
 print("\none-pager")
 for _l in ("en", "de", "es", "nl"):
