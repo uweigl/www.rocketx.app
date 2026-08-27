@@ -102,14 +102,16 @@ C["en"] = dict(
     us_h='You contract with RocketX LLC',
     ath='Attaches to the agreement, in both jurisdictions',
     cmn='Send this page to whoever runs your security review. If it comes back with a questionnaire, we would rather answer it in week one than in week nine, which is when it usually arrives.',
-    eu=[('Counterparty', 'A separate Irish entity, incorporated and operating in the European Union, under EU law.'),
-        ('GDPR', 'Applies to the engagement directly. You are the controller of your customer and order data; we are the processor, acting on your documented instructions.'),
-        ('Transfer analysis', 'Your counterparty is an EU company, so the review does not start with a Chapter V transfer question. That is usually where evaluations of US vendors lose a month.'),
-        ('Subprocessors', 'Disclosed in full, with notice before any change and a contractual right to object.')],
-    us=[('Counterparty', 'RocketX LLC, the United States entity. Same platform, same commitments, governed where you are.'),
-        ('State privacy law', 'CCPA and CPRA, and the successor state statutes, are handled through the same written processing terms rather than a separate regime per state.'),
-        ('Security review', 'Certifications, audit reports and hosting detail are provided on request and attach to the agreement.'),
-        ('Portability', 'The same export and exit rights as EU customers. Nothing is withheld or downgraded by region.')],
+    eu=[("Counterparty", "A separate Irish entity, incorporated and operating in the European Union, under EU law."),
+        ("Data residency", "Customer data stays in the European Union: storage, processing and backups. Nothing is replicated to the United States."),
+        ("GDPR", "Applies to the engagement directly. You are the controller of your customer and order data; we are the processor, acting on your documented instructions."),
+        ("Transfer analysis", "Your counterparty is an EU company, so the review does not start with a Chapter V transfer question. That is usually where evaluations of US vendors lose a month."),
+        ("Subprocessors", "Disclosed in full, with notice before any change and a contractual right to object.")],
+    us=[("Counterparty", "RocketX LLC, the United States entity. Same platform, same commitments, governed where you are."),
+        ("Data residency", "Customer data stays in the United States: storage, processing and backups. Nothing is replicated to the EU."),
+        ("State privacy law", "CCPA and CPRA, and the successor state statutes, are handled through the same written processing terms rather than a separate regime per state."),
+        ("Security review", "Certifications, audit reports and hosting detail are provided on request and attach to the agreement."),
+        ("Portability", "The same export and exit rights as EU customers. Nothing is withheld or downgraded by region.")],
     at=['Data processing agreement, with roles written down', 'Current subprocessor list, with change notice', 'Certifications, audit reports and hosting region', 'Uptime and support commitments, by tier', 'Retention, deletion and backup policy', 'Export in open formats, at any time and on exit'],
     nfh="Where we are not the right fit",
     nfa="Every vendor says they are right for you. Here is the short list of times we are not, so that it surfaces now rather than in month two of an implementation.",
@@ -240,14 +242,16 @@ C["de"] = dict(
     us_h='Sie schließen mit der RocketX LLC ab',
     ath='Wird in beiden Rechtsräumen Vertragsbestandteil',
     cmn='Geben Sie diese Seite an die Stelle, die Ihre Sicherheitsprüfung verantwortet. Kommt sie mit einem Fragebogen zurück, beantworten wir ihn lieber in Woche eins als in Woche neun — dann trifft er nämlich üblicherweise ein.',
-    eu=[('Vertragspartner', 'Eine eigene irische Gesellschaft, gegründet und tätig in der Europäischen Union, nach EU-Recht.'),
-        ('DSGVO', 'Gilt unmittelbar für die Zusammenarbeit. Sie sind Verantwortlicher für Ihre Kunden- und Bestelldaten; wir sind Auftragsverarbeiter und handeln auf Ihre dokumentierte Weisung.'),
-        ('Übermittlungsprüfung', 'Ihr Vertragspartner ist ein EU-Unternehmen, die Prüfung beginnt also nicht mit einer Frage nach Kapitel V. Genau dort verlieren Evaluationen von US-Anbietern üblicherweise einen Monat.'),
-        ('Unterauftragsverarbeiter', 'Vollständig offengelegt, mit Vorabmitteilung bei Änderungen und vertraglichem Widerspruchsrecht.')],
-    us=[('Vertragspartner', 'Die RocketX LLC, die US-Gesellschaft. Dieselbe Plattform, dieselben Zusagen, geltendes Recht an Ihrem Sitz.'),
-        ('Datenschutz der Bundesstaaten', 'CCPA und CPRA sowie die nachfolgenden Landesgesetze werden über dieselben schriftlichen Verarbeitungsbedingungen abgedeckt, nicht über ein eigenes Regime je Bundesstaat.'),
-        ('Sicherheitsprüfung', 'Zertifizierungen, Prüfberichte und Angaben zum Hosting stellen wir auf Anfrage bereit; sie werden Vertragsbestandteil.'),
-        ('Portabilität', 'Dieselben Export- und Ausstiegsrechte wie für EU-Kunden. Nach Region wird nichts zurückgehalten oder abgestuft.')],
+    eu=[("Vertragspartner", "Eine eigene irische Gesellschaft, gegründet und tätig in der Europäischen Union, nach EU-Recht."),
+        ("Datenstandort", "Kundendaten bleiben in der Europäischen Union: Speicherung, Verarbeitung, Backups. Keine Replikation in die USA."),
+        ("DSGVO", "Gilt unmittelbar für die Zusammenarbeit. Sie sind Verantwortlicher für Ihre Kunden- und Bestelldaten; wir sind Auftragsverarbeiter und handeln auf Ihre dokumentierte Weisung."),
+        ("Übermittlungsprüfung", "Ihr Vertragspartner ist ein EU-Unternehmen, die Prüfung beginnt also nicht mit einer Frage nach Kapitel V. Genau dort verlieren Evaluationen von US-Anbietern üblicherweise einen Monat."),
+        ("Unterauftragsverarbeiter", "Vollständig offengelegt, mit Vorabmitteilung bei Änderungen und vertraglichem Widerspruchsrecht.")],
+    us=[("Vertragspartner", "Die RocketX LLC, die US-Gesellschaft. Dieselbe Plattform, dieselben Zusagen, geltendes Recht an Ihrem Sitz."),
+        ("Datenstandort", "Kundendaten bleiben in den Vereinigten Staaten: Speicherung, Verarbeitung, Backups. Keine Replikation in die EU."),
+        ("Datenschutz der Bundesstaaten", "CCPA und CPRA sowie die nachfolgenden Landesgesetze werden über dieselben schriftlichen Verarbeitungsbedingungen abgedeckt, nicht über ein eigenes Regime je Bundesstaat."),
+        ("Sicherheitsprüfung", "Zertifizierungen, Prüfberichte und Angaben zum Hosting stellen wir auf Anfrage bereit; sie werden Vertragsbestandteil."),
+        ("Portabilität", "Dieselben Export- und Ausstiegsrechte wie für EU-Kunden. Nach Region wird nichts zurückgehalten oder abgestuft.")],
     at=['Auftragsverarbeitungsvertrag mit schriftlich fixierten Rollen', 'Aktuelle Liste der Unterauftragsverarbeiter, mit Änderungsmitteilung', 'Zertifizierungen, Prüfberichte und Hosting-Region', 'Zusagen zu Verfügbarkeit und Support, nach Stufe', 'Aufbewahrungs-, Lösch- und Backup-Richtlinie', 'Export in offenen Formaten, jederzeit und beim Ausstieg'],
     nfh="Wofür wir nicht der Richtige sind",
     nfa="Jeder Anbieter sagt, er passe zu Ihnen. Hier die kurze Liste der Fälle, in denen wir es nicht tun — damit das jetzt herauskommt und nicht im zweiten Monat der Einführung.",
@@ -376,14 +380,16 @@ C["es"] = dict(
     us_h='Contratas con RocketX LLC',
     ath='Se adjunta al acuerdo, en ambas jurisdicciones',
     cmn='Pasa esta página a quien lleve tu revisión de seguridad. Si vuelve con un cuestionario, preferimos responderlo en la semana uno que en la novena, que es cuando suele llegar.',
-    eu=[('Contraparte', 'Una entidad irlandesa independiente, constituida y operativa en la Unión Europea, bajo derecho de la UE.'),
-        ('RGPD', 'Se aplica directamente a la relación. Tú eres el responsable de los datos de tus clientes y pedidos; nosotros somos el encargado y actuamos según tus instrucciones documentadas.'),
-        ('Análisis de transferencias', 'Tu contraparte es una empresa de la UE, así que la revisión no empieza por una pregunta del Capítulo V. Ahí es donde las evaluaciones de proveedores estadounidenses suelen perder un mes.'),
-        ('Subencargados', 'Divulgados por completo, con aviso previo a cualquier cambio y derecho contractual de objeción.')],
-    us=[('Contraparte', 'RocketX LLC, la entidad estadounidense. La misma plataforma, los mismos compromisos, con la ley de donde estás.'),
-        ('Privacidad estatal', 'CCPA y CPRA, y las leyes estatales posteriores, se cubren con los mismos términos escritos de tratamiento, no con un régimen distinto por estado.'),
-        ('Revisión de seguridad', 'Certificaciones, informes de auditoría y detalles de alojamiento se facilitan a petición y se adjuntan al acuerdo.'),
-        ('Portabilidad', 'Los mismos derechos de exportación y salida que los clientes de la UE. No se retiene ni se rebaja nada por región.')],
+    eu=[("Contraparte", "Una entidad irlandesa independiente, constituida y operativa en la Unión Europea, bajo derecho de la UE."),
+        ("Ubicación de los datos", "Los datos de cliente permanecen en la Unión Europea: almacenamiento, procesamiento y copias de seguridad. No se replican a Estados Unidos."),
+        ("RGPD", "Se aplica directamente a la relación. Tú eres el responsable de los datos de tus clientes y pedidos; nosotros somos el encargado y actuamos según tus instrucciones documentadas."),
+        ("Análisis de transferencias", "Tu contraparte es una empresa de la UE, así que la revisión no empieza por una pregunta del Capítulo V. Ahí es donde las evaluaciones de proveedores estadounidenses suelen perder un mes."),
+        ("Subencargados", "Divulgados por completo, con aviso previo a cualquier cambio y derecho contractual de objeción.")],
+    us=[("Contraparte", "RocketX LLC, la entidad estadounidense. La misma plataforma, los mismos compromisos, con la ley de donde estás."),
+        ("Ubicación de los datos", "Los datos de cliente permanecen en Estados Unidos: almacenamiento, procesamiento y copias de seguridad. No se replican a la UE."),
+        ("Privacidad estatal", "CCPA y CPRA, y las leyes estatales posteriores, se cubren con los mismos términos escritos de tratamiento, no con un régimen distinto por estado."),
+        ("Revisión de seguridad", "Certificaciones, informes de auditoría y detalles de alojamiento se facilitan a petición y se adjuntan al acuerdo."),
+        ("Portabilidad", "Los mismos derechos de exportación y salida que los clientes de la UE. No se retiene ni se rebaja nada por región.")],
     at=['Acuerdo de tratamiento de datos, con los roles por escrito', 'Lista vigente de subencargados, con aviso de cambios', 'Certificaciones, informes de auditoría y región de alojamiento', 'Compromisos de disponibilidad y soporte, por nivel', 'Política de retención, borrado y copias de seguridad', 'Exportación en formatos abiertos, en cualquier momento y al salir'],
     nfh="Dónde no somos la opción correcta",
     nfa="Todos los proveedores dicen que encajan contigo. Esta es la lista corta de casos en que no lo hacemos, para que salga ahora y no en el segundo mes de una implementación.",
@@ -474,12 +480,14 @@ C["nl"] = dict(
     eu_f="Voor klanten in de Europese Unie",
     eu_h="Je contracteert met een EU-vennootschap",
     eu=[("Wederpartij", "Een aparte Ierse vennootschap, opgericht en actief in de Europese Unie, naar EU-recht."),
+        ("Datalocatie", "Klantgegevens blijven in de Europese Unie: opslag, verwerking en back-ups. Geen replicatie naar de Verenigde Staten."),
         ("AVG", "Geldt rechtstreeks voor de samenwerking. Jij bent verwerkingsverantwoordelijke voor je klant- en ordergegevens; wij zijn verwerker en handelen op jouw gedocumenteerde instructie."),
         ("Doorgiftetoets", "Je wederpartij is een EU-vennootschap, dus de beoordeling begint niet met een vraag over hoofdstuk V. Precies daar verliezen trajecten met Amerikaanse leveranciers meestal een maand."),
         ("Subverwerkers", "Volledig openbaar gemaakt, met bericht vooraf bij wijziging en een contractueel recht van bezwaar.")],
     us_f="Voor klanten in de Verenigde Staten",
     us_h="Je contracteert met RocketX LLC",
     us=[("Wederpartij", "RocketX LLC, de Amerikaanse vennootschap. Hetzelfde platform, dezelfde toezeggingen, recht van je eigen vestigingsplaats."),
+        ("Datalocatie", "Klantgegevens blijven in de Verenigde Staten: opslag, verwerking en back-ups. Geen replicatie naar de EU."),
         ("Privacywetgeving per staat", "CCPA en CPRA en de opvolgende staatswetten worden gedekt door dezelfde schriftelijke verwerkingsvoorwaarden, niet door een apart regime per staat."),
         ("Beveiligingstoets", "Certificeringen, auditrapporten en gegevens over hosting verstrekken we op verzoek; ze worden onderdeel van de overeenkomst."),
         ("Overdraagbaarheid", "Dezelfde export- en uittredingsrechten als EU-klanten. Er wordt per regio niets achtergehouden of afgezwakt.")],
@@ -730,18 +738,18 @@ h3{font-size:10.4pt;color:var(--ink);font-weight:600;margin-bottom:5px;line-heig
 .lever{display:grid;grid-template-columns:44mm 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);page-break-inside:avoid}
 .lever h3{font-size:10.6pt;color:var(--blue)}
 .lever p{font-size:9.4pt;line-height:1.55}
-.closing{margin-top:22px;background:var(--tint);border-radius:9px;padding:16px 18px;font-size:9.6pt;page-break-inside:avoid}
+.closing{margin-top:13px;background:var(--tint);border-radius:9px;padding:12px 14px;font-size:9.3pt;page-break-inside:avoid}
 /* jurisdiction tracks */
-.juris{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
-.jcol{border:1px solid var(--line);border-radius:9px;padding:15px 16px;page-break-inside:avoid}
-.jcol.eu{background:var(--tint);border-color:#C9D9F0}
+.juris{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.jcol{border:1px solid var(--line);border-radius:9px;padding:13px 14px;page-break-inside:avoid}
+.jcol:first-child{background:var(--tint);border-color:#C9D9F0}
 .jflag{font-family:"IBM Plex Mono",monospace;font-size:7.2pt;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:4px}
 .jcol h3{font-size:11pt;margin-bottom:9px}
-.jrow{padding:7px 0;border-top:1px solid var(--line)}
+.jrow{padding:5px 0;border-top:1px solid var(--line)}
 .jrow:first-of-type{border-top:0;padding-top:2px}
 .jrow b{display:block;font-size:8.6pt;color:var(--ink);font-weight:600}
 .jrow span{display:block;font-size:8.6pt;color:var(--body);line-height:1.5;margin-top:2px}
-.attach{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.attach{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}
 .attach h3{font-family:"IBM Plex Mono",monospace;font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);font-weight:400;margin-bottom:7px}
 .attach ul{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;list-style:none}
 .attach li{font-size:8.8pt;color:var(--body);padding-left:13px;position:relative;line-height:1.45}
@@ -798,19 +806,6 @@ def build(d):
     P.append('<div class="page"><h2>%s</h2><div class="caps">%s</div>%s</div>'
              % (esc(d["p3h"]), caps, deck_figs.fig_integration(DG[d["lang"]], d)))
 
-    # data, entities, compliance - split by jurisdiction
-    def jcol(flag, head, rows, cls):
-        r = "".join('<div class="jrow"><b>%s</b><span>%s</span></div>' % (esc(a), esc(b)) for a, b in rows)
-        return ('<div class="jcol %s"><div class="jflag">%s</div><h3>%s</h3>%s</div>'
-                % (cls, esc(flag), esc(head), r))
-    juris = ('<div class="juris">' + jcol(d["eu_f"], d["eu_h"], d["eu"], "eu")
-             + jcol(d["us_f"], d["us_h"], d["us"], "us") + '</div>')
-    att = "".join('<li>%s</li>' % esc(x) for x in d["at"])
-    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p>%s'
-             '<div class="attach"><h3>%s</h3><ul>%s</ul></div>'
-             '<div class="closing">%s</div></div>'
-             % (esc(d["cmh"]), esc(d["cma"]), juris, esc(d["ath"]), att, esc(d["cmn"])))
-
     # p4 native
     nat = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["native"])
     P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div></div>'
@@ -856,6 +851,22 @@ def build(d):
     P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>'
              '<div class="closing">%s</div></div>'
              % (esc(d["nfh"]), esc(d["nfa"]), nf, esc(d["nfn"])))
+
+    # data, entities, compliance - split by jurisdiction
+    def jcol(flag, head, rows, cls):
+        r = "".join('<div class="jrow"><b>%s</b><span>%s</span></div>' % (esc(a), esc(b)) for a, b in rows)
+        return ('<div class="jcol %s"><div class="jflag">%s</div><h3>%s</h3>%s</div>'
+                % (cls, esc(flag), esc(head), r))
+    # English and Spanish lead with the US entity, since that is where those
+    # readers contract; German and Dutch lead with the EU one.
+    order = ("us", "eu") if d["lang"] in ("en", "es") else ("eu", "us")
+    juris = ('<div class="juris">'
+             + "".join(jcol(d[c + "_f"], d[c + "_h"], d[c], c) for c in order) + '</div>')
+    att = "".join('<li>%s</li>' % esc(x) for x in d["at"])
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p>%s'
+             '<div class="attach"><h3>%s</h3><ul>%s</ul></div>'
+             '<div class="closing">%s</div></div>'
+             % (esc(d["cmh"]), esc(d["cma"]), juris, esc(d["ath"]), att, esc(d["cmn"])))
 
     # p7 questions + CTA + sources
     qs = "".join('<div class="q">%s</div>' % esc(q) for q in d["quest"])
