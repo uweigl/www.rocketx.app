@@ -19,10 +19,10 @@ html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 body{font-family:"Inter",-apple-system,Helvetica,Arial,sans-serif;color:var(--body);font-size:9.45pt;line-height:1.5}
 h1,h2,h3,.brand b{font-family:"Space Grotesk","Inter",Helvetica,sans-serif}
 .sheet{min-height:271mm;display:flex;flex-direction:column}
-.top{display:flex;align-items:center;justify-content:space-between;padding-bottom:9px;border-bottom:2px solid var(--ink)}
-.brand{display:flex;align-items:center;gap:8px}
-.brand svg{width:19px;height:19px}
-.brand b{font-size:14pt;color:var(--ink);letter-spacing:-.01em}
+.top{display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:2px solid var(--ink)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand svg{width:30px;height:30px}
+.brand b{font-size:16.5pt;color:var(--ink);letter-spacing:-.01em}
 .tag{font-family:"IBM Plex Mono",monospace;font-size:7.2pt;letter-spacing:.2em;text-transform:uppercase;color:var(--sky)}
 h1{font-size:20pt;line-height:1.14;color:var(--ink);letter-spacing:-.02em;margin-top:15px;max-width:158mm}
 .who{font-family:"IBM Plex Mono",monospace;font-size:7.4pt;letter-spacing:.13em;text-transform:uppercase;color:var(--soft);margin-top:9px}
