@@ -281,6 +281,15 @@ for lang, path in LLMS.items():
     check("%s: llms.txt carries no prices" % lang, not PRICE_RX.search(t))
     check("%s: llms.txt in its own language" % lang,
           ("What RocketX does" in t) if lang == "en" else ("What RocketX does" not in t))
+    # the boundaries are the deck's, so they must appear verbatim
+    try:
+        import sys as _s
+        _s.path.insert(0, os.path.join(os.getcwd(), "scripts"))
+        import gen_deck as _g
+        check("%s: llms.txt boundaries match the deck" % lang,
+              all(b in t for _, b in _g.C[lang]["nf"]))
+    except Exception as _e:
+        check("%s: llms.txt boundary cross-check ran" % lang, False, repr(_e))
 
 # ---------------------------------------------------------------- seo
 print("\nseo")

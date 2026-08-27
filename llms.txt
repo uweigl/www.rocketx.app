@@ -26,7 +26,7 @@ RocketX sits in front of your ERP and CRM rather than replacing them, and is dep
 
 ## Where RocketX is not the right fit
 
-- You sell only to consumers. Most of the product is wholesale machinery a consumer catalogue never touches. Selling both wholesale and direct is common and is not a limit — the consumer channel runs from the same catalogue and the same ERP feed.
+- You sell only to consumers. Most of the product is wholesale machinery a consumer catalogue never touches. Selling both wholesale and direct is common, and it is not a limit here — the consumer channel runs from the same catalogue and the same ERP feed as the wholesale one.
 - Your catalogue is small and your orders are simple. A few dozen SKUs and single-line orders do not need this.
 - You have no ERP and no plans for one. Much of the value here is two-way sync with a system of record.
 

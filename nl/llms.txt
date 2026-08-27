@@ -26,9 +26,9 @@ RocketX gaat vóór je ERP en CRM staan in plaats van ze te vervangen, en draait
 
 ## Waar RocketX niet past
 
-- Je verkoopt alleen aan consumenten. Het grootste deel van het product is groothandelsmechaniek waar een consumentencatalogus nooit aan komt. Allebei tegelijk is heel gewoon en geen beperking: het consumentenkanaal draait op dezelfde catalogus en dezelfde ERP-koppeling.
-- Je catalogus is klein en je orders zijn eenvoudig. Een paar dozijn SKU’s en orders van één regel hebben dit niet nodig.
-- Je hebt geen ERP en bent er ook niet mee bezig. Een groot deel van de waarde zit in tweerichtingssynchronisatie met een bronsysteem.
+- Je verkoopt uitsluitend aan consumenten. Het grootste deel van het product is groothandelsmechaniek waar een consumentencatalogus nooit aan komt. Aan de groothandel én rechtstreeks verkopen is heel gewoon. Hier is het geen beperking: het consumentenkanaal draait op dezelfde catalogus en dezelfde ERP-koppeling als de groothandel.
+- Je catalogus is klein en je orders zijn eenvoudig. Een paar dozijn SKU's en orders van één regel hebben dit niet nodig.
+- Je hebt geen ERP en bent er ook geen van plan. Een groot deel van de waarde hier zit in tweewegsynchronisatie met een bronsysteem.
 
 ## Commercieel model
 

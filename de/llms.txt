@@ -26,9 +26,9 @@ RocketX setzt sich vor Ihr ERP und CRM, statt sie zu ersetzen, und läuft neben 
 
 ## Wo RocketX nicht passt
 
-- Sie verkaufen ausschließlich an Endkunden. Der größte Teil des Produkts ist Großhandelsmechanik, die ein Endkundenkatalog nie berührt. Beides nebeneinander ist verbreitet und keine Einschränkung: Der Endkundenkanal läuft aus demselben Katalog und derselben ERP-Anbindung.
-- Ihr Katalog ist klein und Ihre Bestellungen sind einfach. Ein paar Dutzend SKUs und einzeilige Aufträge brauchen das nicht.
-- Sie haben kein ERP und planen keins. Ein großer Teil des Nutzens liegt in der Zwei-Wege-Synchronisation mit einem führenden System.
+- Sie verkaufen ausschließlich an Endkunden. Der größte Teil des Produkts ist Großhandelsmechanik, die ein Endkundenkatalog nie berührt. Großhandel und Direktverkauf an Endkunden nebeneinander: verbreitet, und hier keine Einschränkung. Der Endkundenkanal läuft aus demselben Katalog und derselben ERP-Anbindung wie das Großhandelsgeschäft.
+- Ihr Katalog ist klein und Ihre Bestellungen sind einfach. Ein paar Dutzend SKUs und einzeilige Bestellungen brauchen das hier nicht.
+- Sie haben kein ERP und planen keines. Ein großer Teil des Werts liegt in der bidirektionalen Synchronisation mit einem führenden System.
 
 ## Kommerzielles Modell
 

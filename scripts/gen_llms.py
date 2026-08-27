@@ -11,6 +11,7 @@ section and would otherwise need keeping in sync in a second place.
     python3 scripts/gen_llms.py
 """
 import io, os, re, json
+import gen_deck
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
@@ -158,7 +159,12 @@ def build(lang):
     for label, code in t["pages"]:
         L.append("- [%s](%s): %s" % (label, URL[code], PAGEDESC[lang][code]))
     L += ["", "## " + t["h_does"], ""] + ["- " + f for f in features(lang)]
-    L += ["", "## " + t["h_not"], ""] + ["- " + x for x in t["nots"]]
+    # the same three boundaries the deck states, read from it rather than
+    # restated here - they had already drifted in German and Dutch
+    nf = gen_deck.C[lang]["nf"]
+    nots = ["%s. %s" % (a.rstrip("."), b) for a, b in nf]
+    nots[0] = nots[0] + " " + gen_deck.C[lang]["nfn"]
+    L += ["", "## " + t["h_not"], ""] + ["- " + x for x in nots]
     L += ["", "## " + t["h_comm"], ""] + ["- " + x for x in t["comm"]]
     L += ["", "## " + t["h_legal"], ""] + ["- " + x for x in t["legal"]]
     L += ["", "## " + t["h_impl"], ""] + ["- " + x for x in t["impl"]]

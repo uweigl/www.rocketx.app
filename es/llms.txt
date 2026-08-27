@@ -26,9 +26,9 @@ RocketX se sitúa delante de tu ERP y tu CRM en lugar de reemplazarlos, y conviv
 
 ## Dónde RocketX no encaja
 
-- Vendes solo al consumidor final. Buena parte del producto es maquinaria mayorista que un catálogo de consumo nunca toca. Vender al por mayor y directo a la vez es habitual y no supone una limitación: el canal de consumo se alimenta del mismo catálogo y de la misma conexión con el ERP.
-- Tu catálogo es pequeño y tus pedidos son simples. Unas pocas decenas de SKUs y pedidos de una línea no necesitan esto.
-- No tienes ERP ni planes de tenerlo. Buena parte del valor está en la sincronización bidireccional con un sistema de registro.
+- Vendes únicamente a consumidores. La mayor parte del producto es maquinaria mayorista que un catálogo de consumo nunca toca. Vender al por mayor y directo al consumidor a la vez es habitual. Aquí no supone una limitación: el canal de consumo se alimenta del mismo catálogo y de la misma conexión con el ERP que el mayorista.
+- Tu catálogo es pequeño y tus pedidos simples. Unas docenas de SKUs y pedidos de una línea no necesitan esto.
+- No tienes ERP ni planeas tenerlo. Buena parte del valor está en la sincronización bidireccional con un sistema de registro.
 
 ## Modelo comercial
 
