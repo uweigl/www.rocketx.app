@@ -1,0 +1,19 @@
+# What the Worker must not publish.
+#
+# assets.directory is the repository root, and everything under it was being
+# uploaded and served - including .git, which made the full history publicly
+# cloneable, and which is 121 MB of the 145 MB being pushed on every deploy.
+#
+# robots.txt already asked crawlers to stay out of scripts/, deck/ and
+# assets/_originals/, but robots only stops indexing, not fetching. Nothing the
+# site renders links into any of these.
+.git
+.gitignore
+.assetsignore
+.DS_Store
+__pycache__
+scripts
+deck
+assets/_originals
+README.txt
+wrangler.jsonc

@@ -448,6 +448,33 @@ if os.path.exists(_404):
     _gone = [t for t in _tgt if not os.path.exists(t.lstrip("/") or "index.html")]
     check("404: every link resolves to a file", not _gone, str(sorted(set(_gone))[:4]))
 
+# the Worker publishes its assets directory verbatim, so anything left in the
+# repository root is served: .git included, which makes the history cloneable
+_AI = ".assetsignore"
+check("assetsignore exists", os.path.exists(_AI))
+if os.path.exists(_AI):
+    import fnmatch
+    _pats = [l.strip() for l in io.open(_AI, encoding="utf-8")
+             if l.strip() and not l.startswith("#")]
+    for _must in (".git", "scripts", "deck", "assets/_originals"):
+        check("assetsignore withholds %s" % _must, _must in _pats)
+
+    def _ignored(rel):
+        parts = rel.split(os.sep)
+        return any(p in parts or fnmatch.fnmatch(rel, p)
+                   or rel.startswith(p + os.sep) or rel == p for p in _pats)
+
+    # nothing the site actually serves may be caught by those patterns
+    _needed = ["index.html", "404.html", "robots.txt", "sitemap.xml", "llms.txt",
+               "favicon.ico", "site.webmanifest"]
+    _needed += ["%s/index.html" % l for l in ("de", "es", "nl", "fr")]
+    _needed += ["%s/llms.txt" % l for l in ("de", "es", "nl", "fr")]
+    _needed += [p.replace("https://www.rocketx.app/", "")
+                for p in re.findall(r"<loc>(https://www\.rocketx\.app/[^<]*\.pdf)</loc>",
+                                    io.open("sitemap.xml", encoding="utf-8").read())]
+    _lost = [n for n in _needed if _ignored(n)]
+    check("assetsignore keeps everything the site serves", not _lost, str(_lost[:4]))
+
 check("robots.txt exists", os.path.exists("robots.txt"))
 if os.path.exists("robots.txt"):
     rb = io.open("robots.txt", encoding="utf-8").read()
