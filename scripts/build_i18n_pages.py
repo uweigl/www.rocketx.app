@@ -22,29 +22,42 @@ SITE = "https://www.rocketx.app"
 TMP = os.path.join(ROOT, ".build_tmp.html")
 
 TITLE = {
- "nl": "RocketX — B2B-bestelplatform voor de groothandel | Onbeperkt SKU's, native apps",
- "de": "RocketX — B2B-Bestellplattform für den Großhandel | Unbegrenzt SKUs, native Apps",
- "es": "RocketX — Plataforma de pedidos B2B para mayoristas | SKUs ilimitados, apps nativas",
+ "fr": "RocketX — Plateforme de commande B2B, commerce de gros",
+ "nl": "RocketX — B2B-bestelplatform voor de groothandel",
+ "de": "RocketX — B2B-Bestellplattform für den Großhandel",
+ "es": "RocketX — Plataforma de pedidos B2B para mayoristas",
 }
 DESC = {
- "nl": "B2B-groothandelsbestellingen voor bedrijven met 15–250 miljoen euro omzet. Onbeperkt SKU's met zoeken binnen een seconde, native iOS- en Android-apps en een gedeelde live winkelwagen die je buitendienst echt kan zien. Vaste prijs, nooit een percentage van je omzet.",
- "de": "B2B-Großhandelsbestellungen für Unternehmen mit 15–250 Mio. € Umsatz. Unbegrenzt viele SKUs mit Suche unter einer Sekunde, native iOS- und Android-Apps und ein gemeinsamer Live-Warenkorb, den Ihr Außendienst wirklich sieht. Pauschalgebühr, nie ein GMV-Prozentsatz.",
- "es": "Pedidos mayoristas B2B para distribuidores de $15–300M. SKUs ilimitados con búsqueda en menos de un segundo, apps nativas de iOS y Android y un carrito compartido en vivo que tus vendedores sí pueden ver. Tarifa fija, nunca un porcentaje del GMV.",
+ "fr": "Commande B2B pour le commerce de gros, 15–250\u00a0M€. Références illimitées, applications natives, panier partagé en direct. Un forfait, jamais un pourcentage.",
+ "nl": "B2B-groothandelsbestellingen voor 15–250 miljoen euro omzet. Onbeperkt SKU's, native apps, gedeelde live winkelwagen. Vaste prijs, nooit een percentage.",
+ "de": "B2B-Großhandelsbestellungen für 15–250 Mio.\u00a0€ Umsatz. Unbegrenzt SKUs, native Apps, gemeinsamer Live-Warenkorb. Pauschale, nie ein Prozentsatz.",
+ "es": "Pedidos mayoristas B2B para distribuidores de $15–300M. SKUs ilimitados, apps nativas, carrito compartido en vivo. Tarifa fija, nunca un porcentaje.",
 }
-LOC = {"de": "de_DE", "es": "es_ES", "nl": "nl_NL"}
+LOC = {"de": "de_DE", "es": "es_ES", "nl": "nl_NL", "fr": "fr_FR"}
 
 # Structured data a crawler or an assistant actually quotes back. featureList
 # and the offer were English on every localised page, and the offer claimed USD
 # on the German and Dutch pages, which price in euro.
-CURRENCY = {"de": "EUR", "es": "USD", "nl": "EUR"}
+CURRENCY = {"de": "EUR", "es": "USD", "nl": "EUR", "fr": "EUR"}
 
 OFFER_DESC = {
+ "fr": "Forfait mensuel pour la plateforme. Jamais un pourcentage de votre chiffre d’affaires, aucun frais par référence ni par utilisateur. Mise en service offerte sur les plans annuels ; la facturation commence à la mise en service.",
  "de": "Monatliche Pauschalgebühr für die Plattform. Nie ein Prozentsatz Ihres Bestellvolumens, keine Gebühren pro SKU oder pro Nutzer. Setup bei Jahresplänen erlassen; die Abrechnung beginnt mit dem Go-live.",
  "es": "Tarifa mensual fija de plataforma. Nunca un porcentaje de tus ventas, sin tarifas por SKU ni por usuario. Implantación incluida en planes anuales; la facturación empieza en la puesta en marcha.",
  "nl": "Vast maandtarief voor het platform. Nooit een percentage van je omzet, geen kosten per SKU of per gebruiker. Inrichtingskosten kwijtgescholden bij jaarplannen; de facturatie start bij livegang.",
 }
 
 FEATURES = {
+ "fr": ["Références illimitées, recherche sous la seconde",
+        "Applications natives iOS et Android pour commander",
+        "Paniers partagés en direct, visibles par vos commerciaux",
+        "Plusieurs personnes sur le même panier en temps réel",
+        "Détection des commandes en double sur tout le compte",
+        "Prix et conditions propres à chaque client",
+        "Stock en direct sur tous les entrepôts",
+        "Intégration bidirectionnelle ERP et CRM (NetSuite, SAP, Microsoft Dynamics, Epicor)",
+        "Postes et utilisateurs illimités",
+        "Commander directement depuis vos PDF et catalogues existants"],
  "de": ["Unbegrenzt viele SKUs, Suche unter einer Sekunde",
         "Native iOS- und Android-Apps zum Bestellen",
         "Live-Warenkörbe, die der Außendienst sieht",
@@ -78,6 +91,7 @@ FEATURES = {
 }
 
 IMG_ALT = {
+ "fr": "RocketX \u2014 commander sans friction. Commande B2B pour le commerce de gros, avec références illimitées, applications natives et paniers partagés en direct.",
  "de": "RocketX \u2014 Bestellen ohne Reibung. B2B-Gro\u00dfhandelsbestellungen mit unbegrenzt vielen SKUs, nativen Apps und gemeinsamen Live-Warenk\u00f6rben.",
  "es": "RocketX \u2014 pedidos sin fricci\u00f3n. Pedidos mayoristas B2B con SKUs ilimitados, apps nativas y carritos compartidos en vivo.",
  "nl": "RocketX \u2014 bestellen zonder wrijving. B2B-groothandelsbestellingen met onbeperkt SKU\u2019s, native apps en gedeelde live winkelwagens.",
@@ -104,7 +118,9 @@ def fix(html, lang):
     # 1. the pages live one directory down
     html = re.sub(r'(href|src)="(assets/|favicon\.ico|site\.webmanifest|sitemap\.xml)',
                   lambda m: '%s="../%s' % (m.group(1), m.group(2)), html)
-    html = html.replace("'assets/rocketx-business-case-'", "'../assets/rocketx-business-case-'")
+    # every JS-built asset path, not just the deck: a localised page lives one
+    # level down, so an un-prefixed 'assets/... resolves to /<lang>/assets/...
+    html = re.sub(r"'assets/(rocketx-[a-z-]+-)'", r"'../assets/\1'", html)
     # 2. head: language-specific title, description, canonical, og
     html = re.sub(r'<title>.*?</title>', '<title>%s</title>' % TITLE[lang], html, count=1, flags=re.S)
     html = re.sub(r'<meta name="description" content="[^"]*"',
@@ -149,7 +165,7 @@ def fix(html, lang):
     return html
 
 built = []
-for lang in ("de", "es", "nl"):
+for lang in ("de", "es", "nl", "fr"):
     os.makedirs(lang, exist_ok=True)
     html = fix(render(lang), lang)
     path = os.path.join(lang, "index.html")
@@ -158,7 +174,7 @@ for lang in ("de", "es", "nl"):
     print("  wrote %-16s %d bytes" % (path, len(html)))
 
 # sanity: the translated copy must actually be in the file
-checks = {"de": "Bestellen", "es": "sin fricción", "nl": "zonder wrijving"}
+checks = {"de": "Bestellen", "es": "sin fricción", "nl": "zonder wrijving", "fr": "sans friction"}
 for lang, needle in checks.items():
     txt = io.open(os.path.join(lang, "index.html"), encoding="utf-8").read()
     ok = needle in txt and 'lang="%s"' % lang in txt

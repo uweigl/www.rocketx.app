@@ -1,0 +1,78 @@
+# RocketX
+
+> Plateforme de commande B2B pour le commerce de gros, la distribution et l’industrie. Références illimitées avec recherche sous la seconde, applications natives iOS et Android, et un panier partagé en direct que vos commerciaux voient vraiment.
+
+RocketX se place devant votre ERP et votre CRM au lieu de les remplacer, et se déploie à côté de la boutique en ligne existante plutôt que de l’éteindre. Les connecteurs ERP et CRM standard sont compris dans chaque plan. Conçu pour le commerce de gros et la distribution, de 15 à 250 M€ de chiffre d’affaires.
+
+## Pages
+
+- [Anglais](https://www.rocketx.app/): Anglais. Données de marché américaines, prix en USD.
+- [Allemand](https://www.rocketx.app/de/): Allemand. Données de marché allemandes, prix en euros.
+- [Espagnol](https://www.rocketx.app/es/): Espagnol. Prix en USD.
+- [Néerlandais](https://www.rocketx.app/nl/): Néerlandais. Données de marché néerlandaises, prix en euros.
+- [Français](https://www.rocketx.app/fr/): Français. Données de marché françaises, prix en euros.
+
+## Ce que fait RocketX
+
+- Références illimitées, recherche sous la seconde
+- Applications natives iOS et Android pour commander
+- Paniers partagés en direct, visibles par vos commerciaux
+- Plusieurs personnes sur le même panier en temps réel
+- Détection des commandes en double sur tout le compte
+- Prix et conditions propres à chaque client
+- Stock en direct sur tous les entrepôts
+- Intégration bidirectionnelle ERP et CRM (NetSuite, SAP, Microsoft Dynamics, Epicor)
+- Postes et utilisateurs illimités
+- Commander directement depuis vos PDF et catalogues existants
+
+## Là où RocketX ne convient pas
+
+- Vous ne vendez qu’au consommateur final. L’essentiel du produit est de la mécanique de gros qu’un catalogue grand public ne touche jamais. Vendre à la fois en gros et en direct est courant, et ce n’est pas une limite ici : le canal grand public s’alimente au même catalogue et à la même liaison ERP que le canal de gros.
+- Votre catalogue est petit et vos commandes simples. Quelques dizaines de références et des commandes d’une ligne n’ont pas besoin de cela.
+- Vous n’avez pas d’ERP et n’en prévoyez pas. Une grande partie de la valeur tient à la synchronisation bidirectionnelle avec un système de référence.
+
+## Modèle commercial
+
+- Forfait mensuel pour la plateforme. Jamais un pourcentage de votre chiffre d’affaires.
+- Aucun frais par référence ni par utilisateur. Postes et utilisateurs illimités.
+- Mise en service et intégration offertes sur les plans annuels.
+- La facturation commence à la mise en service, pas à la signature.
+- Un pilote de 30 à 45 jours avec des mesures convenues avant tout engagement plus long.
+- Les tarifs en vigueur figurent dans la section tarifs de chaque page et ne sont pas répétés ici, pour que ce fichier ne se périme pas : https://www.rocketx.app/fr/#pricing
+
+## Cocontractant et conformité
+
+- Les clients de l’Union européenne contractent avec une société irlandaise distincte, constituée et exploitée dans l’UE sous droit européen.
+- Les clients des États-Unis contractent avec RocketX LLC, la société américaine. Même plateforme, mêmes engagements.
+- Certifications, rapports d’audit et détails d’hébergement sont fournis sur demande.
+
+## Mise en place
+
+- Enchainement habituel : audit des systèmes, intégration, reprise du catalogue, pilote, mise en service et bilan.
+- Un pilote RocketX en conditions réelles dure 4 à 6 semaines. Les projets B2B comparables de taille intermédiaire sont couramment annoncés entre 8 et 24 semaines avant la mise en service.
+
+## Dossier économique (PDF, sans formulaire, 14 pages)
+
+Dossier économique, sans formulaire et sans adresse électronique.
+
+- [English](https://www.rocketx.app/assets/rocketx-business-case-en.pdf)
+- [Deutsch](https://www.rocketx.app/assets/rocketx-business-case-de.pdf)
+- [Español](https://www.rocketx.app/assets/rocketx-business-case-es.pdf)
+- [Nederlands](https://www.rocketx.app/assets/rocketx-business-case-nl.pdf)
+- [Français](https://www.rocketx.app/assets/rocketx-business-case-fr.pdf)
+
+Le même argumentaire en une page :
+
+- [English](https://www.rocketx.app/assets/rocketx-one-page-en.pdf)
+- [Deutsch](https://www.rocketx.app/assets/rocketx-one-page-de.pdf)
+- [Español](https://www.rocketx.app/assets/rocketx-one-page-es.pdf)
+- [Nederlands](https://www.rocketx.app/assets/rocketx-one-page-nl.pdf)
+- [Français](https://www.rocketx.app/assets/rocketx-one-page-fr.pdf)
+
+## Ailleurs
+
+- [LinkedIn](https://www.linkedin.com/company/rocketxapp)
+
+## Contact
+
+- app@rocketx.app

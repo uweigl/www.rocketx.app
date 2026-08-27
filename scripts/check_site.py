@@ -130,7 +130,7 @@ print("\nlabels")
 try:
     _src = io.open("index.html", encoding="utf-8").read()
     _I = json.loads(re.search(r"const I18N=(\{.*?\});\n", _src, re.S).group(1))
-    for _l in ("en", "de", "es", "nl"):
+    for _l in ("en", "de", "es", "nl", "fr"):
         odd = [k for k, v in _I[_l].items() if k.endswith(".k") and not v.startswith("/ ")]
         check("%s: section kickers use the '/ ' prefix" % _l, not odd, str(odd))
         # a nav label and the section it points at should name the same thing
@@ -148,13 +148,16 @@ try:
     I18N = json.loads(re.search(r"const I18N=(\{.*?\});\n", site, re.S).group(1))
     gd = io.open("scripts/gen_deck.py", encoding="utf-8").read()
     def nums(txt, lo, hi):
+        # French uses a space as the thousands separator, German and Spanish a
+        # point, so strip all three before reading the figure
         out = []
-        for m in re.findall(r"\d[\d.,]*", txt):
-            v = m.rstrip(".,").replace(".", "").replace(",", "")
+        for m in re.findall(u"\\d[\\d.,\u00a0 ]*", txt):
+            v = m.rstrip(u".,\u00a0 ").replace(".", "").replace(",", "")
+            v = v.replace(u"\u00a0", "").replace(" ", "")
             if v.isdigit() and lo <= int(v) <= hi:
                 out.append(int(v))
         return out
-    for lang in ("en", "de", "es", "nl"):
+    for lang in ("en", "de", "es", "nl", "fr"):
         d = I18N[lang]
         fees = [nums(d["pr.a%d" % i], 1000, 10 ** 7)[0] for i in (1, 2, 3)]
         b1 = nums(d["pr.for1"], 1, 999)
@@ -174,7 +177,7 @@ print("\nfaq")
 sys.path.insert(0, os.path.join(os.getcwd(), "scripts"))
 try:
     import faq as _faq
-    _P = {"en": "index.html", "de": "de/index.html", "es": "es/index.html", "nl": "nl/index.html"}
+    _P = {"en": "index.html", "de": "de/index.html", "es": "es/index.html", "nl": "nl/index.html", "fr": "fr/index.html"}
     for lang, path in _P.items():
         if not os.path.exists(path):
             continue
@@ -224,13 +227,19 @@ try:
         return out
     NB = u"\u00a0"
     RX = re.compile(u"(\\d)([ \u00a0])(\u20ac|%)|(\u20ac)([ \u00a0])(\\d)")
-    for _l in ("de", "es", "nl"):
+    for _l in ("de", "es", "nl", "fr"):
         _S = dict(("site/" + k, re.sub(r"<[^>]+>", "", v)) for k, v in _I[_l].items())
         _S.update(("deck/" + k, v) for k, v in _flat(_gd.C[_l]).items())
         # a number must never separate from its currency or percent sign
         bad = [k for k, v in _S.items() for m in RX.finditer(v)
                if (m.group(2) or m.group(5)) != NB]
         check("%s: currency and percent use protected spaces" % _l, not bad, str(sorted(set(bad))[:4]))
+        # French groups thousands with a space; it must not break across lines
+        if _l == "fr":
+            GRP = re.compile(u"\\d+(?: \\d{3})+")
+            wrap = [k for k, v in _S.items() if GRP.search(v)]
+            check("fr: thousands separators are non-breaking", not wrap,
+                  str(sorted(set(wrap))[:4]))
     # register: German is Sie throughout, Dutch is je throughout
     de_all = dict(_I["de"]); de_all.update(_flat(_gd.C["de"]))
     check("de: no informal address", not [k for k, v in de_all.items()
@@ -243,7 +252,7 @@ except Exception as e:
 
 # ---------------------------------------------------------------- one-pager
 print("\none-pager")
-for _l in ("en", "de", "es", "nl"):
+for _l in ("en", "de", "es", "nl", "fr"):
     _p = "assets/rocketx-one-page-%s.pdf" % _l
     if not os.path.exists(_p):
         check("%s: one-pager exists" % _l, False, _p); continue
@@ -257,7 +266,7 @@ for _l in ("en", "de", "es", "nl"):
 
 # ---------------------------------------------------------------- llms.txt
 print("\nllms.txt")
-LLMS = {"en": "llms.txt", "de": "de/llms.txt", "es": "es/llms.txt", "nl": "nl/llms.txt"}
+LLMS = {"en": "llms.txt", "de": "de/llms.txt", "es": "es/llms.txt", "nl": "nl/llms.txt", "fr": "fr/llms.txt"}
 PRICE_RX = re.compile(r"\$6,000|\$8,500|\$12,000|\$64,800|\$91,800|\$129,600"
                       r"|5\.000\s*\u20ac|7\.000\s*\u20ac|10\.000\s*\u20ac"
                       r"|54\.000\s*\u20ac|75\.600\s*\u20ac|108\.000\s*\u20ac")
@@ -294,20 +303,40 @@ for lang, path in LLMS.items():
 # ---------------------------------------------------------------- seo
 print("\nseo")
 import xml.etree.ElementTree as ET
-PAGES = {"en": "index.html", "de": "de/index.html", "es": "es/index.html", "nl": "nl/index.html"}
+PAGES = {"en": "index.html", "de": "de/index.html", "es": "es/index.html", "nl": "nl/index.html", "fr": "fr/index.html"}
 CANON = {"en": "https://www.rocketx.app/", "de": "https://www.rocketx.app/de/",
-         "es": "https://www.rocketx.app/es/", "nl": "https://www.rocketx.app/nl/"}
+         "es": "https://www.rocketx.app/es/", "nl": "https://www.rocketx.app/nl/",
+         "fr": "https://www.rocketx.app/fr/"}
 for lang, path in PAGES.items():
     if not os.path.exists(path):
         check("%s page exists" % lang, False, path); continue
     h = io.open(path, encoding="utf-8").read()
     d = re.search(r'<meta name="description" content="([^"]*)"', h)
     check("%s: meta description" % lang, bool(d) and len(d.group(1)) > 80)
+    # a title over ~60 chars and a description over ~160 are cut off in results,
+    # so the distinctive part has to fit inside the budget
+    check("%s: description fits a search result" % lang,
+          bool(d) and len(d.group(1)) <= 160, "%d chars" % len(d.group(1)) if d else "missing")
+    t = re.search(r"<title>(.*?)</title>", h, re.S)
+    check("%s: title fits a search result" % lang,
+          bool(t) and len(t.group(1)) <= 60, "%d chars" % len(t.group(1)) if t else "missing")
+    # GMV was dropped from every localised body; the metadata must not reinstate it
+    if lang != "en":
+        meta_txt = " ".join(re.findall(r'<(?:meta|title)[^>]*content="([^"]*)"', h)
+                            + ([t.group(1)] if t else []))
+        check("%s: metadata avoids GMV" % lang, "GMV" not in meta_txt)
     c = re.search(r'<link rel="canonical" href="([^"]*)"', h)
     check("%s: canonical correct" % lang, bool(c) and c.group(1) == CANON[lang],
           c.group(1) if c else "missing")
+    if lang != "en":
+        # JS rebuilds PDF hrefs on a language switch; from /<lang>/ an
+        # un-prefixed 'assets/... resolves to /<lang>/assets/... and 404s
+        stray = re.findall(r"(?<!\.\./)'assets/rocketx-[a-z-]+-'", h)
+        check("%s: JS asset paths point out of the subdirectory" % lang,
+              not stray, str(sorted(set(stray))))
     hl = set(re.findall(r'hreflang="([^"]+)"', h))
-    check("%s: hreflang covers all languages" % lang, hl >= {"en", "de", "es", "nl", "x-default"}, str(sorted(hl)))
+    check("%s: hreflang covers all languages" % lang,
+          hl >= {"en", "de", "es", "nl", "fr", "x-default"}, str(sorted(hl)))
     check("%s: html lang attribute" % lang, ('<html lang="%s"' % lang) in h)
     check("%s: og:image + twitter card" % lang,
           'property="og:image"' in h and 'name="twitter:card"' in h)
@@ -320,6 +349,22 @@ for lang, path in PAGES.items():
     check("%s: JSON-LD parses" % lang, ok)
 
 check("og:image file exists", os.path.exists("assets/og-image.png"))
+# a 404 must be a real page, in every language, with working root-absolute links
+_404 = "404.html"
+check("404 page exists", os.path.exists(_404))
+if os.path.exists(_404):
+    _h4 = io.open(_404, encoding="utf-8").read()
+    check("404: noindex", 'content="noindex' in _h4)
+    check("404: covers every language",
+          all('class="l l-%s"' % l in _h4 for l in ("en", "de", "es", "nl", "fr")),
+          str([l for l in ("en", "de", "es", "nl", "fr") if 'class="l l-%s"' % l not in _h4]))
+    # served from any depth, so a relative link would resolve against the wrong folder
+    _rel = re.findall(r'(?:href|src)="(?!https?:|/|#|mailto:|data:)([^"]+)"', _h4)
+    check("404: every link is root-absolute", not _rel, str(sorted(set(_rel))[:4]))
+    _tgt = re.findall(r'href="(/[^"#]*)"', _h4)
+    _gone = [t for t in _tgt if not os.path.exists(t.lstrip("/") or "index.html")]
+    check("404: every link resolves to a file", not _gone, str(sorted(set(_gone))[:4]))
+
 check("robots.txt exists", os.path.exists("robots.txt"))
 if os.path.exists("robots.txt"):
     rb = io.open("robots.txt", encoding="utf-8").read()
@@ -346,7 +391,7 @@ def i18n_of(path):
     m = re.search(r'const I18N=(\{.*?\});\n', t, re.S)
     return m.group(1) if m else None
 base = i18n_of("index.html")
-for lang in ("de", "es", "nl"):
+for lang in ("de", "es", "nl", "fr"):
     p = "%s/index.html" % lang
     if os.path.exists(p):
         check("%s page in sync with index.html" % lang, i18n_of(p) == base,

@@ -152,7 +152,7 @@ C["en"] = dict(
            "When does billing start — at signature or at go-live?",
            "What happens to our data and integrations if we leave?"],
     ctah="Next step",
-    ctap="A personalised demo against your own catalog, a short stack audit, and a low-risk pilot with measurable results within weeks.",
+    ctap="45 minutes against your own catalog, with nothing to prepare. Then a short stack audit and a low-risk pilot, measurable within weeks.",
     contact="app@rocketx.app",
     srch="Sources",
     src="Digital Commerce 360 / U.S. Department of Commerce for B2B ecommerce totals and growth. Baymard Institute for the cart-abandonment rate, averaged across 50 studies (2006-2025); that figure covers all ecommerce and is not segmented for B2B. Gartner for the size of the buying group on a complex B2B purchase. Return-handling effort per the B2B E-commerce Association\u2019s distribution benchmarks. McKinsey B2B Pulse, ninth annual survey of 3,942 B2B decision makers across 13 countries, for digital order values. Sensor Tower, State of Mobile 2026, for share of smartphone time outside the browser; this figure covers all smartphone use, not B2B ordering specifically. Boston Consulting Group with Google, “Mobile Marketing and the New B2B Buyer” (2017), for mobile's share of B2B revenue. Airship retention benchmarks for push opt-in. Implementation timelines reflect 2026 market benchmarks for mid-market B2B builds and vary by scope.",
@@ -292,7 +292,7 @@ C["de"] = dict(
            "Wann beginnt die Abrechnung — bei Unterschrift oder bei Go-live?",
            "Was passiert mit unseren Daten und Integrationen, wenn wir wechseln?"],
     ctah="Nächster Schritt",
-    ctap="Eine persönliche Demo an Ihrem eigenen Katalog, ein kurzes Stack-Audit und ein risikoarmer Pilot mit messbaren Ergebnissen innerhalb weniger Wochen.",
+    ctap="45 Minuten an Ihrem eigenen Katalog, ohne Vorbereitung. Danach ein kurzes Stack-Audit und ein risikoarmer Pilot, messbar innerhalb weniger Wochen.",
     contact="app@rocketx.app",
     srch="Quellen",
     src="ECC KÖLN B2B-Marktmonitor 2025 (mit FIS und Shopware) für die deutschen B2B-E-Commerce-Zahlen. Baymard Institute für die Warenkorb-Abbruchquote, gemittelt über 50 Studien (2006–2025); dieser Wert umfasst den gesamten E-Commerce und ist nicht nach B2B segmentiert. Gartner zur Größe des Buying-Centers bei komplexen B2B-Beschaffungen. Aufwand für Retouren nach Benchmarks der B2B E-commerce Association für die Distribution. McKinsey B2B Pulse, neunte Jahresbefragung von 3.942 B2B-Entscheidern in 13 Ländern. Sensor Tower, State of Mobile 2026, für den Anteil der Smartphone-Zeit außerhalb des Browsers; diese Angabe umfasst die gesamte Smartphone-Nutzung, nicht speziell B2B-Bestellungen. Boston Consulting Group mit Google, „Mobile Marketing and the New B2B Buyer“ (2017), für den Mobile-Anteil am B2B-Umsatz. Airship-Benchmarks zur Push-Aktivierung. Implementierungszeiträume entsprechen Marktbenchmarks 2026 für mittelständische B2B-Projekte und variieren je nach Umfang.",
@@ -432,7 +432,7 @@ C["es"] = dict(
            "¿Cuándo empieza la facturación: en la firma o en la puesta en marcha?",
            "¿Qué pasa con nuestros datos e integraciones si nos vamos?"],
     ctah="Siguiente paso",
-    ctap="Una demo personalizada sobre tu propio catálogo, una auditoría breve de los sistemas y un piloto de bajo riesgo con resultados medibles en semanas.",
+    ctap="45 minutos sobre tu propio catálogo, sin preparación. Luego, una auditoría de tus sistemas y un piloto de bajo riesgo, medible en semanas.",
     contact="app@rocketx.app",
     srch="Fuentes",
     src="Digital Commerce 360 / Departamento de Comercio de EE. UU. para los totales y el crecimiento del comercio electrónico B2B. Baymard Institute para la tasa de abandono de carrito, promediada en 50 estudios (2006-2025); esa cifra cubre todo el comercio electrónico y no está segmentada para B2B. Gartner para el tamaño del grupo de compra en una adquisición B2B compleja. Esfuerzo de gestión de devoluciones según las referencias de distribución de la B2B E-commerce Association. McKinsey B2B Pulse, novena encuesta anual a 3.942 responsables de decisión B2B en 13 países, para los valores de pedido digital. Sensor Tower, State of Mobile 2026, para la porción del tiempo móvil fuera del navegador; esta cifra cubre todo el uso del smartphone, no específicamente pedidos B2B. Boston Consulting Group con Google, «Mobile Marketing and the New B2B Buyer» (2017), para la porción de ingresos B2B del móvil. Referencias de retención de Airship para notificaciones. Los plazos de implementación reflejan referencias de mercado 2026 para proyectos B2B de mercado medio y varían según el alcance.",
@@ -577,7 +577,7 @@ C["nl"] = dict(
            "Wanneer start de facturatie — bij ondertekening of bij livegang?",
            "Wat gebeurt er met onze gegevens en koppelingen als we weggaan?"],
     ctah="Volgende stap",
-    ctap="Een persoonlijke demo op je eigen catalogus. Een korte doorlichting van je systemen. En een pilot met weinig risico — meetbare resultaten binnen weken.",
+    ctap="45 minuten op je eigen catalogus, zonder voorbereiding. Daarna een scan van je systemen en een pilot met weinig risico, meetbaar binnen weken.",
     contact="app@rocketx.app",
     srch="Bronnen",
     src="CBS voor het aantal groothandels in Nederland, de omzetontwikkeling van de sector en het aandeel bedrijven met elektronische verkoop. Baymard Institute voor het verlatingspercentage van winkelwagens, gemiddeld over 50 studies (2006–2025); dat cijfer gaat over de hele e-commerce en is niet naar B2B uitgesplitst. Gartner voor de omvang van het inkoopteam bij een complexe B2B-aankoop. McKinsey B2B Pulse, negende jaarlijkse enquête onder 3.942 B2B-beslissers in 13 landen. Sensor Tower, State of Mobile 2026, voor het aandeel telefoontijd buiten de browser; dat cijfer gaat over al het telefoongebruik, niet specifiek over B2B-bestellingen. Boston Consulting Group met Google, „Mobile Marketing and the New B2B Buyer” (2017), voor het mobiele aandeel in de B2B-omzet. Afhandelingslast van retouren volgens de distributiebenchmarks van de B2B E-commerce Association. Doorlooptijden weerspiegelen marktbenchmarks 2026 voor B2B-trajecten in het middensegment en variëren met de scope.",
@@ -586,6 +586,77 @@ C["nl"] = dict(
 )
 
 # ---------------------------------------------------------------- template
+
+C["fr"] = dict(
+  lang="fr",
+  file="rocketx-business-case-fr",
+  doctitle="RocketX — L’argumentaire de la commande B2B moderne",
+  kicker="DOSSIER ÉCONOMIQUE INTERNE",
+  title="L’argumentaire de la commande B2B moderne",
+  sub="Préparé pour les équipes du commerce de gros, de la distribution et de l’industrie qui examinent la façon dont leurs clients passent commande.",
+  forwho="Pour le commerce de gros et la distribution, de 15 à 250 M€ de chiffre d’affaires",
+  date="Édition 2026",
+  p1h="Pourquoi le sujet est sur la table maintenant",
+  p1a="L’achat B2B est passé en ligne pendant que le commerce de gros, lui, ne bouge presque plus. La croissance ne vient pas de nouveaux clients. Elle vient de ce que les mêmes clients commandent une part croissante en ligne, et choisissent leur fournisseur sur la simplicité du geste.",
+  stats=[("160 000", "entreprises du commerce de gros en France, pour près de 800 Md€ de chiffre d’affaires"), ("17 %", "des entreprises françaises pratiquent le commerce électronique, contre 23 % en moyenne européenne"), ("94 %", "du temps passé sur smartphone l’est dans des applications, pas dans un navigateur"), ("> 40 %", "du chiffre d’affaires des entreprises B2B les plus avancées est généré ou influencé par le mobile")],
+  p1b="La conséquence pratique : la prise de commande n’est plus un outil de back-office. C’est la surface sur laquelle vos clients vous jugent, et le moment où ils décident de recommander chez vous ou d’appeler ailleurs.",
+  p2h="Ce que coûte l’installation actuelle",
+  p2a="La plupart des grossistes de taille intermédiaire font tourner l’une de ces trois choses. Un portail ERP vieillissant. Une plateforme e-commerce généraliste pliée de force au B2B. Ou la prise de commande par téléphone et par courriel. Chacune a un coût qui n’apparaît presque jamais sur une facture.",
+  costs=[("Ressaisie manuelle des commandes", "Les commandes arrivent par courriel, par téléphone ou en PDF, puis quelqu’un les retape dans l’ERP. Ce temps est réel, il est payé, et il produit des erreurs que l’on paie une seconde fois en retours."), ("Recherche catalogue trop lente", "Au-delà de quelques dizaines de milliers de références, la plupart des plateformes ralentissent. L’acheteur attend, puis abandonne, puis appelle. Vous venez de reconvertir une commande en ligne en travail de bureau."), ("Commissions indexées sur le volume", "Les tarifs liés au volume font monter le coût de la plateforme au moment précis où vous réussissez. La croissance est taxée au lieu d’être soutenue."), ("Intégration facturée en continu", "Les projets B2B intermédiaires sur plateformes généralistes demandent couramment quatre à huit mois, voire davantage, avant la mise en service, avec l’intégration facturée pendant toute la durée."), ("Le canal mobile laissé de côté", "Vos acheteurs travaillent debout : sur un quai, dans une réserve, entre deux rendez-vous. Sans application native, ils repoussent la commande jusqu’au retour au bureau. Souvent, elle n’y revient pas.")],
+  p3h="Ce que RocketX change",
+  caps=[("Références illimitées, recherche sous la seconde", "Que le catalogue compte huit cents références ou huit millions, on filtre et on commande en quelques millisecondes. Et jamais de facturation à la référence. C’est une performance que les autres plateformes n’atteignent pas à cette échelle."), ("Applications natives iOS et Android", "Conçues pour la commande B2B, pas un site web emballé dans une coque. Tout le catalogue dans la poche de l’acheteur."), ("Postes et utilisateurs illimités", "Chaque salarié, chaque commercial et chaque client autorisé dispose d’un accès complet. Aucun frais par utilisateur, aucun frais par référence, aucun rationnement."), ("Travail à plusieurs sur le panier, en temps réel", "Plusieurs collaborateurs travaillent le même panier en même temps, chaque action journalisée : qui, quoi, quand."), ("Prix propres à chaque client", "Chaque acheteur voit automatiquement ses prix négociés, ses paliers de remise et ses conditions contractuelles."), ("Stock en direct sur tous les entrepôts", "Disponibilités en temps réel : vos clients cessent de commander ce qui ne peut pas partir."), ("Commander directement depuis les PDF", "Notre IA lit vos brochures et catalogues existants pour que les acheteurs commandent directement, sans ressaisie."), ("Vos brochures et vos vidéos, dans la poche de l’acheteur", "Publiez vos brochures imprimées en PDF, vos vidéos produit et vos autres contenus riches à côté du catalogue. Tout se synchronise dans les applications natives et s’ouvre même sans réseau. Votre matériel de démonstration cesse de vivre sur un second site professionnel que l’acheteur n’ouvre jamais au moment utile : il voyage avec lui."), ("Le gros d’abord, et le canal grand public avec lui", "Le produit est construit autour de la commande de gros. Si vous vendez aussi au consommateur final, ce canal s’alimente au même catalogue et à la même liaison ERP, plutôt qu’à une seconde plateforme et un second jeu de données produit."), ("Intégration ERP et CRM poussée", "RocketX se place devant votre ERP au lieu de le remplacer. Produits, prix par client et stock en direct en sortent, depuis NetSuite, SAP, Microsoft Dynamics ou Epicor ; paniers, commandes et validations y reviennent. Les connecteurs standard sont compris dans chaque plan.")],
+  p4h="Pourquoi l’application native compte, commercialement",
+  p4a="Un site adaptatif et une application native ne sont pas le même produit. Sur la commande répétée, l’écart se lit directement dans la fréquence de commande.",
+  native=[("Le réassort est une habitude, pas une recherche", "La plupart des commandes B2B sont des commandes répétées. Un navigateur oblige l’acheteur à retrouver un favori, charger un site et saisir un numéro de client à chaque fois. Une application, c’est un geste, déjà connecté. La friction disparaît de chaque réassort, pour toute la durée du compte."), ("Une place permanente sur le téléphone de l’acheteur", "Votre icône est sur l’écran d’accueil. Vos concurrents doivent être cherchés et redécouverts."), ("La notification atteint ceux que le courriel n’atteint plus", "Retour en stock, renouvellement de contrat, rappel de réassort : le message arrive directement. Les utilisateurs qui acceptent les notifications restent actifs deux à trois fois plus longtemps."), ("Le travail se fait loin d’un bureau", "Les acheteurs commandent depuis les allées, les quais de chargement et les salons professionnels. L’accès natif à l’appareil photo permet de scanner un code-barres et de réassortir depuis une étiquette de rayon."), ("Elle survit à la perte de réseau", "Les entrepôts aux parois d’acier et les tournées rurales tuent la réception. Catalogue, prix, panier ainsi que vos brochures et vidéos produit restent disponibles en local et se synchronisent au retour de la connexion.")],
+  p8h="Où la commande se perd vraiment",
+  p8a="La plupart des évaluations comparent les catalogues et le tunnel de commande. L’argent fuit à un endroit moins visible : dans le panier, entre le moment où un acheteur commence et celui où quelqu’un valide.",
+  cart=[("Une commande à moitié faite est invisible", "Environ 70 % des paniers en ligne sont abandonnés. Et sur la plupart des plateformes, personne chez vous ne voit un panier avant qu’il devienne une commande. Un panier arrêté ressemble exactement à l’absence de panier. Vous apprenez son existence le jour où il n’arrive jamais."), ("Le panier meurt avec la session", "Les paniers de navigateur sont liés à un appareil et à une session. Un acheteur interrompu dans la réserve retrouve un panier vide, le reconstruit par téléphone, ou renonce."), ("Une personne construit ce que six à dix décident", "Gartner place un achat B2B complexe entre les mains de six à dix personnes. Quand une seule peut toucher le panier, la commande se monte par courriel, se ressaisit, et arrive incomplète."), ("Le doublon que personne n’a vu devient un retour", "Quand les collègues d’un même compte ne voient pas les commandes des autres, la même référence est commandée deux fois. C’est la transaction la plus chère que vous puissiez produire."), ("Ce que fait RocketX à la place", "Les paniers vivent sur le serveur et se synchronisent en direct entre la boutique en ligne et les applications natives. Vos commerciaux voient les paniers clients en cours, y compris ceux qui bloquent, et agissent avant que l’affaire refroidisse. Toute l’équipe d’achat modifie un seul panier, chaque changement porte un nom. Et le panier signale une référence déjà achetée récemment par le compte, avant la validation.")],
+  p9h="Comment chiffrer le sujet chez vous",
+  p9a="Deux distributeurs ne perdent jamais de la valeur dans les mêmes proportions. La version honnête de cette page est donc une feuille de calcul, pas une promesse. Remplacez nos chiffres par les vôtres ; l’arithmétique est volontairement simple.",
+  levers=[("Paniers rattrapés", "Paniers ouverts par mois &times; part abandonnée &times; panier moyen &times; part que vos commerciaux rattrapent maintenant qu’ils les voient enfin."), ("Retours évités", "Retours par mois &times; part due à un doublon ou à une erreur de référence &times; coût complet d’un retour. Comptez la main-d’œuvre : un seul retour absorbe le traitement de huit à dix commandes normales."), ("Heures commerciales rendues", "Commerciaux &times; heures par semaine passées à prendre et ressaisir des commandes &times; coût horaire chargé &times; 52. Chaque heure sortie de la saisie est une heure disponible pour vendre."), ("Taille des commandes", "Panier moyen &times; la hausse attendue d’un catalogue entier consultable en quelques secondes, de postes illimités et du réassort depuis n’importe quel appareil.")],
+  p9n="En face de ces quatre leviers, posez le coût de la plateforme et l’effort d’intégration de votre proposition. Si les deux premiers ne couvrent pas déjà la dépense, le dossier n’a pas besoin des deux autres.",
+  cdh="Ce que coûte l’attente",
+  cd="Quel que soit le total des quatre leviers, il est annuel. Un trimestre de délibération coûte un quart de ce chiffre, et la fuite ne s’arrête pas pendant que vous évaluez. C’est l’argument honnête pour lancer un pilote maintenant plutôt qu’un cycle d’achat dans six mois.",
+  xsh="En une page",
+  xsa="Si vous ne lisez rien d’autre : les commandes de gros fuient dans le panier, au téléphone et au quai des retours. Voici comment arrêter cela, la plateforme faisant ses preuves avant de coûter quoi que ce soit.",
+  xs=[("Le problème", "Vos acheteurs montent leurs commandes là où personne chez vous ne les voit. Dans un onglet qu’ils doivent retrouver et déverrouiller à chaque fois. Et le travail, lui, se fait ailleurs : sur un téléphone, dans une réserve, entre deux rendez-vous. Les paniers meurent avec la session. Une personne construit ce que six à dix décident. Et le doublon que personne n’a vu revient en retour."), ("Ce qui change dans le panier", "Les paniers vivent sur le serveur et se synchronisent en direct entre la boutique en ligne et les applications natives. Vos commerciaux voient les paniers clients en cours, y compris ceux qui bloquent, et agissent avant que l’affaire refroidisse. Toute l’équipe modifie une seule commande, chaque changement porte un nom. Et le panier signale une référence déjà achetée récemment."), ("Ce qui change sur le téléphone de l’acheteur", "Votre catalogue est sur l’écran d’accueil, à un geste du réassort et déjà connecté, au lieu d’être derrière un numéro de client et un mot de passe. La notification ramène l’acheteur au retour du stock ou à l’échéance d’un contrat, là où le courriel est filtré. Le code-barres réassortit depuis l’étiquette du rayon, et le catalogue est en local : une allée sans réseau reste une allée d’où l’on commande. Vos brochures imprimées et vos vidéos produit voyagent dans la même application, au lieu d’un second site professionnel que personne n’ouvre au bon moment. Natif iOS et Android, pas un site web dans une coque. Le réassort cesse d’être une corvée et devient une habitude : c’est de là que vient le chiffre d’affaires récurrent."), ("Pourquoi c’est défendable", "Références et postes illimités, jamais comptés, jamais un pourcentage de votre chiffre d’affaires : votre croissance vous appartient. Connecteurs ERP et CRM standard compris, RocketX se plaçant devant vos systèmes de référence au lieu de les remplacer. Et il tourne à côté de votre boutique en ligne actuelle : rien n’est débranché."), ("Ce que coûte l’essai", "Mise en service offerte en plan annuel. Facturation à la mise en service, pas à la signature. Pilote de 30 à 45 jours avec mesures convenues, avant tout engagement plus long."), ("Le test du pour cent", "Comparez le coût de plateforme de votre proposition à un pour cent de votre chiffre d’affaires annuel. Ou à la marge sur ce pour cent, si vous préférez la version prudente. La seule question qui reste est de savoir si mieux commander vaut davantage que cela pour vous. Si oui, le reste de ce document est du détail, pas de la persuasion.")],
+  sbh="Rien n’est débranché",
+  sba="L’objection habituelle à une décision de plateforme est qu’elle oblige à en remplacer une. Pas celle-ci. RocketX est déployé à côté de ce que vous faites tourner aujourd’hui, et les deux continuent de fonctionner.",
+  sb=[("Votre boutique en ligne actuelle continue de tourner", "RocketX est mis en service à côté, pas par-dessus. Rien n’est arrêté pour faire de la place, et aucun catalogue n’a besoin d’être migré avant qu’une commande puisse passer."), ("Ce sont vos acheteurs qui choisissent, pas vous", "Certains passent à l’application dès la première semaine. D’autres restent sur la boutique qu’ils connaissent. Les deux produisent des commandes qui arrivent dans le même ERP, au même format, aux mêmes conditions. Rien en aval n’a besoin de changer."), ("Pas de week-end de bascule", "Il n’y a ni fenêtre de migration, ni gel des commandes. Le scénario qui rend ces projets effrayants — un mauvais dimanche et des téléphones qui sonnent le lundi — n’est pas sur la table : il n’y a rien à basculer."), ("L’adoption devient la preuve", "Comme les deux tournent en même temps, vous observez laquelle vos acheteurs utilisent réellement. C’est un meilleur argument, pour ou contre nous, que tout ce que contient ce document."), ("Retirer l’ancien système plus tard, ou jamais", "Rien dans le contrat ne fixe de date pour l’éteindre. S’il fait encore son travail dans trois ans, gardez-le.")],
+  sbn="C’est aussi la façon la moins chère de vous tromper sur notre compte. Si le pilote ne donne rien, vous ne débranchez rien, vous n’avez perdu aucune commande, et le repli est le système que vous utilisiez déjà.",
+  p5h="Comment les conditions commerciales réduisent le risque",
+  p5a="La structure du contrat est faite pour que la plateforme fasse ses preuves avant de coûter quoi que ce soit. Aucun montant n’est cité ici : les tarifs en vigueur sont sur le site et dans votre proposition. Le graphique ci-dessous montre seulement ce que représente le coût rapporté à votre chiffre d’affaires.",
+  terms=[("Un forfait, jamais un pourcentage", "Le coût de la plateforme ne monte pas parce que votre volume de commandes a monté. La croissance n’est pas taxée."), ("Références et postes illimités compris", "Rien n’est compté. Aucun tarif par utilisateur ni par référence à négocier, ni à rationner quand le catalogue et l’équipe grandissent."), ("Mise en service et intégration offertes en plan annuel", "Le coût d’intégration qui charge habituellement le début de ces projets disparaît."), ("Facturation à la mise en service, pas à la signature", "Vous ne payez rien tant que la plateforme n’est pas en production et ne produit pas de valeur."), ("Pilote de 30 à 45 jours avec revue de rentabilité commune", "Une fenêtre d’évaluation définie, avec des mesures convenues, avant tout engagement plus long."), ("Applications natives et intégrations standard comprises", "Elles ne sont pas vendues comme modules ajoutés à une licence de base.")],
+  p6h="À quoi ressemble la mise en place",
+  steps=[("1. Audit des systèmes", "Nous cartographions le catalogue existant, les règles tarifaires, l’ERP et le flux de commande, puis identifions ce qui doit bouger et ce qui reste."), ("2. Intégration", "La synchronisation bidirectionnelle est construite contre votre ERP et votre CRM. Les connecteurs standard couvrent les grands systèmes ; tout ce qui dépasse ce périmètre est chiffré comme un bloc de travail défini."), ("3. Reprise du catalogue", "Les PDF, brochures et données produit existants sont lus. Aucune ressaisie manuelle du catalogue."), ("4. Pilote", "Un pilote en conditions réelles de 30 à 45 jours, avec un groupe d’acheteurs défini et des mesures de réussite convenues."), ("5. Mise en service et bilan", "Déploiement complet, avec une revue de rentabilité commune sur les mesures convenues au pilote.")],
+  tlh="Combien de temps avant que quelqu’un s’en serve vraiment",
+  tl=[("Adobe Commerce", "12&ndash;24 semaines", 100), ("BigCommerce Enterprise + B2B Edition", "10&ndash;20 semaines", 83), ("Shopify Plus (avec agence et applications)", "8&ndash;16 semaines", 67), ("RocketX — pilote en conditions réelles", "4&ndash;6 semaines", 25)],
+  tln="Les valeurs concurrentes sont des repères d’intégration courants sur le marché intermédiaire, jusqu’à la mise en service, tirés des guides d’éditeurs et d’agences 2026. Le périmètre les déplace dans les deux sens, et c’est le travail sur l’ERP qui dérape le plus souvent. La valeur RocketX correspond à un pilote en conditions réelles avec un groupe d’acheteurs défini, pas à un déploiement complet. Chez les alternatives, la facturation commence bien avant la première commande. Chez nous, non.",
+  cmh="Deux sociétés, deux droits, une réponse pour chacun",
+  cma="L’examen des données et de la sécurité est en général la partie la plus lente d’une évaluation. Nous l’avons évitée en ne vous demandant jamais d’accepter que des données européennes soient hébergées en Amérique.",
+  eu_f="Pour les clients de l’Union européenne",
+  eu_h="Vous contractez avec RocketX Limited",
+  us_f="Pour les clients des États-Unis",
+  us_h="Vous contractez avec RocketX LLC",
+  eu=[("Cocontractant", "Une société irlandaise, constituée et exploitée dans l’Union européenne sous droit européen, distincte de la société américaine."), ("Localisation des données", "Les données clients restent dans l’Union européenne : stockage, traitement et sauvegardes. Rien n’est répliqué vers les États-Unis."), ("Certifications", "Centres de données européens certifiés ISO/IEC 27001:2022 et BSI C5 Type 2."), ("RGPD", "Il s’applique directement à la relation. Vous êtes responsable de traitement pour vos données clients et commandes ; nous sommes sous-traitant, agissant sur vos instructions documentées."), ("Analyse de transfert", "Votre cocontractant est une société européenne : l’examen ne commence donc pas par une question de transfert au titre du chapitre V. C’est habituellement là que les évaluations de fournisseurs américains perdent un mois."), ("Sous-traitants ultérieurs", "Communiqués intégralement, avec préavis avant tout changement et droit contractuel d’opposition.")],
+  us=[("Cocontractant", "RocketX LLC, la société américaine. Même plateforme, mêmes engagements, régie là où vous êtes."), ("Localisation des données", "Les données clients restent aux États-Unis : stockage, traitement et sauvegardes. Rien n’est répliqué vers l’Union européenne."), ("Certifications", "Le même prestataire et les mêmes contrôles d’exploitation. Les attestations des sites américains sont disponibles sur demande."), ("Droit des États", "Le CCPA, le CPRA et les textes qui leur succèdent sont traités par les mêmes clauses écrites, plutôt que par un régime distinct par État."), ("Examen de sécurité", "Certifications, rapports d’audit et détails d’hébergement sont fournis sur demande et annexés au contrat."), ("Réversibilité", "Les mêmes droits d’export et de sortie que pour les clients européens. Rien n’est retenu ni diminué selon la région.")],
+  ath="Annexé au contrat, dans les deux droits",
+  at=["Accord de traitement des données, avec les rôles écrits noir sur blanc", "Liste à jour des sous-traitants ultérieurs, avec préavis de changement", "Régions d’hébergement de vos données, nommées par écrit", "Engagements de disponibilité et de support, par palier", "Politique de conservation, de suppression et de sauvegarde", "Export en formats ouverts, à tout moment et à la sortie"],
+  cmn="Transmettez cette page à qui mène votre examen de sécurité. Nous préférons répondre au questionnaire en semaine une plutôt qu’en semaine neuf.",
+  nfh="Là où nous ne sommes pas le bon choix",
+  nfa="Tous les fournisseurs affirment être faits pour vous. Voici la courte liste des cas où nous ne le sommes pas, pour que cela sorte maintenant plutôt qu’au deuxième mois d’un déploiement.",
+  nf=[("Vous ne vendez qu’au consommateur final", "L’essentiel du produit est de la mécanique de gros qu’un catalogue grand public ne touche jamais."), ("Votre catalogue est petit et vos commandes simples", "Quelques dizaines de références et des commandes d’une ligne n’ont pas besoin de cela."), ("Vous n’avez pas d’ERP et n’en prévoyez pas", "Une grande partie de la valeur tient à la synchronisation bidirectionnelle avec un système de référence.")],
+  nfn="Vendre à la fois en gros et en direct est courant, et ce n’est pas une limite ici : le canal grand public s’alimente au même catalogue et à la même liaison ERP que le canal de gros.",
+  p7h="Questions à poser à n’importe quel fournisseur",
+  quest=["Le coût de la plateforme change-t-il quand notre volume de commandes augmente ?", "Nos commerciaux peuvent-ils voir le panier d’un client avant qu’il devienne une commande ?", "Un panier survit-il à un navigateur fermé, une batterie vide, un changement d’appareil ?", "Plusieurs personnes d’un même client peuvent-elles monter une commande ensemble ?", "Le système nous prévient-il quand la même référence a déjà été commandée récemment ?", "Les commerciaux itinérants et le personnel de nos clients sont-ils facturés comme des postes ?", "Quel est le temps de réponse de la recherche sur la taille réelle de notre catalogue, pas sur un catalogue de démonstration ?", "Les applications mobiles sont-elles natives, ou un site web dans une coque ?", "Le catalogue fonctionne-t-il quand un acheteur n’a pas de réseau ?", "Quand la facturation commence-t-elle : à la signature ou à la mise en service ?", "Que deviennent nos données et nos intégrations si nous partons ?"],
+  ctah="Prochaine étape",
+  ctap="45 minutes sur votre propre catalogue, sans rien à préparer. Puis un audit rapide de vos systèmes et un pilote à faible risque, mesurable en quelques semaines.",
+  contact="app@rocketx.app",
+  srch="Sources",
+  src="INSEE, Les entreprises en France, pour le nombre d’entreprises du commerce de gros et le chiffre d’affaires du secteur (données 2021). Eurostat et INSEE, enquête TIC 2024, pour la part des entreprises pratiquant le commerce électronique (données 2023). FEVAD, bilan annuel du e-commerce publié en février 2026, pour le commerce en ligne français (données 2025). Baymard Institute pour le taux d’abandon de panier, moyenne de 50 études (2006-2025) ; ce chiffre couvre tout le commerce en ligne et n’est pas segmenté par B2B. Gartner pour la taille du groupe d’achat sur une décision B2B complexe. Effort de traitement des retours d’après les repères de distribution de la B2B E-commerce Association. Sensor Tower, State of Mobile 2026, pour la part du temps smartphone hors navigateur ; ce chiffre couvre tout l’usage du smartphone, pas la commande B2B en particulier. Boston Consulting Group avec Google, « Mobile Marketing and the New B2B Buyer » (2017), pour la part du mobile dans le chiffre d’affaires B2B. Repères de rétention Airship pour l’acceptation des notifications. Les délais d’intégration reflètent les repères de marché 2026 pour les projets B2B intermédiaires et varient selon le périmètre.",
+  foot="RocketX · Commander sans friction · rocketx.app",
+  pg="Page",
+)
 
 # ---------------------------------------------------------------- figures
 import sys, re, json
@@ -599,6 +670,13 @@ def _site_dg():
     return dict((L, dict((k, v) for k, v in all_[L].items() if k.startswith("dg."))) for L in all_)
 
 DG = _site_dg()
+
+# The one-percent test reframes the price before the reader has anchored on a
+# number, so it reads second - straight after the problem - not last. Trying it
+# then closes the page and leads into the call to action.
+XS_ORDER = [0, 5, 1, 2, 3, 4]
+for _l in C:
+    C[_l]["xs"] = [C[_l]["xs"][i] for i in XS_ORDER]
 
 FIGTXT = {
 "en": dict(
@@ -689,6 +767,38 @@ FIGTXT = {
   fg4_c1="de winkelwagen sterft met de sessie",
   fg4_c2="\u00e9\u00e9n iemand bouwt wat zes tot tien beslissen",
   fg4_c3="het gemiste duplicaat wordt een retour"),
+"fr": dict(
+  fg1_bands=[15, 45, 105, 250],
+  fg1_fees=[54000, 75600, 108000],
+  fg1_cap=480000,
+  fg1_dec=",",
+  fg1_sp=" ",
+  fg1_rx="RocketX, plan annuel",
+  fg1_sh="Formule au pourcentage du chiffre d’affaires, 0,25 %",
+  fg1_x="chiffre d’affaires annuel passant par la plateforme (M€)",
+  fg1_y="coût de la plateforme rapporté à ce chiffre d’affaires",
+  fg1_n="Ligne en pourcentage : Shopify Plus, commission variable de 0,25 % du chiffre d’affaires en ligne au-delà d’environ 1 M par mois, plafonnée à 40 000 par mois. D’où la partie plate, puis le coude. RocketX descend à chaque palier : le coût baisse à mesure que vous grandissez, au lieu de vous suivre vers le haut.",
+  fg2_ha="Un projet de remplacement",
+  fg2_la="une seule voie",
+  fg2_old="votre système actuel, encore le seul qui fonctionne",
+  fg2_new="le nouveau, en service",
+  fg2_cut="week-end de bascule, semaine 12 à 24",
+  fg2_hb="RocketX, déployé à côté",
+  fg2_l1="voie 1",
+  fg2_l2="voie 2",
+  fg2_t1="votre boutique en ligne actuelle — rien n’est débranché",
+  fg2_t2="boutique et applications natives RocketX — en service en quelques semaines",
+  fg2_n="Il n’existe aucun point de bascule, donc rien qui puisse échouer un lundi matin.",
+  fg3_n="Les connecteurs standard sont compris dans chaque plan. Ce qui dépasse le périmètre standard est chiffré à l’avance comme un bloc défini.",
+  fg4_a="commande commencée",
+  fg4_b="commande envoyée",
+  fg4_gap="~70 % n’arrivent jamais",
+  fg4_inv="et sur la plupart des plateformes, personne chez vous n’en voit rien",
+  fg4_c1="le panier meurt avec la session",
+  fg4_c2="une personne monte ce que six à dix décident",
+  fg4_c3="le doublon manqué devient un retour",
+  fg4_n="Baymard Institute, moyenne de 50 études sur l’abandon de panier (2006-2025). Ce taux couvre tout le commerce en ligne et n’est pas segmenté par B2B.",
+),
 }
 for _l, _kv in FIGTXT.items():
     C[_l].update(_kv)
@@ -746,6 +856,21 @@ FIGTXT2 = {
   fg6_bsteps=["op het icoon tikken","bestellen"],
   fg6_note="al ingelogd",
   fg6_n="De meeste B2B-orders zijn herhaalorders, dus die drie stappen in het midden betaal je elke keer opnieuw."),
+"fr": dict(
+  fg5_share=17,
+  fg5_prev=23,
+  fg5_prevlbl="moyenne européenne",
+  fg5_t="Les mêmes clients, une autre façon de commander",
+  fg5_lbl="Part des entreprises françaises qui pratiquent le commerce électronique.",
+  fg5_meanwhile="Pendant ce temps, le commerce en ligne français a atteint 196,4 Md€ en 2025, en hausse de 7 %, alors que le chiffre d’affaires du commerce de gros progressait à peine.",
+  fg5_n="Eurostat et INSEE, enquête TIC 2024, pour la part des entreprises pratiquant le commerce électronique (données 2023). FEVAD, bilan annuel du e-commerce publié en février 2026, pour le commerce en ligne français (données 2025). INSEE, Les entreprises en France (données 2021), pour le commerce de gros.",
+  fg6_a="Dans un navigateur, à chaque réassort",
+  fg6_asteps=["retrouver le favori", "charger le site", "se connecter", "trouver le produit", "commander"],
+  fg6_b="Dans l’application",
+  fg6_bsteps=["toucher l’icône", "commander"],
+  fg6_note="déjà connecté",
+  fg6_n="La plupart des commandes B2B sont des réassorts. Les trois étapes du milieu se paient donc à chaque fois.",
+),
 }
 for _l, _kv in FIGTXT2.items():
     C[_l].update(_kv)

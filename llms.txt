@@ -58,6 +58,7 @@ Business case deck, no form and no email required.
 - [Deutsch](https://www.rocketx.app/assets/rocketx-business-case-de.pdf)
 - [Español](https://www.rocketx.app/assets/rocketx-business-case-es.pdf)
 - [Nederlands](https://www.rocketx.app/assets/rocketx-business-case-nl.pdf)
+- [Français](https://www.rocketx.app/assets/rocketx-business-case-fr.pdf)
 
 The same argument on one page:
 
@@ -65,6 +66,7 @@ The same argument on one page:
 - [Deutsch](https://www.rocketx.app/assets/rocketx-one-page-de.pdf)
 - [Español](https://www.rocketx.app/assets/rocketx-one-page-es.pdf)
 - [Nederlands](https://www.rocketx.app/assets/rocketx-one-page-nl.pdf)
+- [Français](https://www.rocketx.app/assets/rocketx-one-page-fr.pdf)
 
 ## Elsewhere
 

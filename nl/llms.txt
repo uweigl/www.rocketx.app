@@ -58,6 +58,7 @@ Business case, zonder formulier en zonder mailadres.
 - [Deutsch](https://www.rocketx.app/assets/rocketx-business-case-de.pdf)
 - [Español](https://www.rocketx.app/assets/rocketx-business-case-es.pdf)
 - [Nederlands](https://www.rocketx.app/assets/rocketx-business-case-nl.pdf)
+- [Français](https://www.rocketx.app/assets/rocketx-business-case-fr.pdf)
 
 Hetzelfde verhaal op één pagina:
 
@@ -65,6 +66,7 @@ Hetzelfde verhaal op één pagina:
 - [Deutsch](https://www.rocketx.app/assets/rocketx-one-page-de.pdf)
 - [Español](https://www.rocketx.app/assets/rocketx-one-page-es.pdf)
 - [Nederlands](https://www.rocketx.app/assets/rocketx-one-page-nl.pdf)
+- [Français](https://www.rocketx.app/assets/rocketx-one-page-fr.pdf)
 
 ## Elders
 

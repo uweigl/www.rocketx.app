@@ -42,6 +42,7 @@ h1{font-size:20pt;line-height:1.14;color:var(--ink);letter-spacing:-.02em;margin
 """
 
 MORE = {"en": "Full 14-page business case at rocketx.app",
+        "fr": "Dossier économique complet, 14 pages, sur rocketx.app",
         "de": "Vollständiger Business Case, 14 Seiten, auf rocketx.app",
         "es": "Caso de negocio completo, 14 páginas, en rocketx.app",
         "nl": "Volledige business case, 14 pagina’s, op rocketx.app"}

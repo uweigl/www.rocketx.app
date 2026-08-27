@@ -5,11 +5,12 @@
 set -e
 cd "$(dirname "$0")/.."
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-LANGS="${LANGS:-en de es nl}"
+LANGS="${LANGS:-en de es nl fr}"
 python3 scripts/gen_deck.py >/dev/null
 python3 scripts/gen_onepager.py >/dev/null
 python3 scripts/gen_llms.py >/dev/null
 python3 scripts/build_i18n_pages.py >/dev/null
+python3 scripts/gen_404.py >/dev/null
 for L in $LANGS; do
   "$CHROME" --headless --disable-gpu --no-pdf-header-footer --virtual-time-budget=22000 \
     --print-to-pdf="assets/rocketx-business-case-$L.pdf" \

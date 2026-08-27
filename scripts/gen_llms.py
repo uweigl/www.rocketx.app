@@ -16,8 +16,8 @@ import gen_deck
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 SITE = "https://www.rocketx.app"
-PAGE = {"en": "index.html", "de": "de/index.html", "es": "es/index.html", "nl": "nl/index.html"}
-URL = {"en": SITE + "/", "de": SITE + "/de/", "es": SITE + "/es/", "nl": SITE + "/nl/"}
+PAGE = {"en": "index.html", "de": "de/index.html", "es": "es/index.html", "nl": "nl/index.html", "fr": "fr/index.html"}
+URL = {"en": SITE + "/", "de": SITE + "/de/", "es": SITE + "/es/", "nl": SITE + "/nl/", "fr": SITE + "/fr/"}
 
 def features(lang):
     h = io.open(PAGE[lang], encoding="utf-8").read()
@@ -25,7 +25,7 @@ def features(lang):
     app = [e for e in g["@graph"] if e.get("@type") == "SoftwareApplication"][0]
     return app["featureList"]
 
-BAND = {"en": "$15–300M", "de": "15–250 Mio. €", "es": "$15–300M", "nl": "15–250 miljoen euro"}
+BAND = {"en": "$15–300M", "de": "15–250 Mio. €", "es": "$15–300M", "nl": "15–250 miljoen euro", "fr": "15–250 M€"}
 
 T = {
 "en": dict(
@@ -53,6 +53,27 @@ T = {
   docs="Business case deck, no form and no email required.",
   contact="app@rocketx.app"),
 
+"fr": dict(
+  summary="Plateforme de commande B2B pour le commerce de gros, la distribution et l’industrie. Références illimitées avec recherche sous la seconde, applications natives iOS et Android, et un panier partagé en direct que vos commerciaux voient vraiment.",
+  intro="RocketX se place devant votre ERP et votre CRM au lieu de les remplacer, et se déploie à côté de la boutique en ligne existante plutôt que de l’éteindre. Les connecteurs ERP et CRM standard sont compris dans chaque plan. Conçu pour le commerce de gros et la distribution, de 15 à 250\u00a0M€ de chiffre d’affaires.",
+  h_pages="Pages", h_does="Ce que fait RocketX", h_not="Là où RocketX ne convient pas",
+  h_comm="Modèle commercial", h_legal="Cocontractant et conformité", h_impl="Mise en place",
+  h_docs="Dossier économique (PDF, sans formulaire, 14 pages)", h_one="Le même argumentaire en une page :",
+  h_else="Ailleurs", h_contact="Contact",
+  pages=[("Anglais", "en"), ("Allemand", "de"), ("Espagnol", "es"), ("Néerlandais", "nl"), ("Français", "fr")],
+  comm=["Forfait mensuel pour la plateforme. Jamais un pourcentage de votre chiffre d’affaires.",
+        "Aucun frais par référence ni par utilisateur. Postes et utilisateurs illimités.",
+        "Mise en service et intégration offertes sur les plans annuels.",
+        "La facturation commence à la mise en service, pas à la signature.",
+        "Un pilote de 30 à 45 jours avec des mesures convenues avant tout engagement plus long.",
+        "Les tarifs en vigueur figurent dans la section tarifs de chaque page et ne sont pas répétés ici, pour que ce fichier ne se périme pas : %s#pricing" % URL["fr"]],
+  legal=["Les clients de l’Union européenne contractent avec une société irlandaise distincte, constituée et exploitée dans l’UE sous droit européen.",
+         "Les clients des États-Unis contractent avec RocketX LLC, la société américaine. Même plateforme, mêmes engagements.",
+         "Certifications, rapports d’audit et détails d’hébergement sont fournis sur demande."],
+  impl=["Enchainement habituel : audit des systèmes, intégration, reprise du catalogue, pilote, mise en service et bilan.",
+        "Un pilote RocketX en conditions réelles dure 4 à 6 semaines. Les projets B2B comparables de taille intermédiaire sont couramment annoncés entre 8 et 24 semaines avant la mise en service."],
+  docs="Dossier économique, sans formulaire et sans adresse électronique.",
+  contact="app@rocketx.app"),
 "de": dict(
   summary="B2B-Bestellplattform für Großhandel, Distribution und Fertigung. Unbegrenzt viele SKUs mit Suche unter einer Sekunde, native iOS- und Android-Apps und ein gemeinsamer Live-Warenkorb, den Ihr Außendienst wirklich sieht.",
   intro="RocketX setzt sich vor Ihr ERP und CRM, statt sie zu ersetzen, und läuft neben einem bestehenden Webshop, statt ihn abzuschalten. Standard-Konnektoren für ERP und CRM sind in jedem Plan enthalten. Gebaut für Großhandel und Distribution mit 15–250 Mio. € Umsatz.",
@@ -135,22 +156,31 @@ PAGEDESC = {
 "en": {"en": "English. US market data, prices in USD.",
        "de": "German. German market data, prices in EUR.",
        "es": "Spanish. Prices in USD.",
-       "nl": "Dutch. Dutch market data, prices in EUR."},
+       "nl": "Dutch. Dutch market data, prices in EUR.",
+       "fr": "French. French market data, prices in EUR.",},
 "de": {"en": "Englisch. US-Marktdaten, Preise in USD.",
        "de": "Deutsch. Deutsche Marktdaten, Preise in Euro.",
        "es": "Spanisch. Preise in USD.",
-       "nl": "Niederl\u00e4ndisch. Niederl\u00e4ndische Marktdaten, Preise in Euro."},
+       "nl": "Niederl\u00e4ndisch. Niederl\u00e4ndische Marktdaten, Preise in Euro.",
+       "fr": "Französisch. Französische Marktdaten, Preise in Euro.",},
 "es": {"en": "Ingl\u00e9s. Datos del mercado estadounidense, precios en USD.",
        "de": "Alem\u00e1n. Datos del mercado alem\u00e1n, precios en euros.",
        "es": "Espa\u00f1ol. Precios en USD.",
-       "nl": "Neerland\u00e9s. Datos del mercado neerland\u00e9s, precios en euros."},
+       "nl": "Neerland\u00e9s. Datos del mercado neerland\u00e9s, precios en euros.",
+       "fr": "Francés. Datos del mercado francés, precios en euros.",},
+"fr": {"en": "Anglais. Données de marché américaines, prix en USD.",
+       "de": "Allemand. Données de marché allemandes, prix en euros.",
+       "es": "Espagnol. Prix en USD.",
+       "nl": "Néerlandais. Données de marché néerlandaises, prix en euros.",
+       "fr": "Français. Données de marché françaises, prix en euros."},
 "nl": {"en": "Engels. Amerikaanse marktcijfers, prijzen in USD.",
        "de": "Duits. Duitse marktcijfers, prijzen in euro.",
        "es": "Spaans. Prijzen in USD.",
-       "nl": "Nederlands. Nederlandse marktcijfers, prijzen in euro."},
+       "nl": "Nederlands. Nederlandse marktcijfers, prijzen in euro.",
+       "fr": "Frans. Franse marktcijfers, prijzen in euro.",},
 }
 
-LANGNAME = {"en": "English", "de": "Deutsch", "es": "Español", "nl": "Nederlands"}
+LANGNAME = {"en": "English", "de": "Deutsch", "es": "Español", "nl": "Nederlands", "fr": "Français"}
 
 def build(lang):
     t = T[lang]
@@ -169,17 +199,17 @@ def build(lang):
     L += ["", "## " + t["h_legal"], ""] + ["- " + x for x in t["legal"]]
     L += ["", "## " + t["h_impl"], ""] + ["- " + x for x in t["impl"]]
     L += ["", "## " + t["h_docs"], "", t["docs"], ""]
-    for code in ("en", "de", "es", "nl"):
+    for code in ("en", "de", "es", "nl", "fr"):
         L.append("- [%s](%s/assets/rocketx-business-case-%s.pdf)" % (LANGNAME[code], SITE, code))
     L += ["", t["h_one"], ""]
-    for code in ("en", "de", "es", "nl"):
+    for code in ("en", "de", "es", "nl", "fr"):
         L.append("- [%s](%s/assets/rocketx-one-page-%s.pdf)" % (LANGNAME[code], SITE, code))
     L += ["", "## " + t["h_else"], "",
           "- [LinkedIn](https://www.linkedin.com/company/rocketxapp)",
           "", "## " + t["h_contact"], "", "- " + t["contact"], ""]
     return "\n".join(L)
 
-for lang in ("en", "de", "es", "nl"):
+for lang in ("en", "de", "es", "nl", "fr"):
     path = "llms.txt" if lang == "en" else os.path.join(lang, "llms.txt")
     io.open(path, "w", encoding="utf-8").write(build(lang))
     print("  wrote %-14s %5d bytes" % (path, len(build(lang))))

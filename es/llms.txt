@@ -58,6 +58,7 @@ Presentación del caso de negocio, sin formulario y sin dejar el correo.
 - [Deutsch](https://www.rocketx.app/assets/rocketx-business-case-de.pdf)
 - [Español](https://www.rocketx.app/assets/rocketx-business-case-es.pdf)
 - [Nederlands](https://www.rocketx.app/assets/rocketx-business-case-nl.pdf)
+- [Français](https://www.rocketx.app/assets/rocketx-business-case-fr.pdf)
 
 El mismo argumento en una página:
 
@@ -65,6 +66,7 @@ El mismo argumento en una página:
 - [Deutsch](https://www.rocketx.app/assets/rocketx-one-page-de.pdf)
 - [Español](https://www.rocketx.app/assets/rocketx-one-page-es.pdf)
 - [Nederlands](https://www.rocketx.app/assets/rocketx-one-page-nl.pdf)
+- [Français](https://www.rocketx.app/assets/rocketx-one-page-fr.pdf)
 
 ## En otros sitios
 
