@@ -689,6 +689,63 @@ FIGTXT = {
 for _l, _kv in FIGTXT.items():
     C[_l].update(_kv)
 
+
+# Page 3 and page 6 figures. The share values are each edition's own market
+# data, not a translation of the US numbers - the German page cites German
+# sources and the Dutch page cites CBS, so the chart has to follow.
+FIGTXT2 = {
+"en": dict(
+  fg5_share=39, fg5_prev=28, fg5_prevlbl="two years earlier",
+  fg5_t="The same buyers, ordering differently",
+  fg5_lbl="Share of B2B buyers who will place orders above $500K through digital self-service.",
+  fg5_meanwhile="Meanwhile total B2B sales stayed roughly flat, while US B2B ecommerce grew 13% to $2.93T.",
+  fg5_n="Gartner for the self-service share. Digital Commerce 360 and the U.S. Department of Commerce for the ecommerce total and its growth.",
+  fg6_a="In a browser, every single reorder",
+  fg6_asteps=["find the bookmark","load the site","log in","find the product","order"],
+  fg6_b="In the app",
+  fg6_bsteps=["tap the icon","order"],
+  fg6_note="already signed in",
+  fg6_n="Most B2B orders are repeat orders, so the three steps in the middle are paid again on every one of them."),
+"de": dict(
+  fg5_share=25, fg5_prev=None, fg5_prevlbl="",
+  fg5_t="Dieselben Kunden, anderes Bestellen",
+  fg5_lbl="Anteil des deutschen B2B-Umsatzes, der bereits online läuft \u2014 inklusive EDI.",
+  fg5_meanwhile="Der B2B-Internethandel wuchs 2024 um 7 % auf 509 Mrd. \u20ac \u2014 trotz Konjunkturflaute.",
+  fg5_n="ECC K\u00d6LN B2B-Marktmonitor 2025 (mit FIS und Shopware) f\u00fcr die deutschen Zahlen.",
+  fg6_a="Im Browser, bei jeder Nachbestellung",
+  fg6_asteps=["Lesezeichen finden","Seite laden","anmelden","Produkt finden","bestellen"],
+  fg6_b="In der App",
+  fg6_bsteps=["Symbol antippen","bestellen"],
+  fg6_note="bereits angemeldet",
+  fg6_n="Die meisten B2B-Bestellungen sind Wiederholungen. Die drei Schritte in der Mitte zahlt der Einkäufer also jedes Mal erneut."),
+"es": dict(
+  fg5_share=39, fg5_prev=28, fg5_prevlbl="dos años antes",
+  fg5_t="Los mismos compradores, pidiendo de otra forma",
+  fg5_lbl="Proporción de compradores B2B que harán pedidos de más de $500K por autoservicio digital.",
+  fg5_meanwhile="Mientras tanto las ventas B2B totales siguieron planas y el comercio electrónico B2B creció un 13%.",
+  fg5_n="Gartner para la proporción de autoservicio. Digital Commerce 360 y el Departamento de Comercio de EE. UU. para el total.",
+  fg6_a="En el navegador, en cada repetición",
+  fg6_asteps=["encontrar el marcador","cargar el sitio","iniciar sesión","encontrar el producto","pedir"],
+  fg6_b="En la app",
+  fg6_bsteps=["tocar el icono","pedir"],
+  fg6_note="sesión ya iniciada",
+  fg6_n="La mayoría de los pedidos B2B son repeticiones, así que los tres pasos del medio se pagan en cada uno."),
+"nl": dict(
+  fg5_share=31, fg5_prev=None, fg5_prevlbl="",
+  fg5_t="Dezelfde klanten, anders bestellen",
+  fg5_lbl="Aandeel Nederlandse bedrijven vanaf tien werknemers dat al elektronisch verkoopt.",
+  fg5_meanwhile="Ondertussen groeide de omzet van de groothandel in 2025 met slechts 0,9%.",
+  fg5_n="CBS voor het aandeel elektronisch verkopende bedrijven en voor de omzetontwikkeling van de sector.",
+  fg6_a="In een browser, bij elke nabestelling",
+  fg6_asteps=["bladwijzer zoeken","site laden","inloggen","product zoeken","bestellen"],
+  fg6_b="In de app",
+  fg6_bsteps=["op het icoon tikken","bestellen"],
+  fg6_note="al ingelogd",
+  fg6_n="De meeste B2B-orders zijn herhaalorders, dus die drie stappen in het midden betaal je elke keer opnieuw."),
+}
+for _l, _kv in FIGTXT2.items():
+    C[_l].update(_kv)
+
 CSS = """
 @page{size:A4;margin:17mm 16mm 15mm}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -801,8 +858,8 @@ def build(d):
     # p1 market
     stats = "".join('<div class="stat"><b>%s</b><span>%s</span></div>' % (esc(a), esc(b)) for a, b in d["stats"])
     P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="stats">%s</div>'
-             '<p class="lede" style="margin-bottom:0">%s</p></div>'
-             % (esc(d["p1h"]), esc(d["p1a"]), stats, esc(d["p1b"])))
+             '<p class="lede">%s</p>%s</div>'
+             % (esc(d["p1h"]), esc(d["p1a"]), stats, esc(d["p1b"]), deck_figs.fig_share(d)))
 
     # p2 hidden costs
     rows = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["costs"])
@@ -816,8 +873,8 @@ def build(d):
 
     # p4 native
     nat = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["native"])
-    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div></div>'
-             % (esc(d["p4h"]), esc(d["p4a"]), nat))
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>%s</div>'
+             % (esc(d["p4h"]), esc(d["p4a"]), nat, deck_figs.fig_path(d)))
 
     # p8 the cart (placed before the commercial terms - it is the differentiator)
     cart = "".join('<div class="row"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["cart"])

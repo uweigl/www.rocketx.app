@@ -265,3 +265,70 @@ def fig_funnel(d):
         for j, ln in enumerate(wrap(d[k], 34)):
             o.append(T(x + 10, cy + 12 + j * 12, 8.8, ln, BODY))
     return svg(700, int(cy + 50), "".join(o))
+
+# ------------------------------------------------- 5. digital share of ordering
+def fig_share(d):
+    """One market's own digital-ordering share. Every number is that edition's,
+    because the German and Dutch pages cite German and Dutch sources."""
+    share, prev = d["fg5_share"], d.get("fg5_prev")
+    X0, X1, BY, BH = 0, 700, 84, 68
+    o = []
+    o.append(T(0, 16, 12, d["fg5_t"], INK, "start", "700", DISP))
+    for i, ln in enumerate(wrap(d["fg5_lbl"], 110)):
+        o.append(T(0, 38 + i * 13, 9.2, ln, SOFT))
+    o.append('<rect x="0" y="' + str(BY) + '" width="700" height="' + str(BH)
+             + '" rx="8" fill="' + TINT + '" stroke="' + LINE + '"/>')
+    w = 700 * share / 100.0
+    o.append('<rect x="0" y="' + str(BY) + '" width="' + str(round(w, 1)) + '" height="' + str(BH)
+             + '" rx="8" fill="' + BLUE + '"/>')
+    lab = ("%g" % share).replace(".", d["fg1_dec"]) + d["fg1_sp"] + "%"
+    inside = w > 120
+    o.append(T(w - 14 if inside else w + 14, BY + BH / 2.0 + 7, 20,
+               lab, "#fff" if inside else BLUE, "end" if inside else "start", "700", DISP))
+    if prev:
+        px = 700 * prev / 100.0
+        o.append('<path d="M' + str(round(px, 1)) + ' ' + str(BY - 8) + 'V' + str(BY + BH + 8)
+                 + '" stroke="#93B4E8" stroke-width="1.6" stroke-dasharray="4 3"/>')
+        plab = ("%g" % prev).replace(".", d["fg1_dec"]) + d["fg1_sp"] + "%"
+        o.append(T(round(px, 1) + 6, BY - 12, 9, plab + " " + d["fg5_prevlbl"], SOFT, "start", "600"))
+    y = BY + BH + 30
+    o.append('<path d="M0 ' + str(y - 12) + 'H700" stroke="' + LINE + '"/>')
+    for i, ln in enumerate(wrap(d["fg5_meanwhile"], 104)):
+        o.append(T(0, y + 6 + i * 14, 10, ln, BODY))
+        yy = y + 4 + i * 13
+    for i, ln in enumerate(wrap(d["fg5_n"], 140)):
+        o.append(T(0, yy + 22 + i * 11, 8.2, ln, SOFT))
+        h2 = yy + 22 + i * 11
+    return svg(700, int(h2 + 10), "".join(o))
+
+
+# ------------------------------------------------------ 6. reorder path, two ways
+def fig_path(d):
+    """Five steps in a browser against two in the app. The lanes are drawn to the
+    same scale so the shorter one simply stops earlier."""
+    CW, GAP = 130, 12
+    o = []
+    def lane(y, title, steps, colour, fill, stroke, note=None):
+        o.append(T(0, y, 11, title, INK, "start", "700", DISP))
+        for i, st in enumerate(steps):
+            x = i * (CW + GAP)
+            o.append('<rect x="' + str(x) + '" y="' + str(y + 12) + '" width="' + str(CW)
+                     + '" height="52" rx="9" fill="' + fill + '" stroke="' + stroke + '"/>')
+            for j, ln in enumerate(wrap(st, 17)):
+                o.append(T(x + CW / 2.0, y + 36 + j * 12 - (len(wrap(st, 17)) - 1) * 6, 9,
+                           ln, colour, "middle", "500", SANS, ' data-max="' + str(CW - 14) + '"'))
+            if i < len(steps) - 1:
+                cx = x + CW + GAP / 2.0
+                o.append('<path d="M' + str(round(cx - 3, 1)) + ' ' + str(y + 33) + 'l4 5l-4 5" '
+                         'fill="none" stroke="' + SOFT + '" stroke-width="1.6" '
+                         'stroke-linecap="round" stroke-linejoin="round"/>')
+        if note:
+            x = len(steps) * (CW + GAP) + 4
+            o.append(T(x, y + 42, 9.6, note, GREEN, "start", "600"))
+    lane(16, d["fg6_a"], d["fg6_asteps"], BODY, TINT, LINE)
+    lane(114, d["fg6_b"], d["fg6_bsteps"], "#12377F", "#EFF5FF", "#BFD4FF", d["fg6_note"])
+    h = 196
+    for i, ln in enumerate(wrap(d["fg6_n"], 140)):
+        o.append(T(0, h + i * 11, 8.4, ln, SOFT))
+        h2 = h + i * 11
+    return svg(700, int(h2 + 10), "".join(o))
