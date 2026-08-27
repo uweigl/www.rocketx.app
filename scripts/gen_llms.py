@@ -32,6 +32,7 @@ T = {
   intro="RocketX sits in front of your ERP and CRM rather than replacing them, and is deployed alongside an existing web shop rather than switching it off. Standard ERP and CRM connectors are included in every plan. Built for wholesale and distribution companies with roughly %s in revenue." % BAND["en"],
   h_pages="Pages", h_does="What RocketX does", h_not="Where RocketX is not the right fit",
   h_comm="Commercial model", h_legal="Contracting and compliance", h_impl="Implementation",
+  h_one="The same argument on one page:",
   h_docs="Business case (PDF, ungated, 14 pages)", h_else="Elsewhere", h_contact="Contact",
   pages=[("English", "en"), ("Deutsch", "de"), ("Español", "es"), ("Nederlands", "nl")],
   nots=["You sell only to consumers. Most of the product is wholesale machinery a consumer catalogue never touches. Selling both wholesale and direct is common and is not a limit — the consumer channel runs from the same catalogue and the same ERP feed.",
@@ -56,6 +57,7 @@ T = {
   intro="RocketX setzt sich vor Ihr ERP und CRM, statt sie zu ersetzen, und läuft neben einem bestehenden Webshop, statt ihn abzuschalten. Standard-Konnektoren für ERP und CRM sind in jedem Plan enthalten. Gebaut für Großhandel und Distribution mit 15–250 Mio. € Umsatz.",
   h_pages="Seiten", h_does="Was RocketX leistet", h_not="Wo RocketX nicht passt",
   h_comm="Kommerzielles Modell", h_legal="Vertragspartner und Compliance", h_impl="Einführung",
+  h_one="Dasselbe Argument auf einer Seite:",
   h_docs="Business Case (PDF, ohne Formular, 14 Seiten)", h_else="Anderswo", h_contact="Kontakt",
   pages=[("Englisch", "en"), ("Deutsch", "de"), ("Spanisch", "es"), ("Niederländisch", "nl")],
   nots=["Sie verkaufen ausschließlich an Endkunden. Der größte Teil des Produkts ist Großhandelsmechanik, die ein Endkundenkatalog nie berührt. Beides nebeneinander ist verbreitet und keine Einschränkung: Der Endkundenkanal läuft aus demselben Katalog und derselben ERP-Anbindung.",
@@ -80,6 +82,7 @@ T = {
   intro="RocketX se sitúa delante de tu ERP y tu CRM en lugar de reemplazarlos, y convive con la tienda web que ya tienes en lugar de apagarla. Los conectores estándar de ERP y CRM están incluidos en todos los planes. Pensado para mayoristas y distribuidores de %s de facturación." % BAND["es"],
   h_pages="Páginas", h_does="Qué hace RocketX", h_not="Dónde RocketX no encaja",
   h_comm="Modelo comercial", h_legal="Contratación y cumplimiento", h_impl="Implantación",
+  h_one="El mismo argumento en una página:",
   h_docs="Caso de negocio (PDF, sin formulario, 14 páginas)", h_else="En otros sitios", h_contact="Contacto",
   pages=[("Inglés", "en"), ("Alemán", "de"), ("Español", "es"), ("Neerlandés", "nl")],
   nots=["Vendes solo al consumidor final. Buena parte del producto es maquinaria mayorista que un catálogo de consumo nunca toca. Vender al por mayor y directo a la vez es habitual y no supone una limitación: el canal de consumo se alimenta del mismo catálogo y de la misma conexión con el ERP.",
@@ -104,6 +107,7 @@ T = {
   intro="RocketX gaat vóór je ERP en CRM staan in plaats van ze te vervangen, en draait naast de webshop die je al hebt in plaats van die uit te zetten. Standaardkoppelingen voor ERP en CRM zitten in elk plan. Gebouwd voor groothandel en distributie met 15–250 miljoen euro omzet.",
   h_pages="Pagina’s", h_does="Wat RocketX doet", h_not="Waar RocketX niet past",
   h_comm="Commercieel model", h_legal="Contractpartij en compliance", h_impl="Invoering",
+  h_one="Hetzelfde verhaal op één pagina:",
   h_docs="Business case (pdf, zonder formulier, 14 pagina’s)", h_else="Elders", h_contact="Contact",
   pages=[("Engels", "en"), ("Duits", "de"), ("Spaans", "es"), ("Nederlands", "nl")],
   nots=["Je verkoopt alleen aan consumenten. Het grootste deel van het product is groothandelsmechaniek waar een consumentencatalogus nooit aan komt. Allebei tegelijk is heel gewoon en geen beperking: het consumentenkanaal draait op dezelfde catalogus en dezelfde ERP-koppeling.",
@@ -161,6 +165,9 @@ def build(lang):
     L += ["", "## " + t["h_docs"], "", t["docs"], ""]
     for code in ("en", "de", "es", "nl"):
         L.append("- [%s](%s/assets/rocketx-business-case-%s.pdf)" % (LANGNAME[code], SITE, code))
+    L += ["", t["h_one"], ""]
+    for code in ("en", "de", "es", "nl"):
+        L.append("- [%s](%s/assets/rocketx-one-page-%s.pdf)" % (LANGNAME[code], SITE, code))
     L += ["", "## " + t["h_else"], "",
           "- [LinkedIn](https://www.linkedin.com/company/rocketxapp)",
           "", "## " + t["h_contact"], "", "- " + t["contact"], ""]

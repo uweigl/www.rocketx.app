@@ -69,4 +69,28 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
+<url>
+    <loc>https://www.rocketx.app/assets/rocketx-one-page-en.pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>https://www.rocketx.app/assets/rocketx-one-page-de.pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>https://www.rocketx.app/assets/rocketx-one-page-es.pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
+    <loc>https://www.rocketx.app/assets/rocketx-one-page-nl.pdf</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

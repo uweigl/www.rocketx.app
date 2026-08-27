@@ -59,6 +59,13 @@ Business-Case-Präsentation, ohne Formular und ohne E-Mail-Adresse.
 - [Español](https://www.rocketx.app/assets/rocketx-business-case-es.pdf)
 - [Nederlands](https://www.rocketx.app/assets/rocketx-business-case-nl.pdf)
 
+Dasselbe Argument auf einer Seite:
+
+- [English](https://www.rocketx.app/assets/rocketx-one-page-en.pdf)
+- [Deutsch](https://www.rocketx.app/assets/rocketx-one-page-de.pdf)
+- [Español](https://www.rocketx.app/assets/rocketx-one-page-es.pdf)
+- [Nederlands](https://www.rocketx.app/assets/rocketx-one-page-nl.pdf)
+
 ## Anderswo
 
 - [LinkedIn](https://www.linkedin.com/company/rocketxapp)

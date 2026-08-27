@@ -59,6 +59,13 @@ Presentación del caso de negocio, sin formulario y sin dejar el correo.
 - [Español](https://www.rocketx.app/assets/rocketx-business-case-es.pdf)
 - [Nederlands](https://www.rocketx.app/assets/rocketx-business-case-nl.pdf)
 
+El mismo argumento en una página:
+
+- [English](https://www.rocketx.app/assets/rocketx-one-page-en.pdf)
+- [Deutsch](https://www.rocketx.app/assets/rocketx-one-page-de.pdf)
+- [Español](https://www.rocketx.app/assets/rocketx-one-page-es.pdf)
+- [Nederlands](https://www.rocketx.app/assets/rocketx-one-page-nl.pdf)
+
 ## En otros sitios
 
 - [LinkedIn](https://www.linkedin.com/company/rocketxapp)

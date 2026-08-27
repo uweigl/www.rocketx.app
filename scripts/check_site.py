@@ -200,6 +200,20 @@ try:
 except Exception as e:
     check("faq cross-check ran", False, repr(e))
 
+# ---------------------------------------------------------------- one-pager
+print("\none-pager")
+for _l in ("en", "de", "es", "nl"):
+    _p = "assets/rocketx-one-page-%s.pdf" % _l
+    if not os.path.exists(_p):
+        check("%s: one-pager exists" % _l, False, _p); continue
+    _b = io.open(_p, "rb").read()
+    _n = max([int(x) for x in re.findall(rb"/Count (\d+)", _b)] or [0])
+    check("%s: one-pager exists" % _l, True)
+    # the whole point of the document is that it is one page
+    check("%s: one-pager is a single page" % _l, _n == 1, "%d pages" % _n)
+    check("%s: one-pager linked from the site" % _l,
+          'data-onepager' in io.open("index.html", encoding="utf-8").read())
+
 # ---------------------------------------------------------------- llms.txt
 print("\nllms.txt")
 LLMS = {"en": "llms.txt", "de": "de/llms.txt", "es": "es/llms.txt", "nl": "nl/llms.txt"}

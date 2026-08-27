@@ -59,6 +59,13 @@ Business case, zonder formulier en zonder mailadres.
 - [Español](https://www.rocketx.app/assets/rocketx-business-case-es.pdf)
 - [Nederlands](https://www.rocketx.app/assets/rocketx-business-case-nl.pdf)
 
+Hetzelfde verhaal op één pagina:
+
+- [English](https://www.rocketx.app/assets/rocketx-one-page-en.pdf)
+- [Deutsch](https://www.rocketx.app/assets/rocketx-one-page-de.pdf)
+- [Español](https://www.rocketx.app/assets/rocketx-one-page-es.pdf)
+- [Nederlands](https://www.rocketx.app/assets/rocketx-one-page-nl.pdf)
+
 ## Elders
 
 - [LinkedIn](https://www.linkedin.com/company/rocketxapp)
