@@ -1,0 +1,15 @@
+{
+  // Static-assets-only Worker. "directory" is deliberately the repository root,
+  // which is what is already being served - changing it here would change the
+  // site, and the only setting this file exists to add is the last one.
+  //
+  // not_found_handling defaults to "none", which answers every unmatched path
+  // with an empty body and no content-type. "404-page" serves /404.html with a
+  // 404 status instead.
+  "name": "www-rocketx-app",
+  "compatibility_date": "2024-11-01",
+  "assets": {
+    "directory": "./",
+    "not_found_handling": "404-page"
+  }
+}
