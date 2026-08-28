@@ -39,6 +39,8 @@ T = {
     u"This site is delivered by Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA), which processes technical connection data (IP address, request, timestamp) to serve and protect the site. Legal basis, where the GDPR applies: legitimate interest in operating the site securely, Art. 6(1)(f)."),
    (u"The contact form",
     u"If you send the quote or demo form, we process what you enter — name, email, company, message — solely to answer you. Delivery runs through MailerSend Inc. as our email processor. Legal basis: taking steps prior to a contract at your request, Art. 6(1)(b). We keep the correspondence as long as the conversation is live, then as required by commercial record-keeping law."),
+   (u"WhatsApp",
+    u"On the English page we offer contact via WhatsApp (+1\u00a0(829)\u00a0499-7677). If you choose that channel, WhatsApp LLC processes connection and metadata under its own policies; we use message content solely to answer your enquiry. Anyone who prefers not to can reach us just the same by email or the form."),
    (u"Your rights",
     u"Where the GDPR applies, you can ask us for access, rectification, erasure, restriction, portability, and you can object to processing based on legitimate interest. Write to <a href='mailto:app@rocketx.app'>app@rocketx.app</a>. You can also complain to your local supervisory authority."),
   ]),
@@ -201,7 +203,7 @@ Vereinigte Staaten von Amerika</p>
 <h2>Vertretungsberechtigter</h2>
 <p>Urban Weigl</p>
 <h2>Kontakt</h2>
-<p>Telefon: +49 15678 191538<br/>
+<p>Telefon: 015678 / 191538<br/>
 E-Mail: <a href="mailto:app@rocketx.app">app@rocketx.app</a><br/>
 Daneben erreichen Sie uns unmittelbar über das Kontaktformular auf dieser
 Website.</p>

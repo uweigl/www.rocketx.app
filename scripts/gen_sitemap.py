@@ -65,6 +65,8 @@ def entry(loc, mod, alts, changefreq, priority):
 
 
 COMPARE = ["shopify-b2b", "pepperi", "sana-commerce"]
+TRUST = {"en": "trust", "de": "de/sicherheit", "es": "es/seguridad",
+         "nl": "nl/beveiliging", "fr": "fr/securite"}
 
 
 def compare_entry(slug):
@@ -98,6 +100,11 @@ def build():
 
     for slug in COMPARE:
         out.append(compare_entry(slug))
+
+    talts = dict((l, "%s/%s/" % (SITE, p)) for l, p in TRUST.items())
+    for lang, p in TRUST.items():
+        out.append(entry("%s/%s/" % (SITE, p), lastmod("%s/index.html" % p),
+                         talts, "yearly", "0.5"))
 
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'

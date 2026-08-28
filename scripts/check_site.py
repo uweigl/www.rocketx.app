@@ -598,13 +598,32 @@ check("impressum carries phone and EU entity",
 _idx2 = io.open("index.html", encoding="utf-8").read()
 # the German WhatsApp contact: correct wa.me digits, gated to /de/, and the
 # German privacy page discloses the channel it advertises
-check("whatsapp link carries the right number",
-      'href="https://wa.me/4986774099628"' in _idx2 and "data-wa" in _idx2)
-check("whatsapp is gated to the German page",
-      "[data-wa]" in _idx2 and "l!=='de'" in _idx2)
+check("whatsapp numbers per market are wired",
+      "wa.me/18294997677" in _idx2 and "wa.me/4986774099628" in _idx2
+      and "08677 / 4099628" in _idx2 and "(829) 499-7677" in _idx2)
+check("whatsapp hidden where only email is offered",
+      "WACFG" in _idx2 and "e.hidden=!c" in _idx2)
+_ep = "privacy/index.html"
+check("english privacy discloses whatsapp",
+      os.path.exists(_ep) and "499-7677" in io.open(_ep, encoding="utf-8").read())
 _dp = "de/datenschutz/index.html"
 check("german privacy discloses whatsapp",
       os.path.exists(_dp) and "4099628" in io.open(_dp, encoding="utf-8").read())
+# the trust page is the deck's compliance page in web form: derived, not
+# retyped, so the two cannot testify differently
+import gen_trust as _gt
+for _l, _tp in _gt.PATHS.items():
+    _tf = "%s/index.html" % _tp
+    check("trust page %s exists" % _l, os.path.exists(_tf))
+    if os.path.exists(_tf):
+        _th = io.open(_tf, encoding="utf-8").read()
+        check("trust %s is indexable" % _l, "noindex" not in _th)
+        _resid = _gd.C[_l]["eu"][1][1][:60]
+        check("trust %s carries the deck's residency claim" % _l, _resid in _th,
+              _resid[:40])
+        check("trust %s invents no certification for RocketX itself" % _l,
+              "SOC 2" not in _th and "SOC2" not in _th)
+check("trust linked from the footer", "data-trust" in _idx2 and "ft.trust" in _idx2)
 check("privacy linked from the footer", "data-privacy" in _idx2 and "ft.privacy" in _idx2)
 # the page promises no analytics; hold the site to it
 check("site carries no analytics, as the privacy page promises",
@@ -656,7 +675,8 @@ if os.path.exists("sitemap.xml"):
                            io.open("sitemap.xml", encoding="utf-8").read()))
     _want = set([_gs.page_url(_l) for _l in _gs.LANGS] +
                 [_gs.pdf_url(_st, _l) for _st, _c, _p in _gs.PDFS for _l in _gs.LANGS] +
-                ["%s/compare/%s/" % (_gs.SITE, _g) for _g in _gs.COMPARE])
+                ["%s/compare/%s/" % (_gs.SITE, _g) for _g in _gs.COMPARE] +
+                ["%s/%s/" % (_gs.SITE, _p) for _p in _gs.TRUST.values()])
     check("sitemap lists every page and pdf in every language", not (_want - _locs),
           str(sorted(_want - _locs)[:4]))
     check("sitemap lists nothing that is not built", not (_locs - _want),

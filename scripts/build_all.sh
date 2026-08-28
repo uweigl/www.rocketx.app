@@ -14,6 +14,7 @@ python3 scripts/build_i18n_pages.py >/dev/null
 python3 scripts/gen_404.py >/dev/null
 python3 scripts/gen_compare.py >/dev/null
 python3 scripts/gen_legal.py >/dev/null
+python3 scripts/gen_trust.py >/dev/null
 python3 scripts/gen_calendar.py >/dev/null
 for L in $LANGS; do
   "$CHROME" --headless --disable-gpu --no-pdf-header-footer --virtual-time-budget=22000 \
