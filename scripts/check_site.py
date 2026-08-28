@@ -566,6 +566,28 @@ for _l, _pp in _gl.PATHS.items():
         check("privacy %s is noindex" % _l, "noindex" in _h)
         check("privacy %s names the processors" % _l,
               "MailerSend" in _h and "Cloudflare" in _h)
+# the Impressum: present, current legal basis, correct representative
+_imp = "de/impressum/index.html"
+check("impressum exists", os.path.exists(_imp))
+if os.path.exists(_imp):
+    _hi = io.open(_imp, encoding="utf-8").read()
+    check("impressum names the representative", "Urban Weigl" in _hi)
+    check("impressum cites the DDG, not the repealed TMG",
+          "DDG" in _hi and "TMG" not in _hi)
+    check("impressum offers two fast contact channels",
+          "app@rocketx.app" in _hi and "Kontaktformular" in _hi)
+# mentions légales: present, phone, publication director, host — LCEN wants all
+_ml = "fr/mentions-legales/index.html"
+check("mentions legales exist", os.path.exists(_ml))
+if os.path.exists(_ml):
+    _hm = io.open(_ml, encoding="utf-8").read()
+    check("mentions name the publication director", "Urban Weigl" in _hm)
+    check("mentions carry a phone number", "191538" in _hm)
+    check("mentions name the host with address", "Cloudflare" in _hm and "Townsend" in _hm)
+    check("mentions carry the EU entity registration", "344153" in _hm)
+check("impressum carries phone and EU entity",
+      os.path.exists(_imp) and "191538" in io.open(_imp, encoding="utf-8").read()
+      and "344153" in io.open(_imp, encoding="utf-8").read())
 _idx2 = io.open("index.html", encoding="utf-8").read()
 check("privacy linked from the footer", "data-privacy" in _idx2 and "ft.privacy" in _idx2)
 # the page promises no analytics; hold the site to it

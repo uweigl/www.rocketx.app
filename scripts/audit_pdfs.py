@@ -58,6 +58,7 @@ for l in LANGS:
     check("%s: guarantee printed" % tag, has(pages, guar))
     # compliance page names both entities
     check("%s: both entities" % tag, has(pages, "RocketX LLC") and has(pages, "RocketX Limited"))
+    check("%s: EU registration printed" % tag, has(pages, "344153") and has(pages, "F35"))
     # the fee figure plots fee as a share of revenue: what prints is the band
     # boundaries and the competitor cap, not the absolute fees
     bands = gen_deck.FIGTXT[l]["fg1_bands"]

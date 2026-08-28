@@ -8,9 +8,10 @@ language, server logs at the host, and the contact form delivered through
 MailerSend. If the site ever gains a tracker, this page is the checklist of
 claims that must change with it.
 
-Impressum / mentions legales are deliberately NOT generated yet: both legally
-require facts that only the owner can supply (the representative's name, a
-phone number, the Irish entity's registered details). Publishing them
+The German Impressum is generated too (representative: Urban Weigl; email
+plus the contact form supply the two fast contact channels the ECJ requires,
+so no phone number is needed). The French mentions legales remain deliberately
+ungenerated: the LCEN names a phone number explicitly, and publishing them
 incomplete would be worse than their absence.
 """
 import io, os
@@ -184,7 +185,133 @@ def build(lang):
     return p
 
 
+IMPRESSUM = dict(
+ title=u"Impressum — RocketX",
+ h1=u"Impressum",
+ body=u"""
+<h2>Angaben gemäß §&nbsp;5 DDG</h2>
+<p>RocketX LLC<br/>
+Gesellschaft mit beschränkter Haftung (Limited Liability Company) nach dem
+Recht des US-Bundesstaats Arizona<br/>
+30725 N Bright Angel Dr.<br/>
+Meadview, AZ 86444<br/>
+Vereinigte Staaten von Amerika</p>
+<h2>Vertretungsberechtigter</h2>
+<p>Urban Weigl</p>
+<h2>Kontakt</h2>
+<p>Telefon: +49 15678 191538<br/>
+E-Mail: <a href="mailto:app@rocketx.app">app@rocketx.app</a><br/>
+Daneben erreichen Sie uns unmittelbar über das Kontaktformular auf dieser
+Website.</p>
+<h2>Vertragspartner für Kunden in der EU</h2>
+<p>RocketX Limited<br/>
+Registriert in Irland, Company No. 344153<br/>
+Derrylahan, Ballyhaunis, Co. Mayo, F35 W667, Irland</p>
+<h2>Verantwortlich im Sinne des §&nbsp;18 Abs.&nbsp;2 MStV</h2>
+<p>Urban Weigl, Anschrift wie oben.</p>
+<h2>Hinweis</h2>
+<p>Dieses Angebot richtet sich ausschließlich an Unternehmen (B2B). Eine
+Umsatzsteuer-Identifikationsnummer nach §&nbsp;27a UStG besteht nicht.</p>
+""")
+
+
+def build_impressum():
+    d = IMPRESSUM
+    html = u"""<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>%s</title>
+<meta name="robots" content="noindex,follow"/>
+<link rel="canonical" href="%s/de/impressum/"/>
+<link rel="icon" href="/favicon.ico"/>
+<style>%s
+%s</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="brand" href="/de/"><img src="/assets/logo.png" alt=""/><b>RocketX</b></a>
+</div></header>
+<main><div class="wrap">
+<h1>%s</h1>
+%s
+<p><a href="/de/datenschutz/">Datenschutzerklärung</a></p>
+</div></main>
+<footer><div class="wrap">RocketX &middot; rocketx.app</div></footer>
+</body>
+</html>
+""" % (d["title"], SITE, FONTS, CSS.strip(), d["h1"], d["body"])
+    outdir = os.path.join(ROOT, "de", "impressum")
+    if not os.path.isdir(outdir):
+        os.makedirs(outdir)
+    p = os.path.join(outdir, "index.html")
+    io.open(p, "w", encoding="utf-8").write(html)
+    return p
+
+
+MENTIONS = dict(
+ title=u"Mentions légales — RocketX",
+ h1=u"Mentions légales",
+ body=u"""
+<h2>Éditeur du site</h2>
+<p>RocketX LLC<br/>
+Société à responsabilité limitée (Limited Liability Company) de droit de
+l’État de l’Arizona, États-Unis<br/>
+30725 N Bright Angel Dr., Meadview, AZ 86444, États-Unis<br/>
+Téléphone : +49 15678 191538<br/>
+Email : <a href="mailto:app@rocketx.app">app@rocketx.app</a></p>
+<h2>Directeur de la publication</h2>
+<p>Urban Weigl</p>
+<h2>Cocontractant pour les clients de l’Union européenne</h2>
+<p>RocketX Limited<br/>
+Société immatriculée en Irlande, Company No. 344153<br/>
+Derrylahan, Ballyhaunis, Co. Mayo, F35 W667, Irlande</p>
+<h2>Hébergeur</h2>
+<p>Cloudflare, Inc.<br/>
+101 Townsend St, San Francisco, CA 94107, États-Unis<br/>
+Téléphone : +1 888 993 5273</p>
+""")
+
+
+def build_mentions():
+    d = MENTIONS
+    html = u"""<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>%s</title>
+<meta name="robots" content="noindex,follow"/>
+<link rel="canonical" href="%s/fr/mentions-legales/"/>
+<link rel="icon" href="/favicon.ico"/>
+<style>%s
+%s</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="brand" href="/fr/"><img src="/assets/logo.png" alt=""/><b>RocketX</b></a>
+</div></header>
+<main><div class="wrap">
+<h1>%s</h1>
+%s
+<p><a href="/fr/confidentialite/">Politique de confidentialité</a></p>
+</div></main>
+<footer><div class="wrap">RocketX &middot; rocketx.app</div></footer>
+</body>
+</html>
+""" % (d["title"], SITE, FONTS, CSS.strip(), d["h1"], d["body"])
+    outdir = os.path.join(ROOT, "fr", "mentions-legales")
+    if not os.path.isdir(outdir):
+        os.makedirs(outdir)
+    p = os.path.join(outdir, "index.html")
+    io.open(p, "w", encoding="utf-8").write(html)
+    return p
+
+
 if __name__ == "__main__":
     for lang in ("en", "de", "es", "nl", "fr"):
         p = build(lang)
         print("wrote %s" % os.path.relpath(p, ROOT))
+    print("wrote %s" % os.path.relpath(build_impressum(), ROOT))
+    print("wrote %s" % os.path.relpath(build_mentions(), ROOT))
