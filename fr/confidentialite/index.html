@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Confidentialité — RocketX</title>
+<meta name="robots" content="noindex,follow"/>
+<link rel="canonical" href="https://www.rocketx.app/fr/confidentialite/"/>
+<link rel="icon" href="/favicon.ico"/>
+<style>@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/ibmplexmono-400-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/ibmplexmono-400-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('/assets/fonts/ibmplexmono-500-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('/assets/fonts/ibmplexmono-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url('/assets/fonts/inter-400-600-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url('/assets/fonts/inter-400-600-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url('/assets/fonts/spacegrotesk-400-700-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url('/assets/fonts/spacegrotesk-400-700-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--void:#05080F;--panel:#0E1B33;--ice:#EDF2FB;--mist:#8FA1C4;--sky:#60A5FA;--line:#1E2E4C}
+body{background:var(--void);color:var(--ice);line-height:1.7;
+     font-family:Inter,-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}
+a{color:var(--sky)}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+header{padding:24px 0;border-bottom:1px solid var(--line)}
+.brand{display:inline-flex;align-items:center;gap:10px;color:var(--ice);text-decoration:none}
+.brand img{width:28px;height:28px;border-radius:7px}
+.brand b{font-family:"Space Grotesk",Inter,sans-serif;font-size:16px}
+main{padding:46px 0 72px}
+h1{font-family:"Space Grotesk",Inter,sans-serif;font-size:clamp(26px,4vw,36px);
+   letter-spacing:-.8px;font-weight:600}
+.upd{color:var(--mist);font-size:13px;margin:8px 0 22px}
+.intro{color:var(--mist);font-size:16px;max-width:60ch}
+h2{font-family:"Space Grotesk",Inter,sans-serif;font-size:18px;letter-spacing:-.3px;
+   margin:34px 0 8px}
+p{color:var(--mist);font-size:15px;max-width:68ch}
+code{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ice)}
+footer{border-top:1px solid var(--line);padding:18px 0;color:var(--mist);font-size:13px}</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="brand" href="/fr/"><img src="/assets/logo.png" alt=""/><b>RocketX</b></a>
+</div></header>
+<main><div class="wrap">
+<h1>Confidentialité</h1>
+<p class="upd">Dernière mise à jour : 28 août 2026</p>
+<p class="intro">Ce site est conçu pour en savoir le moins possible sur vous. Voici, sans omission, tout ce qu’il traite.</p>
+<h2>Responsable du traitement</h2>
+<p>RocketX LLC, 30725 N Bright Angel Dr., Meadview, AZ 86444, États-Unis. Pour toute question sur cette notice : <a href='mailto:app@rocketx.app'>app@rocketx.app</a>.</p>
+<h2>Ce que ce site ne fait pas</h2>
+<p>Pas d’outil d’analyse, pas de publicité, pas de pixel de suivi, pas d’empreinte numérique, pas de cookies. Les polices sont servies depuis ce domaine : ouvrir le site n’envoie aucune requête à Google ni à un autre tiers.</p>
+<h2>Ce que votre navigateur conserve</h2>
+<p>Une seule valeur en localStorage : votre langue (<code>rx-lang</code>), pour que le site s’ouvre dans votre langue la prochaine fois. Elle ne quitte pas votre appareil et se supprime à tout moment dans le navigateur.</p>
+<h2>Journaux du serveur</h2>
+<p>Le site est délivré par Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, États-Unis), qui traite des données techniques de connexion (adresse IP, requête, horodatage) pour servir et protéger le site. Base légale : intérêt légitime à une exploitation sûre, art. 6, par. 1, f du RGPD.</p>
+<h2>Le formulaire de contact</h2>
+<p>Si vous envoyez le formulaire de devis ou de démonstration, nous traitons ce que vous saisissez — nom, email, société, message — uniquement pour vous répondre. L’acheminement passe par MailerSend Inc., notre sous-traitant d’envoi d’emails. Base légale : mesures précontractuelles à votre demande, art. 6, par. 1, b du RGPD. Nous conservons la correspondance le temps de l’échange, puis selon les obligations commerciales de conservation.</p>
+<h2>Vos droits</h2>
+<p>Vous disposez des droits d’accès, de rectification, d’effacement, de limitation et de portabilité, et d’un droit d’opposition au traitement fondé sur l’intérêt légitime : <a href='mailto:app@rocketx.app'>app@rocketx.app</a>. Vous pouvez aussi saisir la CNIL.</p>
+
+</div></main>
+<footer><div class="wrap">RocketX &middot; rocketx.app</div></footer>
+</body>
+</html>

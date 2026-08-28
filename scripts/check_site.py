@@ -543,6 +543,35 @@ if os.path.exists(_AI):
     _lost = [n for n in _needed if _ignored(n)]
     check("assetsignore keeps everything the site serves", not _lost, str(_lost[:4]))
 
+# fonts are self-hosted on every public surface; a Google Fonts request
+# reappearing is the exact pattern German counsel warns about
+import gen_legal as _gl
+_public = (["index.html", "404.html"]
+           + ["%s/index.html" % l for l in ("de", "es", "nl", "fr")]
+           + ["compare/%s/index.html" % g for g in ("shopify-b2b", "pepperi", "sana-commerce")]
+           + ["%s/index.html" % p for p in _gl.PATHS.values()])
+_gf = [p for p in _public if os.path.exists(p)
+       and "fonts.googleapis" in io.open(p, encoding="utf-8").read()]
+check("no public page calls Google Fonts", not _gf, str(_gf[:3]))
+import glob as _glob
+_ff = _glob.glob("assets/fonts/*.woff2")
+check("self-hosted font files present", len(_ff) >= 8, "%d files" % len(_ff))
+
+# privacy: one page per market, linked, noindex, and its claims match reality
+for _l, _pp in _gl.PATHS.items():
+    _f = "%s/index.html" % _pp
+    check("privacy page %s exists" % _l, os.path.exists(_f))
+    if os.path.exists(_f):
+        _h = io.open(_f, encoding="utf-8").read()
+        check("privacy %s is noindex" % _l, "noindex" in _h)
+        check("privacy %s names the processors" % _l,
+              "MailerSend" in _h and "Cloudflare" in _h)
+_idx2 = io.open("index.html", encoding="utf-8").read()
+check("privacy linked from the footer", "data-privacy" in _idx2 and "ft.privacy" in _idx2)
+# the page promises no analytics; hold the site to it
+check("site carries no analytics, as the privacy page promises",
+      not re.search(r"gtag|googletagmanager|plausible|matomo|fathom|hotjar", _idx2))
+
 # the comparison pages: sourced, linked, honest
 import gen_compare as _gc2
 for _slug in _gc2.SLUGS:
