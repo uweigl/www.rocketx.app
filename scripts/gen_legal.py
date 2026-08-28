@@ -199,6 +199,7 @@ IMPRESSUM = dict(
 <p>RocketX LLC<br/>
 Gesellschaft mit beschränkter Haftung (Limited Liability Company) nach dem
 Recht des US-Bundesstaats Arizona<br/>
+Business ID: 25040687<br/>
 30725 N Bright Angel Dr.<br/>
 Meadview, AZ 86444<br/>
 Vereinigte Staaten von Amerika</p>
@@ -263,6 +264,7 @@ MENTIONS = dict(
 <p>RocketX LLC<br/>
 Société à responsabilité limitée (Limited Liability Company) de droit de
 l’État de l’Arizona, États-Unis<br/>
+Business ID : 25040687<br/>
 30725 N Bright Angel Dr., Meadview, AZ 86444, États-Unis<br/>
 Téléphone : +49 15678 191538<br/>
 Email : <a href="mailto:app@rocketx.app">app@rocketx.app</a></p>

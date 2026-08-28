@@ -111,10 +111,13 @@ def build(lang):
     for eu_i, us_i in THEMES:
         head = C["eu"][eu_i][0] if eu_i is not None else C["us"][us_i][0]
         parts = []
-        if eu_i is not None:
-            parts.append(u'<p><span class="jur">EU</span> %s</p>' % C["eu"][eu_i][1])
-        if us_i is not None:
-            parts.append(u'<p><span class="jur">US</span> %s</p>' % C["us"][us_i][1])
+        # the deck's own rule: the home jurisdiction leads (en/es contract US-first)
+        pair = (("us", us_i), ("eu", eu_i)) if lang in ("en", "es") \
+            else (("eu", eu_i), ("us", us_i))
+        for jur, idx in pair:
+            if idx is not None:
+                parts.append(u'<p><span class="jur">%s</span> %s</p>'
+                             % (jur.upper(), C[jur][idx][1]))
         if eu_i is not None and us_i is None:
             parts = [u"<p>%s</p>" % C["eu"][eu_i][1]]
         if eu_i is None:

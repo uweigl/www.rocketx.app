@@ -594,9 +594,12 @@ if os.path.exists(_ml):
     check("mentions carry a phone number", "191538" in _hm)
     check("mentions name the host with address", "Cloudflare" in _hm and "Townsend" in _hm)
     check("mentions carry the EU entity registration", "344153" in _hm)
+    check("mentions carry the US entity registration", "25040687" in _hm)
 check("impressum carries phone and EU entity",
       os.path.exists(_imp) and "191538" in io.open(_imp, encoding="utf-8").read()
       and "344153" in io.open(_imp, encoding="utf-8").read())
+check("impressum carries the US entity registration",
+      "25040687" in io.open(_imp, encoding="utf-8").read())
 _idx2 = io.open("index.html", encoding="utf-8").read()
 _NUMWORD = {8: "OCHO", 9: "NUEVE", 10: "DIEZ", 11: "ONCE", 12: "DOCE",
             13: "TRECE", 14: "CATORCE"}
@@ -608,6 +611,20 @@ if "FUNCIONES CLAVE" in _esk:
           _NUMWORD.get(_fcnt, "?") in _esk, "grid=%d kicker=%s" % (_fcnt, _esk))
 check("hidden attribute cannot be defeated by author css",
       "[hidden]{display:none!important}" in S)
+import gen_trust as _gt
+for _tl, _tp in _gt.PATHS.items():
+    _tf = "%s/index.html" % _tp
+    if not os.path.exists(_tf):
+        continue
+    _th = io.open(_tf, encoding="utf-8").read()
+    check("trust %s carries both entity registrations" % _tl,
+          "344153" in _th and "25040687" in _th)
+    _ius, _ieu = _th.find("RocketX LLC"), _th.find("RocketX Limited")
+    if _ius >= 0 and _ieu >= 0:
+        _want_us_first = _tl in ("en", "es")
+        check("trust %s leads with the home jurisdiction" % _tl,
+              (_ius < _ieu) == _want_us_first,
+              "LLC@%d Limited@%d" % (_ius, _ieu))
 # the German WhatsApp contact: correct wa.me digits, gated to /de/, and the
 # German privacy page discloses the channel it advertises
 check("whatsapp numbers per market are wired",
