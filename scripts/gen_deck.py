@@ -897,7 +897,7 @@ CSS = """
 html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 body{font-family:"Inter",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--body);font-size:9.6pt;line-height:1.6}
 h1,h2,h3,.num,.stat b{font-family:"Space Grotesk","Inter",-apple-system,Helvetica,Arial,sans-serif}
-.page{page-break-after:always;position:relative;min-height:245mm}
+.page{page-break-after:always;position:relative;min-height:245mm;padding-bottom:12mm}
 .fig{display:block;width:100%;height:auto;margin-top:12px;page-break-inside:avoid}
 .page:last-child{page-break-after:auto}
 /* cover */
@@ -966,7 +966,7 @@ h3{font-size:10.4pt;color:var(--ink);font-weight:600;margin-bottom:5px;line-heig
 /* exec summary */
 .xs{display:grid;grid-template-columns:40mm 1fr;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);page-break-inside:avoid}
 .xs h3{font-size:10.4pt;color:var(--blue)}
-.xs p{font-size:9.4pt;line-height:1.5}
+.xs p{font-size:9.3pt;line-height:1.45}
 /* time-to-live bars */
 .tl{margin-top:14px}
 .tlrow{margin-bottom:11px;page-break-inside:avoid}
@@ -981,7 +981,7 @@ h3{font-size:10.4pt;color:var(--ink);font-weight:600;margin-bottom:5px;line-heig
 .cover .thesis{margin-top:30px;padding-left:14px;border-left:3px solid var(--blue);
   font-family:"Space Grotesk",sans-serif;font-size:12.5pt;line-height:1.45;
   color:var(--ink);max-width:132mm;font-weight:600}
-.callout.evc{margin-top:9px;padding:10px 14px;page-break-inside:avoid}
+.callout.evc{margin-top:7px;padding:9px 13px;page-break-inside:avoid}
 .evc h3{font-family:"IBM Plex Mono",monospace;font-size:7.8pt;letter-spacing:.14em;
   text-transform:uppercase;color:var(--blue);margin-bottom:4px}
 .evc p{font-size:9.2pt;color:var(--body);line-height:1.5}
