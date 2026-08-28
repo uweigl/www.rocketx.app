@@ -33,7 +33,7 @@ for _m in re.finditer(r"[^{}]*\{[^{}]*\}", _SRC):
     if ("footer.site" in _sel
             or _sel.strip() in (".logo", ".logo img", ".sep")):
         _RULES.append(_r.strip())
-CSS = "\n".join(_RULES)
+CSS = "\n".join(_RULES) + "\nfooter.site a{text-decoration:none}"
 
 
 def footer_html(lang, with_style=True):
