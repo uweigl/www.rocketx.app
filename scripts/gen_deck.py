@@ -977,12 +977,56 @@ h3{font-size:10.4pt;color:var(--ink);font-weight:600;margin-bottom:5px;line-heig
 .evc h3{font-family:"IBM Plex Mono",monospace;font-size:7.8pt;letter-spacing:.14em;
   text-transform:uppercase;color:var(--blue);margin-bottom:4px}
 .evc p{font-size:9.2pt;color:var(--body);line-height:1.5}
+/* cover strip: a colophon, not a hero image */
+.cover .cstrip{margin-top:42px;max-width:128mm}
+.cstrip svg{display:block;width:100%;height:auto}
+.cstrip text{font-family:Inter,Helvetica,Arial,sans-serif}
+.cstrip .scr{font-family:"IBM Plex Mono",monospace;font-weight:500}
 /* running foot */
 .foot{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;font-size:7.4pt;color:#9AA8BF;border-top:1px solid var(--line);padding-top:7px}
 """
 
 def esc(t):
     return t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+import gen_404 as _g404
+
+def cover_strip(lang, idx=2):
+    """One strip, self-contained: panels drawn inline, no shared defs."""
+    st = _g404.STRIPS[idx]
+    total_w = _g404.PW * 3 + _g404.GAP * 2
+    said = " ".join(st["text"][lang])
+    o = ['<svg class="cstripsvg" viewBox="0 0 %d %d" xmlns="http://www.w3.org/2000/svg" '
+         'role="img" aria-label="%s">' % (total_w, _g404.PH, esc(said)),
+         '<defs><clipPath id="cvclip"><rect x="3" y="3" width="%d" height="%d" rx="6"/>'
+         '</clipPath></defs>' % (_g404.PW - 6, _g404.PH - 6)]
+    for i, (dev_cx, deskid, mon_x, has_mgr) in enumerate(_g404.LAYOUT):
+        o.append('<g transform="translate(%d 0)">' % (i * (_g404.PW + _g404.GAP)))
+        o.append('<rect x="1.4" y="1.4" width="%.1f" height="%.1f" rx="7" fill="%s" '
+                 'stroke="%s" stroke-width="2.8"/>'
+                 % (_g404.PW - 2.8, _g404.PH - 2.8, _g404.PAPER, _g404.INK))
+        o.append('<g clip-path="url(#cvclip)">')
+        o.append(_g404.partition())
+        o.append('<g transform="translate(%d %d)">%s</g>'
+                 % (dev_cx, _g404.DESK_Y, _g404.developer()))
+        o.append(_g404.desk(172, 296) if deskid == "deskA" else _g404.desk(112, 268))
+        o.append('<g transform="translate(%d %d)">%s</g>'
+                 % (mon_x, _g404.DESK_Y - 46, _g404.monitor_art()))
+        lab = st["screens"][i]
+        o.append('<text class="scr" x="%d" y="%d" text-anchor="middle" font-size="%d" '
+                 'fill="%s">%s</text>'
+                 % (mon_x + 29, _g404.DESK_Y - 21, 12 if len(lab) > 3 else 16,
+                    _g404.INK, esc(lab)))
+        if has_mgr:
+            o.append('<g transform="translate(74 %d)">%s</g>'
+                     % (_g404.FLOOR, _g404.manager()))
+        o.append('</g>')
+        lines = _g404.wrap(st["text"][lang][i], _g404.BW - 28)
+        o.append('<g>%s</g>' % _g404.static_bubble(lines, _g404.TAIL[i]))
+        o.append('</g>')
+    o.append('</svg>')
+    return "".join(o)
 
 def build(d):
     P = []
@@ -991,8 +1035,10 @@ def build(d):
       '<div class="page cover">'
       '<div class="brand"><img src="../assets/logo.png" alt=""><b>RocketX</b></div>'
       '<div class="kick">%s</div><h1>%s</h1><p class="sub">%s</p>'
+      '<div class="cstrip">%s</div>'
       '<div class="meta"><span><b>%s</b></span><span>%s</span></div>'
-      '</div>' % (esc(d["kicker"]), esc(d["title"]), esc(d["sub"]), esc(d["forwho"]), esc(d["date"])))
+      '</div>' % (esc(d["kicker"]), esc(d["title"]), esc(d["sub"]),
+                  cover_strip(d["lang"]), esc(d["forwho"]), esc(d["date"])))
 
     # executive summary - the page a forwarded deck actually gets read
     xs = "".join('<div class="xs"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["xs"])
