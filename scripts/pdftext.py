@@ -28,8 +28,14 @@ def _objects(d):
         if sm:
             head = body[:sm.start()]
             raw = body[sm.end():]
-            em = raw.rfind(b"endstream")
-            raw = raw[:em].rstrip(b"\r\n")
+            # honour the declared length: compressed data may legitimately end
+            # in 0x0A or 0x0D, which a whitespace rstrip would eat
+            lm = re.search(rb"/Length\s+(\d+)(?!\s+0\s+R)", head)
+            if lm:
+                raw = raw[:int(lm.group(1))]
+            else:
+                em = raw.rfind(b"endstream")
+                raw = raw[:em].rstrip(b"\r\n")
             out[num] = (head, raw)
         else:
             out[num] = (body, None)

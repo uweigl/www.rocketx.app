@@ -87,6 +87,9 @@ C["en"] = dict(
     # --- executive summary (page one after the cover)
     xsh="In one page",
     xsa="If you read nothing else: wholesale orders leak in the cart, on the phone, and in the returns bay. This is a proposal to stop that, with the platform proving itself before it costs anything.",
+    thesis="Weigh any platform fee against one percent of your revenue. That is the whole decision.",
+    evh="Observed in the pilots so far",
+    ev="Buyers and field reps complete orders in half the time or less — and on the largest catalogues, search feels “like magic” next to the old system. The agreed measures decide what counts in yours — and if the pilot misses them, you walk away owing nothing.",
     xs=[('The problem', 'Your buyers assemble orders somewhere nobody on your side can see, in a browser tab they have to find and log into every time - while the work itself happens on a phone, in an aisle, at a loading dock. Carts die with the session, one person builds what six to ten people decide, and the duplicate nobody caught comes back as a return.'),
         ('What changes in the cart', 'Carts persist server-side and sync live across the web shop and the native apps. Your reps see live customer carts, including what has stalled, and can act before one goes cold. The whole buying team edits one order, every change attributed. And the cart flags a SKU the account already bought recently, before the order is placed.'),
         ("What changes on the buyer’s phone", 'Your catalogue sits on the home screen, one tap from a reorder and already signed in, rather than behind a bookmark and a login. Push brings buyers back when stock returns or a contract is due, where email gets filtered. Barcode scanning reorders straight from a shelf label, and the catalogue is cached, so an aisle with no signal is still an aisle that can order. Your print brochures, product video and other rich content ride along in the same app, so the showroom material is with the buyer when the conversation happens. Native iOS and Android, not a website in a shell. Reordering stops being an errand and becomes a habit, which is where repeat revenue actually comes from.'),
@@ -230,6 +233,9 @@ C["de"] = dict(
     p9n="Diesen vier Posten stellen Sie Plattformgebühr und Implementierungsaufwand aus Ihrem Angebot gegenüber. Wenn schon die ersten beiden die Kosten nicht decken, brauchen Sie die anderen beiden nicht.",
     xsh="Auf einer Seite",
     xsa="Falls Sie nur eine Seite lesen: Großhandelsbestellungen versickern im Warenkorb, am Telefon und in der Retourenannahme. Dies ist ein Vorschlag, das zu beenden — wobei sich die Plattform beweist, bevor sie etwas kostet.",
+    thesis="Wiegen Sie jede Plattformgebühr gegen ein Prozent Ihres Umsatzes. Das ist die ganze Entscheidung.",
+    evh="In den bisherigen Piloten beobachtet",
+    ev="Einkäufer und Außendienst schließen Bestellungen in der halben Zeit ab, oft schneller — und auf den größten Katalogen fühlt sich die Suche neben dem alten System „wie Magie“ an. Verfehlt der Pilot die vereinbarten Messgrößen, gehen Sie und zahlen nichts.",
     xs=[('Das Problem', "Ihre Einkäufer stellen Bestellungen dort zusammen, wo sie auf Ihrer Seite niemand sieht. In einem Browser-Tab, den sie jedes Mal suchen. In den sie sich jedes Mal neu anmelden. Und die Arbeit selbst passiert woanders: am Telefon, im Lagergang, an der Laderampe. Warenkörbe sterben mit der Sitzung. Einer baut, was sechs bis zehn entscheiden. Und die übersehene Dopplung kommt als Retoure zurück."),
         ('Was sich im Warenkorb ändert', 'Warenkörbe werden serverseitig gespeichert und synchronisieren live zwischen Webshop und nativen Apps. Ihr Außendienst sieht laufende Kundenwarenkörbe samt allem, was stockt, und kann handeln, bevor einer kalt wird. Das gesamte Einkaufsteam arbeitet an einer Bestellung, jede Änderung mit Namen. Und der Warenkorb weist auf eine SKU hin, die das Konto kürzlich schon gekauft hat - vor dem Absenden.'),
         ('Was sich auf dem Handy des Einkäufers ändert', "Ihr Katalog liegt auf dem Homescreen, einen Fingertipp von der Nachbestellung entfernt und bereits angemeldet — statt hinter Lesezeichen und Login. Push holt Einkäufer zurück, wenn Ware wieder da ist oder ein Vertrag ansteht: dort, wo der Filter die E-Mail schluckt. Der Barcode-Scan bestellt direkt vom Regaletikett nach. Der Katalog liegt lokal: Ein Gang ohne Empfang bleibt ein Gang, aus dem man bestellt. Ihre Printbroschüren, Produktvideos und weitere Rich-Media-Inhalte liegen in derselben App — das Showroom-Material ist beim Einkäufer, wenn das Gespräch läuft. Nativ für iOS und Android, keine Website in einer Hülle. So hört Nachbestellen auf, eine Besorgung zu sein, und wird zur Gewohnheit. Genau daher kommt wiederkehrender Umsatz."),
@@ -370,6 +376,9 @@ C["es"] = dict(
     p9n="Frente a esos cuatro, pon la tarifa de plataforma y el esfuerzo de implementación de tu propuesta. Si los dos primeros por sí solos no cubren el costo, no hace falta recurrir a los otros dos.",
     xsh="En una página",
     xsa="Si no lees nada más: los pedidos mayoristas se escapan en el carrito, por teléfono y en la zona de devoluciones. Esto es una propuesta para detenerlo, con la plataforma demostrándose antes de costar nada.",
+    thesis="Compara cualquier tarifa de plataforma con el uno por ciento de tu facturación. Esa es toda la decisión.",
+    evh="Observado en los pilotos hasta ahora",
+    ev="Compradores y vendedores completan pedidos en la mitad del tiempo o menos — y en los catálogos más grandes, la búsqueda se siente «como magia» frente al sistema anterior. Lo que cuenta en el tuyo lo deciden las métricas acordadas — y si el piloto no las alcanza, te vas sin deber nada.",
     xs=[('El problema', "Tus compradores arman pedidos donde nadie de tu lado los ve: en una pestaña del navegador que deben encontrar y en la que deben identificarse cada vez. Y el trabajo ocurre en otro sitio — en un móvil, en un pasillo de almacén, en un muelle de carga. Los carritos mueren con la sesión. Una persona construye lo que deciden entre seis y diez. Y el duplicado que nadie vio vuelve como devolución."),
         ('Qué cambia en el carrito', 'Los carritos persisten en el servidor y se sincronizan en vivo entre la tienda web y las apps nativas. Tus vendedores ven los carritos de cliente en vivo, incluido lo que se ha atascado, y pueden actuar antes de que se enfríe. Todo el equipo de compras edita un solo pedido, con cada cambio atribuido. Y el carrito avisa de un SKU que la cuenta ya compró hace poco, antes de enviar.'),
         ('Qué cambia en el móvil del comprador', "Tu catálogo está en la pantalla de inicio, a un toque de la recompra y con la sesión ya iniciada. No detrás de un marcador y una contraseña. Las notificaciones devuelven al comprador cuando vuelve el stock o vence un contrato: justo ahí donde el correo se filtra. El escaneo de códigos recompra desde la etiqueta del estante. Y el catálogo queda en local: un pasillo sin cobertura sigue siendo un pasillo desde el que se pide. Tus folletos impresos, los vídeos de producto y otro contenido enriquecido viajan en la misma app, así que el material de showroom está con el comprador cuando llega la conversación. Nativo para iOS y Android, no un sitio web dentro de una carcasa. Recomprar deja de ser un recado y se vuelve un hábito. De ahí sale el ingreso recurrente."),
@@ -450,6 +459,9 @@ C["nl"] = dict(
     date="Editie 2026",
     xsh="Op één pagina",
     xsa="Als je maar één pagina leest: groothandelsorders lekken weg in de winkelwagen, aan de telefoon en bij de retourbalie. Dit is een voorstel om dat te stoppen — waarbij het platform zich bewijst voordat het iets kost.",
+    thesis="Weeg elke platformfee af tegen één procent van je omzet. Dat is de hele beslissing.",
+    evh="Gezien in de pilots tot nu toe",
+    ev="Inkopers en buitendienst ronden orders af in de helft van de tijd of minder — en op de grootste catalogi voelt zoeken „als magie” naast het oude systeem. Wat telt in jouw pilot bepalen de afgesproken meetpunten — en haalt de pilot ze niet, dan stap je eruit en betaal je niets.",
     xs=[("Het probleem", "Je inkopers stellen orders samen op een plek die niemand aan jouw kant ziet. In een browsertabblad dat ze elke keer moeten zoeken. Waarin ze elke keer opnieuw moeten inloggen. En het werk zelf gebeurt ergens anders: op een telefoon, in een magazijngang, op een laadperron. Winkelwagens sterven met de sessie. Eén persoon bouwt wat zes tot tien mensen beslissen. En de dubbele bestelling die niemand zag komt terug als retour."),
         ("Wat er verandert in de winkelwagen", "Winkelwagens blijven op de server bestaan en synchroniseren live tussen de webshop en de native apps. Je buitendienst ziet lopende klantwinkelwagens, inclusief wat vastloopt, en kan ingrijpen voordat er een afkoelt. Het hele inkoopteam werkt aan één order, elke wijziging op naam. En de winkelwagen meldt een SKU die het account kort geleden al kocht, vóór het verzenden."),
         ("Wat er verandert op de telefoon van de inkoper", "Je catalogus staat op het beginscherm, één tik van een nabestelling en al ingelogd. Niet achter een bladwijzer en een login. Push haalt inkopers terug wanneer voorraad terug is of een contract afloopt — daar waar mail wordt gefilterd. Barcodes scannen bestelt direct na vanaf een schaplabel. En de catalogus staat lokaal: een gang zonder bereik is nog steeds een gang waaruit je bestelt. Je gedrukte brochures, productvideo’s en andere rijke content reizen mee in dezelfde app, zodat het showroommateriaal bij de inkoper is als het gesprek plaatsvindt. Native voor iOS en Android, geen website in een omhulsel. Zo houdt nabestellen op een klusje te zijn en wordt het een gewoonte. Daar komt herhaalomzet vandaan."),
@@ -619,6 +631,9 @@ C["fr"] = dict(
   cd="Quel que soit le total des quatre leviers, il est annuel. Un trimestre de délibération coûte un quart de ce chiffre, et la fuite ne s’arrête pas pendant que vous évaluez. C’est l’argument honnête pour lancer un pilote maintenant plutôt qu’un cycle d’achat dans six mois.",
   xsh="En une page",
   xsa="Si vous ne lisez rien d’autre : les commandes de gros fuient dans le panier, au téléphone et au quai des retours. Voici comment arrêter cela, la plateforme faisant ses preuves avant de coûter quoi que ce soit.",
+  thesis="Pesez toute commission de plateforme face à un pour cent de votre chiffre d’affaires. Toute la décision est là.",
+  evh="Constaté dans les pilotes menés à ce jour",
+  ev="Acheteurs et commerciaux terminent leurs commandes en moitié moins de temps, ou mieux — et sur les plus grands catalogues, la recherche paraît « magique » à côté de l’ancien système. Ce qui compte dans le vôtre, les mesures convenues le décident — et s’il les manque, vous partez sans rien devoir.",
   xs=[("Le problème", "Vos acheteurs montent leurs commandes là où personne chez vous ne les voit. Dans un onglet qu’ils doivent retrouver et déverrouiller à chaque fois. Et le travail, lui, se fait ailleurs : sur un téléphone, dans une réserve, entre deux rendez-vous. Les paniers meurent avec la session. Une personne construit ce que six à dix décident. Et le doublon que personne n’a vu revient en retour."), ("Ce qui change dans le panier", "Les paniers vivent sur le serveur et se synchronisent en direct entre la boutique en ligne et les applications natives. Vos commerciaux voient les paniers clients en cours, y compris ceux qui bloquent, et agissent avant que l’affaire refroidisse. Toute l’équipe modifie une seule commande, chaque changement porte un nom. Et le panier signale une référence déjà achetée récemment."), ("Ce qui change sur le téléphone de l’acheteur", "Votre catalogue est sur l’écran d’accueil, à un geste du réassort et déjà connecté, au lieu d’être derrière un numéro de client et un mot de passe. La notification ramène l’acheteur au retour du stock ou à l’échéance d’un contrat, là où le courriel est filtré. Le code-barres réassortit depuis l’étiquette du rayon, et le catalogue est en local : une allée sans réseau reste une allée d’où l’on commande. Vos brochures imprimées et vos vidéos produit voyagent dans la même application, au lieu d’un second site professionnel que personne n’ouvre au bon moment. Natif iOS et Android, pas un site web dans une coque. Le réassort cesse d’être une corvée et devient une habitude : c’est de là que vient le chiffre d’affaires récurrent."), ("Pourquoi c’est défendable", "Références et postes illimités, jamais comptés, jamais un pourcentage de votre chiffre d’affaires : votre croissance vous appartient. Connecteurs ERP et CRM standard compris, RocketX se plaçant devant vos systèmes de référence au lieu de les remplacer. Et il tourne à côté de votre boutique en ligne actuelle : rien n’est débranché."), ("Ce que coûte l’essai", "Mise en service offerte en plan annuel. Facturation à la mise en service, pas à la signature. Pilote de 30 à 45 jours avec mesures convenues : s’il les manque, vous partez sans rien devoir."), ("Le test du pour cent", "Comparez le coût de plateforme de votre proposition à un pour cent de votre chiffre d’affaires annuel. Ou à la marge sur ce pour cent, si vous préférez la version prudente. La seule question qui reste est de savoir si mieux commander vaut davantage que cela pour vous. Si oui, le reste de ce document est du détail, pas de la persuasion.")],
   sbh="Rien n’est débranché",
   sba="L’objection habituelle à une décision de plateforme est qu’elle oblige à en remplacer une. Pas celle-ci. RocketX est déployé à côté de ce que vous faites tourner aujourd’hui, et les deux continuent de fonctionner.",
@@ -951,7 +966,7 @@ h3{font-size:10.4pt;color:var(--ink);font-weight:600;margin-bottom:5px;line-heig
 /* exec summary */
 .xs{display:grid;grid-template-columns:40mm 1fr;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);page-break-inside:avoid}
 .xs h3{font-size:10.4pt;color:var(--blue)}
-.xs p{font-size:9.4pt;line-height:1.55}
+.xs p{font-size:9.4pt;line-height:1.5}
 /* time-to-live bars */
 .tl{margin-top:14px}
 .tlrow{margin-bottom:11px;page-break-inside:avoid}
@@ -962,6 +977,14 @@ h3{font-size:10.4pt;color:var(--ink);font-weight:600;margin-bottom:5px;line-heig
 .tlfill{height:100%;border-radius:99px;background:#C3D3EA}
 .tlrow.rx .tlfill{background:var(--blue)}
 .tlrow.rx .tllbl b{color:var(--blue)}
+/* cover thesis + page-2 evidence */
+.cover .thesis{margin-top:30px;padding-left:14px;border-left:3px solid var(--blue);
+  font-family:"Space Grotesk",sans-serif;font-size:12.5pt;line-height:1.45;
+  color:var(--ink);max-width:132mm;font-weight:600}
+.callout.evc{margin-top:9px;padding:10px 14px;page-break-inside:avoid}
+.evc h3{font-family:"IBM Plex Mono",monospace;font-size:7.8pt;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:4px}
+.evc p{font-size:9.2pt;color:var(--body);line-height:1.5}
 /* running foot */
 .foot{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;font-size:7.4pt;color:#9AA8BF;border-top:1px solid var(--line);padding-top:7px}
 """
@@ -976,13 +999,16 @@ def build(d):
       '<div class="page cover">'
       '<div class="brand"><img src="../assets/logo.png" alt=""><b>RocketX</b></div>'
       '<div class="kick">%s</div><h1>%s</h1><p class="sub">%s</p>'
+      '<p class="thesis">%s</p>'
       '<div class="meta"><span><b>%s</b></span><span>%s</span></div>'
-      '</div>' % (esc(d["kicker"]), esc(d["title"]), esc(d["sub"]), esc(d["forwho"]), esc(d["date"])))
+      '</div>' % (esc(d["kicker"]), esc(d["title"]), esc(d["sub"]), esc(d["thesis"]),
+                  esc(d["forwho"]), esc(d["date"])))
 
     # executive summary - the page a forwarded deck actually gets read
     xs = "".join('<div class="xs"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["xs"])
-    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div></div>'
-             % (esc(d["xsh"]), esc(d["xsa"]), xs))
+    P.append('<div class="page"><h2>%s</h2><p class="lede">%s</p><div class="rows">%s</div>'
+             '<div class="callout evc"><h3>%s</h3><p>%s</p></div></div>'
+             % (esc(d["xsh"]), esc(d["xsa"]), xs, esc(d["evh"]), esc(d["ev"])))
 
     # p1 market
     stats = "".join('<div class="stat"><b>%s</b><span>%s</span></div>' % (esc(a), esc(b)) for a, b in d["stats"])

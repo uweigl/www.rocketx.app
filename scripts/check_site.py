@@ -295,6 +295,19 @@ try:
         check("%s: market sources are local to this audience" % _l, not _for,
               str(sorted(set(_for))[:4]))
 
+    # the deck's pilot evidence must state the same observation as the site,
+    # or the two documents testify differently about the same pilots
+    _HALF = {"en": "half the time", "de": "halben Zeit",
+             "es": "mitad del tiempo", "nl": "helft van de tijd",
+             "fr": u"moiti\u00e9 moins de temps"}
+    for _l, _frag in _HALF.items():
+        _site_p = re.sub(r"<[^>]+>", "", _I[_l].get("rs.p1", ""))
+        _deck_e = _gd.C[_l].get("ev", "")
+        check("%s: pilot claim identical on site and deck" % _l,
+              _frag.lower() in _site_p.lower() and _frag.lower() in _deck_e.lower(),
+              "site=%s deck=%s" % (_frag.lower() in _site_p.lower(),
+                                   _frag.lower() in _deck_e.lower()))
+
     # the guarantee is a claim of record: once named, every surface that talks
     # money must carry it, or one document quietly promises less than another
     _GUAR = {"en": r"ow(?:e|ing) nothing", "de": r"zahlen (?:Sie )?nichts",
@@ -306,6 +319,7 @@ try:
             "site": re.sub(r"<[^>]+>", "", _I[_l]["pm.p"]) + " " + _I[_l]["pm.l4"],
             "faq": _fq2.A[_l][9],
             "deck-terms": " ".join(x for r in _gd.C[_l]["terms"] for x in r),
+            "deck-evidence": _gd.C[_l].get("ev", ""),
             "one-pager": _gd.C[_l]["xs"][5][1],
         }
         _missing = [k for k, v in _surf.items() if not re.search(_rx, v)]

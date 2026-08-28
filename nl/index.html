@@ -907,7 +907,7 @@ footer.site .logo{font-size:16px}
 <div class="ocvs" aria-hidden="true">vs</div>
 <div><span data-i18n="oc.fee">RocketX, jaarplan</span><b class="ocgood" id="ocfee">€&nbsp;75.600</b></div>
 </div>
-<p class="ocv" id="ocverdict">Een fee van één procent kost <em>7×</em> zoveel als RocketX.</p>
+<p class="ocv" id="ocverdict">Een fee van één procent kost <em>7,9×</em> zoveel als RocketX.</p>
 <p class="ocn" data-i18n="oc.note">De prijsklasse volgt de omzet die je instelt. Een percentage groeit elke keer met je mee.</p>
 </div>
 <div class="promise reveal">
@@ -1179,12 +1179,14 @@ function renderCalc(l){
  let v=+r.value;if(v<c.b[0])v=c.b[0];if(v>c.b[3])v=c.b[3];r.value=v;
  const one=v*1e4;
  const fee=v<=c.b[1]?c.f[0]:v<=c.b[2]?c.f[1]:c.f[2];
- const x=Math.max(1,Math.floor(one/fee));
+ const x=Math.max(1,Math.floor(one/fee*10)/10);
+ var xs=x%1?x.toFixed(1):String(x);
+ if(l!=='en')xs=xs.replace('.',',');
  document.getElementById('ocrev').textContent=fmt.r(v);
  document.getElementById('ocone').textContent=fmt.m(one);
  document.getElementById('ocfee').textContent=fmt.m(fee);
  const t=(I18N[l]&&I18N[l]['oc.verdict'])||I18N.en['oc.verdict'];
- document.getElementById('ocverdict').innerHTML=t.replace('{x}','<em>'+x+'&times;</em>');
+ document.getElementById('ocverdict').innerHTML=t.replace('{x}','<em>'+xs+'&times;</em>');
 }
 document.addEventListener('input',e=>{if(e.target&&e.target.id==='ocr')renderCalc(document.documentElement.lang||'en');});
 function applyNum(l){document.querySelectorAll('[data-i18n-num]').forEach(el=>{const c=NUMCFG[l]&&NUMCFG[l][el.dataset.i18nNum];if(!c)return;const ran=el.textContent!=='0';el.dataset.to=c.to;el.dataset.prefix=c.prefix;el.dataset.suffix=c.suffix;el.dataset.dec=c.dec;if(c.comma)el.dataset.comma='1';else delete el.dataset.comma;if(c.sep)el.dataset.sep=c.sep;else delete el.dataset.sep;if(ran){const _p=parseFloat(c.to).toFixed(+c.dec).split('.');let s=_p[0].replace(/\B(?=(\d{3})+(?!\d))/g,c.sep||',');if(_p[1])s+=(c.comma?',':'.')+_p[1];el.textContent=c.prefix+s+c.suffix;}});}
