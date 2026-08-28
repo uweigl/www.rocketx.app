@@ -596,6 +596,19 @@ check("impressum carries phone and EU entity",
       os.path.exists(_imp) and "191538" in io.open(_imp, encoding="utf-8").read()
       and "344153" in io.open(_imp, encoding="utf-8").read())
 _idx2 = io.open("index.html", encoding="utf-8").read()
+# every footer section link must land on an id that exists in the page
+_fm = re.search(r'<footer class="site">.*?</footer>', _idx2, re.S)
+check("footer present", bool(_fm))
+if _fm:
+    _fanchors = re.findall(r'href="#([\w-]+)"', _fm.group(0))
+    _missing_ids = [a for a in _fanchors if ('id="%s"' % a) not in _idx2]
+    check("footer section links resolve to real ids", not _missing_ids,
+          str(_missing_ids))
+    check("footer carries the demo call to action",
+          'data-mailto="demo"' in _fm.group(0))
+    check("footer links the three comparisons",
+          all(("compare/%s/" % _s3) in _fm.group(0)
+              for _s3 in ("shopify-b2b", "pepperi", "sana-commerce")))
 check("privacy linked from the footer", "data-privacy" in _idx2 and "ft.privacy" in _idx2)
 # the page promises no analytics; hold the site to it
 check("site carries no analytics, as the privacy page promises",
