@@ -44,7 +44,6 @@ for attr in ("data-i18n", "data-i18n-aria", "data-i18n-title", "data-i18n-text",
     USED |= set(re.findall(r'%s="([^"]+)"' % attr, S))
 # keys the scripts read straight out of I18N, with no DOM attribute
 USED |= set(re.findall(r"I18N\[[^\]]+\]\['([\w.]+)'\]", S))
-USED |= set(re.findall(r"'(fm\.[a-z]+)'", S))
 check("no duplicate keys", not dups, str(sorted(set(dups))))
 for l in LANGS:
     miss = sorted(k for k in USED if k not in D[l])
@@ -553,9 +552,11 @@ if os.path.exists(_AI):
 # fonts are self-hosted on every public surface; a Google Fonts request
 # reappearing is the exact pattern German counsel warns about
 import gen_legal as _gl
+import gen_compare as _gc0
 _public = (["index.html", "404.html"]
            + ["%s/index.html" % l for l in ("de", "es", "nl", "fr")]
-           + ["compare/%s/index.html" % g for g in ("shopify-b2b", "pepperi", "sana-commerce")]
+           + ["%s/%s/index.html" % (_gc0.PREFIX[_l0], _s0)
+              for _l0 in _gc0.SETS for _s0 in _gc0.SETS[_l0]]
            + ["%s/index.html" % p for p in _gl.PATHS.values()])
 _gf = [p for p in _public if os.path.exists(p)
        and "fonts.googleapis" in io.open(p, encoding="utf-8").read()]
@@ -571,8 +572,9 @@ for _l, _pp in _gl.PATHS.items():
     if os.path.exists(_f):
         _h = io.open(_f, encoding="utf-8").read()
         check("privacy %s is noindex" % _l, "noindex" in _h)
-        check("privacy %s names the processors" % _l,
-              "MailerSend" in _h and "Cloudflare" in _h)
+        check("privacy %s names the processor" % _l, "Cloudflare" in _h)
+        check("privacy %s no longer claims a contact form" % _l,
+              "MailerSend" not in _h)
 # the Impressum: present, current legal basis, correct representative
 _imp = "de/impressum/index.html"
 check("impressum exists", os.path.exists(_imp))
@@ -582,7 +584,7 @@ if os.path.exists(_imp):
     check("impressum cites the DDG, not the repealed TMG",
           "DDG" in _hi and "TMG" not in _hi)
     check("impressum offers two fast contact channels",
-          "app@rocketx.app" in _hi and "Kontaktformular" in _hi)
+          "app@rocketx.app" in _hi and "Telefon: 015678 / 191538" in _hi)
 # mentions légales: present, phone, publication director, host — LCEN wants all
 _ml = "fr/mentions-legales/index.html"
 check("mentions legales exist", os.path.exists(_ml))
@@ -641,8 +643,8 @@ _KICK = {"demo": "demo.k", "features": "ft.k", "market": "mk.k", "native": "na.k
          "pricing": "pr.k", "questions": "fq.k", "liftoff": "ln.k"}
 for _l in ("en", "de", "es", "nl", "fr"):
     _drift = [sid for sid, kk in _KICK.items()
-              if D[_l].get("fmap.%s" % sid)
-              != re.sub(r"^/\s*", "", D[_l].get(kk, "")).strip()]
+              if (D[_l].get("fmap.%s" % sid) or "").casefold()
+              != re.sub(r"^/\s*", "", D[_l].get(kk, "")).strip().casefold()]
     check("%s: footer strip labels match the section kickers" % _l,
           not _drift, str(_drift))
 check("privacy linked from the footer", "data-privacy" in _idx2 and "ft.privacy" in _idx2)
@@ -650,26 +652,55 @@ check("privacy linked from the footer", "data-privacy" in _idx2 and "ft.privacy"
 check("site carries no analytics, as the privacy page promises",
       not re.search(r"gtag|googletagmanager|plausible|matomo|fathom|hotjar", _idx2))
 
-# the comparison pages: sourced, linked, honest
+# the comparison pages: localized per market, sourced, honest. The closing
+# pilot sentence must carry each language's approved guarantee clause, the
+# same words the homepage uses in pm.p.
 import gen_compare as _gc2
-for _slug in _gc2.SLUGS:
-    _cp = "compare/%s/index.html" % _slug
-    check("compare/%s exists" % _slug, os.path.exists(_cp))
-    if os.path.exists(_cp):
+_GUARC = {"en": "walk away owing nothing", "de": "gehen Sie und zahlen nichts",
+          "es": "te vas sin deber nada", "nl": "stap je eruit en betaal je niets",
+          "fr": "vous partez sans rien devoir"}
+for _cl in ("en", "de", "es", "nl", "fr"):
+    for _slug in _gc2.SETS[_cl]:
+        _cp = "%s/%s/index.html" % (_gc2.PREFIX[_cl], _slug)
+        check("%s/%s exists" % (_gc2.PREFIX[_cl], _slug), os.path.exists(_cp))
+        if not os.path.exists(_cp):
+            continue
         _h = io.open(_cp, encoding="utf-8").read()
         _ext = len(set(re.findall(r'href="(https?://(?!www\.rocketx\.app)[^"]+)"', _h)))
-        check("compare/%s cites at least 3 external sources" % _slug, _ext >= 3,
-              "%d" % _ext)
-        check("compare/%s says who the competitor is right for" % _slug,
-              "right choice" in _h)
-        check("compare/%s ends on the pilot" % _slug, "walk away owing nothing" in _h)
+        check("%s/%s cites at least 3 external sources" % (_gc2.PREFIX[_cl], _slug),
+              _ext >= 3, "%d" % _ext)
+        check("%s/%s says who the competitor is right for" % (_gc2.PREFIX[_cl], _slug),
+              "data-fair" in _h)
+        check("%s/%s closes on the approved guarantee clause" % (_gc2.PREFIX[_cl], _slug),
+              _GUARC[_cl] in _h)
+        check("%s/%s highlights the RocketX edge" % (_gc2.PREFIX[_cl], _slug),
+              _h.count('<ul class="edge">') == 1
+              and _h.split('<ul class="edge">', 1)[1].split("</ul>", 1)[0].count("<li>") == 6)
+        check("%s/%s links home in its own language" % (_gc2.PREFIX[_cl], _slug),
+              ('href="/#compare"' if _cl == "en" else 'href="/%s/#compare"' % _cl) in _h)
 _idx = io.open("index.html", encoding="utf-8").read()
-check("compare pages linked from the comparison section",
-      all("compare/%s/" % _s2 in _idx for _s2 in _gc2.SLUGS))
+check("comparison section links the English set, root-absolute",
+      all(('href="/compare/%s/"' % _s2) in _idx for _s2 in _gc2.SETS["en"]))
+check("CMPCFG carries every language's own comparison set",
+      all(("/%s/%s/" % (_gc2.PREFIX[_cl2], _sl2)) in _idx
+          for _cl2 in _gc2.SETS for _sl2 in _gc2.SETS[_cl2]))
+# the prerendered pages must link their own market's comparisons
+for _cl in ("de", "es", "nl", "fr"):
+    if os.path.exists("%s/index.html" % _cl):
+        _lh = io.open("%s/index.html" % _cl, encoding="utf-8").read()
+        check("/%s/ links its own localized comparisons" % _cl,
+              all(('href="/%s/%s/"' % (_gc2.PREFIX[_cl], _sl)) in _lh
+                  for _sl in _gc2.SETS[_cl]))
+# a relative compare link 404s from /de/ and the other language folders
+check("no relative compare links anywhere on the page",
+      'href="compare/' not in _idx)
 
-# the contact path: form present, worker routes it, config carries the worker
-check("contact dialog present", 'id="cdlg"' in _idx and "fmhp" in _idx)
-check("contact dialog posts to the api", "/api/contact" in _idx)
+# the contact path: CTAs are prefilled mailto links again (dialog retired
+# for now, worker kept for when it returns)
+check("contact CTAs are prefilled mailto links",
+      re.search(r'data-mailto="quote" href="mailto:app@rocketx\.app\?subject=', _idx)
+      and re.search(r'data-mailto="demo" href="mailto:app@rocketx\.app\?subject=', _idx))
+check("contact dialog stays retired", "cdlg" not in _idx)
 _w = io.open("worker.js", encoding="utf-8").read() if os.path.exists("worker.js") else ""
 check("worker handles /api/contact", '"/api/contact"' in _w and "handleContact" in _w)
 check("worker falls through to assets", "env.ASSETS.fetch" in _w)
@@ -696,7 +727,7 @@ if os.path.exists("sitemap.xml"):
                            io.open("sitemap.xml", encoding="utf-8").read()))
     _want = set([_gs.page_url(_l) for _l in _gs.LANGS] +
                 [_gs.pdf_url(_st, _l) for _st, _c, _p in _gs.PDFS for _l in _gs.LANGS] +
-                ["%s/compare/%s/" % (_gs.SITE, _g) for _g in _gs.COMPARE] +
+                list(_gs.COMPARE_URLS) +
                 ["%s/%s/" % (_gs.SITE, _p) for _p in _gs.TRUST.values()])
     check("sitemap lists every page and pdf in every language", not (_want - _locs),
           str(sorted(_want - _locs)[:4]))

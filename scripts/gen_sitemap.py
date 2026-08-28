@@ -64,25 +64,38 @@ def entry(loc, mod, alts, changefreq, priority):
     return "\n".join(rows)
 
 
-COMPARE = ["shopify-b2b", "pepperi", "sana-commerce"]
+import gen_compare as _gc
+COMPARE_URLS = ["%s/%s/%s/" % (SITE, _gc.PREFIX[_l], _sl)
+                for _l in LANGS for _sl in _gc.SETS[_l]]
 TRUST = {"en": "trust", "de": "de/sicherheit", "es": "es/seguridad",
          "nl": "nl/beveiliging", "fr": "fr/securite"}
 
 
-def compare_entry(slug):
-    loc = "%s/compare/%s/" % (SITE, slug)
-    mod = lastmod("compare/%s/index.html" % slug)
-    return "\n".join([
-        "  <url>", "    <loc>%s</loc>" % loc, "    <lastmod>%s</lastmod>" % mod,
-        "    <changefreq>monthly</changefreq>", "    <priority>0.5</priority>",
-        "  </url>"])
+def compare_entry(lang, slug):
+    """One localized comparison page; alternates span the languages that
+    carry the same competitor - market-specific competitors stand alone."""
+    loc = "%s/%s/%s/" % (SITE, _gc.PREFIX[lang], slug)
+    mod = lastmod("%s/%s/index.html" % (_gc.PREFIX[lang], slug))
+    rows = ["  <url>", "    <loc>%s</loc>" % loc, "    <lastmod>%s</lastmod>" % mod]
+    carriers = [l2 for l2 in LANGS if slug in _gc.SETS[l2]]
+    if len(carriers) > 1:
+        for l2 in carriers:
+            rows.append('    <xhtml:link rel="alternate" hreflang="%s" href="%s/%s/%s/"/>'
+                        % (l2, SITE, _gc.PREFIX[l2], slug))
+        xd = "en" if "en" in carriers else lang
+        rows.append('    <xhtml:link rel="alternate" hreflang="x-default" href="%s/%s/%s/"/>'
+                    % (SITE, _gc.PREFIX[xd], slug))
+    rows += ["    <changefreq>monthly</changefreq>", "    <priority>0.5</priority>",
+             "  </url>"]
+    return "\n".join(rows)
 
 
 def build():
     missing = [p for p in
                [page_path(l) for l in LANGS] +
                [pdf_path(s, l) for s, _c, _p in PDFS for l in LANGS] +
-               ["compare/%s/index.html" % g for g in COMPARE]
+               ["%s/%s/index.html" % (_gc.PREFIX[_l], _sl)
+                for _l in LANGS for _sl in _gc.SETS[_l]]
                if not os.path.exists(os.path.join(ROOT, p))]
     if missing:
         sys.exit("sitemap: these are listed but not built: %s" % ", ".join(missing))
@@ -98,8 +111,9 @@ def build():
             out.append(entry(pdf_url(stem, lang), lastmod(pdf_path(stem, lang)),
                              palts, freq, prio))
 
-    for slug in COMPARE:
-        out.append(compare_entry(slug))
+    for lang in LANGS:
+        for slug in _gc.SETS[lang]:
+            out.append(compare_entry(lang, slug))
 
     talts = dict((l, "%s/%s/" % (SITE, p)) for l, p in TRUST.items())
     for lang, p in TRUST.items():

@@ -4,12 +4,12 @@
 
 The page says only what is true of this site today: no cookies, no analytics,
 no tracking, fonts served from this domain, one localStorage key for the
-language, server logs at the host, and the contact form delivered through
-MailerSend. If the site ever gains a tracker, this page is the checklist of
+language, server logs at the host, and plain email correspondence -
+no third party carries it. If the site ever gains a tracker, this page is the checklist of
 claims that must change with it.
 
 The German Impressum is generated too (representative: Urban Weigl; email
-plus the contact form supply the two fast contact channels the ECJ requires,
+plus the phone number supply the two fast contact channels the ECJ requires,
 so no phone number is needed). The French mentions legales remain deliberately
 ungenerated: the LCEN names a phone number explicitly, and publishing them
 incomplete would be worse than their absence.
@@ -38,10 +38,10 @@ T = {
     u"One value in your browser's localStorage: your language choice (<code>rx-lang</code>), so the site opens in your language next time. It never leaves your device and you can clear it in your browser at any time."),
    (u"Server logs",
     u"This site is delivered by Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA), which processes technical connection data (IP address, request, timestamp) to serve and protect the site. Legal basis, where the GDPR applies: legitimate interest in operating the site securely, Art. 6(1)(f)."),
-   (u"The contact form",
-    u"If you send the quote or demo form, we process what you enter — name, email, company, message — solely to answer you. Delivery runs through MailerSend Inc. as our email processor. Legal basis: taking steps prior to a contract at your request, Art. 6(1)(b). We keep the correspondence as long as the conversation is live, then as required by commercial record-keeping law."),
+   (u"Email correspondence",
+    u"The quote and demo buttons open your own email program — nothing you write is transmitted through this website. If you write to us, we process what you send — name, email address, company, message — solely to answer you. Legal basis: taking steps prior to a contract at your request, Art. 6(1)(b). We keep the correspondence as long as the conversation is live, then as required by commercial record-keeping law."),
    (u"WhatsApp",
-    u"On the English page we offer contact via WhatsApp (+1\u00a0(829)\u00a0499-7677). If you choose that channel, WhatsApp LLC processes connection and metadata under its own policies; we use message content solely to answer your enquiry. Anyone who prefers not to can reach us just the same by email or the form."),
+    u"On the English page we offer contact via WhatsApp (+1\u00a0(829)\u00a0499-7677). If you choose that channel, WhatsApp LLC processes connection and metadata under its own policies; we use message content solely to answer your enquiry. Anyone who prefers not to can reach us just the same by email."),
    (u"Your rights",
     u"Where the GDPR applies, you can ask us for access, rectification, erasure, restriction, portability, and you can object to processing based on legitimate interest. Write to <a href='mailto:app@rocketx.app'>app@rocketx.app</a>. You can also complain to your local supervisory authority."),
   ]),
@@ -59,10 +59,10 @@ T = {
     u"Ein Wert im localStorage Ihres Browsers: Ihre Sprachwahl (<code>rx-lang</code>), damit die Seite beim nächsten Besuch in Ihrer Sprache öffnet. Der Wert verlässt Ihr Gerät nicht und lässt sich jederzeit im Browser löschen."),
    (u"Server-Logs",
     u"Ausgeliefert wird die Website von Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA); dabei werden technische Verbindungsdaten (IP-Adresse, Anfrage, Zeitstempel) zum Betrieb und Schutz der Seite verarbeitet. Rechtsgrundlage: berechtigtes Interesse am sicheren Betrieb, Art. 6 Abs. 1 lit. f DSGVO."),
-   (u"Das Kontaktformular",
-    u"Wenn Sie das Angebots- oder Demo-Formular senden, verarbeiten wir Ihre Angaben — Name, E-Mail, Unternehmen, Nachricht — ausschließlich zur Beantwortung. Der Versand läuft über MailerSend Inc. als E-Mail-Auftragsverarbeiter. Rechtsgrundlage: vorvertragliche Maßnahmen auf Ihre Anfrage, Art. 6 Abs. 1 lit. b DSGVO. Die Korrespondenz speichern wir für die Dauer des Vorgangs, danach nach handelsrechtlichen Aufbewahrungspflichten."),
+   (u"E-Mail-Korrespondenz",
+    u"Die Angebots- und Demo-Schaltflächen öffnen Ihr eigenes E-Mail-Programm — über diese Website selbst wird nichts übertragen. Schreiben Sie uns, verarbeiten wir die übermittelten Angaben — Name, E-Mail-Adresse, Unternehmen, Nachricht — ausschließlich zur Beantwortung. Rechtsgrundlage: vorvertragliche Maßnahmen auf Ihre Anfrage, Art. 6 Abs. 1 lit. b DSGVO. Die Korrespondenz speichern wir für die Dauer des Vorgangs, danach nach handelsrechtlichen Aufbewahrungspflichten."),
    (u"WhatsApp",
-    u"Auf der deutschen Seite bieten wir Kontakt über WhatsApp an (+49\u00a08677\u00a04099628). Wenn Sie diesen Weg wählen, verarbeitet WhatsApp Ireland Ltd. Verbindungs- und Metadaten nach eigenen Richtlinien; Nachrichteninhalte nutzen wir ausschließlich zur Beantwortung Ihrer Anfrage. Wer das nicht möchte, erreicht uns genauso per E-Mail oder Formular."),
+    u"Auf der deutschen Seite bieten wir Kontakt über WhatsApp an (+49\u00a08677\u00a04099628). Wenn Sie diesen Weg wählen, verarbeitet WhatsApp Ireland Ltd. Verbindungs- und Metadaten nach eigenen Richtlinien; Nachrichteninhalte nutzen wir ausschließlich zur Beantwortung Ihrer Anfrage. Wer das nicht möchte, erreicht uns genauso per E-Mail."),
    (u"Ihre Rechte",
     u"Sie haben die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung und Datenübertragbarkeit sowie ein Widerspruchsrecht gegen Verarbeitung auf Basis berechtigten Interesses. Schreiben Sie an <a href='mailto:app@rocketx.app'>app@rocketx.app</a>. Daneben besteht ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde."),
   ]),
@@ -80,8 +80,8 @@ T = {
     u"Un único valor en localStorage: tu idioma (<code>rx-lang</code>), para que el sitio abra en tu idioma la próxima vez. No sale de tu dispositivo y puedes borrarlo cuando quieras."),
    (u"Registros del servidor",
     u"El sitio lo entrega Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, EE. UU.), que procesa datos técnicos de conexión (IP, petición, fecha y hora) para servir y proteger el sitio."),
-   (u"El formulario de contacto",
-    u"Si envías el formulario de cotización o demo, procesamos lo que escribes — nombre, email, empresa, mensaje — solo para responderte. El envío pasa por MailerSend Inc. como procesador de correo. Conservamos la correspondencia mientras la conversación siga viva y después según las obligaciones mercantiles."),
+   (u"Correspondencia por email",
+    u"Los botones de cotización y demo abren tu propio programa de correo — nada de lo que escribes pasa por esta web. Si nos escribes, procesamos lo que envías — nombre, email, empresa, mensaje — solo para responderte. Conservamos la correspondencia mientras la conversación siga viva y después según las obligaciones mercantiles."),
    (u"Tus derechos",
     u"Puedes pedir acceso, rectificación, supresión, limitación y portabilidad, y oponerte al tratamiento basado en interés legítimo, escribiendo a <a href='mailto:app@rocketx.app'>app@rocketx.app</a>."),
   ]),
@@ -99,8 +99,8 @@ T = {
     u"Eén waarde in localStorage: je taalkeuze (<code>rx-lang</code>), zodat de site de volgende keer in jouw taal opent. Die verlaat je apparaat niet en je kunt hem altijd wissen."),
    (u"Serverlogs",
     u"De site wordt geleverd door Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, VS), dat technische verbindingsgegevens (IP-adres, verzoek, tijdstip) verwerkt om de site te leveren en te beschermen. Grondslag: gerechtvaardigd belang bij veilige exploitatie, art. 6 lid 1 sub f AVG."),
-   (u"Het contactformulier",
-    u"Stuur je het offerte- of demoformulier, dan verwerken we wat je invult — naam, e-mail, bedrijf, bericht — uitsluitend om te antwoorden. De bezorging loopt via MailerSend Inc. als e-mailverwerker. Grondslag: precontractuele maatregelen op jouw verzoek, art. 6 lid 1 sub b AVG. We bewaren de correspondentie zolang het gesprek loopt, daarna volgens de wettelijke bewaarplichten."),
+   (u"E-mailcorrespondentie",
+    u"De offerte- en demoknoppen openen je eigen e-mailprogramma — via deze website zelf wordt niets verzonden. Schrijf je ons, dan verwerken we wat je stuurt — naam, e-mailadres, bedrijf, bericht — uitsluitend om te antwoorden. Grondslag: precontractuele maatregelen op jouw verzoek, art. 6 lid 1 sub b AVG. We bewaren de correspondentie zolang het gesprek loopt, daarna volgens de wettelijke bewaarplichten."),
    (u"Je rechten",
     u"Je hebt recht op inzage, rectificatie, wissing, beperking en overdraagbaarheid, en je kunt bezwaar maken tegen verwerking op basis van gerechtvaardigd belang: <a href='mailto:app@rocketx.app'>app@rocketx.app</a>. Klagen kan bij de Autoriteit Persoonsgegevens."),
   ]),
@@ -118,8 +118,8 @@ T = {
     u"Une seule valeur en localStorage : votre langue (<code>rx-lang</code>), pour que le site s’ouvre dans votre langue la prochaine fois. Elle ne quitte pas votre appareil et se supprime à tout moment dans le navigateur."),
    (u"Journaux du serveur",
     u"Le site est délivré par Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, États-Unis), qui traite des données techniques de connexion (adresse IP, requête, horodatage) pour servir et protéger le site. Base légale : intérêt légitime à une exploitation sûre, art. 6, par. 1, f du RGPD."),
-   (u"Le formulaire de contact",
-    u"Si vous envoyez le formulaire de devis ou de démonstration, nous traitons ce que vous saisissez — nom, email, société, message — uniquement pour vous répondre. L’acheminement passe par MailerSend Inc., notre sous-traitant d’envoi d’emails. Base légale : mesures précontractuelles à votre demande, art. 6, par. 1, b du RGPD. Nous conservons la correspondance le temps de l’échange, puis selon les obligations commerciales de conservation."),
+   (u"La correspondance par email",
+    u"Les boutons de devis et de démonstration ouvrent votre propre logiciel de messagerie — rien de ce que vous écrivez ne transite par ce site. Si vous nous écrivez, nous traitons ce que vous envoyez — nom, email, société, message — uniquement pour vous répondre. Base légale : mesures précontractuelles à votre demande, art. 6, par. 1, b du RGPD. Nous conservons la correspondance le temps de l’échange, puis selon les obligations commerciales de conservation."),
    (u"Vos droits",
     u"Vous disposez des droits d’accès, de rectification, d’effacement, de limitation et de portabilité, et d’un droit d’opposition au traitement fondé sur l’intérêt légitime : <a href='mailto:app@rocketx.app'>app@rocketx.app</a>. Vous pouvez aussi saisir la CNIL."),
   ]),
@@ -206,9 +206,7 @@ Vereinigte Staaten von Amerika</p>
 <p>Urban Weigl</p>
 <h2>Kontakt</h2>
 <p>Telefon: 015678 / 191538<br/>
-E-Mail: <a href="mailto:app@rocketx.app">app@rocketx.app</a><br/>
-Daneben erreichen Sie uns unmittelbar über das Kontaktformular auf dieser
-Website.</p>
+E-Mail: <a href="mailto:app@rocketx.app">app@rocketx.app</a></p>
 <h2>Vertragspartner für Kunden in der EU</h2>
 <p>RocketX Limited<br/>
 Registriert in Irland, Company No. 344153<br/>

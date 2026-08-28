@@ -89,8 +89,16 @@ footer{border-top:1px solid var(--line);padding:18px 0;color:var(--mist);font-si
 .logo img{width:30px;height:30px}
 footer.site .social{display:inline-flex;align-items:center;gap:8px;color:var(--sky)}
 footer.site .social svg{width:16px;height:16px;fill:currentColor}
+/* ---------- Contact dialog ---------- */
+footer.site .fmap{flex-basis:100%;line-height:2.1;padding:2px 0}
+footer.site .fmap a{font-size:13.5px;color:var(--mist);transition:color .25s}
+footer.site .fmap a:hover{color:var(--sky)}
+footer.site .fitem{white-space:nowrap}
+footer.site .fmap .sep{color:var(--mist);opacity:.55;margin:0 7px 0 9px}
 footer.site{border-top:1px solid var(--line);padding:56px 0 40px;color:var(--mist);font-size:14px}
 footer.site .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+footer.site .wrap>div{display:flex;align-items:center;flex-wrap:wrap}
+footer.site .fmap{display:block}
 footer.site .logo{font-size:16px}
 footer.site .sep{color:var(--line);margin:0 10px;user-select:none}
 footer.site .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
@@ -100,7 +108,16 @@ footer.site a{color:inherit;text-decoration:none}</style><footer class="site">
 <a class="logo" href="/fr/"><img alt="" src="/assets/logo.png" width="500" height="500"/>RocketX</a>
 <div><span>Commander sans friction</span> <span class="sep" aria-hidden="true">·</span> <a class="social" href="mailto:app@rocketx.app"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.24-8 5.01-8-5.01V6.4l8 5.01 8-5.01v1.84z"/></svg>app@rocketx.app</a> </div>
 <div><a class="social" href="https://www.linkedin.com/company/rocketxapp" rel="noopener" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a><span class="sep" aria-hidden="true">·</span><a class="social" data-calendar download href="/assets/rocketx-calendar-fr.pdf"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5z"/></svg><span>Calendrier 2027 (PDF)</span></a></div>
-<div aria-label="Sections" class="fmap" role="navigation"><a href="/fr/#demo">LE PANIER PARTAGÉ EN DIRECT</a> <a href="/fr/#features">FONCTIONNALITÉS</a> <a href="/fr/#market">POURQUOI MAINTENANT</a> <a href="/fr/#native">POURQUOI LE NATIF</a> <a href="/fr/#results">POURQUOI LES ÉQUIPES CHOISISSENT ROCKETX</a> <a href="/fr/#compare">LE COMPARATIF HONNÊTE</a> <a href="/fr/#insights">ARTICLES</a> <a href="/fr/#pricing">TARIFS</a> <a href="/fr/#questions">LES QUESTIONS AVANT DE SIGNER</a> <a href="/fr/#liftoff">PRÊTS AU DÉCOLLAGE</a></div>
+<div aria-label="Sections" class="fmap" role="navigation"><span class="fitem"><a href="/fr/#demo">Le panier partagé en direct</a><span class="sep" aria-hidden="true">·</span></span>
+<span class="fitem"><a href="/fr/#features">Fonctionnalités</a><span class="sep" aria-hidden="true">·</span></span>
+<span class="fitem"><a href="/fr/#market">Pourquoi maintenant</a><span class="sep" aria-hidden="true">·</span></span>
+<span class="fitem"><a href="/fr/#native">Pourquoi le natif</a><span class="sep" aria-hidden="true">·</span></span>
+<span class="fitem"><a href="/fr/#results">Pourquoi les équipes choisissent RocketX</a><span class="sep" aria-hidden="true">·</span></span>
+<span class="fitem"><a href="/fr/#compare">Le comparatif honnête</a><span class="sep" aria-hidden="true">·</span></span>
+<span class="fitem"><a href="/fr/#insights">Articles</a><span class="sep" aria-hidden="true">·</span></span>
+<span class="fitem"><a href="/fr/#pricing">Tarifs</a><span class="sep" aria-hidden="true">·</span></span>
+<span class="fitem"><a href="/fr/#questions">Les questions avant de signer</a><span class="sep" aria-hidden="true">·</span></span>
+<span class="fitem"><a href="/fr/#liftoff">Prêts au décollage</a></span></div>
 <div>© 2001–2026 RocketX <span class="sep" aria-hidden="true">·</span> <a data-privacy href="/fr/confidentialite/" style="color:var(--mist)">Confidentialité</a><a data-trust href="/fr/securite/" style="color:var(--mist);margin-left:10px">Sécurité</a><a data-mentions href="/fr/mentions-legales/" style="color:var(--mist);margin-left:10px">Mentions légales</a></div>
 </div>
 </footer>
