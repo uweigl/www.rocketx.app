@@ -675,7 +675,7 @@ for _cl in ("en", "de", "es", "nl", "fr"):
               _GUARC[_cl] in _h)
         check("%s/%s highlights the RocketX edge" % (_gc2.PREFIX[_cl], _slug),
               _h.count('<ul class="edge">') == 1
-              and _h.split('<ul class="edge">', 1)[1].split("</ul>", 1)[0].count("<li>") == 6)
+              and _h.split('<ul class="edge">', 1)[1].split("</ul>", 1)[0].count("<li>") == 7)
         check("%s/%s links home in its own language" % (_gc2.PREFIX[_cl], _slug),
               ('href="/#compare"' if _cl == "en" else 'href="/%s/#compare"' % _cl) in _h)
 _idx = io.open("index.html", encoding="utf-8").read()
