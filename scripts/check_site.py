@@ -596,6 +596,15 @@ check("impressum carries phone and EU entity",
       os.path.exists(_imp) and "191538" in io.open(_imp, encoding="utf-8").read()
       and "344153" in io.open(_imp, encoding="utf-8").read())
 _idx2 = io.open("index.html", encoding="utf-8").read()
+# the German WhatsApp contact: correct wa.me digits, gated to /de/, and the
+# German privacy page discloses the channel it advertises
+check("whatsapp link carries the right number",
+      'href="https://wa.me/4986774099628"' in _idx2 and "data-wa" in _idx2)
+check("whatsapp is gated to the German page",
+      "[data-wa]" in _idx2 and "l!=='de'" in _idx2)
+_dp = "de/datenschutz/index.html"
+check("german privacy discloses whatsapp",
+      os.path.exists(_dp) and "4099628" in io.open(_dp, encoding="utf-8").read())
 check("privacy linked from the footer", "data-privacy" in _idx2 and "ft.privacy" in _idx2)
 # the page promises no analytics; hold the site to it
 check("site carries no analytics, as the privacy page promises",

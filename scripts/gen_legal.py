@@ -58,6 +58,8 @@ T = {
     u"Ausgeliefert wird die Website von Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA); dabei werden technische Verbindungsdaten (IP-Adresse, Anfrage, Zeitstempel) zum Betrieb und Schutz der Seite verarbeitet. Rechtsgrundlage: berechtigtes Interesse am sicheren Betrieb, Art. 6 Abs. 1 lit. f DSGVO."),
    (u"Das Kontaktformular",
     u"Wenn Sie das Angebots- oder Demo-Formular senden, verarbeiten wir Ihre Angaben — Name, E-Mail, Unternehmen, Nachricht — ausschließlich zur Beantwortung. Der Versand läuft über MailerSend Inc. als E-Mail-Auftragsverarbeiter. Rechtsgrundlage: vorvertragliche Maßnahmen auf Ihre Anfrage, Art. 6 Abs. 1 lit. b DSGVO. Die Korrespondenz speichern wir für die Dauer des Vorgangs, danach nach handelsrechtlichen Aufbewahrungspflichten."),
+   (u"WhatsApp",
+    u"Auf der deutschen Seite bieten wir Kontakt über WhatsApp an (+49\u00a08677\u00a04099628). Wenn Sie diesen Weg wählen, verarbeitet WhatsApp Ireland Ltd. Verbindungs- und Metadaten nach eigenen Richtlinien; Nachrichteninhalte nutzen wir ausschließlich zur Beantwortung Ihrer Anfrage. Wer das nicht möchte, erreicht uns genauso per E-Mail oder Formular."),
    (u"Ihre Rechte",
     u"Sie haben die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung und Datenübertragbarkeit sowie ein Widerspruchsrecht gegen Verarbeitung auf Basis berechtigten Interesses. Schreiben Sie an <a href='mailto:app@rocketx.app'>app@rocketx.app</a>. Daneben besteht ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde."),
   ]),
