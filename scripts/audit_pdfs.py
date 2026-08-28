@@ -66,8 +66,7 @@ for l in LANGS:
                  "nl": "40.000", "fr": u"40\u00a0000"}[l]
     check("%s: fee figure bands + cap" % tag,
           not bmiss and has(pages, cap_probe), "missing %s" % bmiss)
-    # the cover argues, and page 2 closes on the observed evidence
-    check("%s: cover thesis printed" % tag, has(pages, C["thesis"], 0))
+    # page 2 closes on the observed evidence
     check("%s: pilot evidence on page 2" % tag, has(pages, C["ev"], 1))
     # stats block numbers
     smiss = [a for a, b in C["stats"] if not has(pages, a)]

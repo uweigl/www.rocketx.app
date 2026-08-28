@@ -87,7 +87,6 @@ C["en"] = dict(
     # --- executive summary (page one after the cover)
     xsh="In one page",
     xsa="If you read nothing else: wholesale orders leak in the cart, on the phone, and in the returns bay. This is a proposal to stop that, with the platform proving itself before it costs anything.",
-    thesis="Weigh any platform fee against one percent of your revenue. That is the whole decision.",
     evh="Observed in the pilots so far",
     ev="Buyers and field reps complete orders in half the time or less — and on the largest catalogues, search feels “like magic” next to the old system. The agreed measures decide what counts in yours — and if the pilot misses them, you walk away owing nothing.",
     xs=[('The problem', 'Your buyers assemble orders somewhere nobody on your side can see, in a browser tab they have to find and log into every time - while the work itself happens on a phone, in an aisle, at a loading dock. Carts die with the session, one person builds what six to ten people decide, and the duplicate nobody caught comes back as a return.'),
@@ -233,7 +232,6 @@ C["de"] = dict(
     p9n="Diesen vier Posten stellen Sie Plattformgebühr und Implementierungsaufwand aus Ihrem Angebot gegenüber. Wenn schon die ersten beiden die Kosten nicht decken, brauchen Sie die anderen beiden nicht.",
     xsh="Auf einer Seite",
     xsa="Falls Sie nur eine Seite lesen: Großhandelsbestellungen versickern im Warenkorb, am Telefon und in der Retourenannahme. Dies ist ein Vorschlag, das zu beenden — wobei sich die Plattform beweist, bevor sie etwas kostet.",
-    thesis="Wiegen Sie jede Plattformgebühr gegen ein Prozent Ihres Umsatzes. Das ist die ganze Entscheidung.",
     evh="In den bisherigen Piloten beobachtet",
     ev="Einkäufer und Außendienst schließen Bestellungen in der halben Zeit ab, oft schneller — und auf den größten Katalogen fühlt sich die Suche neben dem alten System „wie Magie“ an. Verfehlt der Pilot die vereinbarten Messgrößen, gehen Sie und zahlen nichts.",
     xs=[('Das Problem', "Ihre Einkäufer stellen Bestellungen dort zusammen, wo sie auf Ihrer Seite niemand sieht. In einem Browser-Tab, den sie jedes Mal suchen. In den sie sich jedes Mal neu anmelden. Und die Arbeit selbst passiert woanders: am Telefon, im Lagergang, an der Laderampe. Warenkörbe sterben mit der Sitzung. Einer baut, was sechs bis zehn entscheiden. Und die übersehene Dopplung kommt als Retoure zurück."),
@@ -376,7 +374,6 @@ C["es"] = dict(
     p9n="Frente a esos cuatro, pon la tarifa de plataforma y el esfuerzo de implementación de tu propuesta. Si los dos primeros por sí solos no cubren el costo, no hace falta recurrir a los otros dos.",
     xsh="En una página",
     xsa="Si no lees nada más: los pedidos mayoristas se escapan en el carrito, por teléfono y en la zona de devoluciones. Esto es una propuesta para detenerlo, con la plataforma demostrándose antes de costar nada.",
-    thesis="Compara cualquier tarifa de plataforma con el uno por ciento de tu facturación. Esa es toda la decisión.",
     evh="Observado en los pilotos hasta ahora",
     ev="Compradores y vendedores completan pedidos en la mitad del tiempo o menos — y en los catálogos más grandes, la búsqueda se siente «como magia» frente al sistema anterior. Lo que cuenta en el tuyo lo deciden las métricas acordadas — y si el piloto no las alcanza, te vas sin deber nada.",
     xs=[('El problema', "Tus compradores arman pedidos donde nadie de tu lado los ve: en una pestaña del navegador que deben encontrar y en la que deben identificarse cada vez. Y el trabajo ocurre en otro sitio — en un móvil, en un pasillo de almacén, en un muelle de carga. Los carritos mueren con la sesión. Una persona construye lo que deciden entre seis y diez. Y el duplicado que nadie vio vuelve como devolución."),
@@ -459,7 +456,6 @@ C["nl"] = dict(
     date="Editie 2026",
     xsh="Op één pagina",
     xsa="Als je maar één pagina leest: groothandelsorders lekken weg in de winkelwagen, aan de telefoon en bij de retourbalie. Dit is een voorstel om dat te stoppen — waarbij het platform zich bewijst voordat het iets kost.",
-    thesis="Weeg elke platformfee af tegen één procent van je omzet. Dat is de hele beslissing.",
     evh="Gezien in de pilots tot nu toe",
     ev="Inkopers en buitendienst ronden orders af in de helft van de tijd of minder — en op de grootste catalogi voelt zoeken „als magie” naast het oude systeem. Wat telt in jouw pilot bepalen de afgesproken meetpunten — en haalt de pilot ze niet, dan stap je eruit en betaal je niets.",
     xs=[("Het probleem", "Je inkopers stellen orders samen op een plek die niemand aan jouw kant ziet. In een browsertabblad dat ze elke keer moeten zoeken. Waarin ze elke keer opnieuw moeten inloggen. En het werk zelf gebeurt ergens anders: op een telefoon, in een magazijngang, op een laadperron. Winkelwagens sterven met de sessie. Eén persoon bouwt wat zes tot tien mensen beslissen. En de dubbele bestelling die niemand zag komt terug als retour."),
@@ -631,7 +627,6 @@ C["fr"] = dict(
   cd="Quel que soit le total des quatre leviers, il est annuel. Un trimestre de délibération coûte un quart de ce chiffre, et la fuite ne s’arrête pas pendant que vous évaluez. C’est l’argument honnête pour lancer un pilote maintenant plutôt qu’un cycle d’achat dans six mois.",
   xsh="En une page",
   xsa="Si vous ne lisez rien d’autre : les commandes de gros fuient dans le panier, au téléphone et au quai des retours. Voici comment arrêter cela, la plateforme faisant ses preuves avant de coûter quoi que ce soit.",
-  thesis="Pesez toute commission de plateforme face à un pour cent de votre chiffre d’affaires. Toute la décision est là.",
   evh="Constaté dans les pilotes menés à ce jour",
   ev="Acheteurs et commerciaux terminent leurs commandes en moitié moins de temps, ou mieux — et sur les plus grands catalogues, la recherche paraît « magique » à côté de l’ancien système. Ce qui compte dans le vôtre, les mesures convenues le décident — et s’il les manque, vous partez sans rien devoir.",
   xs=[("Le problème", "Vos acheteurs montent leurs commandes là où personne chez vous ne les voit. Dans un onglet qu’ils doivent retrouver et déverrouiller à chaque fois. Et le travail, lui, se fait ailleurs : sur un téléphone, dans une réserve, entre deux rendez-vous. Les paniers meurent avec la session. Une personne construit ce que six à dix décident. Et le doublon que personne n’a vu revient en retour."), ("Ce qui change dans le panier", "Les paniers vivent sur le serveur et se synchronisent en direct entre la boutique en ligne et les applications natives. Vos commerciaux voient les paniers clients en cours, y compris ceux qui bloquent, et agissent avant que l’affaire refroidisse. Toute l’équipe modifie une seule commande, chaque changement porte un nom. Et le panier signale une référence déjà achetée récemment."), ("Ce qui change sur le téléphone de l’acheteur", "Votre catalogue est sur l’écran d’accueil, à un geste du réassort et déjà connecté, au lieu d’être derrière un numéro de client et un mot de passe. La notification ramène l’acheteur au retour du stock ou à l’échéance d’un contrat, là où le courriel est filtré. Le code-barres réassortit depuis l’étiquette du rayon, et le catalogue est en local : une allée sans réseau reste une allée d’où l’on commande. Vos brochures imprimées et vos vidéos produit voyagent dans la même application, au lieu d’un second site professionnel que personne n’ouvre au bon moment. Natif iOS et Android, pas un site web dans une coque. Le réassort cesse d’être une corvée et devient une habitude : c’est de là que vient le chiffre d’affaires récurrent."), ("Pourquoi c’est défendable", "Références et postes illimités, jamais comptés, jamais un pourcentage de votre chiffre d’affaires : votre croissance vous appartient. Connecteurs ERP et CRM standard compris, RocketX se plaçant devant vos systèmes de référence au lieu de les remplacer. Et il tourne à côté de votre boutique en ligne actuelle : rien n’est débranché."), ("Ce que coûte l’essai", "Mise en service offerte en plan annuel. Facturation à la mise en service, pas à la signature. Pilote de 30 à 45 jours avec mesures convenues : s’il les manque, vous partez sans rien devoir."), ("Le test du pour cent", "Comparez le coût de plateforme de votre proposition à un pour cent de votre chiffre d’affaires annuel. Ou à la marge sur ce pour cent, si vous préférez la version prudente. La seule question qui reste est de savoir si mieux commander vaut davantage que cela pour vous. Si oui, le reste de ce document est du détail, pas de la persuasion.")],
@@ -978,9 +973,6 @@ h3{font-size:10.4pt;color:var(--ink);font-weight:600;margin-bottom:5px;line-heig
 .tlrow.rx .tlfill{background:var(--blue)}
 .tlrow.rx .tllbl b{color:var(--blue)}
 /* cover thesis + page-2 evidence */
-.cover .thesis{margin-top:30px;padding-left:14px;border-left:3px solid var(--blue);
-  font-family:"Space Grotesk",sans-serif;font-size:12.5pt;line-height:1.45;
-  color:var(--ink);max-width:132mm;font-weight:600}
 .callout.evc{margin-top:7px;padding:9px 13px;page-break-inside:avoid}
 .evc h3{font-family:"IBM Plex Mono",monospace;font-size:7.8pt;letter-spacing:.14em;
   text-transform:uppercase;color:var(--blue);margin-bottom:4px}
@@ -999,10 +991,8 @@ def build(d):
       '<div class="page cover">'
       '<div class="brand"><img src="../assets/logo.png" alt=""><b>RocketX</b></div>'
       '<div class="kick">%s</div><h1>%s</h1><p class="sub">%s</p>'
-      '<p class="thesis">%s</p>'
       '<div class="meta"><span><b>%s</b></span><span>%s</span></div>'
-      '</div>' % (esc(d["kicker"]), esc(d["title"]), esc(d["sub"]), esc(d["thesis"]),
-                  esc(d["forwho"]), esc(d["date"])))
+      '</div>' % (esc(d["kicker"]), esc(d["title"]), esc(d["sub"]), esc(d["forwho"]), esc(d["date"])))
 
     # executive summary - the page a forwarded deck actually gets read
     xs = "".join('<div class="xs"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["xs"])

@@ -136,11 +136,12 @@ try:
     for _l in ("en", "de", "es", "nl", "fr"):
         odd = [k for k, v in _I[_l].items() if k.endswith(".k") and not v.startswith("/ ")]
         check("%s: section kickers use the '/ ' prefix" % _l, not odd, str(odd))
-        # a nav label and the section it points at should name the same thing
-        nav = _I[_l]["nav.insights"].strip().lower()
-        kick = _I[_l]["in.k"].replace("/", "").strip().lower()
-        check("%s: nav label matches the articles kicker" % _l, nav == kick,
-              "%r vs %r" % (nav, kick))
+        # the nav link points at the questions section; its label must be the
+        # word that section's own kicker uses, or the pairing reads as broken
+        nav = _I[_l]["nav.questions"].strip().lower()
+        kick = _I[_l]["fq.k"].replace("/", "").strip().lower()
+        check("%s: nav label names the questions section" % _l, nav in kick.split(),
+              "%r not a word of %r" % (nav, kick))
 except Exception as e:
     check("label cross-check ran", False, repr(e))
 
