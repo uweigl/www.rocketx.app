@@ -994,7 +994,7 @@ import gen_404 as _g404
 
 # which strip fronts each deck: the fee strip by default; German gets the
 # sessions one - operational rather than commercial, and the drier joke
-COVER_STRIP_IDX = {"en": 2, "de": 5, "es": 2, "nl": 2, "fr": 2}
+COVER_STRIP_IDX = {"en": 2, "de": 5, "es": 2, "nl": 2, "fr": 1}
 
 def cover_strip(lang, idx=None):
     """One strip, self-contained: panels drawn inline, no shared defs."""
