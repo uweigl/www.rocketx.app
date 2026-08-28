@@ -13,7 +13,9 @@ site's honest-comparison ethos: each one says plainly who the competitor is
 right for. RocketX claims on these pages are limited to what the site already
 claims elsewhere.
 """
-import io, os
+import io, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import site_footer
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://www.rocketx.app"
@@ -217,7 +219,7 @@ def build(slug):
 
 <p class="note">Competitor information verified against the linked sources in August 2026; platforms change, and if anything here has gone stale, tell us and we will correct it. Also compared: <a href="/compare/%(o1)s/">%(on1)s</a> · <a href="/compare/%(o2)s/">%(on2)s</a>.</p>
 </div></main>
-<footer><div class="wrap">RocketX &middot; Frictionless Ordering &middot; rocketx.app</div></footer>
+___SFOOT___
 </body>
 </html>
 """ % dict(title=d["title"], desc=d["desc"], site=SITE, slug=slug, css=CSS.strip(),
@@ -226,6 +228,7 @@ def build(slug):
            name=d["h1"].replace("RocketX vs ", ""), fair=d["fair"],
            o1=other[0], on1=PAGES[other[0]]["h1"].replace("RocketX vs ", ""),
            o2=other[1], on2=PAGES[other[1]]["h1"].replace("RocketX vs ", ""))
+    html = html.replace("___SFOOT___", site_footer.footer_html("en"))
     outdir = os.path.join(ROOT, "compare", slug)
     if not os.path.isdir(outdir):
         os.makedirs(outdir)

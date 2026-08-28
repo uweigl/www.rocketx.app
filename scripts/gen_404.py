@@ -13,7 +13,8 @@ the browser, because that is the one thing SVG will not do for you.
 The first strip renders statically in English so the page still reads with no
 JavaScript; the script then picks one of the ten at random and swaps the text.
 """
-import io, json, os
+import io, json, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "404.html")
 LANGS = ["en", "de", "es", "nl", "fr"]
@@ -444,6 +445,13 @@ def build():
             % (l, hide, "" if l == "en" else l + "/", u["home"],
                l, DLICON, u["deck"], l, DLICON, u["one"], l, DLICON, u["cal"]))
 
+    import site_footer  # lazy: site_footer -> gen_calendar -> gen_404 would cycle at module load
+    foots = u'<style>' + site_footer.CSS.strip() + u'</style>' + u"\n".join(
+        u'<div class="l l-%s"%s>%s</div>' % (
+            l, "" if l == "en" else " hidden",
+            site_footer.footer_html(l, with_style=False))
+        for l in LANGS)
+
     html = u"""<!doctype html>
 <html lang="en">
 <head>
@@ -463,7 +471,7 @@ def build():
 %s
 %s
 </div></main>
-<footer><div class="wrap">RocketX &middot; Frictionless Ordering &middot; rocketx.app</div></footer>
+___SFOOT___
 <script>
 (function(){
   var LANGS=%s, DATA=%s, SCREENS=%s, ALT=%s;
@@ -524,6 +532,7 @@ def build():
        json.dumps(screens, ensure_ascii=False),
        json.dumps(dict((l, UI[l]["altp"]) for l in LANGS), ensure_ascii=False),
        json.dumps(TAIL), BX, BY, BW, LH, TAIL_H, INK)
+    html = html.replace("___SFOOT___", foots)
     io.open(OUT, "w", encoding="utf-8").write(html)
     return html
 

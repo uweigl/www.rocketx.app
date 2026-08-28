@@ -24,7 +24,6 @@ A = {
  "Native iOS and Android, purpose-built for B2B ordering rather than a website wrapped in a shell. Barcode scanning and offline access are included.",
  "Yes. The catalogue, pricing, cart, and your brochures and product video are held locally and sync when the connection returns.",
  "At go-live. Setup and integration are waived on annual plans, and a 30 to 45 day pilot with agreed measures comes before any longer commitment. If the pilot misses those measures, you walk away owing nothing.",
- "Your data can be exported in open formats at any time and on exit. Customers in the US and the EU have the same export and exit rights; nothing is withheld or downgraded by region.",
 ],
 "fr": [
  "Non. Le coût de la plateforme est un forfait mensuel, jamais un pourcentage de votre chiffre d’affaires. Il n’y a ni frais par référence, ni frais par utilisateur. Les paliers suivent le chiffre d’affaires de l’entreprise, pas l’intensité d’un mois donné.",
@@ -37,7 +36,6 @@ A = {
  "Natives iOS et Android, conçues pour la commande B2B plutôt qu’un site web enfermé dans une coque. Lecture de code-barres et accès hors connexion compris.",
  "Oui. Le catalogue, les prix, le panier ainsi que vos brochures et vidéos produit sont conservés en local et se synchronisent au retour de la connexion.",
  "À la mise en service. Les frais de mise en service et d’intégration sont offerts sur les plans annuels, et un pilote de 30 à 45 jours avec des mesures convenues précède tout engagement plus long. S’il manque ces mesures, vous partez sans rien devoir.",
- "Vos données peuvent être exportées en formats ouverts à tout moment, y compris au moment de partir. Les clients américains et européens ont les mêmes droits d’export et de sortie ; rien n’est retenu ni diminué selon la région.",
 ],
 "de": [
  "Nein. Die Plattformgebühr ist eine monatliche Pauschale und nie ein Prozentsatz Ihres Bestellvolumens. Es gibt keine Gebühren pro SKU und keine pro Nutzer. Die Stufen richten sich nach dem Unternehmensumsatz, nicht danach, wie stark ein einzelner Monat ausfällt.",
@@ -50,7 +48,6 @@ A = {
  "Nativ für iOS und Android, gebaut für B2B-Bestellungen statt einer Website in einer App-Hülle. Barcode-Scan und Offline-Zugriff sind enthalten.",
  "Ja. Katalog, Preise, Warenkorb sowie Ihre Broschüren und Produktvideos liegen lokal und synchronisieren, sobald die Verbindung zurück ist.",
  "Mit dem Go-live. Bei Jahresplänen zahlen Sie für Setup und Integration nichts. Und vor einer längeren Bindung läuft ein Pilot: 30 bis 45 Tage, mit vereinbarten Messgrößen. Verfehlt er sie, gehen Sie und zahlen nichts.",
- "Ihre Daten exportieren Sie jederzeit in offenen Formaten, auch beim Wechsel. Kunden in den USA und in der EU haben dieselben Export- und Ausstiegsrechte; keine Region bekommt weniger.",
 ],
 "es": [
  "No. La tarifa de plataforma es mensual y fija, y nunca un porcentaje de tu volumen de pedidos. No hay tarifas por SKU ni por usuario. Los tramos van por facturación de la empresa, no por lo movido que haya sido un mes.",
@@ -63,7 +60,6 @@ A = {
  "Nativas para iOS y Android, construidas para el pedido B2B y no un sitio web dentro de una carcasa. Incluyen escaneo de códigos y acceso sin conexión.",
  "Sí. El catálogo, los precios, el carrito y tus folletos y vídeos de producto quedan en local y se sincronizan al volver la conexión.",
  "En la puesta en marcha. La implantación y la integración están incluidas en los planes anuales, y antes de cualquier compromiso largo hay un piloto de 30 a 45 días con métricas acordadas. Si no las alcanza, te vas sin deber nada.",
- "Puedes exportar tus datos en formatos abiertos en cualquier momento y también al salir. Los clientes de EE. UU. y de la UE tienen los mismos derechos de exportación y salida; no se retiene ni se recorta nada según la región.",
 ],
 "nl": [
  "Nee. De platformkosten zijn een vast maandbedrag en nooit een percentage van je omzet. Er zijn geen kosten per SKU en geen kosten per gebruiker. De schijven gaan op bedrijfsomzet, niet op hoe druk een maand toevallig was.",
@@ -76,7 +72,6 @@ A = {
  "Native voor iOS en Android, gebouwd voor B2B-bestellen en geen website in een omhulsel. Barcodes scannen en toegang zonder verbinding zitten erbij.",
  "Ja. Catalogus, prijzen, winkelwagen en je brochures en productvideo’s staan lokaal en synchroniseren zodra de verbinding terug is.",
  "Bij livegang. Inrichting en integratie zijn kwijtgescholden bij jaarplannen, en vóór een langere verbintenis staat een pilot van 30 tot 45 dagen met afgesproken maatstaven. Haalt de pilot ze niet, dan stap je eruit en betaal je niets.",
- "Je kunt je gegevens op elk moment en ook bij vertrek exporteren in open formaten. Klanten in de VS en de EU hebben dezelfde export- en exitrechten; er wordt niets achtergehouden of afgezwakt per regio.",
 ],
 }
 SITE = "https://www.rocketx.app"

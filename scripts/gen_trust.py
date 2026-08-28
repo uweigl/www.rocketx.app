@@ -16,6 +16,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_deck
 import faq
 import gen_legal
+import site_footer
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://www.rocketx.app"
@@ -31,7 +32,6 @@ T = {
   title=u"Security & Trust — RocketX",
   h1=u"Security & Trust",
   intro=u"Short answers to the questions a security review asks first — and the same commitments in both jurisdictions.",
-  exit_h=u"Your exit",
   web_h=u"This website",
   web=u"It practices the same restraint: no trackers, no cookies, fonts served from this domain. Details in the <a href='/privacy/'>privacy notice</a>.",
   ask_h=u"Ask directly",
@@ -41,7 +41,6 @@ T = {
   title=u"Sicherheit & Vertrauen — RocketX",
   h1=u"Sicherheit & Vertrauen",
   intro=u"Kurze Antworten auf die Fragen, die eine Sicherheitsprüfung zuerst stellt — mit denselben Zusagen in beiden Rechtsräumen.",
-  exit_h=u"Ihr Ausstieg",
   web_h=u"Diese Website",
   web=u"Sie übt dieselbe Zurückhaltung: keine Tracker, keine Cookies, Schriften von dieser Domain. Details in der <a href='/de/datenschutz/'>Datenschutzerklärung</a>.",
   ask_h=u"Direkt fragen",
@@ -51,7 +50,6 @@ T = {
   title=u"Seguridad y confianza — RocketX",
   h1=u"Seguridad y confianza",
   intro=u"Respuestas breves a lo primero que pregunta una revisión de seguridad — con los mismos compromisos en ambas jurisdicciones.",
-  exit_h=u"Tu salida",
   web_h=u"Este sitio",
   web=u"Practica la misma contención: sin rastreadores, sin cookies, fuentes servidas desde este dominio. Detalles en el <a href='/es/privacidad/'>aviso de privacidad</a>.",
   ask_h=u"Pregunta directamente",
@@ -61,7 +59,6 @@ T = {
   title=u"Beveiliging & vertrouwen — RocketX",
   h1=u"Beveiliging & vertrouwen",
   intro=u"Korte antwoorden op wat een securityreview het eerst vraagt — met dezelfde toezeggingen in beide rechtsgebieden.",
-  exit_h=u"Je exit",
   web_h=u"Deze site",
   web=u"Hij betracht dezelfde terughoudendheid: geen trackers, geen cookies, lettertypen vanaf dit domein. Details in de <a href='/nl/privacy/'>privacyverklaring</a>.",
   ask_h=u"Vraag het direct",
@@ -71,7 +68,6 @@ T = {
   title=u"Sécurité et confiance — RocketX",
   h1=u"Sécurité et confiance",
   intro=u"Des réponses brèves aux premières questions d" + AP + u"une revue de sécurité — avec les mêmes engagements dans les deux juridictions.",
-  exit_h=u"Votre sortie",
   web_h=u"Ce site",
   web=u"Il pratique la même retenue" + NB + u": pas de traceurs, pas de cookies, des polices servies depuis ce domaine. Les détails sont dans la <a href='/fr/confidentialite/'>politique de confidentialité</a>.",
   ask_h=u"Demandez directement",
@@ -99,7 +95,6 @@ def build(lang):
         if eu_i is None:
             parts = [u"<p>%s</p>" % C["us"][us_i][1]]
         secs.append(u"<h2>%s</h2>\n%s" % (head, u"\n".join(parts)))
-    secs.append(u"<h2>%s</h2>\n<p>%s</p>" % (d["exit_h"], faq.A[lang][10]))
     secs.append(u"<h2>%s</h2>\n<p>%s</p>" % (d["web_h"], d["web"]))
     secs.append(u"<h2>%s</h2>\n<p>%s</p>" % (d["ask_h"], d["ask"]))
 
@@ -134,13 +129,14 @@ def build(lang):
 <p class="intro">%s</p>
 %s
 </div></main>
-<footer><div class="wrap">RocketX &middot; rocketx.app</div></footer>
+___SFOOT___
 </body>
 </html>
 """ % (lang, d["title"], d["intro"].replace('"', "&quot;"), SITE, PATHS[lang],
        alts, gen_legal.FONTS, gen_legal.CSS.strip(),
        "" if lang == "en" else lang + "/",
        d["h1"], d["intro"], u"\n".join(secs))
+    html = html.replace("___SFOOT___", site_footer.footer_html(lang))
     outdir = os.path.join(ROOT, PATHS[lang])
     if not os.path.isdir(outdir):
         os.makedirs(outdir)

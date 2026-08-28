@@ -15,6 +15,7 @@ ungenerated: the LCEN names a phone number explicitly, and publishing them
 incomplete would be worse than their absence.
 """
 import io, os
+import site_footer
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://www.rocketx.app"
@@ -175,7 +176,7 @@ def build(lang):
 <p class="intro">%s</p>
 %s
 </div></main>
-<footer><div class="wrap">RocketX &middot; rocketx.app</div></footer>
+___SFOOT___
 </body>
 </html>
 """ % (lang, d["title"], SITE, PATHS[lang], FONTS, CSS.strip(),
@@ -185,6 +186,7 @@ def build(lang):
     if not os.path.isdir(outdir):
         os.makedirs(outdir)
     p = os.path.join(outdir, "index.html")
+    html = html.replace("___SFOOT___", site_footer.footer_html(lang))
     io.open(p, "w", encoding="utf-8").write(html)
     return p
 
@@ -242,10 +244,11 @@ def build_impressum():
 %s
 <p><a href="/de/datenschutz/">Datenschutzerklärung</a></p>
 </div></main>
-<footer><div class="wrap">RocketX &middot; rocketx.app</div></footer>
+___SFOOT___
 </body>
 </html>
 """ % (d["title"], SITE, FONTS, CSS.strip(), d["h1"], d["body"])
+    html = html.replace("___SFOOT___", site_footer.footer_html("de"))
     outdir = os.path.join(ROOT, "de", "impressum")
     if not os.path.isdir(outdir):
         os.makedirs(outdir)
@@ -301,10 +304,11 @@ def build_mentions():
 %s
 <p><a href="/fr/confidentialite/">Politique de confidentialité</a></p>
 </div></main>
-<footer><div class="wrap">RocketX &middot; rocketx.app</div></footer>
+___SFOOT___
 </body>
 </html>
 """ % (d["title"], SITE, FONTS, CSS.strip(), d["h1"], d["body"])
+    html = html.replace("___SFOOT___", site_footer.footer_html("fr"))
     outdir = os.path.join(ROOT, "fr", "mentions-legales")
     if not os.path.isdir(outdir):
         os.makedirs(outdir)
