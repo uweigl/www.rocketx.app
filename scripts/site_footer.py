@@ -33,7 +33,15 @@ for _m in re.finditer(r"[^{}]*\{[^{}]*\}", _SRC):
     if ("footer.site" in _sel
             or _sel.strip() in (".logo", ".logo img", ".sep")):
         _RULES.append(_r.strip())
-CSS = "\n".join(_RULES) + "\nfooter.site a{text-decoration:none}"
+# the footer depends on environment the homepage provides globally: the wrap
+# metrics and the --display variable. Scope copies of both to the footer so the
+# auxiliary pages render it identically, whatever their own containers do.
+_WRAP = re.search(r"\n\.wrap\{([^}]*)\}", _SRC).group(1)
+_DISP = re.search(r"--display:([^;]*);", _SRC).group(1)
+CSS = ("\n".join(_RULES)
+       + "\nfooter.site .wrap{%s}" % _WRAP
+       + "\nfooter.site{--display:%s}" % _DISP
+       + "\nfooter.site a{color:inherit;text-decoration:none}")
 
 
 def footer_html(lang, with_style=True):
