@@ -41,12 +41,22 @@ def strip_tags(t):
 
 
 # ---------------------------------------------------------------- decks
+BOTH = {"en": u"And the browser stays", "de": u"Und der Browser bleibt",
+        "es": u"Y el navegador se queda", "nl": u"En de browser blijft",
+        "fr": u"Et le navigateur reste"}
+WEBAPP = {"en": u"web app in any browser", "de": u"Web-App in jedem Browser",
+          "es": u"web app de RocketX en cualquier navegador",
+          "nl": u"RocketX-webapp in elke browser",
+          "fr": u"web app RocketX dans tout navigateur"}
+
 for l in LANGS:
     pages = pdftext.extract("assets/rocketx-business-case-%s.pdf" % l)
     C = gen_deck.C[l]
     tag = "deck-%s" % l
     check("%s: 14 pages of text" % tag, len(pages) == 14 and all(len(p) > 60 for p in pages),
           "pages=%d min=%d" % (len(pages), min(len(p) for p in pages) if pages else 0))
+    check("%s: names both channels, web and native" % tag,
+          has(pages, BOTH[l]) and has(pages, WEBAPP[l]))
     # the cover carries the document title
     check("%s: cover title" % tag, has(pages, C["title"], 0))
     # every quest question reaches the questions page
@@ -95,6 +105,8 @@ for l in LANGS:
     tag = "one-pager-%s" % l
     check("%s: single dense page" % tag, len(pages) == 1 and len(pages[0]) > 2000,
           "pages=%d chars=%d" % (len(pages), len(pages[0]) if pages else 0))
+    check("%s: names the web app beside the native apps" % tag,
+          has(pages, WEBAPP[l]))
     hmiss = [h for h, _b in C["xs"] if not has(pages, h)]
     check("%s: all six row heads" % tag, not hmiss, str(hmiss[:2]))
     guar = {"en": "owing nothing", "de": "zahlen Sie nichts", "es": "no debes nada",

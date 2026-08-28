@@ -598,6 +598,8 @@ check("impressum carries phone and EU entity",
       os.path.exists(_imp) and "191538" in io.open(_imp, encoding="utf-8").read()
       and "344153" in io.open(_imp, encoding="utf-8").read())
 _idx2 = io.open("index.html", encoding="utf-8").read()
+check("hidden attribute cannot be defeated by author css",
+      "[hidden]{display:none!important}" in S)
 # the German WhatsApp contact: correct wa.me digits, gated to /de/, and the
 # German privacy page discloses the channel it advertises
 check("whatsapp numbers per market are wired",
@@ -676,6 +678,11 @@ for _cl in ("en", "de", "es", "nl", "fr"):
         check("%s/%s highlights the RocketX edge" % (_gc2.PREFIX[_cl], _slug),
               _h.count('<ul class="edge">') == 1
               and _h.split('<ul class="edge">', 1)[1].split("</ul>", 1)[0].count("<li>") == 7)
+        _WEB = {"en": "Web app in any browser", "de": "Web-App in jedem Browser",
+                "es": "Web app en cualquier navegador", "nl": "Webapp in elke browser",
+                "fr": "Web app dans tout navigateur"}
+        check("%s/%s names the web app beside the native apps" % (_gc2.PREFIX[_cl], _slug),
+              _WEB[_cl] in _h)
         check("%s/%s arms the buyer with three demo questions" % (_gc2.PREFIX[_cl], _slug),
               _h.count("data-ask") == 1
               and _h.split("data-ask", 1)[1].split("</ol>", 1)[0].count("<li>") == 3)
