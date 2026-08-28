@@ -67,8 +67,9 @@ for l in LANGS:
     check("%s: fee figure bands + cap" % tag,
           not bmiss and has(pages, cap_probe), "missing %s" % bmiss)
     # the cover carries the fee strip; the punchline proves all three bubbles
-    check("%s: fee strip on the cover" % tag,
-          has(pages, gen_404.STRIPS[2]["text"][l][2], 0))
+    _ci = gen_deck.COVER_STRIP_IDX.get(l, 2)
+    check("%s: cover strip %d punchline" % (tag, _ci + 1),
+          has(pages, gen_404.STRIPS[_ci]["text"][l][2], 0))
     # page 2 closes on the observed evidence
     check("%s: pilot evidence on page 2" % tag, has(pages, C["ev"], 1))
     # stats block numbers
