@@ -63,7 +63,9 @@ def footer_html(lang, with_style=True):
     f = re.sub(r'href="assets/rocketx-calendar-[a-z]+\.pdf"',
                'href="/assets/rocketx-calendar-%s.pdf"' % lang, f)
     f = f.replace('src="assets/logo.png"', 'src="/assets/logo.png"')
-    f = f.replace('href="#top"', 'href="%s"' % ("/" if lang == "en" else "/%s/" % lang))
+    home = "/" if lang == "en" else "/%s/" % lang
+    f = f.replace('href="#top"', 'href="%s"' % home)
+    f = re.sub(r'href="#([\w-]+)"', lambda m: 'href="%s#%s"' % (home, m.group(1)), f)
 
     # gated legal links: keep only the one this language owns, visible
     if lang == "de":

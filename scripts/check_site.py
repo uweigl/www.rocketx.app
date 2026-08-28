@@ -629,6 +629,22 @@ for _l, _tp in _gt.PATHS.items():
         check("trust %s carries the contract checklist" % _l,
               _gd.C[_l]["at"][0] in _th)
 check("trust linked from the footer", "data-trust" in _idx2 and "ft.trust" in _idx2)
+# the footer strip links every single section of the homepage, and each label
+# is that section's own kicker minus the slash - checked both ways
+_mainseg = _idx2[_idx2.index("<main"):_idx2.index("</main>")]
+_secids = re.findall(r'<section[^>]*id="([\w-]+)"', _mainseg)
+_footseg = re.search(r'<footer class="site">.*?</footer>', _idx2, re.S).group(0)
+_unlinked = [i for i in _secids if ('href="#%s"' % i) not in _footseg]
+check("footer strip links every homepage section", not _unlinked, str(_unlinked))
+_KICK = {"demo": "demo.k", "features": "ft.k", "market": "mk.k", "native": "na.k",
+         "results": "rs.k", "compare": "cp.k", "insights": "in.k",
+         "pricing": "pr.k", "questions": "fq.k", "liftoff": "ln.k"}
+for _l in ("en", "de", "es", "nl", "fr"):
+    _drift = [sid for sid, kk in _KICK.items()
+              if D[_l].get("fmap.%s" % sid)
+              != re.sub(r"^/\s*", "", D[_l].get(kk, "")).strip()]
+    check("%s: footer strip labels match the section kickers" % _l,
+          not _drift, str(_drift))
 check("privacy linked from the footer", "data-privacy" in _idx2 and "ft.privacy" in _idx2)
 # the page promises no analytics; hold the site to it
 check("site carries no analytics, as the privacy page promises",
