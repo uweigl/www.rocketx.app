@@ -676,6 +676,9 @@ for _cl in ("en", "de", "es", "nl", "fr"):
         check("%s/%s highlights the RocketX edge" % (_gc2.PREFIX[_cl], _slug),
               _h.count('<ul class="edge">') == 1
               and _h.split('<ul class="edge">', 1)[1].split("</ul>", 1)[0].count("<li>") == 7)
+        check("%s/%s arms the buyer with three demo questions" % (_gc2.PREFIX[_cl], _slug),
+              _h.count("data-ask") == 1
+              and _h.split("data-ask", 1)[1].split("</ol>", 1)[0].count("<li>") == 3)
         check("%s/%s links home in its own language" % (_gc2.PREFIX[_cl], _slug),
               ('href="/#compare"' if _cl == "en" else 'href="/%s/#compare"' % _cl) in _h)
 _idx = io.open("index.html", encoding="utf-8").read()

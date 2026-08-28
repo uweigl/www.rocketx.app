@@ -146,6 +146,79 @@ EDGE = {
         u"<b>Les commandes se montent plus vite :</b> la recherche répond en moins d’une seconde sur votre vrai catalogue et toute l’équipe construit un même panier — le pilote mesure l’écart sur vos propres chiffres."],
 }
 
+
+# three questions to take into the competitor's own demo - each derived from
+# a fact sourced above on the same page, so the box never claims anything new
+ASK_H = {
+ "en": u"Take these three questions to their demo",
+ "de": u"Nehmen Sie diese drei Fragen mit in die Demo",
+ "es": u"Lleva estas tres preguntas a su demo",
+ "nl": u"Neem deze drie vragen mee naar hun demo",
+ "fr": u"Apportez ces trois questions à leur démo",
+}
+ASK = {
+ ("en", "shopify-b2b"): [
+   u"What happens to an order at line 501?",
+   u"Two buyers at the same customer build one order for approval — which cart do they share?",
+   u"At what GMV does the flat fee become a percentage, and at what rate?"],
+ ("en", "pepperi"): [
+   u"What happens to a half-taken order when the resync fails mid-visit?",
+   u"What is the all-in bill at our user count — licences, modules, implementation?",
+   u"Who answers when it breaks at 7am our time?"],
+ ("en", "sana-commerce"): [
+   u"Which of our customisations survive the next ERP upgrade?",
+   u"How often does support actually look at an open case?",
+   u"What does year one cost, all in — and why is the number not on the pricing page?"],
+ ("de", "shopware"): [
+   u"Welche der B2B Components sind in unserem Plan enthalten — und was kostet Evolve im Jahr wirklich?",
+   u"Wie bestellt unser Kunde im Lagergang ohne Empfang?",
+   u"Sieht unser Außendienst den Warenkorb eines Kunden, bevor daraus eine Bestellung wird?"],
+ ("de", "sana-commerce"): [
+   u"Welche unserer Anpassungen überleben das nächste ERP-Upgrade?",
+   u"Wie oft schaut der Support tatsächlich auf ein offenes Ticket?",
+   u"Was kostet das erste Jahr, alles eingerechnet — und warum steht die Zahl nicht auf der Preisseite?"],
+ ("de", "pepperi"): [
+   u"Was passiert mit einer halb erfassten Bestellung, wenn der Resync im Kundentermin scheitert?",
+   u"Wie hoch ist die Gesamtrechnung bei unserer Nutzerzahl — Lizenzen, Module, Implementierung?",
+   u"Wer hilft, wenn es bei uns um 7 Uhr früh klemmt?"],
+ ("es", "mercado-libre"): [
+   u"¿Qué comisión exacta pagaremos por categoría — y quién decide cuándo sube?",
+   u"¿De quién son los datos de nuestros clientes y sus historiales de compra?",
+   u"¿Cómo le mostramos a cada cliente sus precios negociados sin que los vea su competencia?"],
+ ("es", "yalo"): [
+   u"¿Cómo arma un cliente un pedido de 200 líneas en un chat?",
+   u"¿Cuánto cuesta el proyecto — hay una tarifa publicada en alguna parte?",
+   u"¿Qué pasa con el pedido en la bodega sin señal?"],
+ ("es", "riqra"): [
+   u"¿Cómo responde la búsqueda con nuestro catálogo completo, no con uno de demo?",
+   u"¿Puede nuestro vendedor ver el carrito del cliente antes de que se convierta en pedido?",
+   u"¿Hay un piloto con métricas acordadas — o el contrato empieza el día uno?"],
+ ("nl", "sana-commerce"): [
+   u"Welke van onze aanpassingen overleven de volgende ERP-upgrade?",
+   u"Hoe vaak kijkt support werkelijk naar een open ticket?",
+   u"Wat kost het eerste jaar, alles meegerekend — en waarom staat dat bedrag niet op de prijspagina?"],
+ ("nl", "orderchamp"): [
+   u"Welke commissiepercentages gelden in welke volumetier — zwart op wit?",
+   u"Betalen we ook commissie op klanten die we zelf al jaren hebben?",
+   u"Is het platform gebouwd voor duizenden artikelen en teams die samen één order bouwen — of voor kleinere merken?"],
+ ("nl", "pepperi"): [
+   u"Wat gebeurt er met een half opgenomen order als de resync tijdens het klantbezoek mislukt?",
+   u"Wat is de totaalrekening bij ons aantal gebruikers — licenties, modules, implementatie?",
+   u"Wie helpt er als het bij ons om 7 uur ’s ochtends vastloopt?"],
+ ("fr", "djust"): [
+   u"Quel est le prix — un tarif est-il publié quelque part ?",
+   u"Comment nos clients commandent-ils dans une réserve sans réseau ?",
+   u"Que devient notre boutique actuelle pendant la re-plateforme — et combien de temps dure le projet ?"],
+ ("fr", "pepperi"): [
+   u"Que devient une commande à moitié saisie quand la resynchronisation échoue en pleine visite ?",
+   u"Quelle est la facture totale à notre nombre d’utilisateurs — licences, modules, implémentation ?",
+   u"Qui répond quand ça bloque à 7 h du matin chez nous ?"],
+ ("fr", "shopify-b2b"): [
+   u"Que devient une commande à la ligne 501 ?",
+   u"Deux acheteurs chez le même client montent une commande à valider — quel panier partagent-ils ?",
+   u"À partir de quel volume le forfait devient-il un pourcentage, et à quel taux ?"],
+}
+
 CSS = u"""
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--void:#05080F;--panel:#0E1B33;--navy:#0B1526;--ice:#EDF2FB;--mist:#8FA1C4;
@@ -191,6 +264,11 @@ td:first-child{color:var(--ice)}
       background:var(--panel)}
 .fair h2{margin-top:0;font-size:17px}
 .fair p{margin-bottom:0}
+.ask{border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin:30px 0;
+     background:var(--navy)}
+.ask h2{margin-top:0;font-size:17px}
+.ask ol{margin:0;padding-left:22px;color:var(--mist)}
+.ask li{margin:7px 0;font-size:15px;max-width:66ch}
 .ctabox{margin-top:44px;border:1px solid var(--line);border-radius:16px;
         padding:28px;background:var(--panel);text-align:center}
 .ctabox p{margin:0 auto 18px;max-width:56ch}
@@ -551,6 +629,11 @@ def build(lang, slug):
 <h2>%(facts_h)s</h2>
 <ul class="facts">%(facts)s</ul>
 
+<div class="ask" data-ask>
+<h2>%(ask_h)s</h2>
+<ol>%(ask)s</ol>
+</div>
+
 <h2>%(shapes)s</h2>
 <div class="tblwrap"><table>
 <thead><tr><th></th><th>%(name)s</th><th>RocketX</th></tr></thead>
@@ -584,7 +667,10 @@ ___SFOOT___
            homeroot="/" if lang == "en" else "/%s/" % lang,
            home=home, back=ui["back"], kick=ui["kick"], name=d["name"],
            lede=d["lede"], good_h=ui["good"] % d["name"], good=d["good"],
-           facts_h=ui["facts"], facts=facts, shapes=ui["shapes"], rows=rows,
+           facts_h=ui["facts"], facts=facts,
+           ask_h=ASK_H[lang],
+           ask=u"".join(u"<li>%s</li>" % q for q in ASK[(lang, slug)]),
+           shapes=ui["shapes"], rows=rows,
            edge_h=EDGE_H[lang],
            edge=u"".join(u"<li>%s</li>" % e for e in EDGE[lang]),
            fair_h=ui["fair"], fair=d["fair"], cta=ui["cta"],
