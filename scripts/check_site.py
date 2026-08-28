@@ -327,6 +327,13 @@ try:
         _missing = [k for k, v in _surf.items() if not re.search(_rx, v)]
         check("%s: the guarantee is named on every money surface" % _l,
               not _missing, str(_missing))
+    # the footer tagline is the deck footer's middle segment; one text, everywhere
+    import gen_calendar as _gcal
+    for _l in ("en", "de", "es", "nl", "fr"):
+        check("%s: footer tagline matches the document footer" % _l,
+              _I[_l].get("ft.tag") == _gcal.tagline(_l),
+              "%r vs %r" % (_I[_l].get("ft.tag"), _gcal.tagline(_l)))
+
     # register: German is Sie throughout, Dutch is je throughout
     de_all = dict(_I["de"]); de_all.update(_flat(_gd.C["de"]))
     check("de: no informal address", not [k for k, v in de_all.items()
