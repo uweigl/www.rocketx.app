@@ -623,6 +623,11 @@ for _l, _tp in _gt.PATHS.items():
               _resid[:40])
         check("trust %s invents no certification for RocketX itself" % _l,
               "SOC 2" not in _th and "SOC2" not in _th)
+        check("trust %s maps Part 11 without claiming compliance" % _l,
+              ("21 CFR" in _th) and not re.search(
+                  r"Part\s*11[- ]?(compliant|konform|conforme|compatibel)", _th, re.I))
+        check("trust %s carries the contract checklist" % _l,
+              _gd.C[_l]["at"][0] in _th)
 check("trust linked from the footer", "data-trust" in _idx2 and "ft.trust" in _idx2)
 check("privacy linked from the footer", "data-privacy" in _idx2 and "ft.privacy" in _idx2)
 # the page promises no analytics; hold the site to it
