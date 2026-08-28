@@ -598,6 +598,14 @@ check("impressum carries phone and EU entity",
       os.path.exists(_imp) and "191538" in io.open(_imp, encoding="utf-8").read()
       and "344153" in io.open(_imp, encoding="utf-8").read())
 _idx2 = io.open("index.html", encoding="utf-8").read()
+_NUMWORD = {8: "OCHO", 9: "NUEVE", 10: "DIEZ", 11: "ONCE", 12: "DOCE",
+            13: "TRECE", 14: "CATORCE"}
+_fsec = re.search(r'<section id="features".*?</section>', S, re.S).group(0)
+_fcnt = len(re.findall(r"<h3", _fsec))
+_esk = D["es"].get("ft.k", "")
+if "FUNCIONES CLAVE" in _esk:
+    check("es features eyebrow counts the actual grid",
+          _NUMWORD.get(_fcnt, "?") in _esk, "grid=%d kicker=%s" % (_fcnt, _esk))
 check("hidden attribute cannot be defeated by author css",
       "[hidden]{display:none!important}" in S)
 # the German WhatsApp contact: correct wa.me digits, gated to /de/, and the
