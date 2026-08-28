@@ -64,10 +64,23 @@ def entry(loc, mod, alts, changefreq, priority):
     return "\n".join(rows)
 
 
+COMPARE = ["shopify-b2b", "pepperi", "sana-commerce"]
+
+
+def compare_entry(slug):
+    loc = "%s/compare/%s/" % (SITE, slug)
+    mod = lastmod("compare/%s/index.html" % slug)
+    return "\n".join([
+        "  <url>", "    <loc>%s</loc>" % loc, "    <lastmod>%s</lastmod>" % mod,
+        "    <changefreq>monthly</changefreq>", "    <priority>0.5</priority>",
+        "  </url>"])
+
+
 def build():
     missing = [p for p in
                [page_path(l) for l in LANGS] +
-               [pdf_path(s, l) for s, _c, _p in PDFS for l in LANGS]
+               [pdf_path(s, l) for s, _c, _p in PDFS for l in LANGS] +
+               ["compare/%s/index.html" % g for g in COMPARE]
                if not os.path.exists(os.path.join(ROOT, p))]
     if missing:
         sys.exit("sitemap: these are listed but not built: %s" % ", ".join(missing))
@@ -82,6 +95,9 @@ def build():
         for lang in LANGS:
             out.append(entry(pdf_url(stem, lang), lastmod(pdf_path(stem, lang)),
                              palts, freq, prio))
+
+    for slug in COMPARE:
+        out.append(compare_entry(slug))
 
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'

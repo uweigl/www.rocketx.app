@@ -44,6 +44,7 @@ for attr in ("data-i18n", "data-i18n-aria", "data-i18n-title", "data-i18n-text",
     USED |= set(re.findall(r'%s="([^"]+)"' % attr, S))
 # keys the scripts read straight out of I18N, with no DOM attribute
 USED |= set(re.findall(r"I18N\[[^\]]+\]\['([\w.]+)'\]", S))
+USED |= set(re.findall(r"'(fm\.[a-z]+)'", S))
 check("no duplicate keys", not dups, str(sorted(set(dups))))
 for l in LANGS:
     miss = sorted(k for k in USED if k not in D[l])
@@ -542,6 +543,33 @@ if os.path.exists(_AI):
     _lost = [n for n in _needed if _ignored(n)]
     check("assetsignore keeps everything the site serves", not _lost, str(_lost[:4]))
 
+# the comparison pages: sourced, linked, honest
+import gen_compare as _gc2
+for _slug in _gc2.SLUGS:
+    _cp = "compare/%s/index.html" % _slug
+    check("compare/%s exists" % _slug, os.path.exists(_cp))
+    if os.path.exists(_cp):
+        _h = io.open(_cp, encoding="utf-8").read()
+        _ext = len(set(re.findall(r'href="(https?://(?!www\.rocketx\.app)[^"]+)"', _h)))
+        check("compare/%s cites at least 3 external sources" % _slug, _ext >= 3,
+              "%d" % _ext)
+        check("compare/%s says who the competitor is right for" % _slug,
+              "right choice" in _h)
+        check("compare/%s ends on the pilot" % _slug, "walk away owing nothing" in _h)
+_idx = io.open("index.html", encoding="utf-8").read()
+check("compare pages linked from the comparison section",
+      all("compare/%s/" % _s2 in _idx for _s2 in _gc2.SLUGS))
+
+# the contact path: form present, worker routes it, config carries the worker
+check("contact dialog present", 'id="cdlg"' in _idx and "fmhp" in _idx)
+check("contact dialog posts to the api", "/api/contact" in _idx)
+_w = io.open("worker.js", encoding="utf-8").read() if os.path.exists("worker.js") else ""
+check("worker handles /api/contact", '"/api/contact"' in _w and "handleContact" in _w)
+check("worker falls through to assets", "env.ASSETS.fetch" in _w)
+_wc = io.open("wrangler.jsonc", encoding="utf-8").read()
+check("wrangler config wires worker + assets binding",
+      '"main": "worker.js"' in _wc and '"binding": "ASSETS"' in _wc)
+
 check("robots.txt exists", os.path.exists("robots.txt"))
 if os.path.exists("robots.txt"):
     rb = io.open("robots.txt", encoding="utf-8").read()
@@ -560,7 +588,8 @@ if os.path.exists("sitemap.xml"):
     _locs = set(re.findall(r"<loc>([^<]+)</loc>",
                            io.open("sitemap.xml", encoding="utf-8").read()))
     _want = set([_gs.page_url(_l) for _l in _gs.LANGS] +
-                [_gs.pdf_url(_st, _l) for _st, _c, _p in _gs.PDFS for _l in _gs.LANGS])
+                [_gs.pdf_url(_st, _l) for _st, _c, _p in _gs.PDFS for _l in _gs.LANGS] +
+                ["%s/compare/%s/" % (_gs.SITE, _g) for _g in _gs.COMPARE])
     check("sitemap lists every page and pdf in every language", not (_want - _locs),
           str(sorted(_want - _locs)[:4]))
     check("sitemap lists nothing that is not built", not (_locs - _want),
