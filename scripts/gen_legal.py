@@ -31,7 +31,7 @@ T = {
   intro=u"This site is built to know as little about you as possible. What follows is everything it does process, in full.",
   s=[
    (u"Who is responsible",
-    u"RocketX LLC, 30725 N Bright Angel Dr., Meadview, AZ 86444, United States. For anything in this notice: <a href='mailto:app@rocketx.app'>app@rocketx.app</a>."),
+    u"RocketX LLC, Arizona, United States. Business ID 25040687. For anything in this notice: <a href='mailto:app@rocketx.app'>app@rocketx.app</a>."),
    (u"What this site does not do",
     u"No analytics, no advertising, no tracking pixels, no fingerprinting, and no cookies. Fonts are served from this domain — opening this site sends no request to Google or any other third party."),
    (u"What your browser stores",
@@ -52,7 +52,7 @@ T = {
   intro=u"Diese Website ist so gebaut, dass sie so wenig wie möglich über Sie erfährt. Es folgt vollständig, was sie verarbeitet.",
   s=[
    (u"Verantwortlicher",
-    u"RocketX LLC, 30725 N Bright Angel Dr., Meadview, AZ 86444, USA. Für alle Anliegen zu dieser Erklärung: <a href='mailto:app@rocketx.app'>app@rocketx.app</a>."),
+    u"RocketX LLC, Arizona, USA. Business ID 25040687. Für alle Anliegen zu dieser Erklärung: <a href='mailto:app@rocketx.app'>app@rocketx.app</a>."),
    (u"Was diese Website nicht tut",
     u"Keine Analyse-Tools, keine Werbung, keine Tracking-Pixel, kein Fingerprinting, keine Cookies. Schriften werden von dieser Domain ausgeliefert — beim Aufruf geht keine Anfrage an Google oder andere Dritte."),
    (u"Was Ihr Browser speichert",
@@ -73,7 +73,7 @@ T = {
   intro=u"Este sitio está hecho para saber lo menos posible de ti. Lo que sigue es todo lo que procesa, sin omisiones.",
   s=[
    (u"Responsable",
-    u"RocketX LLC, 30725 N Bright Angel Dr., Meadview, AZ 86444, Estados Unidos. Para cualquier tema de este aviso: <a href='mailto:app@rocketx.app'>app@rocketx.app</a>."),
+    u"RocketX LLC, Arizona, Estados Unidos. Business ID 25040687. Para cualquier tema de este aviso: <a href='mailto:app@rocketx.app'>app@rocketx.app</a>."),
    (u"Lo que este sitio no hace",
     u"Sin analítica, sin publicidad, sin píxeles de seguimiento, sin fingerprinting y sin cookies. Las fuentes se sirven desde este dominio: abrir el sitio no envía ninguna petición a Google ni a otros terceros."),
    (u"Lo que guarda tu navegador",
@@ -92,7 +92,7 @@ T = {
   intro=u"Deze site is zo gebouwd dat hij zo min mogelijk over je weet. Hieronder staat alles wat hij verwerkt, volledig.",
   s=[
    (u"Verantwoordelijke",
-    u"RocketX LLC, 30725 N Bright Angel Dr., Meadview, AZ 86444, Verenigde Staten. Voor alles rond deze verklaring: <a href='mailto:app@rocketx.app'>app@rocketx.app</a>."),
+    u"RocketX LLC, Arizona, Verenigde Staten. Business ID 25040687. Voor alles rond deze verklaring: <a href='mailto:app@rocketx.app'>app@rocketx.app</a>."),
    (u"Wat deze site niet doet",
     u"Geen analytics, geen advertenties, geen trackingpixels, geen fingerprinting en geen cookies. Lettertypen worden vanaf dit domein geleverd — het openen van de site stuurt geen verzoek naar Google of andere derden."),
    (u"Wat je browser opslaat",
@@ -111,7 +111,7 @@ T = {
   intro=u"Ce site est conçu pour en savoir le moins possible sur vous. Voici, sans omission, tout ce qu’il traite.",
   s=[
    (u"Responsable du traitement",
-    u"RocketX LLC, 30725 N Bright Angel Dr., Meadview, AZ 86444, États-Unis. Pour toute question sur cette notice : <a href='mailto:app@rocketx.app'>app@rocketx.app</a>."),
+    u"RocketX LLC, Arizona, États-Unis. Business ID 25040687. Pour toute question sur cette notice : <a href='mailto:app@rocketx.app'>app@rocketx.app</a>."),
    (u"Ce que ce site ne fait pas",
     u"Pas d’outil d’analyse, pas de publicité, pas de pixel de suivi, pas d’empreinte numérique, pas de cookies. Les polices sont servies depuis ce domaine : ouvrir le site n’envoie aucune requête à Google ni à un autre tiers."),
    (u"Ce que votre navigateur conserve",
