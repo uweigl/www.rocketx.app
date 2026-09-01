@@ -791,12 +791,17 @@ for lang in ("de", "es", "nl", "fr"):
 # Canonical host. Confirmed as www.rocketx.app; a stray apex or http URL in a
 # canonical, og:url or JSON-LD id silently splits ranking signals.
 CANON_HOST = "https://www.rocketx.app"
+# Separate services on their own subdomain are not what this rule is guarding
+# against - it exists to catch an apex or http copy of THIS site, which splits
+# the ranking signals. A different host serving a different thing does not.
+OTHER_HOSTS = {"https://newsletter.rocketx.app"}
 bad_host = []
 for f in ["index.html", "de/index.html", "es/index.html", "nl/index.html", "robots.txt", "sitemap.xml"]:
     if not os.path.exists(f): continue
     t = io.open(f, encoding="utf-8").read()
     for u in re.findall(r'https?://[A-Za-z0-9.-]*rocketx\.app', t):
-        if u != CANON_HOST: bad_host.append("%s: %s" % (f, u))
+        if u != CANON_HOST and u not in OTHER_HOSTS:
+            bad_host.append("%s: %s" % (f, u))
 check("all absolute urls use the canonical host", not bad_host, str(sorted(set(bad_host))[:4]))
 
 print()
