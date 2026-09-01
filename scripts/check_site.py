@@ -12,7 +12,7 @@ months after the deck grew to 14 - a claim about an artifact drifts
 silently unless something compares the two.
 """
 import html as _html
-import io, json, sys, os, re, json, sys, html
+import io, json, sys, os, re, json, sys, html, glob
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 
@@ -632,6 +632,37 @@ check("whatsapp numbers per market are wired",
       and "08677 / 4099628" in _idx2 and "(829) 499-7677" in _idx2)
 check("whatsapp hidden where only email is offered",
       "WACFG" in _idx2 and "e.hidden=!c" in _idx2)
+
+# The US number is shown in LOCAL form on every English page - no +1 prefix.
+# The tests around this one are substring tests, and "499-7677" matches
+# "+1 (829) 499-7677" just as happily as the local form; that is why a stale
+# prefix sat on the privacy, security and comparison pages for two days
+# without failing anything, after 3ec6846 changed the homepage and hand-edited
+# 404.html but not the generator behind the rest. So: compare the rendered
+# string EXACTLY, against the homepage's own WACFG, on every English page
+# rather than the homepage alone.
+_wa_en = re.search(r"WACFG=\{en:\{h:'[^']*',t:'([^']*)'\}", _idx2).group(1)
+check("homepage us number carries no +1 prefix", not _wa_en.startswith("+"), _wa_en)
+_wa_digits = re.sub(r"\D", "", _wa_en)[-7:]     # the subscriber digits, format-free
+_wa_bad = []
+for _f in (["index.html", "404.html", "privacy/index.html", "trust/index.html"]
+           + sorted(glob.glob("compare/*/index.html"))):
+    if not os.path.exists(_f):
+        continue
+    _shown = set(re.findall(r'<span class="wanum">([^<]*)</span>',
+                            io.open(_f, encoding="utf-8").read()))
+    if not _shown:
+        continue
+    # 404.html carries a footer strip per language, so a foreign market's own
+    # number appearing beside the US one is correct. What is never correct is
+    # the US number itself rendered any way but the canonical local form.
+    if _wa_en not in _shown:
+        _wa_bad.append("%s: no %r, has %s" % (_f, _wa_en, sorted(_shown)))
+    for _v in _shown:
+        if _wa_digits in re.sub(r"\D", "", _v) and _v != _wa_en:
+            _wa_bad.append("%s: %r" % (_f, _v))
+check("every english page shows the us number in local form",
+      not _wa_bad, str(_wa_bad))
 _ep = "privacy/index.html"
 check("english privacy discloses whatsapp",
       os.path.exists(_ep) and "499-7677" in io.open(_ep, encoding="utf-8").read())

@@ -18,12 +18,20 @@ PRIV = {"en": "privacy", "de": "de/datenschutz", "es": "es/privacidad",
         "nl": "nl/privacy", "fr": "fr/confidentialite"}
 TRUST = {"en": "trust", "de": "de/sicherheit", "es": "es/seguridad",
          "nl": "nl/beveiliging", "fr": "fr/securite"}
-WA = {"en": ("https://wa.me/18294997677", u"+1 (829) 499-7677"),
-      "de": ("https://wa.me/4986774099628", u"08677 / 4099628")}
-
 _SRC = io.open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
 _I18N = json.loads(re.search(r"const I18N=(\{.*?\});\n", _SRC, re.S).group(1))
 _FOOT = re.search(r'<footer class="site">.*?</footer>', _SRC, re.S).group(0)
+
+# The per-market WhatsApp contact is READ from the homepage's own WACFG, not
+# restated here. It used to be a hardcoded dict, and that is exactly how the US
+# number kept a "+1 " prefix on the privacy, security and comparison pages after
+# the homepage dropped it (2026-08-30, 3ec6846): the number was the one footer
+# element this module did not extract, so it was the one that could not follow.
+_WACFG = re.search(r"const WACFG=\{(.*?)\};", _SRC).group(1)
+WA = dict((m.group(1), (m.group(2), m.group(3)))
+          for m in re.finditer(r"(\w+):\{h:'([^']*)',t:'([^']*)'\}", _WACFG))
+if "en" not in WA:
+    sys.exit("site_footer: could not read WACFG out of index.html")
 
 # every stylesheet rule that styles the footer or the pieces it uses
 _RULES = []
