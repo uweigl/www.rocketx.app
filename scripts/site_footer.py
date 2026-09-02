@@ -85,6 +85,17 @@ def footer_html(lang, with_style=True):
     else:
         f = re.sub(r'<a data-mentions hidden[^>]*>[^<]*</a>', "", f)
 
+    # the newsletter link is English-only. Unlike impressum/mentions it is
+    # VISIBLE by default in the source, because English is the homepage's
+    # default language - so English strips the marker and every other language
+    # drops the link and the separator that precedes it.
+    if lang == "en":
+        f = f.replace(" data-newsletter", "")
+    else:
+        f = re.sub(r'<a[^>]*data-newsletter[^>]*>.*?</a>', "", f, flags=re.S)
+        f = re.sub(r'<span class="sep"[^>]*data-newsletter[^>]*>[^<]*</span>',
+                   "", f)
+
     # per-market contact: resolve the WhatsApp config statically
     if lang in WA:
         href, txt = WA[lang]
