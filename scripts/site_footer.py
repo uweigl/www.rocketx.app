@@ -70,7 +70,12 @@ def footer_html(lang, with_style=True):
     f = f.replace('href="/trust/"', 'href="/%s/"' % TRUST[lang])
     f = re.sub(r'href="assets/rocketx-calendar-[a-z]+\.pdf"',
                'href="/assets/rocketx-calendar-%s.pdf"' % lang, f)
-    f = f.replace('src="assets/logo.png"', 'src="/assets/logo.png"')
+    # any asset the footer references, not one hardcoded filename: the
+    # auxiliary pages live in subdirectories, so a relative 'assets/...' would
+    # resolve to /privacy/assets/... and 404. Naming the file here once meant
+    # that changing it in index.html silently broke these pages instead - the
+    # same trap the WhatsApp number fell into.
+    f = re.sub(r'src="assets/', 'src="/assets/', f)
     home = "/" if lang == "en" else "/%s/" % lang
     f = f.replace('href="#top"', 'href="%s"' % home)
     f = re.sub(r'href="#([\w-]+)"', lambda m: 'href="%s#%s"' % (home, m.group(1)), f)
