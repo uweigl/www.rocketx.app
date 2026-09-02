@@ -142,6 +142,37 @@ for l in LANGS:
     feb = pages[2]
     check("%s: February has 28 days" % tag, "28" in feb and not re.search(r"\b29\b", feb))
 
+# ------------------------------------------------- fonts actually embedded
+# Every glyph in a shipped PDF must come from a brand face. A character that
+# none of the three carries does not fail loudly - Chrome quietly borrows a
+# system font for it and embeds THAT, so the PDF renders on the build machine
+# and nobody notices. It happened: U+2713 CHECK MARK, used as a CSS ::before
+# bullet, pulled Lucida Grande Bold into all five business-case PDFs, because
+# the Latin subsets of Space Grotesk, Inter and IBM Plex Mono have no tick.
+# Text set in a loaded face is converted to outlines by Chrome's PDF export
+# and leaves no /BaseFont at all, so anything that DOES appear here is either
+# a brand face or a fallback - which makes the rule simple.
+import zlib, glob
+
+BRAND = ("SpaceGrotesk", "Inter", "IBMPlexMono")
+
+def embedded_fonts(path):
+    raw = io.open(path, "rb").read()
+    names = set(re.findall(rb"/BaseFont\s*/([A-Za-z0-9+\-,_]+)", raw))
+    for m in re.finditer(rb"stream\r?\n(.*?)\r?\nendstream", raw, re.S):
+        try:
+            blob = zlib.decompress(m.group(1))
+        except Exception:
+            continue
+        names |= set(re.findall(rb"/BaseFont\s*/([A-Za-z0-9+\-,_]+)", blob))
+    return sorted(n.decode("latin-1") for n in names)
+
+for _pdf in sorted(glob.glob("assets/rocketx-*.pdf")):
+    _strays = [f for f in embedded_fonts(_pdf)
+               if not any(b in f for b in BRAND)]
+    check("%s: no fallback font embedded" % os.path.basename(_pdf),
+          not _strays, ", ".join(_strays))
+
 # ---------------------------------------------------------------- report
 fails = [(n, d) for n, ok, d in results if not ok]
 print("PDF AUDIT: %d checks, %d failed" % (len(results), len(fails)))
