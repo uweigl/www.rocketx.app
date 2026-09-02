@@ -105,6 +105,24 @@ export default {
       if (request.method === "POST") return handleContact(request, env);
       return bad(405, "method");
     }
+    // Short links for print. A QR code on a mailed letter cannot be edited
+    // once it is in the post, so the PRINTED path stays fixed here and the
+    // file it resolves to stays movable. 302 and not 301 for the same
+    // reason: a permanent redirect is cached hard by browsers and is
+    // effectively unrecallable, which is the wrong property for a link with
+    // a six-year life printed on paper.
+    const SHORT = {
+      "/1page": "/assets/rocketx-one-page-en.pdf",
+      "/1page/de": "/assets/rocketx-one-page-de.pdf",
+      "/1page/es": "/assets/rocketx-one-page-es.pdf",
+      "/1page/nl": "/assets/rocketx-one-page-nl.pdf",
+      "/1page/fr": "/assets/rocketx-one-page-fr.pdf",
+    };
+    const short = SHORT[url.pathname.replace(/\/+$/, "") || "/"];
+    if (short) {
+      return Response.redirect(new URL(short, url).toString(), 302);
+    }
+
     return env.ASSETS.fetch(request);
   },
 };

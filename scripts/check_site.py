@@ -770,6 +770,18 @@ check("contact dialog stays retired", "cdlg" not in _idx)
 _w = io.open("worker.js", encoding="utf-8").read() if os.path.exists("worker.js") else ""
 check("worker handles /api/contact", '"/api/contact"' in _w and "handleContact" in _w)
 check("worker falls through to assets", "env.ASSETS.fetch" in _w)
+# The /1page short link is printed on mailed letters and encoded in their QR
+# code. Paper cannot be recalled, so the route must keep existing and must keep
+# pointing at a file that is actually built - and it must stay a 302, because a
+# 301 is cached hard by browsers and cannot be taken back.
+_short = re.findall(r'"(/1page(?:/[a-z]{2})?)":\s*"([^"]+)"', _w)
+check("worker serves the /1page short links", len(_short) >= 1,
+      str(_short[:2]))
+check("every /1page target is a file that exists",
+      all(os.path.exists(t.lstrip("/")) for _p, t in _short),
+      str([t for _p, t in _short if not os.path.exists(t.lstrip("/"))]))
+check("/1page redirects with 302, never a cached 301",
+      ("302" in _w and ".toString(), 301" not in _w) if _short else True)
 _wc = io.open("wrangler.jsonc", encoding="utf-8").read()
 check("wrangler config wires worker + assets binding",
       '"main": "worker.js"' in _wc and '"binding": "ASSETS"' in _wc)
