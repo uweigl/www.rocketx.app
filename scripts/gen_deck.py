@@ -300,7 +300,7 @@ C["de"] = dict(
     contact="app@rocketx.app",
     srch="Quellen",
     src="ECC KÖLN B2B-Marktmonitor 2025 (mit FIS und Shopware) für die deutschen B2B-E-Commerce-Zahlen. Baymard Institute für die Warenkorb-Abbruchquote, gemittelt über 50 Studien (2006–2025); dieser Wert umfasst den gesamten E-Commerce und ist nicht nach B2B segmentiert. Gartner zur Größe des Buying-Centers bei komplexen B2B-Beschaffungen. Aufwand für Retouren nach Benchmarks der B2B E-commerce Association für die Distribution. McKinsey B2B Pulse, neunte Jahresbefragung von 3.942 B2B-Entscheidern in 13 Ländern. Sensor Tower, State of Mobile 2026, für den Anteil der Smartphone-Zeit außerhalb des Browsers; diese Angabe umfasst die gesamte Smartphone-Nutzung, nicht speziell B2B-Bestellungen. Boston Consulting Group mit Google, „Mobile Marketing and the New B2B Buyer“ (2017), für den Mobile-Anteil am B2B-Umsatz. Airship-Benchmarks zur Push-Aktivierung. Implementierungszeiträume entsprechen Marktbenchmarks 2026 für mittelständische B2B-Projekte und variieren je nach Umfang.",
-    foot="RocketX · Bestellen ohne Reibung · rocketx.app",
+    foot="RocketX · Reibungsloses Bestellen · rocketx.app",
     pg="Seite",
 )
 

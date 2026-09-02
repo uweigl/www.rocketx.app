@@ -92,7 +92,7 @@ FEATURES = {
 
 IMG_ALT = {
  "fr": "RocketX \u2014 commander sans friction. Commande B2B pour le commerce de gros, avec références illimitées, applications natives et paniers partagés en direct.",
- "de": "RocketX \u2014 Bestellen ohne Reibung. B2B-Gro\u00dfhandelsbestellungen mit unbegrenzt vielen SKUs, nativen Apps und gemeinsamen Live-Warenk\u00f6rben.",
+ "de": "RocketX \u2014 Reibungsloses Bestellen. B2B-Gro\u00dfhandelsbestellungen mit unbegrenzt vielen SKUs, nativen Apps und gemeinsamen Live-Warenk\u00f6rben.",
  "es": "RocketX \u2014 pedidos sin fricci\u00f3n. Pedidos mayoristas B2B con SKUs ilimitados, apps nativas y carritos compartidos en vivo.",
  "nl": "RocketX \u2014 bestellen zonder wrijving. B2B-groothandelsbestellingen met onbeperkt SKU\u2019s, native apps en gedeelde live winkelwagens.",
 }
