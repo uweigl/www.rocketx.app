@@ -74,7 +74,10 @@ body{background:#fff;color:var(--body);font-family:'Inter',-apple-system,Helveti
 .wrap{max-width:660px;margin:0 auto;padding:26px 22px 40px}
 /* letterhead, as printed */
 header{display:flex;align-items:center;gap:9px;padding-bottom:16px;border-bottom:1px solid var(--line)}
-header svg.mark{width:32px;height:32px;flex:none;border-radius:7px}
+/* the mark is sized to the TEXT BLOCK, not to the wordmark alone. It was
+   32px against a 45.8px block - added the tagline line and never resized
+   the icon, so it read as a small badge beside a taller lockup. */
+header svg.mark{width:42px;height:42px;flex:none;border-radius:9px}
 .bn b{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:var(--ink);
       display:block;line-height:1.05;letter-spacing:-.01em}
 .bn i{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.19em;
