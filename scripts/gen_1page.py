@@ -100,6 +100,12 @@ h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:29px;line-he
 .btn svg{width:18px;height:18px;fill:currentColor}
 .tel{display:block;text-align:center;margin-top:13px;padding:9px;color:var(--soft);
      text-decoration:none;font-size:14px}
+/* the reader who is not ready to message but is ready to look. Below the
+   buttons on purpose - the CTA gets first claim on the attention. */
+.more{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:4px;
+      padding:11px;color:var(--blue);text-decoration:none;font-size:14.5px;font-weight:500}
+.more svg{width:14px;height:14px;fill:currentColor}
+footer a{color:var(--blue);text-decoration:none}
 .dl{display:flex;flex-wrap:wrap;gap:9px}
 .dl.top{margin-top:16px}
 .dl.bottom{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
@@ -143,6 +149,7 @@ PAGE = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
   <a class="btn ghost" href="mailto:%(email)s"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.24-8 5.01-8-5.01V6.4l8 5.01 8-5.01v1.84z"/></svg>Email me</a>
 </div>
 <a class="tel" href="tel:%(tel)s">Not on WhatsApp? Call or text %(phone)s</a>
+<a class="more" href="/#pricing">Flat pricing, and the one-percent test<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2l-4.6-4.6L14 6l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></svg></a>
 <div class="sign">
 <p>%(signoff)s</p>
 <div class="ink"><svg viewBox="0 0 520 150" aria-label="Urban Weigl, signed">%(signature)s</svg></div>
@@ -178,7 +185,10 @@ def build():
         "lede": esc(d["xsa"]), "rows": rows, "dl": dl,
         "walink": esc(WA_LINK), "waicon": WA_ICON, "phone": esc(PHONE),
         "tel": TEL, "email": EMAIL,
-        "foot": esc(d["foot"]),
+        # the deck's foot carries the address as plain text; make the domain
+        # itself clickable rather than asking a reader to retype it
+        "foot": re.sub(r"(www\.rocketx\.app)",
+                       r'<a href="https://\1">\1</a>', esc(d["foot"])),
         "legal": "RocketX LLC · 30725 N Bright Angel Dr, Meadview, AZ 86444 · Business ID 25040687",
     }
 

@@ -806,6 +806,12 @@ if os.path.exists(_1p):
               _1ph.count('href="/assets/%s" download' % _pdf) == 2)
         check("/1page states %s's real page count" % _pdf,
               ("&middot; %d page" % _real) in _1ph, "file has %d" % _real)
+    # the two ways off this page that are not the CTA. #pricing must be a real
+    # section on the homepage, or the link lands nowhere.
+    check("/1page links to the pricing section",
+          'href="/#pricing"' in _1ph and 'id="pricing"' in _idx2)
+    check("/1page footer domain is a link, not plain text",
+          '<a href="https://www.rocketx.app">www.rocketx.app</a>' in _1ph)
     check("/1page download links are not broken",
           '<a "' not in _1ph and _1ph.count('class="dl') == 2)
     # tapping the number opens WhatsApp, and the href must be the SAME number
