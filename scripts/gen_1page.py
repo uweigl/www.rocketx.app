@@ -151,10 +151,25 @@ footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);
 .anim .ink.in circle{opacity:1}
 .btn,.dl a{transition:transform .12s ease,box-shadow .2s ease,border-color .2s ease}
 .btn:active,.dl a:active{transform:scale(.985)}
+/* Every control gets the same feedback. The ghost button had none while the
+   primary and the download cards both lifted - the second action on the page
+   looked inert next to the first. */
+.tel,.more,footer a{transition:color .18s ease}
 @media(hover:hover){
   .dl a:hover{border-color:#9DBBEA;box-shadow:0 2px 10px rgba(37,99,235,.09)}
   .btn.primary:hover{box-shadow:0 4px 16px rgba(37,99,235,.28)}
+  .btn.ghost:hover{border-color:#9DBBEA;background:#EBF2FC;
+                   box-shadow:0 2px 10px rgba(37,99,235,.10)}
+  .tel:hover{color:var(--ink)}
+  .more:hover{color:#1B47B8}
+  footer a:hover{text-decoration:underline}
 }
+.tel:active,.more:active{transform:scale(.985)}
+/* an explicit focus ring: the browser default is fine but is not the page's
+   blue, and on a white ground it reads as a stray artefact */
+.btn:focus-visible,.dl a:focus-visible,.tel:focus-visible,
+.more:focus-visible,footer a:focus-visible{
+  outline:2px solid var(--blue);outline-offset:3px;border-radius:8px}
 @media(prefers-reduced-motion:reduce){
   .anim .rise,.anim .ink path,.anim .ink circle{transition:none;opacity:1;
     transform:none;stroke-dashoffset:0}
