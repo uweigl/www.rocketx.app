@@ -111,8 +111,11 @@ export default {
     // reason: a permanent redirect is cached hard by browsers and is
     // effectively unrecallable, which is the wrong property for a link with
     // a six-year life printed on paper.
+    // NOTE: "/1page" itself is deliberately absent. It is a real page now
+    // (1page/index.html), served by ASSETS below - the letter's QR lands on
+    // something with tap targets instead of a PDF in a phone viewer. The
+    // language variants below still go straight to their PDFs.
     const SHORT = {
-      "/1page": "/assets/rocketx-one-page-en.pdf",
       "/1page/de": "/assets/rocketx-one-page-de.pdf",
       "/1page/es": "/assets/rocketx-one-page-es.pdf",
       "/1page/nl": "/assets/rocketx-one-page-nl.pdf",

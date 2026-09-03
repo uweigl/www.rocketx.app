@@ -8,6 +8,7 @@ CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 LANGS="${LANGS:-en de es nl fr}"
 python3 scripts/gen_deck.py >/dev/null
 python3 scripts/gen_onepager.py >/dev/null
+python3 scripts/gen_1page.py >/dev/null
 python3 scripts/gen_llms.py >/dev/null
 python3 scripts/faq.py >/dev/null
 python3 scripts/build_i18n_pages.py >/dev/null

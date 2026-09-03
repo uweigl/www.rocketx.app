@@ -780,6 +780,27 @@ check("worker serves the /1page short links", len(_short) >= 1,
 check("every /1page target is a file that exists",
       all(os.path.exists(t.lstrip("/")) for _p, t in _short),
       str([t for _p, t in _short if not os.path.exists(t.lstrip("/"))]))
+# The QR on every mailed letter lands on /1page. Its copy is generated from
+# gen_deck.C["en"] - the same source the one-pager PDF is built from - so the
+# page and the PDF cannot say different things. This asserts the built page
+# actually reflects the current deck copy: change the deck without rebuilding
+# and the gate fails rather than the letter pointing at a stale page.
+_1p = "1page/index.html"
+if os.path.exists(_1p):
+    _1ph = io.open(_1p, encoding="utf-8").read()
+    import importlib
+    _gd = importlib.import_module("gen_deck")
+    _en = _gd.C["en"]
+    check("/1page landing page is in sync with the deck copy",
+          _html.escape(_en["title"]) in _1ph and _html.escape(_en["xsa"])[:60] in _1ph,
+          "run scripts/gen_1page.py")
+    check("/1page offers the one-pager PDF",
+          "/assets/rocketx-one-page-en.pdf" in _1ph)
+    check("/1page is not redirected away by the worker",
+          '"/1page":' not in _w)
+else:
+    check("/1page landing page exists", False, "run scripts/gen_1page.py")
+
 check("/1page redirects with 302, never a cached 301",
       ("302" in _w and ".toString(), 301" not in _w) if _short else True)
 _wc = io.open("wrangler.jsonc", encoding="utf-8").read()

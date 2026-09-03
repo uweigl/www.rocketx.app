@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The business case for modern B2B ordering — RocketX</title>
+<meta name="description" content="If you read nothing else: wholesale orders leak in the cart, on the phone, and in the returns bay. This is a proposal to stop that, with the platform proving itself before it costs">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico"><style>
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/ibmplexmono-400-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/ibmplexmono-400-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('/assets/fonts/ibmplexmono-500-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('/assets/fonts/ibmplexmono-500-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url('/assets/fonts/inter-400-600-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url('/assets/fonts/inter-400-600-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url('/assets/fonts/spacegrotesk-400-700-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url('/assets/fonts/spacegrotesk-400-700-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--void:#05080F;--panel:#0E1B33;--blue:#2563EB;--sky:#60A5FA;--ice:#EDF2FB;
+      --mist:#8FA1C4;--line:rgba(96,165,250,.16)}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--void);color:var(--mist);font-family:'Inter',-apple-system,Helvetica,sans-serif;
+     font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:26px 20px 40px}
+header{display:flex;align-items:center;gap:10px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+header svg{width:30px;height:30px;flex:none}
+.bn b{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:var(--ice);
+      display:block;line-height:1.1;letter-spacing:-.01em}
+.bn i{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.19em;
+      text-transform:uppercase;color:var(--sky)}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;
+         text-transform:uppercase;color:var(--sky);margin-top:26px}
+h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:29px;line-height:1.16;
+   color:var(--ice);letter-spacing:-.02em;margin-top:10px;text-wrap:balance}
+.who{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.11em;
+     text-transform:uppercase;color:var(--mist);margin-top:12px;line-height:1.55}
+.lede{font-size:17px;line-height:1.55;color:var(--ice);margin-top:18px}
+.rows{margin-top:26px;display:flex;flex-direction:column;gap:0}
+.r{padding:16px 0;border-top:1px solid var(--line)}
+.r h2{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--sky);
+      margin-bottom:5px;line-height:1.3}
+.r p{font-size:15px;line-height:1.58}
+.acts{margin-top:30px;display:flex;flex-direction:column;gap:11px}
+.btn{display:flex;align-items:center;justify-content:center;gap:9px;min-height:54px;
+     border-radius:12px;text-decoration:none;font-weight:600;font-size:16.5px;
+     font-family:'Space Grotesk',sans-serif}
+.btn.primary{background:var(--blue);color:#fff}
+.btn.ghost{border:1px solid rgba(96,165,250,.42);color:var(--ice)}
+.btn svg{width:18px;height:18px;fill:currentColor}
+.pdf{display:inline-flex;align-items:center;gap:7px;margin-top:22px;color:var(--sky);
+     text-decoration:none;font-size:14.5px}
+.pdf svg{width:15px;height:15px;fill:currentColor}
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);
+       font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;
+       color:#6C7C9C;line-height:1.7}
+@media(min-width:620px){h1{font-size:34px}.acts{flex-direction:row}.btn{flex:1}}
+</style></head>
+<body><div class="wrap">
+<header><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M36.00 42.00L37.50 32.50L42.00 21.50L43.00 21.00L46.00 15.50L48.50 13.50L48.50 12.50L51.00 12.50L55.50 18.00L58.00 23.50L59.00 24.00L63.00 36.50L63.50 51.50L60.50 64.50L40.00 65.00L39.00 64.00L37.00 57.00L36.00 42.00Z M43.00 75.00L44.00 72.00L48.00 69.00L51.50 69.00L55.50 71.50L56.50 73.50L56.00 78.50L50.00 87.50L45.00 81.00L43.00 75.00Z M25.50 51.00L26.00 47.50L28.50 41.50L32.50 37.00L33.50 37.00L32.50 47.00L34.00 58.50L27.50 58.50L26.00 56.50L25.50 51.00Z M65.50 57.50L67.00 50.50L67.00 37.00L70.50 40.50L73.00 45.00L74.00 49.00L74.00 55.00L73.50 57.50L72.00 58.50L66.00 58.50L65.50 57.50Z M45.50 43.00L48.00 39.50L51.50 39.50L54.00 42.00L54.00 45.00L52.00 47.50L49.50 48.00L46.50 46.50L45.50 43.00Z" fill="#2563EB" fill-rule="evenodd"/></svg>
+<span class="bn"><b>RocketX</b><i>Frictionless Ordering</i></span></header>
+<div class="eyebrow">In one page</div>
+<h1>The business case for modern B2B ordering</h1>
+<div class="who">For wholesale and distribution companies with $15–300M in revenue</div>
+<p class="lede">If you read nothing else: wholesale orders leak in the cart, on the phone, and in the returns bay. This is a proposal to stop that, with the platform proving itself before it costs anything.</p>
+<div class="rows"><div class="r"><h2>The problem</h2><p>Your buyers assemble orders somewhere nobody on your side can see, in a browser tab they have to find and log into every time - while the work itself happens on a phone, in an aisle, at a loading dock. Carts die with the session, one person builds what six to ten people decide, and the duplicate nobody caught comes back as a return.</p></div><div class="r"><h2>The one-percent test</h2><p>Set the platform fee in your proposal against one percent of your annual sales - or against the margin on one percent, if you prefer the conservative version. The only question left is whether better ordering is worth more than that to you. If it is, the rest of this document is detail rather than persuasion.</p></div><div class="r"><h2>What changes in the cart</h2><p>Carts persist server-side and sync live across RocketX’s own web app in any browser and the native apps. Your reps see live customer carts, including what has stalled, and can act before one goes cold. The whole buying team edits one order, every change attributed. And the cart flags a SKU the account already bought recently, before the order is placed.</p></div><div class="r"><h2>What changes on the buyer’s phone</h2><p>Your catalogue sits on the home screen, one tap from a reorder and already signed in, rather than behind a bookmark and a login. Push brings buyers back when stock returns or a contract is due, where email gets filtered. Barcode scanning reorders straight from a shelf label, and the catalogue is cached, so an aisle with no signal is still an aisle that can order. Your print brochures, product video and other rich content ride along in the same app, so the showroom material is with the buyer when the conversation happens. Native iOS and Android, not a website in a shell. Reordering stops being an errand and becomes a habit, which is where repeat revenue actually comes from.</p></div><div class="r"><h2>Why it is defensible</h2><p>Unlimited SKUs and unlimited seats, never metered, never a percentage of your revenue. Standard ERP and CRM connectors included, with RocketX sitting in front of your systems of record rather than replacing them - and running alongside your existing web shop, so nothing is switched off.</p></div><div class="r"><h2>What it costs to try</h2><p>Integration waived on annual plans. Billing starts at go-live, not at signature. A 30 to 45 day pilot with agreed measures — miss them, and you walk away owing nothing.</p></div></div>
+<div class="acts">
+  <a class="btn primary" href="tel:+18294997677"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>Call or text (829) 499-7677</a>
+  <a class="btn ghost" href="mailto:urban@rocketx.app"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.24-8 5.01-8-5.01V6.4l8 5.01 8-5.01v1.84z"/></svg>Email me</a>
+</div>
+<a class="pdf" href="/assets/rocketx-one-page-en.pdf"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>Open the same page as a PDF</a>
+<footer>RocketX · Frictionless Ordering · www.rocketx.app<br>RocketX LLC · 30725 N Bright Angel Dr, Meadview, AZ 86444 · Business ID 25040687</footer>
+</div></body></html>
