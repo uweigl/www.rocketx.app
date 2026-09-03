@@ -796,6 +796,12 @@ if os.path.exists(_1p):
           "run scripts/gen_1page.py")
     check("/1page offers the one-pager PDF",
           "/assets/rocketx-one-page-en.pdf" in _1ph)
+    # tapping the number opens WhatsApp, and the href must be the SAME number
+    # the homepage publishes - two places quoting one phone number is exactly
+    # how the +1 prefix drifted for two days
+    _wah = re.search(r"WACFG=\{en:\{h:'([^']*)'", _idx2).group(1)
+    check("/1page WhatsApp button uses the canonical wa.me number",
+          _wah in _1ph and 'href="tel:' not in _1ph, _wah)
     check("/1page is not redirected away by the worker",
           '"/1page":' not in _w)
 else:

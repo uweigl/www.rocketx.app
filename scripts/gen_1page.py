@@ -12,6 +12,7 @@ the two agree, so forgetting to rebuild fails the gate rather than shipping a
 stale page.
 """
 import io, os, re, sys
+from urllib.parse import quote
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SP = os.path.dirname(os.path.abspath(__file__))
@@ -25,10 +26,18 @@ FONTS = io.open(os.path.join(SP, "fonts_css.txt"), encoding="utf-8").read().stri
 PDF = "/assets/rocketx-one-page-en.pdf"
 EMAIL = "urban@rocketx.app"          # the letter is signed by Urban, not the desk
 
-# the US number, taken from the homepage's own WACFG so it cannot drift
+# The US contact, taken whole from the homepage's own WACFG so it cannot drift:
+# the wa.me href and the display number come from the same place the site
+# footer already uses. Tapping the number opens WhatsApp rather than dialling -
+# it is the channel this number is actually published on.
 _idx = io.open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
-PHONE = re.search(r"WACFG=\{en:\{h:'[^']*',t:'([^']*)'\}", _idx).group(1)
-TEL = "+1" + re.sub(r"\D", "", PHONE)
+_wa = re.search(r"WACFG=\{en:\{h:'([^']*)',t:'([^']*)'\}", _idx)
+WA_HREF, PHONE = _wa.group(1), _wa.group(2)
+# a prefilled first line: the reader has just scanned a letter, and saying so
+# saves them explaining who they are
+WA_LINK = WA_HREF + "?text=" + quote(
+    "Hi Urban - I scanned the code in your letter.")
+WA_ICON = io.open(os.path.join(SP, "wa_path.txt"), encoding="utf-8").read().strip()
 
 CSS = """
 %(fonts)s
@@ -88,7 +97,7 @@ PAGE = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <p class="lede">%(lede)s</p>
 <div class="rows">%(rows)s</div>
 <div class="acts">
-  <a class="btn primary" href="tel:%(tel)s"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>Call or text %(phone)s</a>
+  <a class="btn primary" href="%(walink)s" rel="noopener"><svg viewBox="0 0 24 24"><path d="%(waicon)s"/></svg>WhatsApp %(phone)s</a>
   <a class="btn ghost" href="mailto:%(email)s"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.24-8 5.01-8-5.01V6.4l8 5.01 8-5.01v1.84z"/></svg>Email me</a>
 </div>
 <a class="pdf" href="%(pdf)s"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>Open the same page as a PDF</a>
@@ -106,7 +115,7 @@ def build():
         "title": esc(d["title"]), "desc": esc(d["xsa"])[:180], "css": css,
         "rocket": ROCKET, "xsh": esc(d["xsh"]), "who": esc(d["forwho"]),
         "lede": esc(d["xsa"]), "rows": rows, "pdf": PDF,
-        "tel": TEL, "phone": esc(PHONE), "email": EMAIL,
+        "walink": esc(WA_LINK), "waicon": WA_ICON, "phone": esc(PHONE), "email": EMAIL,
         "foot": esc(d["foot"]),
         "legal": "RocketX LLC · 30725 N Bright Angel Dr, Meadview, AZ 86444 · Business ID 25040687",
     }
