@@ -127,6 +127,38 @@ footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);
        font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;
        color:var(--soft);line-height:1.7}
 @media(min-width:620px){h1{font-size:34px}.acts{flex-direction:row}.btn{flex:1}}
+
+/* MOTION - opt-in, never opt-out.
+   Everything above is the resting state and is fully readable with no
+   JavaScript and no animation at all. The script adds .anim to <html> only
+   when the reader has not asked for reduced motion; every rule below is
+   scoped to that class, so a failed script or a stalled connection costs a
+   scanner nothing. The site's own .reveal does the opposite - starts at
+   opacity:0 and waits - which leaves a blank page if the observer never
+   fires. A page reached from a posted letter cannot afford that. */
+.anim .rise{opacity:0;transform:translateY(14px);
+            transition:opacity .55s cubic-bezier(.2,.7,.2,1),
+                       transform .55s cubic-bezier(.2,.7,.2,1);
+            transition-delay:calc(var(--i,0)*70ms)}
+.anim .rise.in{opacity:1;transform:none}
+/* the signature writes itself - the one flourish this page earns, because
+   the reader is holding the letter it was signed on */
+.anim .ink path{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);
+                transition:stroke-dashoffset .62s cubic-bezier(.55,.1,.3,1);
+                transition-delay:calc(var(--n)*150ms)}
+.anim .ink.in path{stroke-dashoffset:0}
+.anim .ink circle{opacity:0;transition:opacity .25s ease 1.15s}
+.anim .ink.in circle{opacity:1}
+.btn,.dl a{transition:transform .12s ease,box-shadow .2s ease,border-color .2s ease}
+.btn:active,.dl a:active{transform:scale(.985)}
+@media(hover:hover){
+  .dl a:hover{border-color:#9DBBEA;box-shadow:0 2px 10px rgba(37,99,235,.09)}
+  .btn.primary:hover{box-shadow:0 4px 16px rgba(37,99,235,.28)}
+}
+@media(prefers-reduced-motion:reduce){
+  .anim .rise,.anim .ink path,.anim .ink circle{transition:none;opacity:1;
+    transform:none;stroke-dashoffset:0}
+}
 """
 
 PAGE = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
@@ -139,31 +171,63 @@ PAGE = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <header><svg class="mark" viewBox="0 0 64 64" aria-hidden="true">%(appicon)s</svg>
 <span class="bn"><b>RocketX</b><i>Frictionless Ordering</i></span></header>
 <div class="dl top">%(dl)s</div>
-<div class="eyebrow">%(xsh)s</div>
-<h1>%(title)s</h1>
-<div class="who">%(who)s</div>
-<p class="lede">%(lede)s</p>
+<div class="eyebrow rise" style="--i:0">%(xsh)s</div>
+<h1 class="rise" style="--i:1">%(title)s</h1>
+<div class="who rise" style="--i:2">%(who)s</div>
+<p class="lede rise" style="--i:3">%(lede)s</p>
 <div class="rows">%(rows)s</div>
-<div class="acts">
+<div class="acts rise">
   <a class="btn primary" href="%(walink)s" rel="noopener"><svg viewBox="0 0 24 24"><path d="%(waicon)s"/></svg>WhatsApp %(phone)s</a>
   <a class="btn ghost" href="mailto:%(email)s"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.24-8 5.01-8-5.01V6.4l8 5.01 8-5.01v1.84z"/></svg>Email me</a>
 </div>
 <a class="tel" href="tel:%(tel)s">Not on WhatsApp? Call or text %(phone)s</a>
 <a class="more" href="/#features">See what’s included, and how it works<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2l-4.6-4.6L14 6l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></svg></a>
-<div class="sign">
+<div class="sign rise">
 <p>%(signoff)s</p>
 <div class="ink"><svg viewBox="0 0 520 150" aria-label="Urban Weigl, signed">%(signature)s</svg></div>
 <b>Urban Weigl</b><i>Founder, RocketX</i>
 </div>
 <div class="dl bottom">%(dl)s</div>
 <footer>%(foot)s<br>%(legal)s</footer>
-</div></body></html>
+</div>
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) return;   // leave it at rest
+  var d = document, root = d.documentElement;
+  // measure each signature stroke so it draws at its own true length
+  var ink = d.querySelector(".ink");
+  if (ink) {
+    var paths = ink.querySelectorAll("path");
+    for (var i = 0; i < paths.length; i++) {
+      var L = 0;
+      try { L = Math.ceil(paths[i].getTotalLength()); } catch (e) { L = 900; }
+      paths[i].style.setProperty("--len", L);
+      paths[i].style.setProperty("--n", i);
+    }
+  }
+  root.className += " anim";
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, {rootMargin: "0px 0px -8%% 0px", threshold: 0.08});
+  d.querySelectorAll(".rise, .ink").forEach(function(el){ io.observe(el); });
+  // anything already on screen reveals immediately rather than on first scroll
+  requestAnimationFrame(function(){
+    d.querySelectorAll(".rise, .ink").forEach(function(el){
+      if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in");
+    });
+  });
+})();
+</script>
+</body></html>
 """
 
 
 def build():
     d = gen_deck.C["en"]
-    rows = "".join('<div class="r"><h2>%s</h2><p>%s</p></div>' % (esc(a), esc(b))
+    rows = "".join('<div class="r rise"><h2>%s</h2><p>%s</p></div>' % (esc(a), esc(b))
                    for a, b in d["xs"])
     css = CSS % {"fonts": FONTS}
     arrow = ('<svg viewBox="0 0 24 24" aria-hidden="true">'
