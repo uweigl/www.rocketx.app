@@ -149,7 +149,7 @@ PAGE = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
   <a class="btn ghost" href="mailto:%(email)s"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.24-8 5.01-8-5.01V6.4l8 5.01 8-5.01v1.84z"/></svg>Email me</a>
 </div>
 <a class="tel" href="tel:%(tel)s">Not on WhatsApp? Call or text %(phone)s</a>
-<a class="more" href="/#pricing">Flat pricing, and the one-percent test<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2l-4.6-4.6L14 6l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></svg></a>
+<a class="more" href="/#features">See what’s included, and how it works<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2l-4.6-4.6L14 6l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></svg></a>
 <div class="sign">
 <p>%(signoff)s</p>
 <div class="ink"><svg viewBox="0 0 520 150" aria-label="Urban Weigl, signed">%(signature)s</svg></div>
