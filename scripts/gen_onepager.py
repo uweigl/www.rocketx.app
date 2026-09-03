@@ -41,11 +41,11 @@ h1{font-size:20pt;line-height:1.14;color:var(--ink);letter-spacing:-.02em;margin
       border-top:1px solid var(--line);padding-top:6px}
 """
 
-MORE = {"en": "Full 14-page business case at rocketx.app",
-        "fr": "Dossier économique complet, 14 pages, sur rocketx.app",
-        "de": "Vollständiger Business Case, 14 Seiten, auf rocketx.app",
-        "es": "Caso de negocio completo, 14 páginas, en rocketx.app",
-        "nl": "Volledige business case, 14 pagina’s, op rocketx.app"}
+MORE = {"en": "Full 14-page business case at www.rocketx.app",
+        "fr": "Dossier économique complet, 14 pages, sur www.rocketx.app",
+        "de": "Vollständiger Business Case, 14 Seiten, auf www.rocketx.app",
+        "es": "Caso de negocio completo, 14 páginas, en www.rocketx.app",
+        "nl": "Volledige business case, 14 pagina’s, op www.rocketx.app"}
 
 def build(d):
     rows = "".join('<div class="r"><h3>%s</h3><p>%s</p></div>' % (esc(a), esc(b)) for a, b in d["xs"])

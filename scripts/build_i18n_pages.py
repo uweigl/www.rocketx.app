@@ -91,10 +91,10 @@ FEATURES = {
 }
 
 IMG_ALT = {
- "fr": "RocketX \u2014 commander sans friction. Commande B2B pour le commerce de gros, avec références illimitées, applications natives et paniers partagés en direct.",
+ "fr": "RocketX \u2014 commande fluide. Commande B2B pour le commerce de gros, avec références illimitées, applications natives et paniers partagés en direct.",
  "de": "RocketX \u2014 Reibungsloses Bestellen. B2B-Gro\u00dfhandelsbestellungen mit unbegrenzt vielen SKUs, nativen Apps und gemeinsamen Live-Warenk\u00f6rben.",
  "es": "RocketX \u2014 pedidos sin fricci\u00f3n. Pedidos mayoristas B2B con SKUs ilimitados, apps nativas y carritos compartidos en vivo.",
- "nl": "RocketX \u2014 bestellen zonder wrijving. B2B-groothandelsbestellingen met onbeperkt SKU\u2019s, native apps en gedeelde live winkelwagens.",
+ "nl": "RocketX \u2014 moeiteloos bestellen. B2B-groothandelsbestellingen met onbeperkt SKU\u2019s, native apps en gedeelde live winkelwagens.",
 }
 
 def render(lang):
@@ -177,7 +177,13 @@ if __name__ == "__main__":
         print("  wrote %-16s %d bytes" % (path, len(html)))
 
     # sanity: the translated copy must actually be in the file
-    checks = {"de": "Bestellen", "es": "sin fricción", "nl": "zonder wrijving", "fr": "sans friction"}
+    # A needle must be a word the language uses throughout its BODY copy, not a
+    # tagline. These were tied to the hero tagline, so changing the Dutch and
+    # French headlines on 2026-09-02 broke the build with "nl: translated copy
+    # present ... NO" - the pages were perfectly translated, the needle was
+    # simply the old slogan. Body words cannot drift with a marketing decision.
+    checks = {"de": "Großhandel", "es": "mayoristas",
+              "nl": "groothandel", "fr": "commandes"}
     for lang, needle in checks.items():
         txt = io.open(os.path.join(lang, "index.html"), encoding="utf-8").read()
         ok = needle in txt and 'lang="%s"' % lang in txt
