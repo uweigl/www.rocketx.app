@@ -794,8 +794,20 @@ if os.path.exists(_1p):
     check("/1page landing page is in sync with the deck copy",
           _html.escape(_en["title"]) in _1ph and _html.escape(_en["xsa"])[:60] in _1ph,
           "run scripts/gen_1page.py")
-    check("/1page offers the one-pager PDF",
-          "/assets/rocketx-one-page-en.pdf" in _1ph)
+    # both PDFs, offered at the top AND the bottom, with page counts read from
+    # the files themselves. The site once advertised "8 pages" for months after
+    # the deck grew to 14 - a stated count outliving its file is this repo's
+    # oldest bug, so the count on this page is asserted against the real PDF.
+    for _pdf, _n in (("rocketx-one-page-en.pdf", 1),
+                     ("rocketx-business-case-en.pdf", 14)):
+        _path = "assets/" + _pdf
+        _real = pdf_pages(_path) if os.path.exists(_path) else -1
+        check("/1page offers %s twice" % _pdf,
+              _1ph.count('href="/assets/%s" download' % _pdf) == 2)
+        check("/1page states %s's real page count" % _pdf,
+              ("&middot; %d page" % _real) in _1ph, "file has %d" % _real)
+    check("/1page download links are not broken",
+          '<a "' not in _1ph and _1ph.count('class="dl') == 2)
     # tapping the number opens WhatsApp, and the href must be the SAME number
     # the homepage publishes - two places quoting one phone number is exactly
     # how the +1 prefix drifted for two days
