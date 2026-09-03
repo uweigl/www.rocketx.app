@@ -49,53 +49,77 @@ WA_HREF, PHONE = _wa.group(1), _wa.group(2)
 WA_LINK = WA_HREF + "?text=" + quote(
     "Hi Urban - I scanned the code in your letter.")
 WA_ICON = io.open(os.path.join(SP, "wa_path.txt"), encoding="utf-8").read().strip()
+# The letterhead mark and the signature are the LETTER's, not copies of them:
+# assets/icon.svg is the same app icon printed on the letterhead, and
+# scripts/signature.svg is lifted from the letter template. Someone scanning
+# the QR has the letter in their hand, so the page has to look like it.
+APP_ICON = io.open(os.path.join(ROOT, "assets", "icon.svg"),
+                   encoding="utf-8").read().strip()
+APP_ICON = re.sub(r'^<svg[^>]*>|</svg>$', '', APP_ICON).strip()
+SIGNATURE = io.open(os.path.join(SP, "signature.svg"), encoding="utf-8").read().strip()
+# WhatsApp is the primary tap, but US adoption among owner-operators of this
+# generation is patchy, and the letter promises "call or text". This is the
+# fallback for a reader who does not have the app - same digits, dialled.
+TEL = "+1" + re.sub(r"\D", "", PHONE)
 
 CSS = """
 %(fonts)s
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--void:#05080F;--panel:#0E1B33;--blue:#2563EB;--sky:#60A5FA;--ice:#EDF2FB;
-      --mist:#8FA1C4;--line:rgba(96,165,250,.16)}
+/* the LETTER's palette, verbatim - white paper, the same ink and rule colour */
+:root{--ink:#12182B;--body:#2B3550;--soft:#6A7896;--blue:#2563EB;--line:#DCE3F0;
+      --wash:#F4F7FC;--biro:#1E3E96}
 html{-webkit-text-size-adjust:100%%}
-body{background:var(--void);color:var(--mist);font-family:'Inter',-apple-system,Helvetica,sans-serif;
-     font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{max-width:640px;margin:0 auto;padding:26px 20px 40px}
-header{display:flex;align-items:center;gap:10px;padding-bottom:18px;border-bottom:1px solid var(--line)}
-header svg{width:30px;height:30px;flex:none}
-.bn b{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:var(--ice);
-      display:block;line-height:1.1;letter-spacing:-.01em}
+body{background:#fff;color:var(--body);font-family:'Inter',-apple-system,Helvetica,sans-serif;
+     font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:660px;margin:0 auto;padding:26px 22px 40px}
+/* letterhead, as printed */
+header{display:flex;align-items:center;gap:9px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+header svg.mark{width:32px;height:32px;flex:none;border-radius:7px}
+.bn b{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:var(--ink);
+      display:block;line-height:1.05;letter-spacing:-.01em}
 .bn i{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.19em;
-      text-transform:uppercase;color:var(--sky)}
+      text-transform:uppercase;color:var(--blue)}
 .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;
-         text-transform:uppercase;color:var(--sky);margin-top:26px}
+         text-transform:uppercase;color:var(--blue);margin-top:26px}
 h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:29px;line-height:1.16;
-   color:var(--ice);letter-spacing:-.02em;margin-top:10px;text-wrap:balance}
+   color:var(--ink);letter-spacing:-.02em;margin-top:10px;text-wrap:balance}
 .who{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.11em;
-     text-transform:uppercase;color:var(--mist);margin-top:12px;line-height:1.55}
-.lede{font-size:17px;line-height:1.55;color:var(--ice);margin-top:18px}
-.rows{margin-top:26px;display:flex;flex-direction:column;gap:0}
+     text-transform:uppercase;color:var(--soft);margin-top:12px;line-height:1.55}
+.lede{font-size:17px;line-height:1.56;color:var(--ink);margin-top:18px}
+.rows{margin-top:26px}
 .r{padding:16px 0;border-top:1px solid var(--line)}
-.r h2{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--sky);
+.r h2{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--blue);
       margin-bottom:5px;line-height:1.3}
-.r p{font-size:15px;line-height:1.58}
-.acts{margin-top:30px;display:flex;flex-direction:column;gap:11px}
+.r p{font-size:15px;line-height:1.6}
+.acts{margin-top:28px;display:flex;flex-direction:column;gap:11px}
 .btn{display:flex;align-items:center;justify-content:center;gap:9px;min-height:54px;
      border-radius:12px;text-decoration:none;font-weight:600;font-size:16.5px;
      font-family:'Space Grotesk',sans-serif}
 .btn.primary{background:var(--blue);color:#fff}
-.btn.ghost{border:1px solid rgba(96,165,250,.42);color:var(--ice)}
+.btn.ghost{border:1px solid #C9D9F0;color:var(--ink);background:var(--wash)}
 .btn svg{width:18px;height:18px;fill:currentColor}
+.tel{display:block;text-align:center;margin-top:13px;padding:9px;color:var(--soft);
+     text-decoration:none;font-size:14px}
 .dl{display:flex;flex-wrap:wrap;gap:9px}
 .dl.top{margin-top:16px}
 .dl.bottom{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
 .dl a{display:inline-flex;align-items:center;gap:8px;flex:1 1 220px;min-height:46px;
-      padding:9px 13px;border:1px solid rgba(96,165,250,.3);border-radius:10px;
-      color:var(--ice);text-decoration:none;font-size:14.5px;line-height:1.25}
-.dl a svg{width:15px;height:15px;fill:var(--sky);flex:none}
+      padding:9px 13px;border:1px solid #C9D9F0;border-radius:10px;background:var(--wash);
+      color:var(--ink);text-decoration:none;font-size:14.5px;line-height:1.25}
+.dl a svg{width:15px;height:15px;fill:var(--blue);flex:none}
 .dl a s{text-decoration:none;display:block;font-family:'IBM Plex Mono',monospace;
-        font-size:10px;letter-spacing:.06em;color:var(--mist);margin-top:2px}
-footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);
+        font-size:10px;letter-spacing:.06em;color:var(--soft);margin-top:2px}
+/* the sign-off, in the same biro blue as the letter */
+.sign{margin-top:30px;padding-top:20px;border-top:1px solid var(--line)}
+.sign p{font-size:15.5px;color:var(--body)}
+.sign .ink{color:var(--biro);margin:6px 0 2px}
+.sign .ink svg{display:block;width:150pt;max-width:74%%;height:auto}
+.sign b{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:var(--ink);display:block}
+.sign i{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:9.5px;
+        letter-spacing:.17em;text-transform:uppercase;color:var(--blue);display:block;margin-top:2px}
+footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);
        font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;
-       color:#6C7C9C;line-height:1.7}
+       color:var(--soft);line-height:1.7}
 @media(min-width:620px){h1{font-size:34px}.acts{flex-direction:row}.btn{flex:1}}
 """
 
@@ -106,7 +130,7 @@ PAGE = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico"><style>%(css)s</style></head>
 <body><div class="wrap">
-<header><svg viewBox="0 0 100 100" aria-hidden="true"><path d="%(rocket)s" fill="#2563EB" fill-rule="evenodd"/></svg>
+<header><svg class="mark" viewBox="0 0 64 64" aria-hidden="true">%(appicon)s</svg>
 <span class="bn"><b>RocketX</b><i>Frictionless Ordering</i></span></header>
 <div class="dl top">%(dl)s</div>
 <div class="eyebrow">%(xsh)s</div>
@@ -117,6 +141,12 @@ PAGE = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <div class="acts">
   <a class="btn primary" href="%(walink)s" rel="noopener"><svg viewBox="0 0 24 24"><path d="%(waicon)s"/></svg>WhatsApp %(phone)s</a>
   <a class="btn ghost" href="mailto:%(email)s"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.24-8 5.01-8-5.01V6.4l8 5.01 8-5.01v1.84z"/></svg>Email me</a>
+</div>
+<a class="tel" href="tel:%(tel)s">Not on WhatsApp? Call or text %(phone)s</a>
+<div class="sign">
+<p>%(signoff)s</p>
+<div class="ink"><svg viewBox="0 0 520 150" aria-label="Urban Weigl, signed">%(signature)s</svg></div>
+<b>Urban Weigl</b><i>Founder, RocketX</i>
 </div>
 <div class="dl bottom">%(dl)s</div>
 <footer>%(foot)s<br>%(legal)s</footer>
@@ -140,9 +170,14 @@ def build():
         ))
     return PAGE % {
         "title": esc(d["title"]), "desc": esc(d["xsa"])[:180], "css": css,
-        "rocket": ROCKET, "xsh": esc(d["xsh"]), "who": esc(d["forwho"]),
+        "appicon": APP_ICON, "signature": SIGNATURE,
+        "signoff": "Thank you for scanning the code in my letter. "
+                   "If any of this is worth twenty minutes, the quickest way "
+                   "to reach me is the button above.",
+        "xsh": esc(d["xsh"]), "who": esc(d["forwho"]),
         "lede": esc(d["xsa"]), "rows": rows, "dl": dl,
-        "walink": esc(WA_LINK), "waicon": WA_ICON, "phone": esc(PHONE), "email": EMAIL,
+        "walink": esc(WA_LINK), "waicon": WA_ICON, "phone": esc(PHONE),
+        "tel": TEL, "email": EMAIL,
         "foot": esc(d["foot"]),
         "legal": "RocketX LLC · 30725 N Bright Angel Dr, Meadview, AZ 86444 · Business ID 25040687",
     }

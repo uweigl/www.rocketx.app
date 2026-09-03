@@ -812,8 +812,14 @@ if os.path.exists(_1p):
     # the homepage publishes - two places quoting one phone number is exactly
     # how the +1 prefix drifted for two days
     _wah = re.search(r"WACFG=\{en:\{h:'([^']*)'", _idx2).group(1)
+    _digits = re.sub(r"\D", "", _wah)
     check("/1page WhatsApp button uses the canonical wa.me number",
-          _wah in _1ph and 'href="tel:' not in _1ph, _wah)
+          _wah in _1ph and ('class="btn primary" href="%s' % _wah) in _1ph, _wah)
+    # a dial fallback is allowed - but it must be the SAME number, never a
+    # second one typed by hand
+    _tels = set(re.findall(r'href="tel:([+0-9]+)"', _1ph))
+    check("/1page dial fallback uses that same number",
+          all(re.sub(r"\D", "", t) == _digits for t in _tels), str(sorted(_tels)))
     check("/1page is not redirected away by the worker",
           '"/1page":' not in _w)
 else:
